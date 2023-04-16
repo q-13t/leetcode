@@ -1,10 +1,7 @@
 package le.test;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 class ListNode {
     int val;
@@ -109,7 +106,7 @@ public class Solution {
         if (head == null || head.next == null) {
             return true;
         }
-        ListNode reversed = reverseListNode(findMiddleListNode(head).next);
+        ListNode reversed = reverseListNode(middleNode(head).next);
         while (reversed != null) {
             if (head.val != reversed.val) {
                 return false;
@@ -132,16 +129,6 @@ public class Solution {
         return previous;
     }
 
-    public static ListNode findMiddleListNode(ListNode node) {
-        ListNode slow = node;
-        ListNode fast = node.next;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        return slow;
-    }
-
     public static boolean canConstruct(String ransomNote, String magazine) {
         int[] freq = new int[26];// array of alphabet length with all 0
         for (char c : magazine.toCharArray()) {// count resources
@@ -157,21 +144,32 @@ public class Solution {
 
     public static List<String> fizzBuzz(int n) {
         String[] answer = new String[n];
-        for (int i = n, f = n - 1; i > 0; i--, f--) {
+        for (int i = n; i > 0; i--) {
             if (i % 15 == 0) {
-                answer[f] = "FizzBuzz";
+                answer[i - 1] = "FizzBuzz";
                 continue;
             } else if (i % 3 == 0) {
-                answer[f] = "Fizz";
+                answer[i - 1] = "Fizz";
                 continue;
             } else if (i % 5 == 0) {
-                answer[f] = "Buzz";
+                answer[i - 1] = "Buzz";
                 continue;
             } else {
-                answer[f] = String.valueOf(i);
+                answer[i - 1] = String.valueOf(i);
                 continue;
             }
         }
         return Arrays.asList(answer);
     }
+
+    public static ListNode middleNode(ListNode node) {
+        ListNode fast = node;
+        while (fast != null && fast.next != null) {
+
+            node = node.next;
+            fast = fast.next.next;
+        }
+        return node;
+    }
+
 }
