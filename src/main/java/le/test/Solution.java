@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.management.MBeanTrustPermission;
+
 class ListNode {
     int val;
     ListNode next;
@@ -174,38 +176,34 @@ public class Solution {
         return node;
     }
 
-    // MODIFY?
     public static int[] kWeakestRows(int[][] mat, int k) {
-        int[][] strength = new int[mat.length][2];
-        for (int i = 0; i < mat.length; i++) {
-            strength[i][0] = i;
-            for (int j = 0; j < mat[i].length; j++) {
-                if (mat[i][j] == 1) {
-                    strength[i][1] += 1;
+        int[] strength = new int[mat.length];
+        for (int i = 0; i < strength.length; i++) {
+            if (mat[i][mat[i].length - 1] == 1) {
+                strength[i] = mat[i].length;
+            } else if (mat[i][0] == 0) {
+                strength[i] = 0;
+            } else {
+                for (int j = 0; j < mat[i].length; j++) {
+                    if (mat[i][j] == 1) {
+                        strength[i] += 1;
+                    }
                 }
             }
         }
-        return getK(sort(strength), k);
-    }
-
-    private static int[] getK(int[][] sort, int k) {
         int[] result = new int[k];
+        int index = 0;
+
         for (int i = 0; i < k; i++) {
-            result[i] = sort[i][0];
+            index = 0;
+            for (int j = 1; j < strength.length; j++) {
+                if (strength[index] > strength[j]) {
+                    index = j;
+                }
+            }
+            result[i] = index;
+            strength[index] = Integer.MAX_VALUE;
         }
         return result;
-    }
-
-    private static int[][] sort(int[][] strength) {
-        for (int i = 0; i < strength.length - 1; i++) {
-            for (int j = 0; j < strength.length - i - 1; j++) {
-                if (strength[j][1] > strength[j + 1][1]) {
-                    int[] tmp = strength[j];
-                    strength[j] = strength[j + 1];
-                    strength[j + 1] = tmp;
-                }
-            }
-        }
-        return strength;
     }
 }
