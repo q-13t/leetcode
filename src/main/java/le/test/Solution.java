@@ -1,7 +1,9 @@
 package le.test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeMap;
 
 class ListNode {
     int val;
@@ -80,17 +82,17 @@ public class Solution {
         return number;
     }
 
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) {
+    public static String longestCommonPrefix(String[] strings) {
+        if (strings == null || strings.length == 0) {
             return "";
         }
 
         StringBuilder answer = new StringBuilder();
         try {
             for (int i = 0; i < 200; i++) {
-                char current = strs[0].charAt(i);
-                for (int j = 0; j < strs.length; j++) {
-                    if (current != strs[j].charAt(i)) {
+                char current = strings[0].charAt(i);
+                for (int j = 0; j < strings.length; j++) {
+                    if (current != strings[j].charAt(i)) {
                         return answer.toString();
                     }
                 }
@@ -172,4 +174,38 @@ public class Solution {
         return node;
     }
 
+    // MODIFY?
+    public static int[] kWeakestRows(int[][] mat, int k) {
+        int[][] strength = new int[mat.length][2];
+        for (int i = 0; i < mat.length; i++) {
+            strength[i][0] = i;
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j] == 1) {
+                    strength[i][1] += 1;
+                }
+            }
+        }
+        return getK(sort(strength), k);
+    }
+
+    private static int[] getK(int[][] sort, int k) {
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = sort[i][0];
+        }
+        return result;
+    }
+
+    private static int[][] sort(int[][] strength) {
+        for (int i = 0; i < strength.length - 1; i++) {
+            for (int j = 0; j < strength.length - i - 1; j++) {
+                if (strength[j][1] > strength[j + 1][1]) {
+                    int[] tmp = strength[j];
+                    strength[j] = strength[j + 1];
+                    strength[j + 1] = tmp;
+                }
+            }
+        }
+        return strength;
+    }
 }

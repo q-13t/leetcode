@@ -2,8 +2,12 @@ package le.test;
 
 public class App {
     public static void main(String[] args) {
+        int[][] matrix = { { 1, 1, 0, 0, 0 }, { 1, 1, 1, 1, 0 }, { 1, 0, 0, 0, 0 }, { 1, 1, 0, 0, 0 },
+                { 1, 1, 1, 1, 1 } };
 
-        System.out.println(Solution
-                .middleNode(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))));
+        int k = 3;
+        for (int iterable : Solution.kWeakestRows(matrix, k)) {
+            System.out.println(iterable);
+        }
     }
 }
