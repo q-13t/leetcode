@@ -1,6 +1,9 @@
 package le.test;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 class ListNode {
@@ -140,18 +143,35 @@ public class Solution {
     }
 
     public static boolean canConstruct(String ransomNote, String magazine) {
-        int[] freq = new int[26]; // a frequency array to store the count of characters
-
-        // collect the frequencies of all characters in magazine
-        for (char c : magazine.toCharArray()) {
+        int[] freq = new int[26];// array of alphabet length with all 0
+        for (char c : magazine.toCharArray()) {// count resources
             freq[c - 'a']++;
         }
-        for (char c : ransomNote.toCharArray()) {
+        for (char c : ransomNote.toCharArray()) {// evaluate resources
             if (--freq[c - 'a'] < 0) {
                 return false;
             }
         }
-
         return true;
+    }
+
+    public static List<String> fizzBuzz(int n) {
+        String[] answer = new String[n];
+        for (int i = n, f = n - 1; i > 0; i--, f--) {
+            if (i % 15 == 0) {
+                answer[f] = "FizzBuzz";
+                continue;
+            } else if (i % 3 == 0) {
+                answer[f] = "Fizz";
+                continue;
+            } else if (i % 5 == 0) {
+                answer[f] = "Buzz";
+                continue;
+            } else {
+                answer[f] = String.valueOf(i);
+                continue;
+            }
+        }
+        return Arrays.asList(answer);
     }
 }
