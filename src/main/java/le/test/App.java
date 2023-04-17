@@ -2,11 +2,9 @@ package le.test;
 
 public class App {
     public static void main(String[] args) {
-        int[][] matrix = {
-                { 2, 8, 7 },
-                { 7, 1, 3 },
-                { 1, 9, 5 },
-        };
-        System.out.println(Solution.maximumWealth(matrix));
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        int[] result = Solution.twoSum(nums, target);
+        System.out.println(result[0] + "  " + result[1]);
     }
 }

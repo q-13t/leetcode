@@ -233,4 +233,24 @@ public class Solution {
         return maxWealth;
     }
 
+    public static int[] twoSum(int[] nums, int target) {
+        System.gc();
+        if (nums == null || nums.length < 2) {
+            return null;
+        } else if (nums[nums.length - 1] + nums[nums.length - 2] == target) {
+            return new int[] { nums.length - 2, nums.length - 1 };
+        } else if (nums[0] + nums[1] == target) {
+            return new int[] { 0, 1 };
+        }
+        System.gc();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target && j != i) {
+                    System.gc();
+                    return new int[] { i, j };
+                }
+            }
+        }
+        return null;
+    }
 }
