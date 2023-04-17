@@ -216,4 +216,21 @@ public class Solution {
         }
         return steps;
     }
+
+    public static int maximumWealth(int[][] accounts) {
+        System.gc();
+        int maxWealth = Integer.MIN_VALUE, current;
+        for (int i = 0; i < accounts.length; i++) {
+            current = 0;
+            for (int j = 0; j < accounts[i].length; j++) {
+                current += accounts[i][j];
+            }
+            if (maxWealth < current) {
+                maxWealth = current;
+            }
+        }
+        System.gc();
+        return maxWealth;
+    }
+
 }
