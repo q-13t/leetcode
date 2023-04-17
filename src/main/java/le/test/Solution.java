@@ -1,11 +1,7 @@
 package le.test;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.TreeMap;
-
-import javax.management.MBeanTrustPermission;
 
 class ListNode {
     int val;
@@ -205,5 +201,19 @@ public class Solution {
             strength[index] = Integer.MAX_VALUE;
         }
         return result;
+    }
+
+    public static int numberOfSteps(int num) {
+        int steps = 0;
+        while (num != 0) {
+            if (num % 2 == 0) {
+                steps++;
+                num = num % 2;
+                continue;
+            }
+            steps++;
+            num = num - 1;
+        }
+        return steps;
     }
 }
