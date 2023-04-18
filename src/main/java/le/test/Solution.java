@@ -1,7 +1,12 @@
 package le.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Formatter.BigDecimalLayoutForm;
+import java.util.concurrent.SubmissionPublisher;
+
+import javax.xml.validation.Validator;
 
 class ListNode {
     int val;
@@ -252,5 +257,28 @@ public class Solution {
             }
         }
         return null;
+    }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int addition = 0;
+        ListNode tmp = new ListNode();
+        ListNode head = tmp;
+        while (!(l1 == null && l2 == null) || (addition != 0)) {
+            int sum = ((l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + addition);
+            tmp.val = sum % 10;
+            addition = sum / 10;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+            if (!(l1 == null && l2 == null) || (addition != 0)) {
+                tmp.next = new ListNode();
+                tmp = tmp.next;
+            }
+        }
+
+        return head;
     }
 }
