@@ -1,12 +1,7 @@
 package le.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Formatter.BigDecimalLayoutForm;
-import java.util.concurrent.SubmissionPublisher;
-
-import javax.xml.validation.Validator;
 
 class ListNode {
     int val;
@@ -238,19 +233,19 @@ public class Solution {
         return maxWealth;
     }
 
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum(int[] numbers, int target) {
         System.gc();
-        if (nums == null || nums.length < 2) {
+        if (numbers == null || numbers.length < 2) {
             return null;
-        } else if (nums[nums.length - 1] + nums[nums.length - 2] == target) {
-            return new int[] { nums.length - 2, nums.length - 1 };
-        } else if (nums[0] + nums[1] == target) {
+        } else if (numbers[numbers.length - 1] + numbers[numbers.length - 2] == target) {
+            return new int[] { numbers.length - 2, numbers.length - 1 };
+        } else if (numbers[0] + numbers[1] == target) {
             return new int[] { 0, 1 };
         }
         System.gc();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target && j != i) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] + numbers[j] == target && j != i) {
                     System.gc();
                     return new int[] { i, j };
                 }
@@ -281,4 +276,19 @@ public class Solution {
 
         return head;
     }
+
+    // Sliding window approach
+    public int lengthOfLongestSubstring(String s) {
+        int chars[] = new int[128];// [window] each character on it's position(ASCII index) represented as position
+                                   // in String
+        int right = 0, left = 0, intCharVal = 0; // variables for sliding window
+        for (int index = 0; index < s.length(); index++) {
+            intCharVal = s.charAt(index);// value of each character as integer
+            left = Math.max(left, chars[intCharVal]);// start of substring without repeating characters
+            right = Math.max(right, index - left + 1);// end of substring without repeating characters
+            chars[intCharVal] = index + 1; // setting last occurrence of each character in string
+        }
+        return right;
+    }
+
 }
