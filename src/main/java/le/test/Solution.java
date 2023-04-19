@@ -291,4 +291,23 @@ public class Solution {
         return right;
     }
 
+    public double findMedianSortedArrays(int[] numbs1, int[] numbs2) {
+        int[] merged = new int[numbs1.length + numbs2.length];
+        int i = 0;
+        for (; i < numbs1.length; i++) {
+            merged[i] = numbs1[i];
+        }
+        for (int k = 0; i < merged.length; i++, k++) {
+            merged[i] = numbs2[k];
+        }
+
+        Arrays.sort(merged);
+
+        int middle = merged.length / 2;
+        if (merged.length % 2 == 0) {
+            return ((double) merged[middle - 1] + (double) merged[middle]) / 2;
+        } else {
+            return (double) merged[middle];
+        }
+    }
 }
