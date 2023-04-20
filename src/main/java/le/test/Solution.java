@@ -1,7 +1,15 @@
 package le.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Collector;
 
 class ListNode {
     int val;
@@ -27,52 +35,52 @@ public class Solution {
         char previous = 'a';
         for (char iterable : s.toCharArray()) {
             switch (iterable) {
-                case 'I': {
-                    number += 1;
-                    break;
+            case 'I': {
+                number += 1;
+                break;
+            }
+            case 'V': {
+                number += 5;
+                if (previous == 'I') {
+                    number -= 2;
                 }
-                case 'V': {
-                    number += 5;
-                    if (previous == 'I') {
-                        number -= 2;
-                    }
-                    break;
+                break;
+            }
+            case 'X': {
+                number += 10;
+                if (previous == 'I') {
+                    number -= 2;
                 }
-                case 'X': {
-                    number += 10;
-                    if (previous == 'I') {
-                        number -= 2;
-                    }
-                    break;
+                break;
+            }
+            case 'L': {
+                number += 50;
+                if (previous == 'X') {
+                    number -= 20;
                 }
-                case 'L': {
-                    number += 50;
-                    if (previous == 'X') {
-                        number -= 20;
-                    }
-                    break;
+                break;
+            }
+            case 'C': {
+                number += 100;
+                if (previous == 'X') {
+                    number -= 20;
                 }
-                case 'C': {
-                    number += 100;
-                    if (previous == 'X') {
-                        number -= 20;
-                    }
-                    break;
+                break;
+            }
+            case 'D': {
+                number += 500;
+                if (previous == 'C') {
+                    number -= 200;
                 }
-                case 'D': {
-                    number += 500;
-                    if (previous == 'C') {
-                        number -= 200;
-                    }
-                    break;
+                break;
+            }
+            case 'M': {
+                number += 1000;
+                if (previous == 'C') {
+                    number -= 200;
                 }
-                case 'M': {
-                    number += 1000;
-                    if (previous == 'C') {
-                        number -= 200;
-                    }
-                    break;
-                }
+                break;
+            }
 
             }
             previous = iterable;
@@ -309,5 +317,49 @@ public class Solution {
         } else {
             return (double) merged[middle];
         }
+    }
+
+    /**
+     * Iterates over provided {@code string} in order to find longest palindrome.
+     * </p>
+     * {@code Time O(n^2)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param string original string
+     * @return longest palindromic substring from {@code string}
+     */
+    public String longestPalindrome(String string) {
+        String result = "";
+        int length = string.length(), l = 0, m = 0;
+        char[] array = string.toCharArray();
+
+        // Iterate over provided String once
+        for (int i = 0; i < length; i++) {
+
+            // search for palindrome expanded from string at i (for single letter palindrome case)
+            l = i;
+            m = i;
+            while (l >= 0 && m < length && array[l] == array[m]) {
+                if (m + 1 - l > result.length()) {
+                    result = string.substring(l, m + 1);
+                }
+                l--;
+                m++;
+            }
+
+            // search for palindrome expanded from string at i (for double letter palindrome case)
+            l = i;
+            m = i + 1;
+            while (l >= 0 && m < length && array[l] == array[m]) {
+                if (m + 1 - l > result.length()) {
+                    result = string.substring(l, m + 1);
+                }
+                l--;
+                m++;
+            }
+        }
+
+        return result;
     }
 }
