@@ -1,6 +1,7 @@
 package le.test;
 
 import java.util.List;
+import java.util.Stack;
 import java.util.Arrays;
 
 class ListNode {
@@ -375,5 +376,62 @@ public class Solution {
             }
         }
         return isPalindrome;
+    }
+
+    /**
+     * Iterates over {@code string} in order to determine if given braces are written in correct form
+     * </p>
+     * Only "(", ")", "[", "]", "{", "}" are valid.
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param string
+     * @return {@code true} if given string is valid
+     */
+    public boolean isValid(String string) {
+        if (string.length() % 2 != 0 || string.isEmpty()) {
+            return false;
+        }
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < string.length(); i++) {
+            switch (string.charAt(i)) {
+            case '(': {
+                stack.add('(');
+                break;
+            }
+            case ')': {
+                if (stack.isEmpty() || stack.pop() != '(') {
+                    return false;
+                }
+                break;
+            }
+            case '{': {
+                stack.add('{');
+                break;
+            }
+            case '}': {
+                if (stack.isEmpty() || stack.pop() != '{') {
+                    return false;
+                }
+                break;
+            }
+            case '[': {
+                stack.add('[');
+                break;
+            }
+            case ']': {
+                if (stack.isEmpty() || stack.pop() != '[') {
+                    return false;
+                }
+                break;
+            }
+            }
+        }
+        if (!stack.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }
