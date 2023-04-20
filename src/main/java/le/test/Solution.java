@@ -1,15 +1,7 @@
 package le.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.Stack;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.stream.Collector;
+import java.util.Arrays;
 
 class ListNode {
     int val;
@@ -327,11 +319,11 @@ public class Solution {
      * {@code Space O(n)}
      * 
      * @param string original string
-     * @return longest palindromic substring from {@code string}
+     * @return longest palindromic substring
      */
     public String longestPalindrome(String string) {
         String result = "";
-        int length = string.length(), l = 0, m = 0;
+        int length = string.length(), l, m;
         char[] array = string.toCharArray();
 
         // Iterate over provided String once
@@ -361,5 +353,27 @@ public class Solution {
         }
 
         return result;
+    }
+
+    /**
+     * Iterates over half of provided {@code number} checking numbers on corresponding indexes *
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param number
+     * @return {@code true} if number is palindrome
+     */
+    public boolean isPalindrome(int number) {
+        boolean isPalindrome = true;
+        char[] numbers = String.valueOf(number).toCharArray();
+        int half_size = numbers.length / 2;
+        for (int i = 0, j = numbers.length - 1; i < half_size && j >= half_size; i++, j--) {
+            if (numbers[i] != numbers[j]) {
+                return false;
+            }
+        }
+        return isPalindrome;
     }
 }
