@@ -3,6 +3,8 @@ package le.test;
 import java.util.List;
 import java.util.Stack;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class ListNode {
     int val;
@@ -379,7 +381,7 @@ public class Solution {
     }
 
     /**
-     * Iterates over {@code string} in order to determine if given braces are written in correct form
+     * Iterates over {@code string} in order to determine if given braces are written in correct form.
      * </p>
      * Only "(", ")", "[", "]", "{", "}" are valid.
      * </p>
@@ -434,4 +436,56 @@ public class Solution {
         }
         return true;
     }
+
+    /**
+     * Iterates over two {@link ListNode}s and merges them into single sorted {@code ListNode}.
+     * </p>
+     * {@code list1 and list2 are sorted.}
+     * </p>
+     * {@code Time O(n log(n))}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param list1
+     * @param list2
+     * @return merger and sorted list
+     */
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        // Edge case: if both input lists are empty, return null
+        if (list1 == null && list2 == null) {
+            return null;
+        }
+        // Create a new ListNode object to use as a temporary pointer and set it as the head of the merged list
+        ListNode temp = new ListNode();
+        ListNode head = temp;
+        // Create a new ArrayList to store all the values from the input lists
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        // Iterate through list1 and add all its elements to the ArrayList
+        while (list1 != null) {
+            numbers.add(list1.val);
+            list1 = list1.next;
+        }
+        // Iterate through list2 and add all its elements to the ArrayList
+        while (list2 != null) {
+            numbers.add(list2.val);
+            list2 = list2.next;
+        }
+        // Sort the ArrayList in ascending order
+        Collections.sort(numbers);
+        // Iterate through the sorted ArrayList and add each element to the merged list
+        for (int i = 0; i < numbers.size(); i++) {
+            // Set the value of the current node to the ith element in the ArrayList
+            temp.val = numbers.get(i);
+            // If there are more elements in the ArrayList, create a new node and set it as the next node in the merged list
+            if (i + 1 < numbers.size()) {
+                temp.next = new ListNode();
+                temp = temp.next;
+            }
+        }
+        // Call garbage collector explicitly to free up memory
+        System.gc();
+        // Return the head node of the merged and sorted list
+        return head;
+    }
+
 }
