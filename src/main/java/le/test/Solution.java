@@ -5,6 +5,7 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 
 class ListNode {
     int val;
@@ -332,7 +333,8 @@ public class Solution {
         // Iterate over provided String once
         for (int i = 0; i < length; i++) {
 
-            // search for palindrome expanded from string at i (for single letter palindrome case)
+            // search for palindrome expanded from string at i (for single letter palindrome
+            // case)
             l = i;
             m = i;
             while (l >= 0 && m < length && array[l] == array[m]) {
@@ -343,7 +345,8 @@ public class Solution {
                 m++;
             }
 
-            // search for palindrome expanded from string at i (for double letter palindrome case)
+            // search for palindrome expanded from string at i (for double letter palindrome
+            // case)
             l = i;
             m = i + 1;
             while (l >= 0 && m < length && array[l] == array[m]) {
@@ -440,7 +443,7 @@ public class Solution {
     /**
      * Iterates over two {@link ListNode}s and merges them into single sorted {@code ListNode}.
      * </p>
-     * {@code list1 and list2 are sorted.}
+     * {@code list1 and list2 must be sorted.}
      * </p>
      * {@code Time O(n log(n))}
      * </p>
@@ -455,7 +458,8 @@ public class Solution {
         if (list1 == null && list2 == null) {
             return null;
         }
-        // Create a new ListNode object to use as a temporary pointer and set it as the head of the merged list
+        // Create a new ListNode object to use as a temporary pointer and set it as the
+        // head of the merged list
         ListNode temp = new ListNode();
         ListNode head = temp;
         // Create a new ArrayList to store all the values from the input lists
@@ -476,7 +480,8 @@ public class Solution {
         for (int i = 0; i < numbers.size(); i++) {
             // Set the value of the current node to the ith element in the ArrayList
             temp.val = numbers.get(i);
-            // If there are more elements in the ArrayList, create a new node and set it as the next node in the merged list
+            // If there are more elements in the ArrayList, create a new node and set it as
+            // the next node in the merged list
             if (i + 1 < numbers.size()) {
                 temp.next = new ListNode();
                 temp = temp.next;
@@ -486,6 +491,43 @@ public class Solution {
         System.gc();
         // Return the head node of the merged and sorted list
         return head;
+    }
+
+    /**
+     * Iterates over whole array, replacing greater values right after first entry of smaller. And returns the index of last unique entry.
+     * </p>
+     * {@code numbs are sorted in ASCENDING order.}
+     * </p>
+     * {@code Time O(n^2)}
+     * </p>
+     * {@code Space O(1)}
+     * 
+     * @param numbs array of sorted numbers
+     * @return number of unique number
+     */
+    public int removeDuplicates(int[] numbs) {
+        // create local variable k indicating first greater number in an array and tmp for swapping numbers in array
+        int k = 0, tmp = 0;
+        // Iterate over whole numbs array
+        for (int i = 1; i < numbs.length; i++) {
+            // assign k=i; because all previous entries are unique
+            k = i;
+            // iterate over whole array again searching for first greater number than current
+            while (numbs[i - 1] >= numbs[k]) {
+                k++;
+                // Edge case: if k reached end of array -> .gc() is called to fee up memory and i as index of last unique entry is returned
+                if (k == numbs.length) {
+                    System.gc();
+                    return i;
+                }
+            }
+            // swap current and greater numbers
+            tmp = numbs[i];
+            numbs[i] = numbs[k];
+            numbs[k] = tmp;
+        }
+        // returns length of numbers if numbs consists of only unique elements
+        return numbs.length;
     }
 
 }
