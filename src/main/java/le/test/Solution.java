@@ -5,7 +5,6 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 
 class ListNode {
     int val;
