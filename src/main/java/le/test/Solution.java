@@ -502,7 +502,7 @@ public class Solution {
      * {@code Space O(1)}
      * 
      * @param numbs array of sorted numbers
-     * @return number of unique number
+     * @return amount of unique numbers
      */
     public int removeDuplicates(int[] numbs) {
         // create local variable k indicating first greater number in an array and tmp for swapping numbers in array
@@ -527,6 +527,70 @@ public class Solution {
         }
         // returns length of numbers if numbs consists of only unique elements
         return numbs.length;
+    }
+
+    /**
+     * Iterates over array once replacing each specified {@code value} with next non equal to value number. And returns amount of values without specified number;
+     * 
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(1)}
+     * 
+     * @param numbs to remove value from
+     * @param value to be removed
+     * @return amount of numbers without specified value
+     */
+    public int removeElement(int[] numbs, int val) {
+        // Initiate k to represent current position of value to be removed
+        int k = 0;
+
+        // Iterate over array replacing specific value with another non matching
+        for (int i = 0; i < numbs.length; i++) {
+            // If current number does not match value to be removed current one is replaced with it
+            if (numbs[i] != val) {
+                numbs[k++] = numbs[i];
+            }
+        }
+        // Return amount of values without specified number
+        return k;
+    }
+
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+
+    /**
+     * Iterates over array in order to determine the position of target.
+     * 
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(1)}
+     * 
+     * 
+     * @param numbs
+     * @param target
+     * @return position where {@code target} is or should be.
+     */
+    public int searchInsert(int[] numbs, int target) {
+        // EDGE CASE: if first element in array is greater than target return 0 (as target would have been there)
+        if (numbs[0] >= target) {
+            return 0;
+        }
+        // initialize i to represent current position of target
+        int i = 1;
+        // Iterate over array to find the position of target
+        for (; i < numbs.length; i++) {
+            // if current namer is the target return current position
+            if (numbs[i] >= target) {
+                System.gc();
+                return i;
+            }
+        }
+        // EDGE CASE: if array does not contain target System.gc(); is called to free up memory and length of numbers + 1 is returned (as target would have been there)
+        System.gc();
+        return i;
     }
 
 }
