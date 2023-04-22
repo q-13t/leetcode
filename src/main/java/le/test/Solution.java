@@ -593,4 +593,31 @@ public class Solution {
         return i;
     }
 
+    /**
+     * Iterates over {@code sentence} to find the length of the last word. *
+     * 
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(1)}
+     * 
+     * @param sentence
+     * @return length of the last word.
+     */
+    public int lengthOfLastWord(String sentence) {
+        // Initialize size as size of sentence and k as length of the last word
+        int size = sentence.length(), k = 0;
+        // Reversibly iterate over sentence
+        for (int i = size - 1; i >= 0; i--) {
+            if (sentence.charAt(i) != ' ') {
+                // If current character is not space word has started or is continuing and its length is increased
+                k++;
+            } else if (sentence.charAt(i) == ' ' && k != 0) {
+                // If current char is space and k is not zero => word has ended and its length is returned
+                return k;
+            }
+        }
+        // if sentence is single word or has no spaces size of word is returned
+        return k;
+    }
 }
