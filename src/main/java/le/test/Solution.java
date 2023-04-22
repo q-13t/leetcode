@@ -620,4 +620,43 @@ public class Solution {
         // if sentence is single word or has no spaces size of word is returned
         return k;
     }
+
+    /**
+     * Adds 1 to the last number of {@code digits}. And formats the result. *
+     * </p>
+     * {@code digits are representation of single but very long number.}
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param digits
+     * @return The same digits increased by one
+     */
+    public int[] plusOne(int[] digits) {
+        // Initialize last as index of last element in digits
+        int last = digits.length - 1;
+        if (digits[last] == 9) { // If last element is equal to 9 it is replaced with 0 and function continues
+            digits[last] = 0;
+        } else {// if last number is les than 9 it is increased and digits returned (best case scenario)
+            digits[last] += 1;
+            return digits;
+        }
+        // Iteration over an array from behind
+        for (int i = last - 1; i >= 0; i--) {
+            if ((digits[i] + 1) / 10 >= 1) {// if current digit increased by 1 is bigger than 10 it is changed to 0
+                digits[i] = 0;
+            } else {// if current digit increased by 1 is smaller than 10 it IS increased and digits are returned (average case)
+                digits[i] += 1;
+                return digits;
+            }
+        }
+        // if all digits were 9 (worst case) INITIALIZE new array one element bigger
+        int[] result = new int[digits.length + 1];
+        // set first element to 1 (rest will be 9)
+        result[0] = 1;
+        // return new result
+        return result;
+    }
+
 }
