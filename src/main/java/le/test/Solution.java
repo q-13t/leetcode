@@ -622,7 +622,7 @@ public class Solution {
     }
 
     /**
-     * Adds 1 to the last number of {@code digits}. And formats the result. *
+     * Adds 1 to the last number of {@code digits}. And formats the result.
      * </p>
      * {@code digits are representation of single but very long number.}
      * </p>
@@ -657,6 +657,45 @@ public class Solution {
         result[0] = 1;
         // return new result
         return result;
+    }
+
+    /**
+     * Iterates over 2 strings in order to add two strings as binaries
+     * </p>
+     * {@code Strings are binary.}
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * @param a number represented as binary string
+     * @param b number represented as binary string
+     * @return sum of two binary strings
+     */
+    public String addBinary(String a, String b) {
+        // potential code
+        // return Long.toBinaryString(Long.valueOf(a, 2) + Long.valueOf(b, 2));
+
+        // Initialize variables for the function
+        int carry = 0, left = a.length() - 1, right = b.length() - 1, sum = 0;
+        // Initialize String buffer that will hold the resulting string
+        StringBuffer sb = new StringBuffer();
+        // Iterate over the strings until left index is less than 0 or right index is less than 0 or carry is not 0
+        while (left >= 0 || right >= 0 || carry != 0) {
+            // assign sum as carry
+            sum = carry;
+            // if left index is less than 0 add number from string a at position left; add 0 otherwise
+            sum += left >= 0 ? a.charAt(left--) - '0' : 0;
+            // if right index is less than 0 add number from string a at position right; add 0 otherwise
+            sum += right >= 0 ? b.charAt(right--) - '0' : 0;
+
+            // insert the resulting binary addition at a start of the string
+            sb.insert(0, sum % 2);
+            // assign carry for the next iteration
+            carry = sum / 2;
+        }
+        // return StringBuilder
+        return sb.toString();
     }
 
 }
