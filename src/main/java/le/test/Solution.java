@@ -638,7 +638,7 @@ public class Solution {
         int last = digits.length - 1;
         if (digits[last] == 9) { // If last element is equal to 9 it is replaced with 0 and function continues
             digits[last] = 0;
-        } else {// if last number is les than 9 it is increased and digits returned (best case scenario)
+        } else {// if last number is les than 9 it is increased and digits returned (best case)
             digits[last] += 1;
             return digits;
         }
