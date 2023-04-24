@@ -2,6 +2,9 @@ package le.test;
 
 import java.util.List;
 import java.util.Stack;
+
+import org.w3c.dom.html.HTMLTableRowElement;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -698,4 +701,20 @@ public class Solution {
         return sb.toString();
     }
 
+    public int mySqrt(int x) {
+        // return (int) Math.sqrt(x);
+        long low = 0, high = x, mid = 0;
+        while (low <= high) {
+            mid = (low + high) / 2;
+            if (mid * mid == x) {
+                return (int) mid;
+            }
+            if (mid * mid > x) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return (int) high;
+    }
 }
