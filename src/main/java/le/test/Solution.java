@@ -2,9 +2,6 @@ package le.test;
 
 import java.util.List;
 import java.util.Stack;
-
-import org.w3c.dom.html.HTMLTableRowElement;
-
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -716,5 +713,25 @@ public class Solution {
             }
         }
         return (int) high;
+    }
+
+    public int climbStairs(int n) {
+        if (n == 1)
+            return 1;
+
+        if (n == 2)
+            return 2;
+
+        int n1 = 1;
+        int n2 = 2;
+        int next = 0;
+
+        for (int i = 3; i <= n; i++) {
+            next = n1;
+            n1 = n2;
+            n2 = next + n2;
+        }
+
+        return n2;
     }
 }
