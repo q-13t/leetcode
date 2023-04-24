@@ -734,4 +734,47 @@ public class Solution {
 
         return n2;
     }
+
+    /**
+     * Deletes duplicating numbers from {@code ListNode}.
+     * </p>
+     * {@code head must be sorted in ascending order.}
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(m)}
+     * 
+     * @param head Sorted {@code ListNode}.
+     * @return Sorted {@code ListNode} without duplicates.
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        // If the list is empty or has just one node, return it as there's no duplicates to be removed
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Create a new ListNode called result with the first value of the original list
+        ListNode result = new ListNode(head.val);
+
+        // Create an instance of the new list and set temp as the first node
+        ListNode temp = result;
+
+        // Iterate through each node of the original list
+        while (head != null) {
+
+            // If the value of the current node being iterated does not match the last added value in the new list,
+            // then add this value to the end of the new list, pointing temp to the recently added node
+            if (head.val != temp.val) {
+                temp.next = new ListNode(head.val);
+                temp = temp.next;
+            }
+
+            // Move on to the next node of the original list
+            head = head.next;
+        }
+
+        // Once finished iterating through the entire original list, return the newly created list without any duplicates
+        return result;
+
+    }
 }
