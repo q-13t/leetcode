@@ -6,23 +6,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
-
 public class Solution {
 
     public static int romanToInt(String s) {
@@ -775,6 +758,70 @@ public class Solution {
 
         // Once finished iterating through the entire original list, return the newly created list without any duplicates
         return result;
-
     }
+
+    public void merge(int[] numbs1, int m, int[] numbs2, int n) {
+        if (m < n && m == 0) {
+            for (int i = 0; i < numbs2.length; i++) {
+                numbs1[i] = numbs2[i];
+            }
+        } else {
+            m--;
+            for (int i = 0; i < numbs2.length; i++) {
+                if (numbs1[m] <= numbs2[i]) {
+                    numbs1[++m] = numbs2[i];
+                } else {
+                    int k = numbs1.length - 1;
+                    while (k > 0 && (numbs1[k] == 0 || numbs1[k - 1] > numbs2[i])) {
+                        numbs1[k] = numbs1[--k];
+                    }
+                    m++;
+                    numbs1[k] = numbs2[i];
+                }
+            }
+        }
+        for (int i = 0; i < numbs1.length; i++) {
+            System.out.print(numbs1[i] + ", ");
+        }
+    }
+
+    public List<Integer> inOrderTraversal(TreeNode root) {
+        ArrayList<Integer> inOrder = new ArrayList<>();
+        TreeNode cur = root;
+        TreeNode prev = new TreeNode();
+        while (cur != null) {
+            if (cur.left == null) {// if there is no left element
+                inOrder.add(cur.val);
+                cur = cur.right;
+            } else {
+                prev = cur.left;
+                while (prev.right != null && prev.right != cur) {// if there exist a right and the right is not pointing himself
+                    prev = prev.right;
+                }
+                if (prev.right == null) {
+                    prev.right = cur;// create the thread
+                    cur = cur.left;
+                } else {
+                    prev.right = null; // cut the thread
+                    inOrder.add(cur.val);
+                    cur = cur.right;
+                }
+            }
+        }
+        return inOrder;
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == q) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
 }

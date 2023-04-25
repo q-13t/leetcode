@@ -1,14 +1,14 @@
 package le.test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1, new ListNode(1, new ListNode(2)));
-        ListNode result = solution.deleteDuplicates(head);
-        while (result != null) {
-            System.out.println(result.val);
-            result = result.next;
-        }
+        TreeNode head = new TreeNode(5, new TreeNode(1, null, new TreeNode(1)), new TreeNode(4));
+        TreeNode tail = new TreeNode(5, new TreeNode(1, null, new TreeNode(3)), new TreeNode(4));
+        System.out.println(solution.isSameTree(head, tail));
     }
 }
