@@ -941,4 +941,36 @@ public class Solution {
         boolean right = node.right != null && checkPathSum(node.right, sum + node.val, targetSum);
         return left || right;
     }
+
+    /**
+     * Generates Pascal's triangle *
+     * </p>
+     * {@code Time O(n^2)}
+     * </p>
+     * {@code Space O(n^2)}
+     * 
+     * @param numRows height of triangle.
+     * @return 2 nested {@link List}s containing triangle.
+     */
+    public List<List<Integer>> generate(int numRows) {
+        // Initialize Lists that contain the triangle
+        List<List<Integer>> list = new ArrayList<List<Integer>>(numRows);
+        // Start iteration over triangles rows
+        for (int i = 0; i < numRows; i++) {
+            // Add new List to the row
+            list.add(new ArrayList<>(i));
+            // Start iterating over rows columns
+            for (int j = 0; j <= i; j++) {
+                // First and Last elements in Pascal's triangle are always 1 so set them
+                if (j == 0 || j == i) {
+                    list.get(i).add(1);
+                } else {
+                    // set the current value as sum of two values above it as Pascal's triangle needs
+                    list.get(i).add(list.get(i - 1).get(j - 1) + list.get(i - 1).get(j));
+                }
+            }
+        }
+        // Return the triangle
+        return list;
+    }
 }
