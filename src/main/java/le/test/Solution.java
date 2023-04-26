@@ -838,4 +838,37 @@ public class Solution {
         return false;
     }
 
+    int max_depth = 0;
+    int current_depth = 0;
+
+    /**
+     * Evaluates depth of binary tree. *
+     * </p>
+     * {@code Time O(n)} n as number of nodes.
+     * </p>
+     * {@code Space O(h)} h as height of tree.
+     * 
+     * @param root {@link TreeNode} as {@code root} of binary tree.
+     * @return Maximum depth of {@code root} tree.
+     */
+    public int maxDepth(TreeNode root) {
+        // if there is no root node, return 0.
+        if (root == null) {
+            return max_depth;
+        } else {
+            // increment the current depth by 1 as we move down the tree.
+            current_depth++;
+            // If the current depth surpasses the previous maximum depth, update the maximum depth accordingly.
+            if (current_depth > max_depth) {
+                max_depth = current_depth;
+            }
+            // recursively call maxDepth method for the left and right children of the current node until leaf nodes are reached.
+            maxDepth(root.left);
+            maxDepth(root.right);
+            // decrement the current depth as we move up the tree.
+            current_depth--;
+            // return the maximum depth achieved.
+            return max_depth;
+        }
+    }
 }
