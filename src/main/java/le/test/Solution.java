@@ -824,4 +824,18 @@ public class Solution {
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
+    public boolean isSymmetric(TreeNode root) {
+        return isMirrored(root, root);
+    }
+
+    private boolean isMirrored(TreeNode head, TreeNode tail) {
+        if (head == null && tail == null) {
+            return true;
+        }
+        if (head != null && tail != null && head.val == tail.val) {
+            return isMirrored(head.right, tail.left) && isMirrored(head.left, tail.right);
+        }
+        return false;
+    }
+
 }
