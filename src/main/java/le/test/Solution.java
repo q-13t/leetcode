@@ -871,4 +871,55 @@ public class Solution {
             return max_depth;
         }
     }
+
+    public TreeNode sortedArrayToBST(int[] numbs) {
+        return CreateBST(numbs, 0, numbs.length - 1);
+    }
+
+    private TreeNode CreateBST(int numbs[], int l, int r) {
+        if (l > r) {
+            return null;
+        }
+
+        int mid = (l + r) / 2;
+        TreeNode root = new TreeNode(numbs[mid]);
+        root.left = CreateBST(numbs, l, mid - 1);
+        root.right = CreateBST(numbs, mid + 1, r);
+        return root;
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        return checkBalance(root) != -1;
+    }
+
+    private int checkBalance(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftHeight = checkBalance(node.left);
+        int rightHeight = checkBalance(node.right);
+        if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    int min_depth = Integer.MAX_VALUE;
+
+    public int minDepth(TreeNode node) {
+
+        if (node == null) {
+            return 0;
+        } else if (node.left == null && node.right == null) {
+            if (min_depth > current_depth + 1)
+                min_depth = current_depth + 1;
+            return min_depth;
+        } else {
+            current_depth++;
+            minDepth(node.left);
+            minDepth(node.right);
+            current_depth--;
+            return min_depth;
+        }
+    }
 }

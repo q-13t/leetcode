@@ -18,4 +18,13 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
+
+    public static void printNode(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.val + ", ");
+        printNode(node.left);
+        printNode(node.right);
+    };
 }
