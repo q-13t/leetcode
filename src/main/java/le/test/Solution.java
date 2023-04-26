@@ -2,6 +2,9 @@ package le.test;
 
 import java.util.List;
 import java.util.Stack;
+
+import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -921,5 +924,21 @@ public class Solution {
             current_depth--;
             return min_depth;
         }
+    }
+
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        return checkPathSum(root, 0, targetSum);
+    }
+
+    private boolean checkPathSum(TreeNode node, int sum, int targetSum) {
+        if (node.left == null && node.right == null) {
+            return sum + node.val == targetSum;
+        }
+        boolean left = node.left != null && checkPathSum(node.left, sum + node.val, targetSum);
+        boolean right = node.right != null && checkPathSum(node.right, sum + node.val, targetSum);
+        return left || right;
     }
 }
