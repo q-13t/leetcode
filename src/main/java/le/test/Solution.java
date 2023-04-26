@@ -2,9 +2,6 @@ package le.test;
 
 import java.util.List;
 import java.util.Stack;
-
-import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
-
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -971,6 +968,35 @@ public class Solution {
             }
         }
         // Return the triangle
+        return list;
+    }
+
+    /**
+     * Returns {@link List} contains n'th row of Pascal's triangle.
+     * </p>
+     * {@code Time O(n)}
+     * </p>
+     * {@code Space O(n)}
+     * 
+     * 
+     */
+    public List<Integer> getRow(int rowIndex) {
+        // Initialize list that will contain n'th row of Pascal's triangle
+        List<Integer> list = new ArrayList<Integer>(rowIndex);
+        // Since all rows start with 1 add it
+        list.add(1);
+        // Initialize helping variables for formula
+        long current = 0, prev = 1;
+        // Iterate rowIndex times since all row at index n has n elements
+        for (int i = 1; i <= rowIndex; i++) {
+            // calculate current value by formula for m'th element of n'th row
+            current = (prev * ((rowIndex - i + 1)) / i);
+            // add value to list
+            list.add((int) current);
+            // save value for next iteration
+            prev = current;
+        }
+        // return full list
         return list;
     }
 }
