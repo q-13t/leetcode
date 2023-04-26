@@ -1,8 +1,5 @@
 package le.test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class App {
     private static Solution solution = new Solution();
 
