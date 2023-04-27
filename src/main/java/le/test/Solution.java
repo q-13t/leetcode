@@ -1,7 +1,6 @@
 package le.test;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -1047,13 +1046,13 @@ public class Solution {
         return true;
     }
 
-    public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>(nums.length);
-        for (int i = 0; i < nums.length; i++) {
-            if (!map.containsKey(nums[i])) {
-                map.put(nums[i], 1);
+    public int singleNumber(int[] numbs) {
+        HashMap<Integer, Integer> map = new HashMap<>(numbs.length);
+        for (int i = 0; i < numbs.length; i++) {
+            if (!map.containsKey(numbs[i])) {
+                map.put(numbs[i], 1);
             } else {
-                map.remove(nums[i]);
+                map.remove(numbs[i]);
             }
         }
         return map.keySet().iterator().next();

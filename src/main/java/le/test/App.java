@@ -9,9 +9,9 @@ public class App {
         System.out.println(solution.singleNumber(new int[] { 2, 2, 1 }) == 1);
         System.out.println(solution.singleNumber(new int[] { 4, 1, 2, 1, 2 }) == 4);
         System.out.println(solution.singleNumber(new int[] { 1 }) == 1);
-
     }
 
+    @SuppressWarnings(value = { "unused" })
     private static int[] generateArrayOfSize(int size, int min, int max) {
         int[] array = new int[size];
         Random random = new Random();
