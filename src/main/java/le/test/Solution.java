@@ -1,10 +1,12 @@
 package le.test;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Solution {
 
@@ -1045,4 +1047,15 @@ public class Solution {
         return true;
     }
 
+    public int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(nums[i])) {
+                map.put(nums[i], 1);
+            } else {
+                map.remove(nums[i]);
+            }
+        }
+        return map.keySet().iterator().next();
+    }
 }
