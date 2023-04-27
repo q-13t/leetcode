@@ -999,4 +999,18 @@ public class Solution {
         // return full list
         return list;
     }
+
+    public int maxProfit(int[] prices) {
+        int min = Integer.MAX_VALUE, bestDeal = 0, bestToday = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (min > prices[i]) {
+                min = prices[i];
+            }
+            bestToday = prices[i] - min;
+            if (bestToday > bestDeal) {
+                bestDeal = bestToday;
+            }
+        }
+        return bestDeal;
+    }
 }
