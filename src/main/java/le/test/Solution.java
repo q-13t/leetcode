@@ -1013,4 +1013,36 @@ public class Solution {
         }
         return bestDeal;
     }
+
+    /**
+     * Iterates over sentence to determine if it is palindrome.
+     * </p>
+     * {@code All non word characters are ignored}.
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param string
+     * @return {@code true} if {@code string} is palindrome.
+     */
+    public boolean isPalindrome(String string) {
+        // Convert string to lover case and remove all non word characters
+        string = string.toLowerCase().replaceAll("\\W|_", "");
+        if (string.length() == 1) {// if length of string is 1 it is palindrome -> return true
+            return true;
+        }
+        // Convert string to char array for comparison
+        char[] chars = string.toCharArray();
+        // Iterate from front and back of char array
+        for (int i = 0, j = chars.length - 1; i < chars.length && j >= i; j--, i++) {
+            // EDGE CASE: If chars are not the same, string is not palindrome, return false
+            if (chars[i] != chars[j]) {
+                return false;
+            }
+        }
+        // If iteration ended return true
+        return true;
+    }
+
 }
