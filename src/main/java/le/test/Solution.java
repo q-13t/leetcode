@@ -1191,4 +1191,19 @@ public class Solution {
         }
         System.arraycopy(result, 0, numbs, 0, numbs.length);
     }
+
+    public int maxProfit2(int[] prices) {
+        int min = Integer.MAX_VALUE, bestDeal = 0, bestToday = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (min > prices[i]) {
+                min = prices[i];
+            }
+            bestToday = prices[i] - min;
+            if (bestToday > 0) {
+                bestDeal += bestToday;
+                min = prices[i];
+            }
+        }
+        return bestDeal;
+    }
 }

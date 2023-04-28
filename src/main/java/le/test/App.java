@@ -6,9 +6,10 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        solution.rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
-        solution.rotate(new int[] { -1, -100, 3, 99 }, 2);
-        solution.rotate(new int[] { -1 }, 2);
+        System.out.println(solution.maxProfit2(new int[] { 7, 1, 5, 3, 6, 4 }) == 7);
+        System.out.println(solution.maxProfit2(new int[] { 1, 2, 3, 4, 5 }) == 4);
+        System.out.println(solution.maxProfit2(new int[] { 7, 6, 4, 3, 1 }) == 0);
+
     }
 
     @SuppressWarnings(value = { "unused" })
