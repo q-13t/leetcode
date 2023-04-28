@@ -1175,4 +1175,20 @@ public class Solution {
         // Return the most frequent number
         return numb;
     }
+
+    public void rotate(int[] numbs, int k) {
+        // int tmp = 0;
+        // for (int i = 0; i < k; i++) {
+        // tmp = numbs[numbs.length - 1];
+        // for (int j = numbs.length - 1; j > 0; j--) {
+        // numbs[j] = numbs[j - 1];
+        // }
+        // numbs[0] = tmp;
+        // }
+        int[] result = new int[numbs.length];
+        for (int i = 0; i < numbs.length; i++) {
+            result[(i + k) % numbs.length] = numbs[i];
+        }
+        System.arraycopy(result, 0, numbs, 0, numbs.length);
+    }
 }

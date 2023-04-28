@@ -6,8 +6,9 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.majorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 }));
-        System.out.println(solution.majorityElement(new int[] { 0 }));
+        solution.rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+        solution.rotate(new int[] { -1, -100, 3, 99 }, 2);
+        solution.rotate(new int[] { -1 }, 2);
     }
 
     @SuppressWarnings(value = { "unused" })
