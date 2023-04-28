@@ -6,9 +6,9 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.maxProfit2(new int[] { 7, 1, 5, 3, 6, 4 }) == 7);
-        System.out.println(solution.maxProfit2(new int[] { 1, 2, 3, 4, 5 }) == 4);
-        System.out.println(solution.maxProfit2(new int[] { 7, 6, 4, 3, 1 }) == 0);
+        System.out.println(solution.canJump(new int[] { 2, 3, 1, 1, 4 }) == true);
+        System.out.println(solution.canJump(new int[] { 3, 2, 1, 0, 4 }) == false);
+        System.out.println(solution.canJump(new int[] { 1, 3, 2 }) == true);
 
     }
 

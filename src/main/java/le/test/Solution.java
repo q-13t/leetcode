@@ -1206,4 +1206,31 @@ public class Solution {
         }
         return bestDeal;
     }
+
+    /**
+     * Checks if we can jump from index 0 to last index.
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(1)}.
+     * 
+     * @param numbs representing number of indexes we can jump from each position
+     * @return {@code true} if we can reach end, {@code false} otherwise.
+     */
+    public boolean canJump(int[] numbs) {
+        if (numbs.length == 0) { // Check if the input array is empty, i.e., length equals zero
+            return true; // If so, immediately return true because it's considered "jumpable"
+        }
+
+        int desired = numbs.length - 1; // Initialize the desired index as the last element in the array
+        for (int i = numbs.length - 2; i >= 0; i--) {
+            // Traverse the array backwards while checking if we can reach the current desired index
+            if (i + numbs[i] >= desired) { // If we can reach the current desired index,
+                desired = i; // then update the desired index to be the current index
+            }
+        }
+
+        return desired == 0; // If the desired index has reached the start (index 0), then the array is considered "jumpable"
+    }
+
 }
