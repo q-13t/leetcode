@@ -1142,4 +1142,37 @@ public class Solution {
         }
     }
 
+    /**
+     * Finds and returns element that occurs the most times. *
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param numbs
+     * @return element that occurs the most times
+     */
+    public int majorityElement(int[] numbs) {
+        // EDGE CASE: If numbers is null or has no elements return -1 as no elements have been found
+        if (numbs == null || numbs.length == 0) {
+            return -1;
+        }
+        // Initialize map that will contain the unique entries and their amount
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(numbs.length);
+        // Iterate over array adding the amount of occurrences of elements to the map
+        for (int n : numbs) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+        // Initialize number and its occurrences to get most frequent from the HashMap
+        int numb = 0, max = 0;
+        // Iterate over HashMap to find most frequent number
+        for (int i : map.keySet()) {
+            if (max < map.get(i)) {
+                max = map.get(i);
+                numb = i;
+            }
+        }
+        // Return the most frequent number
+        return numb;
+    }
 }
