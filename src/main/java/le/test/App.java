@@ -6,9 +6,9 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.singleNumber(new int[] { 2, 2, 1 }) == 1);
-        System.out.println(solution.singleNumber(new int[] { 4, 1, 2, 1, 2 }) == 4);
-        System.out.println(solution.singleNumber(new int[] { 1 }) == 1);
+        System.out.println(solution.removeMultipleDuplicates(new int[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 }));
+        System.out.println(solution.removeMultipleDuplicates(new int[] { 1, 1, 1, 2, 2, 3 }));
+        System.out.println(solution.removeMultipleDuplicates(new int[] { 1, 1, }));
     }
 
     @SuppressWarnings(value = { "unused" })

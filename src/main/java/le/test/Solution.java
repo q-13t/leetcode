@@ -488,7 +488,7 @@ public class Solution {
      * @param numbs array of sorted numbers
      * @return amount of unique numbers
      */
-    public int removeDuplicates(int[] numbs) {
+    public int removeSingleDuplicates(int[] numbs) {
         // create local variable k indicating first greater number in an array and tmp for swapping numbers in array
         int k = 0, tmp = 0;
         // Iterate over whole numbs array
@@ -1057,4 +1057,89 @@ public class Solution {
         }
         return map.keySet().iterator().next();
     }
+
+    public int bulbSwitch(int n) {
+        int[] bulbs = new int[n];
+        for (int i = 1; i <= n; i++) {
+            if (i == 1) {
+                for (int j = 0; j < bulbs.length; j++) {
+                    bulbs[j] = 1;
+                }
+            } else if (i == 2) {
+                for (int j = 1; j <= bulbs.length; j++) {
+                    if (j % 2 == 0) {
+                        bulbs[j - 1] = 0;
+                    }
+                }
+            } else if (i == 3) {
+                for (int j = 1; j <= bulbs.length; j++) {
+                    if (j % 3 == 0) {
+                        if (bulbs[j - 1] == 0) {
+                            bulbs[j - 1] = 1;
+                        } else {
+                            bulbs[j - 1] = 0;
+                        }
+                    }
+                }
+            } else if (i == n) {
+                if (bulbs[n - 1] == 0) {
+                    bulbs[n - 1] = 1;
+                } else {
+                    bulbs[n - 1] = 0;
+                }
+            } else {
+                for (int j = 1; j <= bulbs.length; j++) {
+                    if (j % i == 0) {
+                        if (bulbs[j - 1] == 0) {
+                            bulbs[j - 1] = 1;
+                        } else {
+                            bulbs[j - 1] = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        int count = 0;
+        for (int i = 0; i < bulbs.length; i++) {
+            if (bulbs[i] == 1) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int removeMultipleDuplicates(int[] numbs) {
+        int number = numbs[0], amount = 1;
+        boolean wereReplacements = false;
+        for (int i = 1; i < numbs.length; i++) {
+            if (numbs[i] == Integer.MAX_VALUE) {
+                number = i;
+                break;
+            } else if (number == numbs[i]) {
+                amount++;
+                if (amount > 2) {
+                    wereReplacements = true;
+                    numbs[i] = Integer.MAX_VALUE;
+                    int k = i + 1;
+                    while (k < numbs.length) {
+                        int tmp = numbs[k - 1];
+                        numbs[k - 1] = numbs[k];
+                        numbs[k] = tmp;
+                        k++;
+                    }
+                    i--;
+                }
+            } else if (number != numbs[i]) {
+                number = numbs[i];
+                amount = 1;
+            }
+        }
+        if (wereReplacements) {
+            return number;
+        } else {
+            return numbs.length;
+        }
+    }
+
 }
