@@ -6,10 +6,14 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.canJump(new int[] { 2, 3, 1, 1, 4 }) == true);
-        System.out.println(solution.canJump(new int[] { 3, 2, 1, 0, 4 }) == false);
-        System.out.println(solution.canJump(new int[] { 1, 3, 2 }) == true);
 
+        System.out.println(solution.numSimilarGroups(new String[] { "tars", "rats", "arts", "star" }) == 2);
+        System.out.println(solution.numSimilarGroups(new String[] { "omv", "ovm" }) == 1);
+        System.out.println(solution.numSimilarGroups(new String[] { "abc", "abc" }) == 1);
+        System.out.println(solution.numSimilarGroups(new String[] { "kccomwcgcs", "socgcmcwkc", "sgckwcmcoc", "coswcmcgkc", "cowkccmsgc", "cosgmccwkc",
+                "sgmkwcccoc", "coswmccgkc", "kowcccmsgc", "kgcomwcccs" }) == 5);
+        System.out.println(solution.numSimilarGroups(new String[] { "ajdidocuyh", "djdyaohuic", "ddjyhuicoa", "djdhaoyuic", "ddjoiuycha", "ddhoiuycja",
+                "ajdydocuih", "ddjiouycha", "ajdydohuic", "ddjyouicha" }) == 2);
     }
 
     @SuppressWarnings(value = { "unused" })
