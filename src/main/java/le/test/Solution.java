@@ -1233,4 +1233,62 @@ public class Solution {
         return desired == 0; // If the desired index has reached the start (index 0), then the array is considered "jumpable"
     }
 
+    /**
+     * This method takes an array of strings and returns the number of similarity groups.
+     * 
+     * @param strings - An array of strings
+     */
+    public int numSimilarGroups(String[] strings) {
+        ArrayList<String> group = new ArrayList<>();
+        int amountOfGroups = 0, replacedWords = 0;
+        while (replacedWords != strings.length) { // while there are still words left to be processed
+            int changes = 0;
+            do {
+                changes = 0;
+                for (int i = 0; i < strings.length; i++) { // loop through all strings and check if they are similar
+                    if (strings[i] != "0") { // if string is not already included in a group
+                        if (group.isEmpty()) { // if there are no groups yet, create a new group with this string
+                            group.add(strings[i]);
+                            strings[i] = "0";
+                            changes++;
+                            replacedWords++;
+                        } else { // if there are already groups, check if this string is similar to any of the strings in the existing groups
+                            for (String string : group) {
+                                if (areSimilar(string, strings[i])) { // if strings are similar, add this string to the group and mark it as processed
+                                    group.add(strings[i]);
+                                    replacedWords++;
+                                    changes++;
+                                    strings[i] = "0";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            } while (changes != 0); // continue processing as long as we find new similar strings
+            group.clear(); // clear the group for the next set of strings
+            amountOfGroups++; // increment the number of similarity groups
+        }
+        return amountOfGroups;
+    }
+
+    /**
+     * This method checks whether two strings are similar or not based on a condition. Two strings are considered similar if they have exactly two different characters, and swapping those two characters would make them
+     * equal.
+     * 
+     * @param first  - First String
+     * @param second - Second String
+     * @return boolean - true if strings are similar, false otherwise.
+     */
+    boolean areSimilar(String first, String second) {
+        int count = 0;
+        for (int i = 0; i < first.length(); i++) { // loop through all characters in both strings and count the number of differences
+            if (first.charAt(i) != second.charAt(i))
+                count++;
+            if (count > 2)
+                return false; // if there are more than two differences, the strings are not similar
+        }
+        return count == 2 || count == 0 && !first.equals(second); // if there are exactly two differences or no differences and the strings are not equal to begin with, the strings are similar
+    }
+
 }
