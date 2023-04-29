@@ -1291,4 +1291,42 @@ public class Solution {
         return count == 2 || count == 0 && !first.equals(second); // if there are exactly two differences or no differences and the strings are not equal to begin with, the strings are similar
     }
 
+    /**
+     * Returns minimum amount of jumps required to get from index 0 to last index of {@code numbs}.
+     * </p>
+     * {@code Time O(n^2)}.
+     * </p>
+     * {@code Space O(1)}.
+     * 
+     * @param numbs representing number of indexes we can jump from each position
+     * @return minimum amount of jumps.
+     */
+    public int jump(int[] numbs) {
+        // Initialize variables for number of jumps,
+        // the last index that can be reached from the end of the array,
+        // and the minimum index that can be reached from the end of array.
+        int jumpTimes = 0, canReach = numbs.length - 1, minNumb = numbs.length - 1;
+
+        // Loop until we reach the beginning of the array (i.e. index 0).
+        while (minNumb != 0) {
+
+            // Set the "can reach" index to the current "minimum" index.
+            canReach = minNumb;
+
+            // Find the farthest index from the current index that can be reached
+            // in a single jump and set it as the new "minimum" index.
+            for (int i = minNumb - 1; i >= 0; i--) {
+                if (i + numbs[i] >= canReach) {
+                    minNumb = i;
+                }
+            }
+
+            // Increment the number of jumps required to reach the end of the array.
+            jumpTimes++;
+        }
+
+        // Return the minimum number of jumps required to reach the end of the array.
+        return jumpTimes;
+
+    }
 }
