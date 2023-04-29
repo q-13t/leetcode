@@ -1332,7 +1332,6 @@ public class Solution {
     }
 
     public int hIndex(int[] citations) {
-
         Arrays.sort(citations);
         reverse(citations);
         int papers = citations.length;
