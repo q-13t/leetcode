@@ -5,6 +5,7 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Solution {
@@ -1328,5 +1329,24 @@ public class Solution {
         // Return the minimum number of jumps required to reach the end of the array.
         return jumpTimes;
 
+    }
+
+    public int hIndex(int[] citations) {
+
+        Arrays.sort(citations);
+        reverse(citations);
+        int papers = citations.length;
+        while (papers > 0 && papers > citations[papers - 1]) {
+            papers--;
+        }
+        return papers;
+    }
+
+    void reverse(int[] array) {
+        for (int i = 0; i < array.length / 2; ++i) {
+            int temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
     }
 }

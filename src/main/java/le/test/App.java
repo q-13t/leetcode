@@ -6,9 +6,12 @@ public class App {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-
-        System.out.println(solution.jump(new int[] { 2, 3, 1, 1, 4 }) == 2);
-        System.out.println(solution.jump(new int[] { 2, 3, 0, 1, 4 }) == 2);
+        System.out.println(solution.hIndex(new int[] { 0 }) == 0);
+        System.out.println(solution.hIndex(new int[] { 3, 0, 6, 1, 5 }) == 3);
+        System.out.println(solution.hIndex(new int[] { 1, 3, 1 }) == 1);
+        System.out.println(solution.hIndex(new int[] { 0, 1 }) == 1);
+        System.out.println(solution.hIndex(new int[] { 15, 9, 4, 1, 130, 85, 24 }) == 5);
+        System.out.println(solution.hIndex(generateArrayOfSize(500, 0, 500)));
     }
 
     @SuppressWarnings(value = { "unused" })
