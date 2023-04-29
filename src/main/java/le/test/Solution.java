@@ -1347,4 +1347,22 @@ public class Solution {
             array[array.length - i - 1] = temp;
         }
     }
+
+    public int[] productExceptSelf(int[] numbs) {
+        int n = numbs.length;
+        int ans[] = new int[n];
+        Arrays.fill(ans, 1);
+        int current = 1;
+        for (int i = 0; i < n; i++) {
+            ans[i] *= current;
+            current *= numbs[i];
+        }
+        current = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            ans[i] *= current;
+            current *= numbs[i];
+        }
+        return ans;
+    }
+
 }
