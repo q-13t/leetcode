@@ -7,9 +7,10 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.canCompleteCircuit(new int[] { 3, 1, 1 }, new int[] { 1, 2, 2 }));
-        System.out.println(solution.canCompleteCircuit(new int[] { 1, 2, 3, 4, 5 }, new int[] { 3, 4, 5, 1, 2 }));
-        System.out.println(solution.canCompleteCircuit(new int[] { 2, 3, 4 }, new int[] { 3, 4, 3 }));
+        System.out.println(solution.candy(new int[] { 1, 0, 2 }));
+        System.out.println(solution.candy(new int[] { 1, 2, 2 }));
+        System.out.println(solution.candy(new int[] { 1, 3, 2, 2, 1 }));
+        System.out.println(solution.candy(new int[] { 1, 2, 87, 87, 87, 2, 1 }));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {
