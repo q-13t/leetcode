@@ -1501,4 +1501,19 @@ public class Solution {
         }
         return stringBuilder.toString();
     }
+
+    public String reverseWords(String s) {
+        StringBuilder answer = new StringBuilder();
+        String[] words = s.split(" ");
+        int length = words.length;
+        for (int i = length - 1; i >= 0; i--) {
+            if (words[i].isEmpty())
+                continue;
+            if (i != length - 1) {
+                answer.append(" ");
+            }
+            answer.append(words[i]);
+        }
+        return answer.toString();
+    }
 }

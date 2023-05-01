@@ -7,8 +7,9 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.intToRoman(solution.romanToInt("MCMXCIX")));
-        System.out.println(solution.intToRoman(58));
+        System.out.println(solution.reverseWords("  hello world  "));
+        System.out.println(solution.reverseWords("a good   example"));
+        System.out.println(solution.reverseWords("the sky is blue"));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {
