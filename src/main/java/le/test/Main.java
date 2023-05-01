@@ -7,10 +7,9 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.candy(new int[] { 1, 0, 2 }));
-        System.out.println(solution.candy(new int[] { 1, 2, 2 }));
-        System.out.println(solution.candy(new int[] { 1, 3, 2, 2, 1 }));
-        System.out.println(solution.candy(new int[] { 1, 2, 87, 87, 87, 2, 1 }));
+        System.out.println(solution.trap(new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 }));
+        System.out.println(solution.trap(new int[] { 4, 2, 0, 3, 2, 5 }));
+        System.out.println(solution.trap(new int[] { 2, 0, 2 }));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

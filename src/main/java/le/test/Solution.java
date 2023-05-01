@@ -1404,4 +1404,55 @@ public class Solution {
 
         return Arrays.stream(res).sum();
     }
+
+    /**
+     * Finds the amount of rain water stored in between {@code height}s.
+     * 
+     * 
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param height -> map representing collectors for rainwater.
+     */
+    public int trap(int[] height) {
+        // Get the length of the input array
+        int length = height.length;
+
+        // Initialize variables for keeping track of the current height and the amount of water stored
+        int currentHeight = 0;
+        int water = 0;
+
+        // Create two arrays to store the maximum heights on the left and right sides of each element in the input array
+        int[] left = new int[length];
+        int[] right = new int[length];
+
+        // Calculate the maximum height from the left side of each element in the input array and store it in the `left` array
+        for (int i = 0; i < length; i++) {
+            if (currentHeight < height[i]) {
+                currentHeight = height[i];
+            }
+            left[i] = currentHeight;
+        }
+
+        // Reset the variable for keeping track of the current height, then calculate the maximum height from the right side of each element in the input array and store it in the `right` array
+        currentHeight = 0;
+        for (int i = length - 1; i >= 0; i--) {
+            if (currentHeight < height[i]) {
+                currentHeight = height[i];
+            }
+            right[i] = currentHeight;
+        }
+
+        // Calculate the amount of water stored at each element in the input array by subtracting its height from the minimum of the maximum heights on its left and right sides, then add all these amounts of water together to
+        // get the total amount of water stored
+        for (int i = 0; i < length; i++) {
+            water += Math.min(left[i], right[i]) - height[i];
+        }
+
+        // Return the total amount of water stored
+        return water;
+
+    }
 }
