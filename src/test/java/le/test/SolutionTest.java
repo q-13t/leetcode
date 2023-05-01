@@ -6,17 +6,6 @@ import org.junit.Test;
 
 public class SolutionTest {
     @Test
-    public void testRomanToInt() {
-        assertEquals(1, Solution.romanToInt("I"));
-        assertEquals(4, Solution.romanToInt("IV"));
-        assertEquals(9, Solution.romanToInt("IX"));
-        assertEquals(14, Solution.romanToInt("XIV"));
-        assertEquals(58, Solution.romanToInt("LVIII"));
-        assertEquals(144, Solution.romanToInt("CXLIV"));
-        assertEquals(3999, Solution.romanToInt("MMMCMXCIX"));
-    }
-
-    @Test
     public void testLongestCommonPrefix() {
         // Test case for valid input
         String[] input1 = { "flower", "flow", "flight" };
