@@ -1516,4 +1516,52 @@ public class Solution {
         }
         return answer.toString();
     }
+
+    public boolean isSubsequence(String toSearch, String in) {
+        if (toSearch.length() > in.length()) {
+            return false;
+        } else if (toSearch.isEmpty()) {
+            return true;
+        }
+        for (int i = 0, j = 0; i < in.length(); i++) {
+            if (toSearch.charAt(j) == in.charAt(i)) {
+                j++;
+            }
+            if (j == toSearch.length()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Given an array of integers `numbers` and an integer `target`, finds two numbers in the array that add up to the target, and returns their indices as an integer array.
+     *
+     * @param numbers An array of integers
+     * @param target  The target sum
+     * @return An integer array with the indices of the two numbers that add up to the target
+     */
+    public int[] twoSumII(int[] numbers, int target) {
+        // If the input array is null or has less than 2 elements, return null
+        if (numbers == null || numbers.length < 2) {
+            return null;
+        }
+
+        // Initialize left pointer to first index and right pointer to last index
+        int left = 0, right = numbers.length - 1;
+
+        // Keep iterating until we find a pair of numbers that add up to target
+        while (numbers[left] + numbers[right] != target) {
+            // If the sum of the current pair is greater than target, move the right pointer to the left
+            if (numbers[left] + numbers[right] > target) {
+                --right;
+            } else { // Otherwise, move the left pointer to the right
+                ++left;
+            }
+        }
+
+        // If we have found a pair of numbers that add up to target, return their indices as an array
+        return new int[] { ++left, ++right };
+    }
+
 }

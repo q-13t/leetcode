@@ -7,9 +7,22 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.reverseWords("  hello world  "));
-        System.out.println(solution.reverseWords("a good   example"));
-        System.out.println(solution.reverseWords("the sky is blue"));
+        for (Integer integer : solution.twoSumII(new int[] { 2, 7, 11, 15 }, 9)) {
+            System.out.print(integer + ", ");
+        }
+        System.out.println();
+        for (Integer integer : solution.twoSumII(new int[] { 2, 3, 4 }, 6)) {
+            System.out.print(integer + ", ");
+        }
+        System.out.println();
+        for (Integer integer : solution.twoSumII(new int[] { -1, 0 }, -1)) {
+            System.out.print(integer + ", ");
+        }
+        System.out.println();
+        for (Integer integer : solution.twoSumII(new int[] { -3, 3, 4, 90 }, 0)) {
+            System.out.print(integer + ", ");
+        }
+
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {
