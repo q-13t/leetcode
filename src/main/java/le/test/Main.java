@@ -10,16 +10,10 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.threeSum(new int[] { -1, 0, 1, 2, -1, -4 }));
-        System.out.println(solution.threeSum(new int[] { 0, 1, 1 }));
-        System.out.println(solution.threeSum(new int[] { 0, 0, 0 }));
-        System.out.println(solution.threeSum(new int[] { 1, -1, -1, 0 }));
-        System.out.println(solution.threeSum(new int[] { -4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0 }));
-        System.out.println(solution.threeSum(new int[] { 0, 3, 0, 1, 1, -1, -5, -5, 3, -3, -3, 0 }));
-        // List<Integer> first = Arrays.asList(0, 2, 1);
-        // List<Integer> second = Arrays.asList(0, 0, 0);
-        // System.out.println(first.containsAll(second));
-        // System.out.println(second.containsAll(first));
+        System.out.println(solution.minSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 }));
+        System.out.println(solution.minSubArrayLen(4, new int[] { 2, 3, 1, 2, 4, 3 }));
+        System.out.println(solution.minSubArrayLen(11, new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }));
+        System.out.println(solution.minSubArrayLen(213, new int[] { 12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12 }));
 
     }
 

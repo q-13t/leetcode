@@ -1620,4 +1620,23 @@ public class Solution {
         }
         return new ArrayList<>(result);
     }
+
+    public int minSubArrayLen(int target, int[] numbers) {
+        int i = 0;
+        int j = 0;
+        int min = Integer.MAX_VALUE;
+        int sum = 0;
+        while (i < numbers.length) {
+            sum += numbers[i];
+            if (sum >= target) {
+                while (sum >= target) {
+                    min = min > i - j + 1 ? i - j + 1 : min;
+                    sum -= numbers[j];
+                    j++;
+                }
+            }
+            i++;
+        }
+        return min == Integer.MAX_VALUE ? 0 : min;
+    }
 }
