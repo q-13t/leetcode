@@ -1,9 +1,11 @@
 package le.test;
 
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -1595,5 +1597,27 @@ public class Solution {
         }
         // return maximum stored water
         return water;
+    }
+
+    public List<List<Integer>> threeSum(int[] numbers) {
+        Arrays.sort(numbers);
+        Set<List<Integer>> result = new HashSet<>();
+        int mid = 0, right = 0, sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            mid = i + 1;
+            right = numbers.length - 1;
+            while (mid < right) {
+                sum = numbers[i] + numbers[mid] + numbers[right];
+                if (sum == 0) {
+                    result.add(Arrays.asList(numbers[i], numbers[mid], numbers[right]));
+                    mid++;
+                } else if (sum > 0) {
+                    right--;
+                } else {
+                    mid++;
+                }
+            }
+        }
+        return new ArrayList<>(result);
     }
 }
