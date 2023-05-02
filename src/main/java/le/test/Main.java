@@ -7,22 +7,8 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        for (Integer integer : solution.twoSumII(new int[] { 2, 7, 11, 15 }, 9)) {
-            System.out.print(integer + ", ");
-        }
-        System.out.println();
-        for (Integer integer : solution.twoSumII(new int[] { 2, 3, 4 }, 6)) {
-            System.out.print(integer + ", ");
-        }
-        System.out.println();
-        for (Integer integer : solution.twoSumII(new int[] { -1, 0 }, -1)) {
-            System.out.print(integer + ", ");
-        }
-        System.out.println();
-        for (Integer integer : solution.twoSumII(new int[] { -3, 3, 4, 90 }, 0)) {
-            System.out.print(integer + ", ");
-        }
-
+        System.out.println(solution.maxArea(new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 }));
+        System.out.println(solution.maxArea(new int[] { 1, 1 }));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

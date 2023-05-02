@@ -1564,4 +1564,36 @@ public class Solution {
         return new int[] { ++left, ++right };
     }
 
+    /**
+     * Using {@code height}s determines te maximum available water that can be stored between them.
+     * </p>
+     * Is calculated as area of rectangle
+     * 
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(1)}.
+     * 
+     * @param height
+     * @return maximum water that can be stored
+     */
+    public int maxArea(int[] height) {
+        // Initialize variables
+        int water = 0, left = 0, right = height.length - 1, currentWater = 0;
+        // Loop until pointer meet
+        while (left < right) {
+            // get the amount of water using current pointers
+            currentWater = (height[left] < height[right] ? height[left] : height[right]) * (right - left);
+            // update if needed maximum amount of available stored water
+            water = water > currentWater ? water : currentWater;
+            // move pointers to higher position
+            if (height[left] > height[right]) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+        // return maximum stored water
+        return water;
+    }
 }
