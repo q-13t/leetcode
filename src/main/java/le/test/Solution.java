@@ -1628,13 +1628,12 @@ public class Solution {
         int sum = 0;
         while (i < numbers.length) {
             sum += numbers[i];
-            if (sum >= target) {
+            if (sum >= target)
                 while (sum >= target) {
                     min = min > i - j + 1 ? i - j + 1 : min;
                     sum -= numbers[j];
                     j++;
                 }
-            }
             i++;
         }
         return min == Integer.MAX_VALUE ? 0 : min;
