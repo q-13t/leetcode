@@ -10,11 +10,11 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-        System.out.println(solution.minSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 }));
-        System.out.println(solution.minSubArrayLen(4, new int[] { 2, 3, 1, 2, 4, 3 }));
-        System.out.println(solution.minSubArrayLen(11, new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }));
-        System.out.println(solution.minSubArrayLen(213, new int[] { 12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12 }));
 
+        System.out.println(solution.isIsomorphic("badc", "baba"));
+        System.out.println(solution.isIsomorphic("egg", "add"));
+        System.out.println(solution.isIsomorphic("foo", "bar"));
+        System.out.println(solution.isIsomorphic("paper", "title"));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

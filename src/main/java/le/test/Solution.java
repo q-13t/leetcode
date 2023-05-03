@@ -1,7 +1,7 @@
 package le.test;
 
-import java.util.List;
 import java.util.Set;
+import java.util.List;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -491,16 +491,19 @@ public class Solution {
      * @return amount of unique numbers
      */
     public int removeSingleDuplicates(int[] numbs) {
-        // create local variable k indicating first greater number in an array and tmp for swapping numbers in array
+        // create local variable k indicating first greater number in an array and tmp
+        // for swapping numbers in array
         int k = 0, tmp = 0;
         // Iterate over whole numbs array
         for (int i = 1; i < numbs.length; i++) {
             // assign k=i; because all previous entries are unique
             k = i;
-            // iterate over whole array again searching for first greater number than current
+            // iterate over whole array again searching for first greater number than
+            // current
             while (numbs[i - 1] >= numbs[k]) {
                 k++;
-                // Edge case: if k reached end of array -> .gc() is called to fee up memory and i as index of last unique entry is returned
+                // Edge case: if k reached end of array -> .gc() is called to fee up memory and
+                // i as index of last unique entry is returned
                 if (k == numbs.length) {
                     System.gc();
                     return i;
@@ -533,7 +536,8 @@ public class Solution {
 
         // Iterate over array replacing specific value with another non matching
         for (int i = 0; i < numbs.length; i++) {
-            // If current number does not match value to be removed current one is replaced with it
+            // If current number does not match value to be removed current one is replaced
+            // with it
             if (numbs[i] != val) {
                 numbs[k++] = numbs[i];
             }
@@ -560,7 +564,8 @@ public class Solution {
      * @return position where {@code target} is or should be.
      */
     public int searchInsert(int[] numbs, int target) {
-        // EDGE CASE: if first element in array is greater than target return 0 (as target would have been there)
+        // EDGE CASE: if first element in array is greater than target return 0 (as
+        // target would have been there)
         if (numbs[0] >= target) {
             return 0;
         }
@@ -574,7 +579,9 @@ public class Solution {
                 return i;
             }
         }
-        // EDGE CASE: if array does not contain target System.gc(); is called to free up memory and length of numbers + 1 is returned (as target would have been there)
+        // EDGE CASE: if array does not contain target System.gc(); is called to free up
+        // memory and length of numbers + 1 is returned (as target would have been
+        // there)
         System.gc();
         return i;
     }
@@ -596,10 +603,12 @@ public class Solution {
         // Reversibly iterate over sentence
         for (int i = size - 1; i >= 0; i--) {
             if (sentence.charAt(i) != ' ') {
-                // If current character is not space word has started or is continuing and its length is increased
+                // If current character is not space word has started or is continuing and its
+                // length is increased
                 k++;
             } else if (sentence.charAt(i) == ' ' && k != 0) {
-                // If current char is space and k is not zero => word has ended and its length is returned
+                // If current char is space and k is not zero => word has ended and its length
+                // is returned
                 return k;
             }
         }
@@ -632,7 +641,8 @@ public class Solution {
         for (int i = last - 1; i >= 0; i--) {
             if ((digits[i] + 1) / 10 >= 1) {// if current digit increased by 1 is bigger than 10 it is changed to 0
                 digits[i] = 0;
-            } else {// if current digit increased by 1 is smaller than 10 it IS increased and digits are returned (average case)
+            } else {// if current digit increased by 1 is smaller than 10 it IS increased and digits
+                    // are returned (average case)
                 digits[i] += 1;
                 return digits;
             }
@@ -666,13 +676,16 @@ public class Solution {
         int carry = 0, left = a.length() - 1, right = b.length() - 1, sum = 0;
         // Initialize String buffer that will hold the resulting string
         StringBuffer sb = new StringBuffer();
-        // Iterate over the strings until left index is less than 0 or right index is less than 0 or carry is not 0
+        // Iterate over the strings until left index is less than 0 or right index is
+        // less than 0 or carry is not 0
         while (left >= 0 || right >= 0 || carry != 0) {
             // assign sum as carry
             sum = carry;
-            // if left index is less than 0 add number from string a at position left; add 0 otherwise
+            // if left index is less than 0 add number from string a at position left; add 0
+            // otherwise
             sum += left >= 0 ? a.charAt(left--) - '0' : 0;
-            // if right index is less than 0 add number from string a at position right; add 0 otherwise
+            // if right index is less than 0 add number from string a at position right; add
+            // 0 otherwise
             sum += right >= 0 ? b.charAt(right--) - '0' : 0;
 
             // insert the resulting binary addition at a start of the string
@@ -734,7 +747,8 @@ public class Solution {
      * @return Sorted {@code ListNode} without duplicates.
      */
     public ListNode deleteDuplicates(ListNode head) {
-        // If the list is empty or has just one node, return it as there's no duplicates to be removed
+        // If the list is empty or has just one node, return it as there's no duplicates
+        // to be removed
         if (head == null || head.next == null) {
             return head;
         }
@@ -748,8 +762,10 @@ public class Solution {
         // Iterate through each node of the original list
         while (head != null) {
 
-            // If the value of the current node being iterated does not match the last added value in the new list,
-            // then add this value to the end of the new list, pointing temp to the recently added node
+            // If the value of the current node being iterated does not match the last added
+            // value in the new list,
+            // then add this value to the end of the new list, pointing temp to the recently
+            // added node
             if (head.val != temp.val) {
                 temp.next = new ListNode(head.val);
                 temp = temp.next;
@@ -759,7 +775,8 @@ public class Solution {
             head = head.next;
         }
 
-        // Once finished iterating through the entire original list, return the newly created list without any duplicates
+        // Once finished iterating through the entire original list, return the newly
+        // created list without any duplicates
         return result;
     }
 
@@ -798,7 +815,8 @@ public class Solution {
                 cur = cur.right;
             } else {
                 prev = cur.left;
-                while (prev.right != null && prev.right != cur) {// if there exist a right and the right is not pointing himself
+                while (prev.right != null && prev.right != cur) {// if there exist a right and the right is not pointing
+                                                                 // himself
                     prev = prev.right;
                 }
                 if (prev.right == null) {
@@ -861,11 +879,13 @@ public class Solution {
         } else {
             // increment the current depth by 1 as we move down the tree.
             current_depth++;
-            // If the current depth surpasses the previous maximum depth, update the maximum depth accordingly.
+            // If the current depth surpasses the previous maximum depth, update the maximum
+            // depth accordingly.
             if (current_depth > max_depth) {
                 max_depth = current_depth;
             }
-            // recursively call maxDepth method for the left and right children of the current node until leaf nodes are reached.
+            // recursively call maxDepth method for the left and right children of the
+            // current node until leaf nodes are reached.
             maxDepth(root.left);
             maxDepth(root.right);
             // decrement the current depth as we move up the tree.
@@ -965,7 +985,8 @@ public class Solution {
                 if (j == 0 || j == i) {
                     list.get(i).add(1);
                 } else {
-                    // set the current value as sum of two values above it as Pascal's triangle needs
+                    // set the current value as sum of two values above it as Pascal's triangle
+                    // needs
                     list.get(i).add(list.get(i - 1).get(j - 1) + list.get(i - 1).get(j));
                 }
             }
@@ -1155,7 +1176,8 @@ public class Solution {
      * @return element that occurs the most times
      */
     public int majorityElement(int[] numbs) {
-        // EDGE CASE: If numbers is null or has no elements return -1 as no elements have been found
+        // EDGE CASE: If numbers is null or has no elements return -1 as no elements
+        // have been found
         if (numbs == null || numbs.length == 0) {
             return -1;
         }
@@ -1226,13 +1248,15 @@ public class Solution {
 
         int desired = numbs.length - 1; // Initialize the desired index as the last element in the array
         for (int i = numbs.length - 2; i >= 0; i--) {
-            // Traverse the array backwards while checking if we can reach the current desired index
+            // Traverse the array backwards while checking if we can reach the current
+            // desired index
             if (i + numbs[i] >= desired) { // If we can reach the current desired index,
                 desired = i; // then update the desired index to be the current index
             }
         }
 
-        return desired == 0; // If the desired index has reached the start (index 0), then the array is considered "jumpable"
+        return desired == 0; // If the desired index has reached the start (index 0), then the array is
+                             // considered "jumpable"
     }
 
     /**
@@ -1254,9 +1278,11 @@ public class Solution {
                             strings[i] = "0";
                             changes++;
                             replacedWords++;
-                        } else { // if there are already groups, check if this string is similar to any of the strings in the existing groups
+                        } else { // if there are already groups, check if this string is similar to any of the
+                                 // strings in the existing groups
                             for (String string : group) {
-                                if (areSimilar(string, strings[i])) { // if strings are similar, add this string to the group and mark it as processed
+                                if (areSimilar(string, strings[i])) { // if strings are similar, add this string to the
+                                                                      // group and mark it as processed
                                     group.add(strings[i]);
                                     replacedWords++;
                                     changes++;
@@ -1284,13 +1310,16 @@ public class Solution {
      */
     boolean areSimilar(String first, String second) {
         int count = 0;
-        for (int i = 0; i < first.length(); i++) { // loop through all characters in both strings and count the number of differences
+        for (int i = 0; i < first.length(); i++) { // loop through all characters in both strings and count the number
+                                                   // of differences
             if (first.charAt(i) != second.charAt(i))
                 count++;
             if (count > 2)
                 return false; // if there are more than two differences, the strings are not similar
         }
-        return count == 2 || count == 0 && !first.equals(second); // if there are exactly two differences or no differences and the strings are not equal to begin with, the strings are similar
+        return count == 2 || count == 0 && !first.equals(second); // if there are exactly two differences or no
+                                                                  // differences and the strings are not equal to begin
+                                                                  // with, the strings are similar
     }
 
     /**
@@ -1422,15 +1451,18 @@ public class Solution {
         // Get the length of the input array
         int length = height.length;
 
-        // Initialize variables for keeping track of the current height and the amount of water stored
+        // Initialize variables for keeping track of the current height and the amount
+        // of water stored
         int currentHeight = 0;
         int water = 0;
 
-        // Create two arrays to store the maximum heights on the left and right sides of each element in the input array
+        // Create two arrays to store the maximum heights on the left and right sides of
+        // each element in the input array
         int[] left = new int[length];
         int[] right = new int[length];
 
-        // Calculate the maximum height from the left side of each element in the input array and store it in the `left` array
+        // Calculate the maximum height from the left side of each element in the input
+        // array and store it in the `left` array
         for (int i = 0; i < length; i++) {
             if (currentHeight < height[i]) {
                 currentHeight = height[i];
@@ -1438,7 +1470,9 @@ public class Solution {
             left[i] = currentHeight;
         }
 
-        // Reset the variable for keeping track of the current height, then calculate the maximum height from the right side of each element in the input array and store it in the `right` array
+        // Reset the variable for keeping track of the current height, then calculate
+        // the maximum height from the right side of each element in the input array and
+        // store it in the `right` array
         currentHeight = 0;
         for (int i = length - 1; i >= 0; i--) {
             if (currentHeight < height[i]) {
@@ -1447,7 +1481,9 @@ public class Solution {
             right[i] = currentHeight;
         }
 
-        // Calculate the amount of water stored at each element in the input array by subtracting its height from the minimum of the maximum heights on its left and right sides, then add all these amounts of water together to
+        // Calculate the amount of water stored at each element in the input array by
+        // subtracting its height from the minimum of the maximum heights on its left
+        // and right sides, then add all these amounts of water together to
         // get the total amount of water stored
         for (int i = 0; i < length; i++) {
             water += Math.min(left[i], right[i]) - height[i];
@@ -1554,7 +1590,8 @@ public class Solution {
 
         // Keep iterating until we find a pair of numbers that add up to target
         while (numbers[left] + numbers[right] != target) {
-            // If the sum of the current pair is greater than target, move the right pointer to the left
+            // If the sum of the current pair is greater than target, move the right pointer
+            // to the left
             if (numbers[left] + numbers[right] > target) {
                 --right;
             } else { // Otherwise, move the left pointer to the right
@@ -1562,7 +1599,8 @@ public class Solution {
             }
         }
 
-        // If we have found a pair of numbers that add up to target, return their indices as an array
+        // If we have found a pair of numbers that add up to target, return their
+        // indices as an array
         return new int[] { ++left, ++right };
     }
 
@@ -1638,4 +1676,91 @@ public class Solution {
         }
         return min == Integer.MAX_VALUE ? 0 : min;
     }
+
+    // public List<Integer> findSubstring(String s, String[] words) {
+    // List<Integer> answer = new ArrayList<Integer>();
+    // int wordsLength = words.length * words[0].length();
+    // if (s.length() < wordsLength) {
+    // return answer;
+    // }
+
+    // for (int i = 0; i < s.length(); i++) {
+    // if (i + wordsLength <= s.length() && isSubstring(s, i, wordsLength, words)) {
+    // answer.add(i);
+    // }
+    // }
+    // return answer;
+    // }
+
+    // private boolean isSubstring(String s, int i, int wordsLength, String[] words)
+    // {
+    // StringBuilder subString = new StringBuilder(s.substring(i, i + wordsLength));
+    // int idx = 0, wordLength = wordsLength / words.length;
+    // int[] indexes = new int[words.length];
+    // for (int j = 0; j < words.length; j++) {
+
+    // }
+    // System.out.println(solution.findSubstring("barfoothefoobarman", new String[]
+    // { "foo", "bar" }));
+    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
+    // String[] { "word", "good", "best", "word" }));
+    // System.out.println(solution.findSubstring("barfoofoobarthefoobarman", new
+    // String[] { "bar", "foo", "the" }));
+    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
+    // String[] { "word", "good", "best", "word" }));
+    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
+    // String[] { "word", "good", "best", "good" }));
+    // System.out.println(solution.findSubstring("ababaab", new String[] { "ab",
+    // "ba", "ba" }));
+    // return true;
+    // }
+
+    /**
+     * Checks if string {@code s} is isomorphic to string {@code t}. *
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param s string to replace.
+     * @param t string to be equal.
+     * @return {@code true} if {@code s} is isomorphic, {@code false} otherwise.
+     */
+    public boolean isIsomorphic(String s, String t) {
+        // create a HashMap to store character mappings from s to t
+        HashMap<Character, Character> references = new HashMap<Character, Character>();
+
+        // iterate through string s and map each character to its corresponding character in string t
+        for (int i = 0; i < s.length(); i++) {
+            if (!references.containsKey(s.charAt(i))) { // if character in s is not mapped yet
+                if (references.values().contains(t.charAt(i))) { // if character in t is already mapped
+                    System.gc(); // calling garbage collector
+                    return false;
+                } else {
+                    references.put(s.charAt(i), t.charAt(i)); // map the characters
+                }
+            } else { // if the character in s has already been seen before
+                if (references.get(s.charAt(i)) != t.charAt(i)) { // but the corresponding character in t does not match the current one
+                    System.gc();// calling garbage collector
+                    return false;
+                }
+            }
+        }
+
+        // create a new stringbuilder object to hold mapped string
+        StringBuilder reference = new StringBuilder();
+        for (int i = 0; i < t.length(); i++) {
+            reference.append(references.get(s.charAt(i))); // append each mapped character from s to the new string builder
+        }
+        // compare the built string to string t to make sure they are identical
+        if (!reference.toString().equals(t)) {
+            System.gc();// calling garbage collector
+            return false;
+        }
+
+        System.gc();// calling garbage collector
+        return true;
+
+    }
+
 }
