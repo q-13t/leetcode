@@ -3,6 +3,8 @@ package le.test;
 import java.util.Set;
 import java.util.List;
 import java.util.Stack;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1677,50 +1679,12 @@ public class Solution {
         return min == Integer.MAX_VALUE ? 0 : min;
     }
 
-    // public List<Integer> findSubstring(String s, String[] words) {
-    // List<Integer> answer = new ArrayList<Integer>();
-    // int wordsLength = words.length * words[0].length();
-    // if (s.length() < wordsLength) {
-    // return answer;
-    // }
-
-    // for (int i = 0; i < s.length(); i++) {
-    // if (i + wordsLength <= s.length() && isSubstring(s, i, wordsLength, words)) {
-    // answer.add(i);
-    // }
-    // }
-    // return answer;
-    // }
-
-    // private boolean isSubstring(String s, int i, int wordsLength, String[] words)
-    // {
-    // StringBuilder subString = new StringBuilder(s.substring(i, i + wordsLength));
-    // int idx = 0, wordLength = wordsLength / words.length;
-    // int[] indexes = new int[words.length];
-    // for (int j = 0; j < words.length; j++) {
-
-    // }
-    // System.out.println(solution.findSubstring("barfoothefoobarman", new String[]
-    // { "foo", "bar" }));
-    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
-    // String[] { "word", "good", "best", "word" }));
-    // System.out.println(solution.findSubstring("barfoofoobarthefoobarman", new
-    // String[] { "bar", "foo", "the" }));
-    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
-    // String[] { "word", "good", "best", "word" }));
-    // System.out.println(solution.findSubstring("wordgoodgoodgoodbestword", new
-    // String[] { "word", "good", "best", "good" }));
-    // System.out.println(solution.findSubstring("ababaab", new String[] { "ab",
-    // "ba", "ba" }));
-    // return true;
-    // }
-
     /**
      * Checks if string {@code s} is isomorphic to string {@code t}. *
      * </p>
      * {@code Time O(n)}.
      * </p>
-     * {@code Space O(n)}.
+     * {@code Space O(min(n,m))}.
      * 
      * @param s string to replace.
      * @param t string to be equal.
@@ -1763,4 +1727,56 @@ public class Solution {
 
     }
 
+    /**
+     * Given a {@code pattern} and a string {@code s}, find if {@code s} follows the same pattern.
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param pattern
+     * @param s
+     * @return if {@code s} follows the pattern, {@code false} otherwise.
+     */
+    public boolean wordPattern(String pattern, String s) {
+        // Convert the pattern string into an array of characters
+        char[] chars = pattern.toCharArray();
+
+        // Split the input "s" string into an array of words based on 'space' delimiter
+        String[] words = s.split(" ");
+
+        // If the number of words in the string 's' is different from the length of the 'chars' array then return false.
+        if (chars.length != words.length) {
+            return false;
+        }
+
+        // Create a hash map to store character to word mappings
+        HashMap<Character, String> references = new HashMap<>();
+
+        // Loop through each word in the 'words' array and check if it matches with the corresponding character in the 'chars' array
+        for (int i = 0; i < words.length; i++) {
+
+            // If the 'references' hash map doesn't contain the character or the word
+            if (!references.containsKey(chars[i]) && !references.containsValue(words[i])) {
+
+                // Add a new character to word mapping to the 'references' hash map
+                references.put(chars[i], words[i]);
+
+            } else if (references.containsKey(chars[i]) && !references.get(chars[i]).equals(words[i])) {
+
+                // If the 'references' hash map already contains the character but with a different word, return false.
+                return false;
+
+            } else if ((references.containsValue(words[i]) && !references.containsKey(chars[i]))
+                    || (!references.containsValue(words[i]) && references.containsKey(chars[i]))) {
+
+                // If the 'references' hash map already contains the word but with a different character, or the opposite, return false.
+                return false;
+            }
+        }
+
+        // Return true if all the mappings are valid
+        return true;
+
+    }
 }

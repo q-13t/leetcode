@@ -10,11 +10,11 @@ public class Main {
     private static Solution solution = new Solution();
 
     public static void main(String[] args) {
-
-        System.out.println(solution.isIsomorphic("badc", "baba"));
-        System.out.println(solution.isIsomorphic("egg", "add"));
-        System.out.println(solution.isIsomorphic("foo", "bar"));
-        System.out.println(solution.isIsomorphic("paper", "title"));
+        long start = System.currentTimeMillis();
+        System.out.println(solution.wordPattern("abba", "dog cat cat dog"));
+        System.out.println("Time: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.wordPattern("abba", "dog cat cat fish"));
+        System.out.println(solution.wordPattern("aaaa", "dog cat cat dog"));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {
