@@ -11,10 +11,11 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.wordPattern("abba", "dog cat cat dog"));
-        System.out.println("Time: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.wordPattern("abba", "dog cat cat fish"));
-        System.out.println(solution.wordPattern("aaaa", "dog cat cat dog"));
+        System.out.println(solution.isAnagram("anagram", "nagaram"));
+        System.out.println("Runtime: " + (System.currentTimeMillis() - start) + " ms");
+        System.out.println(solution.isAnagram("rat", "car"));
+        System.out.println(solution.isAnagram("ab", "a"));
+
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

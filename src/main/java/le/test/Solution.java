@@ -3,6 +3,7 @@ package le.test;
 import java.util.Set;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1777,4 +1778,41 @@ public class Solution {
         return true;
 
     }
+
+    /**
+     * Checks if two words are anagrams
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(1)}.
+     * 
+     * @param original
+     * @param desired
+     * @return {@code true} if words are anagrams, {@code false} otherwise.
+     */
+    public boolean isAnagram(String original, String desired) {
+        // If two words are of different length they can't be anagrams -> return false;
+        if (original.length() != desired.length()) {
+            return false;
+        }
+        // Create map of english lowercase characters
+        int[] map = new int[26];
+        // Iterate over 2 words all the way
+        for (int i = 0; i < original.length(); i++) {
+            // add one at a position of current character in original word
+            map[original.charAt(i) - 'a']++;
+            // subtract one at a position of current character in desired word
+            map[desired.charAt(i) - 'a']--;
+        }
+        // iterate over map
+        for (int i = 0; i < map.length; i++) {
+            // if any character is missing or insufficient words cannot be anagrams -> return false;
+            if (map[i] != 0) {
+                return false;
+            }
+        }
+        // If all characters met exact amount of times words are anagrams -> return true;
+        return true;
+    }
+
 }
