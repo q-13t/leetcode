@@ -3,11 +3,9 @@ package le.test;
 import java.util.Set;
 import java.util.List;
 import java.util.Stack;
-import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -1711,7 +1709,7 @@ public class Solution {
             }
         }
 
-        // create a new stringbuilder object to hold mapped string
+        // create a new StringBuilder object to hold mapped string
         StringBuilder reference = new StringBuilder();
         for (int i = 0; i < t.length(); i++) {
             reference.append(references.get(s.charAt(i))); // append each mapped character from s to the new string builder
@@ -1867,5 +1865,34 @@ public class Solution {
             number = number / 10;
         }
         return ints;
+    }
+
+    /**
+     * Checks if there are 2 identical numbers in {@code numbers} within {@code k} distance.
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param numbers
+     * @param k       should be > 0
+     * @return {@code true} if there are 2 identical numbers within {@code k} distance, {@code false} otherwise.
+     */
+    public boolean containsNearbyDuplicate(int[] numbers, int k) {
+        // Initialize HashMap representing [number,index] of numbers array
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(numbers.length);
+        // Iterate over whole array
+        for (int i = 0; i < numbers.length; i++) {
+            // If map contains key and its index with current index is less or equal k -> free up memory and return true
+            if (map.containsKey(numbers[i]) && Math.abs(map.get(numbers[i]) - i) <= k) {
+                System.gc();
+                return true;
+            } else {// add this number and its index to the HashMap
+                map.put(numbers[i], i);
+            }
+        }
+        // Free up memory and return false if there was no fulfilling conditions in numbers array
+        System.gc();
+        return false;
     }
 }
