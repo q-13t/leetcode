@@ -11,11 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.isAnagram("anagram", "nagaram"));
+        System.out.println(solution.isHappy(19));
         System.out.println("Runtime: " + (System.currentTimeMillis() - start) + " ms");
-        System.out.println(solution.isAnagram("rat", "car"));
-        System.out.println(solution.isAnagram("ab", "a"));
-
+        System.out.println(solution.isHappy(2));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

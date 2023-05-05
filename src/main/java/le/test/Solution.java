@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -1815,4 +1816,56 @@ public class Solution {
         return true;
     }
 
+    /**
+     * checks if {@code number} is {@code happy}.
+     * </p>
+     * {@code number} is {@code happy} if:
+     * <ul>
+     * <li>Starting with any positive integer, replace the number by the sum of the squares of its digits.</li>
+     * <li>Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.</li>
+     * <li>Those numbers for which this process ends in 1 are happy.</li>
+     * </ul>
+     * 
+     * </p>
+     * {@code Time O(k log(n))}.
+     * </p>
+     * {@code Space O(k)}.
+     * 
+     * @param number to be checked.
+     * @return {@code true} if {@code number} is {@code happy}, {@code false otherwise}.
+     */
+    public boolean isHappy(int number) {
+        // Create set to check if we are not in an endless loop
+        Set<Integer> set = new HashSet<>();
+        // convert number into array
+        int[] intTab = getInts(number);
+        // initialize sum of powers
+        int sum = 0;
+        // Iterate until sum not equals 1
+        while (sum != 1) {
+            sum = 0;
+            // iterate over each number and add its power 2 to the sum
+            for (int i : intTab) {
+                sum += Math.pow(i, 2);
+            }
+            // if sum was already met we are in an endless loop -> EDGE CASE: return false;
+            if (!set.add(sum)) {
+                return false;
+            }
+            // convert number into array
+            intTab = getInts(sum);
+        }
+        // if while loop has ended return true because number is 'happy'
+        return true;
+    }
+
+    int[] getInts(int number) {
+        int[] ints = new int[String.valueOf(number).length()];
+        int i = 0;
+        while (number > 0) {
+            ints[i++] = number % 10;
+            number = number / 10;
+        }
+        return ints;
+    }
 }
