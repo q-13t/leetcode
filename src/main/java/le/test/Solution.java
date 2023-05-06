@@ -1949,4 +1949,33 @@ public class Solution {
         };
     }
 
+    /**
+     * Counts maximum consecutive length of {@code numbers}.
+     * </p>
+     * {@code Time O(n log(n))}.
+     * </p>
+     * {@code Space O(1)}.
+     */
+    public int longestConsecutive(int[] numbers) {
+        // EDGE CASE: if array is empty it cannot be consecutive
+        if (numbers.length == 0)
+            return 0;
+        // Sort array in ascending order
+        Arrays.sort(numbers);
+        // define variables of current length and maximum consecutive length
+        int maxContinuous = 1, current = 1;
+        // iterate over an array
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] == numbers[i - 1])// if there are 2 same numbers in an row don't count them as consecutive -> skip;
+                continue;
+            else if (numbers[i] - 1 == numbers[i - 1]) {// if numbers are consecutive increase current length and set the max length
+                current++;
+                maxContinuous = maxContinuous > current ? maxContinuous : current;
+            } else// if numbers are not consecutive reset current length to 1
+                current = 1;
+        }
+        // free up memory and return maximum consecutive length
+        System.gc();
+        return maxContinuous;
+    }
 }
