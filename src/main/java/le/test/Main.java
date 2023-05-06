@@ -12,11 +12,13 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.containsNearbyDuplicate(new int[] { 1, 2, 3, 1 }, 3));
+        System.out.println(solution.groupAnagrams(new String[] { "eat", "tea", "tan", "ate", "nat", "bat" }));
         System.out.println("Runtime: " + (System.currentTimeMillis() - start) + " ms");
+        System.out.println(solution.groupAnagrams(new String[] { "" }));
+        System.out.println(solution.groupAnagrams(new String[] { "a" }));
+        System.out.println(solution.groupAnagrams(new String[] { "", "" }));
+        System.out.println(solution.groupAnagrams(new String[] { "", "b" }));
 
-        System.out.println(solution.containsNearbyDuplicate(new int[] { 1, 0, 1, 1 }, 1));
-        System.out.println(solution.containsNearbyDuplicate(new int[] { 1, 2, 3, 1, 2, 3 }, 2));
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {

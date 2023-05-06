@@ -6,6 +6,7 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -1895,4 +1896,57 @@ public class Solution {
         System.gc();
         return false;
     }
+
+    public List<String> summaryRanges(int[] numbers) {
+        ArrayList<String> ranges = new ArrayList<String>();
+        for (int i = 0; i < numbers.length; i++) {
+            int start = numbers[i];
+            while (i + 1 < numbers.length && numbers[i] + 1 == numbers[i + 1])
+                i++;
+            if (start != numbers[i]) {
+                ranges.add("" + start + "->" + numbers[i]);
+            } else {
+                ranges.add("" + start);
+            }
+        }
+        return ranges;
+    }
+
+    public List<List<String>> groupAnagrams(String[] strings) {
+        HashMap<String, List<String>> map = new HashMap<>();
+        return new AbstractList<List<String>>() {
+            List<List<String>> result;
+
+            @Override
+            public int size() {
+                if (result == null)
+                    initialize();
+                return result.size();
+            }
+
+            public void initialize() {
+                for (String iterableString : strings) {
+                    char[] keys = new char[26];
+                    for (int i = 0; i < iterableString.length(); i++) {
+                        keys[iterableString.charAt(i) - 'a']++;
+                    }
+                    String key = new String(keys);
+                    List<String> list = map.get(key);
+                    if (list == null)
+                        map.put(key, new ArrayList<>());
+                    map.get(key).add(iterableString);
+                }
+                result = new ArrayList<>(map.values());
+            }
+
+            @Override
+            public List<String> get(int index) {
+                if (result == null)
+                    initialize();
+                return result.get(index);
+            }
+
+        };
+    }
+
 }
