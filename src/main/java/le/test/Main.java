@@ -13,11 +13,11 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.longestConsecutive(new int[] { 100, 4, 200, 1, 3, 2 }));
+        System.out.println(solution.containsDuplicate(new int[] { 1, 2, 3, 1 }));
         System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.longestConsecutive(new int[] { 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 }));
-        System.out.println(solution.longestConsecutive(new int[] { 9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6 }));
-        System.out.println(solution.longestConsecutive(new int[] { 1, 2, 0, 1 }));
+        System.out.println(solution.containsDuplicate(new int[] { 1, 2, 3, 4 }));
+        System.out.println(solution.containsDuplicate(new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 }));
+
     }
 
     protected static int[] countingSort(int[] array) {

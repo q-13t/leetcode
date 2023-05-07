@@ -1978,4 +1978,30 @@ public class Solution {
         System.gc();
         return maxContinuous;
     }
+
+    /**
+     * Checks if {@code numbers} contains any duplicating numbers .
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(1)}.
+     * 
+     * @param numbers
+     * @return
+     */
+    public boolean containsDuplicate(int[] numbers) {
+        // Initialize HashSet to store numbers
+        HashSet<Integer> set = new HashSet<>(numbers.length);
+        // Iterate over array
+        for (Integer integer : numbers) {
+            // if set previously contained value free up memory and return true
+            if (!set.add(integer)) { // if not numbers is simply added to set
+                System.gc();
+                return true;
+            }
+        }
+        // if whole array was iterated -> free up memory and return false, as no duplicates were detected
+        System.gc();
+        return false;
+    }
 }
