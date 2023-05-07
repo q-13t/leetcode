@@ -2,7 +2,8 @@ package le.test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 @SuppressWarnings(value = { "unused" })
@@ -13,10 +14,19 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.containsDuplicate(new int[] { 1, 2, 3, 1 }));
+
+        TreeNode head = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+
+        TreeNode.printPreOrder(head);
+        System.out.println();
+        TreeNode.printInOrder(head);
+        System.out.println();
+        TreeNode.printPostOrder(head);
+        System.out.println();
+        TreeNode.printLevelOrder(head);
+        System.out.println();
+
         System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.containsDuplicate(new int[] { 1, 2, 3, 4 }));
-        System.out.println(solution.containsDuplicate(new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 }));
 
     }
 
