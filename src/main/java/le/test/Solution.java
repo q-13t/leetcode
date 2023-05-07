@@ -2004,4 +2004,21 @@ public class Solution {
         System.gc();
         return false;
     }
+
+    public List<List<String>> groupAnagram2(String[] strings) {
+        HashMap<String, ArrayList<String>> result = new HashMap<>();
+        for (String iterable : strings) {
+            result.putIfAbsent(sortStringAscending(iterable), new ArrayList<>());
+        }
+        for (String string : strings) {
+            result.get(sortStringAscending(string)).add(string);
+        }
+        return new ArrayList<List<String>>(result.values());
+    }
+
+    private static String sortStringAscending(String string) {
+        char[] charArray = string.toCharArray();
+        Arrays.sort(charArray);
+        return String.valueOf(charArray);
+    }
 }

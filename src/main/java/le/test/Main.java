@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.stream.Stream;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -12,22 +13,20 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-
-        TreeNode head = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 6, 7 });
-
-        TreeNode.printPreOrder(head);
-        System.out.println();
-        TreeNode.printInOrder(head);
-        System.out.println();
-        TreeNode.printPostOrder(head);
-        System.out.println();
-        TreeNode.printLevelOrder(head);
-        System.out.println();
-
+        System.out.println(solution.groupAnagram2(new String[] { "eat", "tea", "tan", "ate", "nat", "bat" }));
         System.out.println("Runtime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.groupAnagram2(new String[] { "" }));
+        System.out.println(solution.groupAnagram2(new String[] { "a" }));
+    }
 
+    private static int convertToIntSum(String string) {
+        char[] charArray = string.toCharArray();
+        int sum = 0;
+        for (char c : charArray) {
+            sum += (int) c;
+        }
+        return sum;
     }
 
     protected static int[] countingSort(int[] array) {
