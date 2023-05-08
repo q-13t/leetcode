@@ -2052,4 +2052,67 @@ public class Solution {
 
         return result;
     }
+
+    /**
+     * Performs check and decides if sudoku {@code board} is valid.
+     * </p>
+     * Validation rules are:
+     * </p>
+     * - Each row must contain the digits 1-9 without repetition.
+     * </p>
+     * - Each column must contain the digits 1-9 without repetition.
+     * </p>
+     * - Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition. *
+     * </p>
+     * {@code Time O(n^2)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param board
+     * @return
+     */
+    public boolean isValidSudoku(char[][] board) {
+
+        // Horizontal check
+        HashSet<Character> numbers = new HashSet<>();
+        for (int i = 0; i < 9; i++) {
+            numbers.clear();
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] == '.')
+                    continue;
+                if (!numbers.add(board[i][j]))
+                    return false;
+            }
+        }
+        // Vertical check
+        for (int i = 0; i < 9; i++) {
+            numbers.clear();
+            for (int j = 0; j < 9; j++) {
+                if (board[j][i] == '.')
+                    continue;
+                if (!numbers.add(board[j][i]))
+                    return false;
+            }
+        }
+        // Square check
+        int columnStart = 0, columnEnd = 3;
+        for (int i = 0; i < 9; i++) {
+            if (i % 3 == 0) {
+                numbers.clear();
+            }
+            for (int j = columnStart; j < columnEnd; j++) {
+                if (board[i][j] == '.')
+                    continue;
+                else if (!numbers.add(board[i][j]))
+                    return false;
+            }
+            if (i == 8 && columnEnd != 9) {
+                columnEnd += 3;
+                columnStart += 3;
+                i = -1;
+                numbers.clear();
+            }
+        }
+        return true;
+    }
 }
