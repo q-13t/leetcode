@@ -6,6 +6,7 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.AbstractList;
@@ -2114,5 +2115,64 @@ public class Solution {
             }
         }
         return true;
+    }
+
+    /**
+     * Encodes provided array of {@link String}s into single specific String.
+     * </p>
+     * Encoding schema is {@code <length>Word} and so on.
+     * </p>
+     * Example: {@code Java,Is,Awesome,!} -> {@code <4>Java<2>Is<7>Awesome<1>!}
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param strings
+     * @return Encoded string
+     * @see #decodeString(String)
+     */
+    public String encodeString(String[] strings) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < strings.length; i++) {
+            result.append("<" + strings[i].length() + ">" + strings[i]);
+        }
+        return result.toString();
+    }
+
+    /**
+     * Decodes provided single {@link String} into array of separate Strings
+     * </p>
+     * Decoding schema is {@code <length>Word} and so on.
+     * </p>
+     * Example: {@code <4>Java<2>Is<7>Awesome<1>!} -> {@code Java,Is,Awesome,!}
+     * </p>
+     * {@code Time O(n)}.
+     * </p>
+     * {@code Space O(n)}.
+     * 
+     * @param strings
+     * @return Encoded string
+     * @see #encodeString(String[])
+     */
+    public String[] decodeString(String encodedString) {
+        LinkedList<String> strings = new LinkedList<>();
+        StringBuilder word = new StringBuilder();
+        int wordLength = 0;
+        for (int i = 0; i < encodedString.length(); i++) {
+            while (encodedString.charAt(++i) != '>') {
+                word.append(encodedString.charAt(i));
+            }
+            wordLength = Integer.valueOf(word.toString());
+            word = new StringBuilder();
+            while (wordLength > 0) {
+                word.append(encodedString.charAt(++i));
+                wordLength--;
+            }
+            strings.add(word.toString());
+            wordLength = 0;
+            word = new StringBuilder();
+        }
+        return strings.toArray(new String[strings.size()]);
     }
 }
