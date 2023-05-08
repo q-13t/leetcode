@@ -3,6 +3,8 @@ package le.test;
 import java.util.Set;
 import java.util.List;
 import java.util.Stack;
+
+import java.util.Map.Entry;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -2019,6 +2021,37 @@ public class Solution {
     private static String sortStringAscending(String string) {
         char[] charArray = string.toCharArray();
         Arrays.sort(charArray);
-        return String.valueOf(charArray);
+        StringBuilder sb = new StringBuilder();
+        for (char c : charArray) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    // TODO Find better solution
+    public int[] topKFrequent(int[] numbers, int k) {
+        HashMap<Integer, Integer> occurrences = new HashMap<>(numbers.length);
+        for (int i : numbers) {
+            if (occurrences.putIfAbsent(i, 1) != null) {
+                occurrences.put(i, occurrences.get(i) + 1);
+            }
+        }
+        int[] result = new int[k];
+        int max = 0, changed = 0;
+
+        for (int i = 0; i < k; i++) {
+            max = 0;
+            changed = 0;
+            for (int iterable : occurrences.keySet()) {
+                if (max < occurrences.get(iterable)) {
+                    max = occurrences.get(iterable);
+                    result[i] = iterable;
+                    changed = iterable;
+                }
+            }
+            occurrences.put(changed, Integer.MIN_VALUE);
+        }
+
+        return result;
     }
 }

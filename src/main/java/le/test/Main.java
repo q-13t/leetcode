@@ -14,10 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.groupAnagram2(new String[] { "eat", "tea", "tan", "ate", "nat", "bat" }));
-        System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.groupAnagram2(new String[] { "" }));
-        System.out.println(solution.groupAnagram2(new String[] { "a" }));
+        // System.out.println(solution.topKFrequent(new int[] { 1, 1, 1, 2, 2, 3 }, 2));
+        // System.out.println("Runtime: " + (System.currentTimeMillis() - start));
+        // System.out.println(solution.topKFrequent(new int[] { 1 }, 1));
+        System.out.println(solution.topKFrequent(new int[] { 3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6 }, 10));
     }
 
     private static int convertToIntSum(String string) {
