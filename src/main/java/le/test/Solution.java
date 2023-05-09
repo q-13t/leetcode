@@ -2174,4 +2174,60 @@ public class Solution {
         }
         return strings.toArray(new String[strings.size()]);
     }
+
+    /**
+     * Evaluates {@code reverse Polish notation}.
+     * </p>
+     * {@code Time O(n)}. As length of {@code tokens}.
+     * </p>
+     * {@code Space O(k)}. As amount of {@code numbers}.
+     * </p>
+     * {@code tokens MUST BE VALID}
+     * 
+     * @param tokens are numbers and arithmetic operators {@code 0-9, +, -, *, /}.
+     * @return expressions end value.
+     */
+    public int evalRPN(String[] tokens) {
+        // Initialize stack to store numbers
+        Stack<Integer> stack = new Stack<Integer>();
+        // initialize variables for calculation
+        int a = 0, b = 0;
+        // Iterate over all tokens of RPN
+        for (String token : tokens) {
+            switch (token) {
+            case "+": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b + a);
+                break;
+            }
+            case "-": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b - a);
+                break;
+            }
+            case "*": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b * a);
+                break;
+            }
+            case "/": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b / a);
+                break;
+            }
+
+            default: {// expected to be a number -> add to stack
+                stack.add(Integer.valueOf(token));
+                break;
+            }
+            }
+        }
+        // Free up memory and return last value from stack -> arithmetic result
+        System.gc();
+        return stack.pop();
+    }
 }

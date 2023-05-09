@@ -17,14 +17,7 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println(minStack.getMin());// return -3
-        minStack.pop();
-        System.out.println(minStack.top()); // return 0
-        System.out.println(minStack.getMin()); // return -2
+        System.out.println(solution.evalRPN(new String[] { "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+" }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
