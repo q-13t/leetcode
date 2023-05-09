@@ -2230,4 +2230,23 @@ public class Solution {
         System.gc();
         return stack.pop();
     }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> parenthesis = new ArrayList<>();
+        parenthesisRecursion(parenthesis, 0, 0, "", n);
+        return parenthesis;
+    }
+
+    private void parenthesisRecursion(List<String> parenthesis, int open, int close, String string, int n) {
+        if (string.length() == n * 2) {
+            parenthesis.add(string);
+            return;
+        }
+        if (open < n) {
+            parenthesisRecursion(parenthesis, open + 1, close, string + "(", n);
+        }
+        if (close < open) {
+            parenthesisRecursion(parenthesis, open, close + 1, string + ")", n);
+        }
+    }
 }

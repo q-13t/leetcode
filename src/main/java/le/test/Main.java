@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.evalRPN(new String[] { "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+" }));
+        System.out.println(solution.generateParenthesis(3));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
