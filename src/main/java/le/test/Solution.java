@@ -2027,7 +2027,6 @@ public class Solution {
         return sb.toString();
     }
 
-    // TODO Find better solution O(n^2)
     public int[] topKFrequent(int[] numbers, int k) {
         HashMap<Integer, Integer> occurrences = new HashMap<>(numbers.length);
         for (int i : numbers) {
