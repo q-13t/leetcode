@@ -2151,7 +2151,7 @@ public class Solution {
      * {@code Space O(n)}.
      * 
      * @param strings
-     * @return Encoded string
+     * @return Decoded array of strings
      * @see #encodeString(String[])
      */
     public String[] decodeString(String encodedString) {

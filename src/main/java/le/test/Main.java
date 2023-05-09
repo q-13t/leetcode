@@ -3,8 +3,10 @@ package le.test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 import java.util.stream.Stream;
 
 @SuppressWarnings(value = { "unused" })
@@ -14,15 +16,18 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        String encoded = solution.encodeString(new String[] { "Java", "Is", "Awesome", "!" });
-        System.out.println("Encoded is: " + encoded);
-        String[] decoded = solution.decodeString(encoded);
-        System.out.println("Decoded: ");
-        for (String string : decoded) {
-            System.out.print(string + ", ");
-        }
+
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin());// return -3
+        minStack.pop();
+        System.out.println(minStack.top()); // return 0
+        System.out.println(minStack.getMin()); // return -2
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+
     }
 
     private static int convertToIntSum(String string) {
