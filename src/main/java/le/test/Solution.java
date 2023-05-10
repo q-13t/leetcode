@@ -2249,4 +2249,23 @@ public class Solution {
             parenthesisRecursion(parenthesis, open, close + 1, string + ")", n);
         }
     }
+
+    public int[] dailyTemperatures(int[] temperatures) {
+        Stack<Integer> temperaturesStack = new Stack<>();
+        Stack<Integer> indexes = new Stack<>();
+        for (int i = 0; i < temperatures.length; i++) {
+            while (!temperaturesStack.isEmpty() && temperaturesStack.peek() < temperatures[i]) {
+                temperatures[indexes.peek()] = i - indexes.pop();
+                temperaturesStack.pop();
+            }
+            temperaturesStack.add(temperatures[i]);
+            indexes.add(i);
+        }
+        if (!temperaturesStack.isEmpty()) {
+            for (int i = temperaturesStack.size(); i > 0; i--) {
+                temperatures[indexes.pop()] = 0;
+            }
+        }
+        return temperatures;
+    }
 }
