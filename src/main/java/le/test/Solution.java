@@ -2296,4 +2296,21 @@ public class Solution {
         return minReplaces;
     }
 
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        StringBuilder word = new StringBuilder();
+        int n = s.length();
+        int cycleLength = 2 * numRows - 2;
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j + i < n; j += cycleLength) {
+                word.append(s.charAt(j + i));
+                if (i != 0 && i != numRows - 1 && j + cycleLength - i < n) {
+                    word.append(s.charAt(j + cycleLength - i));
+                }
+            }
+        }
+        return word.toString();
+    }
 }
