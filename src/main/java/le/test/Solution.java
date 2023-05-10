@@ -6,8 +6,8 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.util.AbstractList;
 
@@ -2268,4 +2268,32 @@ public class Solution {
         }
         return temperatures;
     }
+
+    public int minimumDeletions(String string) {
+        Stack<Integer> B_sBefore = new Stack<>();
+        Stack<Integer> A_sAfter = new Stack<>();
+        int amount = 0;
+        for (int i = 0; i < string.length(); i++) {// count b-s before
+            B_sBefore.add(amount);
+            if (string.charAt(i) == 'b') {
+                amount++;
+            }
+        }
+        amount = 0;
+        for (int i = string.length() - 1; i >= 0; i--) {// count a-s after
+            A_sAfter.add(amount);
+            if (string.charAt(i) == 'a') {
+                amount++;
+            }
+        }
+        Collections.reverse(A_sAfter);
+        int minReplaces = Integer.MAX_VALUE;
+        int sum = 0;
+        while (!B_sBefore.isEmpty()) {
+            sum = B_sBefore.pop() + A_sAfter.pop();
+            minReplaces = minReplaces > sum ? sum : minReplaces;
+        }
+        return minReplaces;
+    }
+
 }

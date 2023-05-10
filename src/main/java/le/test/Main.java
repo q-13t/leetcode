@@ -17,18 +17,11 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        for (Integer iterable : solution.dailyTemperatures(new int[] { 73, 74, 75, 71, 69, 72, 76, 73 })) {
-            System.out.print(iterable + ", ");
-        }
+        System.out.println(solution.minimumDeletions("aababbab"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        for (Integer iterable : solution.dailyTemperatures(new int[] { 30, 40, 50, 60 })) {
-            System.out.print(iterable + ", ");
-        }
-        System.out.println();
 
-        for (Integer iterable : solution.dailyTemperatures(new int[] { 30, 60, 90 })) {
-            System.out.print(iterable + ", ");
-        }
+        System.out.println(solution.minimumDeletions("bbaaaaabb"));
+        System.out.println(solution.minimumDeletions("a"));
 
     }
 
