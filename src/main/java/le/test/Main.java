@@ -17,6 +17,20 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
+        Node fifth = new Node(1);
+        Node fourth = new Node(10);
+        Node third = new Node(11);
+        Node second = new Node(13);
+        Node first = new Node(7);
+        fourth.next = fifth;
+        fourth.random = first;
+        third.next = fourth;
+        third.random = fifth;
+        second.next = third;
+        second.random = first;
+        first.next = second;
+        first.random = null;
+        System.out.println(solution.copyRandomList(first));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }

@@ -2342,4 +2342,24 @@ public class Solution {
         }
         return false;
     }
+
+    public Node copyRandomList(Node head) {
+        Node copy = head;
+        HashMap<Node, Node> map = new HashMap<>();
+
+        while (copy != null) {
+            map.put(copy, new Node(copy.val));
+            copy = copy.next;
+        }
+        copy = head;
+
+        while (copy != null) {
+            Node clone = map.get(copy);
+            clone.next = map.get(copy.next);
+            clone.random = map.get(copy.random);
+            copy = copy.next;
+        }
+
+        return map.get(head);
+    }
 }
