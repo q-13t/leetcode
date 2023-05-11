@@ -20,12 +20,16 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        for (int iterable : Algorithms.countingSort(new int[] { 1, 4, 1, 2, 7, 5, 2 })) {
+        for (int iterable : Algorithms.radixSort(new int[] { 2, 24, 45, 66, 75, 90, 170, 802 })) {
+            System.out.print(iterable + ", ");
+
+        }
+        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        start = System.currentTimeMillis();
+        for (int iterable : Algorithms.countingSort(new int[] { 2, 24, 45, 66, 75, 90, 170, 802 })) {
             System.out.print(iterable + ", ");
         }
-
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
     }
 
     private static int convertToIntSum(String string) {
