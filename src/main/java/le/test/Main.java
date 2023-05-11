@@ -19,18 +19,13 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-
-        for (int iterable : Algorithms.radixSort(new int[] { 2, 24, 45, 66, 75, 90, 170, 802 })) {
-            System.out.print(iterable + ", ");
-
-        }
-        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        start = System.currentTimeMillis();
-        for (int iterable : Algorithms.countingSort(new int[] { 2, 24, 45, 66, 75, 90, 170, 802 })) {
+        double[] array = new double[] { 0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68 };
+        Algorithms.bucketSort(array);
+        for (double iterable : array) {
             System.out.print(iterable + ", ");
         }
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        Algorithms.insertionSort(new int[] { 1, 2, 1, 1, 6, 8, 1, 9, 3, 6 });
     }
 
     private static int convertToIntSum(String string) {

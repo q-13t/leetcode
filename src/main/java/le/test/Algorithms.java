@@ -1,7 +1,11 @@
 package le.test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 // @SuppressWarnings(value = { "unused" })
-public class Algorithms {
+public class Algorithms<T> {
     /**
      * Returns biggest value in array.
      * </p>
@@ -117,21 +121,50 @@ public class Algorithms {
      * 
      * @param array to sort
      */
-    public static void insertionSort(int[] array) {
+    public static void insertionSort(double[] array) {
         // Iterate over array starting at 1 (0-indexed)
         for (int i = 1; i < array.length; i++) {
             int j = i;
             // Iterate until we meet bigger value or reach start of array
             while (j > 0 && array[j - 1] > array[j]) {
                 // Switch elements
-                int tmp = array[j - 1];
+                double tmp = array[j - 1];
                 array[j - 1] = array[j];
                 array[j] = tmp;
             }
         }
     }
+
+    public static void bucketSort(double[] array) {
+        double[][] buckets = new double[array.length][array.length];
+        for (int i = 0; i < buckets.length; i++) {
+            Arrays.fill(buckets[i], Integer.MIN_VALUE);
+        }
+        int k = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            buckets[(int) (array[i] * 10)][k++] = array[i];
+        }
+        for (int i = 0; i < buckets.length; i++) {
+            insertionSort(buckets[i]);
+        }
+        k = 0;
+        for (int i = 0; i < buckets.length; i++) {
+            for (int j = 0; j < buckets[i].length; j++) {
+                if (buckets[i][j] != Integer.MIN_VALUE)
+                    array[k++] = buckets[i][j];
+            }
+        }
+    }
+
+    public static double[] convertToPrimitive(Double[] input) {
+        double[] output = new double[input.length];
+        for (int i = 0; i < input.length; i++) {
+            output[i] = input[i];
+        }
+        return output;
+    }
 }
 
-// TODO BucketSort
 // TODO HeapSort
 // TODO QuickSort
