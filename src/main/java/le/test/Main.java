@@ -20,23 +20,10 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        // ArrayList<Integer> list = new ArrayList<>();
+        for (int iterable : Algorithms.countingSort(new int[] { 1, 4, 1, 2, 7, 5, 2 })) {
+            System.out.print(iterable + ", ");
+        }
 
-        // list.add(1);
-        // list.add(2);
-        // list.add(3);
-        // list.add(4);
-        // list.add(5);
-        // System.out.println(list);
-
-        // Collections.reverse(list.subList(2 - 1, 4));
-
-        // System.out.println(list);
-        // solution.reverseBetween(new ListNode(1, new ListNode(2, new ListNode(3, new
-        // ListNode(4, new ListNode(5))))), 2,
-        // 4);
-        solution.reverseBetween(new ListNode(3, new ListNode(5)), 1,
-                2);
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
@@ -48,27 +35,6 @@ public class Main {
             sum += (int) c;
         }
         return sum;
-    }
-
-    protected static int[] countingSort(int[] array) {
-        int maxVal = Integer.MIN_VALUE;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > maxVal) {
-                maxVal = array[i];
-            }
-        }
-        int[] count = new int[maxVal + 1];
-        int[] output = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            count[array[i]]++;
-        }
-        for (int i = 1; i <= maxVal; i++) {
-            count[i] += count[i - 1];
-        }
-        for (int i = array.length - 1; i >= 0; i--) {
-            output[--count[array[i]]] = array[i];
-        }
-        return output;
     }
 
     private static int[] generateArrayOfSize(int size, int min, int max) {
