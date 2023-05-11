@@ -17,12 +17,7 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.convert("PAYPALISHIRING", 3));
-
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
-        System.out.println(solution.convert("PAYPALISHIRING", 4));
-        System.out.println(solution.convert("A", 1));
 
     }
 

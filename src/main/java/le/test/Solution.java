@@ -1694,7 +1694,8 @@ public class Solution {
         // create a HashMap to store character mappings from s to t
         HashMap<Character, Character> references = new HashMap<Character, Character>();
 
-        // iterate through string s and map each character to its corresponding character in string t
+        // iterate through string s and map each character to its corresponding
+        // character in string t
         for (int i = 0; i < s.length(); i++) {
             if (!references.containsKey(s.charAt(i))) { // if character in s is not mapped yet
                 if (references.values().contains(t.charAt(i))) { // if character in t is already mapped
@@ -1704,7 +1705,8 @@ public class Solution {
                     references.put(s.charAt(i), t.charAt(i)); // map the characters
                 }
             } else { // if the character in s has already been seen before
-                if (references.get(s.charAt(i)) != t.charAt(i)) { // but the corresponding character in t does not match the current one
+                if (references.get(s.charAt(i)) != t.charAt(i)) { // but the corresponding character in t does not match
+                                                                  // the current one
                     System.gc();// calling garbage collector
                     return false;
                 }
@@ -1714,7 +1716,8 @@ public class Solution {
         // create a new StringBuilder object to hold mapped string
         StringBuilder reference = new StringBuilder();
         for (int i = 0; i < t.length(); i++) {
-            reference.append(references.get(s.charAt(i))); // append each mapped character from s to the new string builder
+            reference.append(references.get(s.charAt(i))); // append each mapped character from s to the new string
+                                                           // builder
         }
         // compare the built string to string t to make sure they are identical
         if (!reference.toString().equals(t)) {
@@ -1745,7 +1748,8 @@ public class Solution {
         // Split the input "s" string into an array of words based on 'space' delimiter
         String[] words = s.split(" ");
 
-        // If the number of words in the string 's' is different from the length of the 'chars' array then return false.
+        // If the number of words in the string 's' is different from the length of the
+        // 'chars' array then return false.
         if (chars.length != words.length) {
             return false;
         }
@@ -1753,7 +1757,8 @@ public class Solution {
         // Create a hash map to store character to word mappings
         HashMap<Character, String> references = new HashMap<>();
 
-        // Loop through each word in the 'words' array and check if it matches with the corresponding character in the 'chars' array
+        // Loop through each word in the 'words' array and check if it matches with the
+        // corresponding character in the 'chars' array
         for (int i = 0; i < words.length; i++) {
 
             // If the 'references' hash map doesn't contain the character or the word
@@ -1764,13 +1769,15 @@ public class Solution {
 
             } else if (references.containsKey(chars[i]) && !references.get(chars[i]).equals(words[i])) {
 
-                // If the 'references' hash map already contains the character but with a different word, return false.
+                // If the 'references' hash map already contains the character but with a
+                // different word, return false.
                 return false;
 
             } else if ((references.containsValue(words[i]) && !references.containsKey(chars[i]))
                     || (!references.containsValue(words[i]) && references.containsKey(chars[i]))) {
 
-                // If the 'references' hash map already contains the word but with a different character, or the opposite, return false.
+                // If the 'references' hash map already contains the word but with a different
+                // character, or the opposite, return false.
                 return false;
             }
         }
@@ -1807,12 +1814,14 @@ public class Solution {
         }
         // iterate over map
         for (int i = 0; i < map.length; i++) {
-            // if any character is missing or insufficient words cannot be anagrams -> return false;
+            // if any character is missing or insufficient words cannot be anagrams ->
+            // return false;
             if (map[i] != 0) {
                 return false;
             }
         }
-        // If all characters met exact amount of times words are anagrams -> return true;
+        // If all characters met exact amount of times words are anagrams -> return
+        // true;
         return true;
     }
 
@@ -1885,7 +1894,8 @@ public class Solution {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(numbers.length);
         // Iterate over whole array
         for (int i = 0; i < numbers.length; i++) {
-            // If map contains key and its index with current index is less or equal k -> free up memory and return true
+            // If map contains key and its index with current index is less or equal k ->
+            // free up memory and return true
             if (map.containsKey(numbers[i]) && Math.abs(map.get(numbers[i]) - i) <= k) {
                 System.gc();
                 return true;
@@ -1893,7 +1903,8 @@ public class Solution {
                 map.put(numbers[i], i);
             }
         }
-        // Free up memory and return false if there was no fulfilling conditions in numbers array
+        // Free up memory and return false if there was no fulfilling conditions in
+        // numbers array
         System.gc();
         return false;
     }
@@ -1967,9 +1978,11 @@ public class Solution {
         int maxContinuous = 1, current = 1;
         // iterate over an array
         for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] == numbers[i - 1])// if there are 2 same numbers in an row don't count them as consecutive -> skip;
+            if (numbers[i] == numbers[i - 1])// if there are 2 same numbers in an row don't count them as consecutive ->
+                                             // skip;
                 continue;
-            else if (numbers[i] - 1 == numbers[i - 1]) {// if numbers are consecutive increase current length and set the max length
+            else if (numbers[i] - 1 == numbers[i - 1]) {// if numbers are consecutive increase current length and set
+                                                        // the max length
                 current++;
                 maxContinuous = maxContinuous > current ? maxContinuous : current;
             } else// if numbers are not consecutive reset current length to 1
@@ -2001,7 +2014,8 @@ public class Solution {
                 return true;
             }
         }
-        // if whole array was iterated -> free up memory and return false, as no duplicates were detected
+        // if whole array was iterated -> free up memory and return false, as no
+        // duplicates were detected
         System.gc();
         return false;
     }
@@ -2312,5 +2326,20 @@ public class Solution {
             }
         }
         return word.toString();
+    }
+
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        Stack<ListNode> nodes = new Stack<>();
+        while (head.next != null) {
+            if (nodes.contains(head)) {
+                return true;
+            }
+            nodes.add(head);
+            head = head.next;
+        }
+        return false;
     }
 }
