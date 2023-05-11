@@ -2,12 +2,15 @@ package le.test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 import java.util.stream.Stream;
+
+import javax.xml.crypto.OctetStreamData;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -17,20 +20,23 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        Node fifth = new Node(1);
-        Node fourth = new Node(10);
-        Node third = new Node(11);
-        Node second = new Node(13);
-        Node first = new Node(7);
-        fourth.next = fifth;
-        fourth.random = first;
-        third.next = fourth;
-        third.random = fifth;
-        second.next = third;
-        second.random = first;
-        first.next = second;
-        first.random = null;
-        System.out.println(solution.copyRandomList(first));
+        // ArrayList<Integer> list = new ArrayList<>();
+
+        // list.add(1);
+        // list.add(2);
+        // list.add(3);
+        // list.add(4);
+        // list.add(5);
+        // System.out.println(list);
+
+        // Collections.reverse(list.subList(2 - 1, 4));
+
+        // System.out.println(list);
+        // solution.reverseBetween(new ListNode(1, new ListNode(2, new ListNode(3, new
+        // ListNode(4, new ListNode(5))))), 2,
+        // 4);
+        solution.reverseBetween(new ListNode(3, new ListNode(5)), 1,
+                2);
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }

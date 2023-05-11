@@ -349,7 +349,8 @@ public class Solution {
     }
 
     /**
-     * Iterates over half of provided {@code number} checking numbers on corresponding indexes *
+     * Iterates over half of provided {@code number} checking numbers on
+     * corresponding indexes *
      * </p>
      * {@code Time O(n)}
      * </p>
@@ -371,7 +372,8 @@ public class Solution {
     }
 
     /**
-     * Iterates over {@code string} in order to determine if given braces are written in correct form.
+     * Iterates over {@code string} in order to determine if given braces are
+     * written in correct form.
      * </p>
      * Only "(", ")", "[", "]", "{", "}" are valid.
      * </p>
@@ -428,7 +430,8 @@ public class Solution {
     }
 
     /**
-     * Iterates over two {@link ListNode}s and merges them into single sorted {@code ListNode}.
+     * Iterates over two {@link ListNode}s and merges them into single sorted
+     * {@code ListNode}.
      * </p>
      * {@code list1 and list2 must be sorted.}
      * </p>
@@ -481,7 +484,8 @@ public class Solution {
     }
 
     /**
-     * Iterates over whole array, replacing greater values right after first entry of smaller. And returns the index of last unique entry.
+     * Iterates over whole array, replacing greater values right after first entry
+     * of smaller. And returns the index of last unique entry.
      * </p>
      * {@code numbs are sorted in ASCENDING order.}
      * </p>
@@ -521,7 +525,8 @@ public class Solution {
     }
 
     /**
-     * Iterates over array once replacing each specified {@code value} with next non equal to value number. And returns amount of values without specified number;
+     * Iterates over array once replacing each specified {@code value} with next non
+     * equal to value number. And returns amount of values without specified number;
      * 
      * </p>
      * {@code Time O(n)}
@@ -1262,7 +1267,8 @@ public class Solution {
     }
 
     /**
-     * This method takes an array of strings and returns the number of similarity groups.
+     * This method takes an array of strings and returns the number of similarity
+     * groups.
      * 
      * @param strings - An array of strings
      */
@@ -1303,7 +1309,9 @@ public class Solution {
     }
 
     /**
-     * This method checks whether two strings are similar or not based on a condition. Two strings are considered similar if they have exactly two different characters, and swapping those two characters would make them
+     * This method checks whether two strings are similar or not based on a
+     * condition. Two strings are considered similar if they have exactly two
+     * different characters, and swapping those two characters would make them
      * equal.
      * 
      * @param first  - First String
@@ -1325,7 +1333,8 @@ public class Solution {
     }
 
     /**
-     * Returns minimum amount of jumps required to get from index 0 to last index of {@code numbs}.
+     * Returns minimum amount of jumps required to get from index 0 to last index of
+     * {@code numbs}.
      * </p>
      * {@code Time O(n^2)}.
      * </p>
@@ -1575,11 +1584,14 @@ public class Solution {
     }
 
     /**
-     * Given an array of integers `numbers` and an integer `target`, finds two numbers in the array that add up to the target, and returns their indices as an integer array.
+     * Given an array of integers `numbers` and an integer `target`, finds two
+     * numbers in the array that add up to the target, and returns their indices as
+     * an integer array.
      *
      * @param numbers An array of integers
      * @param target  The target sum
-     * @return An integer array with the indices of the two numbers that add up to the target
+     * @return An integer array with the indices of the two numbers that add up to
+     *         the target
      */
     public int[] twoSumII(int[] numbers, int target) {
         // If the input array is null or has less than 2 elements, return null
@@ -1607,7 +1619,8 @@ public class Solution {
     }
 
     /**
-     * Using {@code height}s determines te maximum available water that can be stored between them.
+     * Using {@code height}s determines te maximum available water that can be
+     * stored between them.
      * </p>
      * Is calculated as area of rectangle
      * 
@@ -1731,7 +1744,8 @@ public class Solution {
     }
 
     /**
-     * Given a {@code pattern} and a string {@code s}, find if {@code s} follows the same pattern.
+     * Given a {@code pattern} and a string {@code s}, find if {@code s} follows the
+     * same pattern.
      * </p>
      * {@code Time O(n)}.
      * </p>
@@ -1830,8 +1844,10 @@ public class Solution {
      * </p>
      * {@code number} is {@code happy} if:
      * <ul>
-     * <li>Starting with any positive integer, replace the number by the sum of the squares of its digits.</li>
-     * <li>Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.</li>
+     * <li>Starting with any positive integer, replace the number by the sum of the
+     * squares of its digits.</li>
+     * <li>Repeat the process until the number equals 1 (where it will stay), or it
+     * loops endlessly in a cycle which does not include 1.</li>
      * <li>Those numbers for which this process ends in 1 are happy.</li>
      * </ul>
      * 
@@ -1841,7 +1857,8 @@ public class Solution {
      * {@code Space O(k)}.
      * 
      * @param number to be checked.
-     * @return {@code true} if {@code number} is {@code happy}, {@code false otherwise}.
+     * @return {@code true} if {@code number} is {@code happy},
+     *         {@code false otherwise}.
      */
     public boolean isHappy(int number) {
         // Create set to check if we are not in an endless loop
@@ -1879,7 +1896,8 @@ public class Solution {
     }
 
     /**
-     * Checks if there are 2 identical numbers in {@code numbers} within {@code k} distance.
+     * Checks if there are 2 identical numbers in {@code numbers} within {@code k}
+     * distance.
      * </p>
      * {@code Time O(n)}.
      * </p>
@@ -1887,7 +1905,8 @@ public class Solution {
      * 
      * @param numbers
      * @param k       should be > 0
-     * @return {@code true} if there are 2 identical numbers within {@code k} distance, {@code false} otherwise.
+     * @return {@code true} if there are 2 identical numbers within {@code k}
+     *         distance, {@code false} otherwise.
      */
     public boolean containsNearbyDuplicate(int[] numbers, int k) {
         // Initialize HashMap representing [number,index] of numbers array
@@ -2076,7 +2095,8 @@ public class Solution {
      * </p>
      * - Each column must contain the digits 1-9 without repetition.
      * </p>
-     * - Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition. *
+     * - Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9
+     * without repetition. *
      * </p>
      * {@code Time O(n^2)}.
      * </p>
@@ -2361,5 +2381,23 @@ public class Solution {
         }
 
         return map.get(head);
+    }
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ArrayList<ListNode> list = new ArrayList<>();
+        ListNode copy = head;
+        while (copy != null) {
+            list.add(copy);
+            copy = copy.next;
+        }
+        Collections.reverse(list.subList(left - 1, right));
+        copy = list.get(0);
+        ListNode temp = copy;
+        for (int i = 1; i < list.size(); i++) {
+            temp.next = list.get(i);
+            temp = temp.next;
+        }
+        temp.next = null;
+        return copy;
     }
 }
