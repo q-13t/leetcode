@@ -59,7 +59,7 @@ public class Algorithms {
         return sorted;
     }
 
-    private static void countSort(int array[], int exp) {
+    private static void countingSort(int array[], int exp) {
         int length = array.length;
         int output[] = new int[length];
         int i;
@@ -98,10 +98,40 @@ public class Algorithms {
 
         // Iterate over length of biggest element
         for (int exp = 1; maxElementLength / exp > 0; exp *= 10)
-            countSort(array, exp);// Perform counting sort for each digit position
+            countingSort(array, exp);// Perform counting sort for each digit position
 
         // Free up memory and return sorted array
         System.gc();
         return array;
     }
+
+    /**
+     * Sorts array using {@code Insertion} algorithm.
+     * Is inplace function.
+     * *
+     * </p>
+     * {@code Time(N^2)}.
+     * </p>
+     * {@code Space(1)}
+     * </p>
+     * 
+     * @param array to sort
+     */
+    public static void insertionSort(int[] array) {
+        // Iterate over array starting at 1 (0-indexed)
+        for (int i = 1; i < array.length; i++) {
+            int j = i;
+            // Iterate until we meet bigger value or reach start of array
+            while (j > 0 && array[j - 1] > array[j]) {
+                // Switch elements
+                int tmp = array[j - 1];
+                array[j - 1] = array[j];
+                array[j] = tmp;
+            }
+        }
+    }
 }
+
+// TODO BucketSort
+// TODO HeapSort
+// TODO QuickSort

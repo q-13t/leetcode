@@ -30,6 +30,7 @@ public class Main {
             System.out.print(iterable + ", ");
         }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        Algorithms.insertionSort(new int[] { 1, 2, 1, 1, 6, 8, 1, 9, 3, 6 });
     }
 
     private static int convertToIntSum(String string) {
