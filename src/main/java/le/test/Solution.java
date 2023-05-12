@@ -18,52 +18,52 @@ public class Solution {
         char previous = 'a';
         for (char iterable : s.toCharArray()) {
             switch (iterable) {
-            case 'I': {
-                number += 1;
-                break;
-            }
-            case 'V': {
-                number += 5;
-                if (previous == 'I') {
-                    number -= 2;
+                case 'I': {
+                    number += 1;
+                    break;
                 }
-                break;
-            }
-            case 'X': {
-                number += 10;
-                if (previous == 'I') {
-                    number -= 2;
+                case 'V': {
+                    number += 5;
+                    if (previous == 'I') {
+                        number -= 2;
+                    }
+                    break;
                 }
-                break;
-            }
-            case 'L': {
-                number += 50;
-                if (previous == 'X') {
-                    number -= 20;
+                case 'X': {
+                    number += 10;
+                    if (previous == 'I') {
+                        number -= 2;
+                    }
+                    break;
                 }
-                break;
-            }
-            case 'C': {
-                number += 100;
-                if (previous == 'X') {
-                    number -= 20;
+                case 'L': {
+                    number += 50;
+                    if (previous == 'X') {
+                        number -= 20;
+                    }
+                    break;
                 }
-                break;
-            }
-            case 'D': {
-                number += 500;
-                if (previous == 'C') {
-                    number -= 200;
+                case 'C': {
+                    number += 100;
+                    if (previous == 'X') {
+                        number -= 20;
+                    }
+                    break;
                 }
-                break;
-            }
-            case 'M': {
-                number += 1000;
-                if (previous == 'C') {
-                    number -= 200;
+                case 'D': {
+                    number += 500;
+                    if (previous == 'C') {
+                        number -= 200;
+                    }
+                    break;
                 }
-                break;
-            }
+                case 'M': {
+                    number += 1000;
+                    if (previous == 'C') {
+                        number -= 200;
+                    }
+                    break;
+                }
 
             }
             previous = iterable;
@@ -391,36 +391,36 @@ public class Solution {
         Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < string.length(); i++) {
             switch (string.charAt(i)) {
-            case '(': {
-                stack.add('(');
-                break;
-            }
-            case ')': {
-                if (stack.isEmpty() || stack.pop() != '(') {
-                    return false;
+                case '(': {
+                    stack.add('(');
+                    break;
                 }
-                break;
-            }
-            case '{': {
-                stack.add('{');
-                break;
-            }
-            case '}': {
-                if (stack.isEmpty() || stack.pop() != '{') {
-                    return false;
+                case ')': {
+                    if (stack.isEmpty() || stack.pop() != '(') {
+                        return false;
+                    }
+                    break;
                 }
-                break;
-            }
-            case '[': {
-                stack.add('[');
-                break;
-            }
-            case ']': {
-                if (stack.isEmpty() || stack.pop() != '[') {
-                    return false;
+                case '{': {
+                    stack.add('{');
+                    break;
                 }
-                break;
-            }
+                case '}': {
+                    if (stack.isEmpty() || stack.pop() != '{') {
+                        return false;
+                    }
+                    break;
+                }
+                case '[': {
+                    stack.add('[');
+                    break;
+                }
+                case ']': {
+                    if (stack.isEmpty() || stack.pop() != '[') {
+                        return false;
+                    }
+                    break;
+                }
             }
         }
         if (!stack.isEmpty()) {
@@ -2229,35 +2229,35 @@ public class Solution {
         // Iterate over all tokens of RPN
         for (String token : tokens) {
             switch (token) {
-            case "+": {// Perform mathematical calculation
-                a = stack.pop();
-                b = stack.pop();
-                stack.add(b + a);
-                break;
-            }
-            case "-": {// Perform mathematical calculation
-                a = stack.pop();
-                b = stack.pop();
-                stack.add(b - a);
-                break;
-            }
-            case "*": {// Perform mathematical calculation
-                a = stack.pop();
-                b = stack.pop();
-                stack.add(b * a);
-                break;
-            }
-            case "/": {// Perform mathematical calculation
-                a = stack.pop();
-                b = stack.pop();
-                stack.add(b / a);
-                break;
-            }
+                case "+": {// Perform mathematical calculation
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b + a);
+                    break;
+                }
+                case "-": {// Perform mathematical calculation
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b - a);
+                    break;
+                }
+                case "*": {// Perform mathematical calculation
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b * a);
+                    break;
+                }
+                case "/": {// Perform mathematical calculation
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b / a);
+                    break;
+                }
 
-            default: {// expected to be a number -> add to stack
-                stack.add(Integer.valueOf(token));
-                break;
-            }
+                default: {// expected to be a number -> add to stack
+                    stack.add(Integer.valueOf(token));
+                    break;
+                }
             }
         }
         // Free up memory and return last value from stack -> arithmetic result
@@ -2399,5 +2399,45 @@ public class Solution {
         }
         temp.next = null;
         return copy;
+    }
+
+    public String simplifyPath(String path) {
+        path.replaceAll("/+", "/");
+        String[] split = path.split("/");
+        StringBuilder validPath = new StringBuilder();
+        Stack<String> stack = new Stack<>();
+        for (int i = 0; i < split.length; i++) {
+            if (!split[i].equals(""))
+                stack.add(split[i]);
+        }
+        int count = 0;
+        Stack<String> finalStack = new Stack<>();
+
+        while (!stack.isEmpty()) {
+            String current = stack.pop();
+            if (current.equals(".")) {
+                continue;
+            } else if (current.equals("..")) {
+                count++;
+                continue;
+            } else {
+                if (count != 0) {
+                    count--;
+                    continue;
+                } else {
+                    finalStack.add(current);
+                }
+            }
+        }
+        if (finalStack.isEmpty()) {
+            System.gc();
+            return "/";
+        } else {
+            while (!finalStack.isEmpty()) {
+                validPath.append("/" + finalStack.pop());
+            }
+        }
+        System.gc();
+        return validPath.toString();
     }
 }

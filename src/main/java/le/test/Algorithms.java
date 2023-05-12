@@ -1,7 +1,5 @@
 package le.test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 // @SuppressWarnings(value = { "unused" })

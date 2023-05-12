@@ -18,14 +18,14 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-        double[] array = new double[] { 0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68 };
-        Algorithms.bucketSort(array);
-        for (double iterable : array) {
-            System.out.print(iterable + ", ");
-        }
+        // long start = System.currentTimeMillis();
+        // System.out.println(solution.simplifyPath("/home/../"));
+        // System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        // System.out.println(solution.simplifyPath("/../"));
+        // System.out.println(solution.simplifyPath("/home//foo/"));
+        // System.out.println(solution.simplifyPath("/a/./b/../../c/"));
+        System.out.println(solution.simplifyPath("/a/./b/../../c/"));
 
-        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
 
     private static int convertToIntSum(String string) {
