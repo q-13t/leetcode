@@ -2440,4 +2440,18 @@ public class Solution {
         System.gc();
         return validPath.toString();
     }
+
+    public String mergeAlternately(String word1, String word2) {
+        StringBuilder result = new StringBuilder();
+        int first = 0, second = 0;
+        while (result.length() != word1.length() + word2.length()) {
+            if (first < word1.length()) {
+                result.append(word1.charAt(first++));
+            }
+            if (second < word2.length()) {
+                result.append(word2.charAt(second++));
+            }
+        }
+        return result.toString();
+    }
 }

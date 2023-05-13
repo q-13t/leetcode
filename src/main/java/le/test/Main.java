@@ -18,13 +18,11 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        // long start = System.currentTimeMillis();
-        // System.out.println(solution.simplifyPath("/home/../"));
-        // System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        // System.out.println(solution.simplifyPath("/../"));
-        // System.out.println(solution.simplifyPath("/home//foo/"));
-        // System.out.println(solution.simplifyPath("/a/./b/../../c/"));
-        System.out.println(solution.simplifyPath("/a/./b/../../c/"));
+        long start = System.currentTimeMillis();
+        System.out.println(solution.mergeAlternately("abc", "pqr").equals("apbqcr"));
+        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.mergeAlternately("ab", "pqrs").equals("apbqrs"));
+        System.out.println(solution.mergeAlternately("abcd", "pq").equals("apbqcd"));
 
     }
 
