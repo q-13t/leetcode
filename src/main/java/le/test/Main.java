@@ -20,12 +20,8 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.gcdOfStrings("ABCABC", "ABC"));
+        System.out.println(solution.canPlaceFlowers(new int[] { 1, 0, 1, 0, 1, 0, 1 }, 1));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.gcdOfStrings("ABABAB", "ABAB"));
-        System.out.println(solution.gcdOfStrings("LEET", "CODE"));
-        System.out.println(
-                solution.gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"));
 
     }
 
