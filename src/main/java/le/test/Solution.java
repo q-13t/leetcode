@@ -2518,4 +2518,26 @@ public class Solution {
         else
             return false;
     }
+
+    public String reverseVowels(String string) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < string.length(); i++) {
+            char ch = string.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                    || ch == 'O' || ch == 'U') {
+                stack.add(ch);
+            }
+        }
+        for (int i = 0; i < string.length(); i++) {
+            char ch = string.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                    || ch == 'O' || ch == 'U') {
+                result.append(stack.pop());
+            } else {
+                result.append(ch);
+            }
+        }
+        return result.toString();
+    }
 }

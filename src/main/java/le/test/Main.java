@@ -20,8 +20,9 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.canPlaceFlowers(new int[] { 1, 0, 1, 0, 1, 0, 1 }, 1));
+        System.out.println(solution.reverseVowels("hello"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.reverseVowels("leetcode"));
 
     }
 
