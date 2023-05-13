@@ -2454,4 +2454,28 @@ public class Solution {
         }
         return result.toString();
     }
+
+    public String gcdOfStrings(String str1, String str2) {
+        if (str2.length() > str1.length()) {
+            return gcdOfStrings(str2, str1);
+        }
+        StringBuilder gcd = new StringBuilder();
+        Stack<String> results = new Stack<>();
+        for (int i = 0; i < str2.length(); i++) {
+            if (str1.charAt(i) == str2.charAt(i)) {
+                gcd.append(str2.charAt(i));
+                if (str1.replaceAll(gcd.toString(), "").length() == 0 &&
+                        str2.replaceAll(gcd.toString(), "")
+                                .length() == 0) {
+                    results.add(gcd.toString());
+                }
+            }
+        }
+        if (results.isEmpty()) {
+            return "";
+        }
+        return results.pop();
+
+    }
+
 }

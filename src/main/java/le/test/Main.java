@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
@@ -19,10 +20,12 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.mergeAlternately("abc", "pqr").equals("apbqcr"));
+        System.out.println(solution.gcdOfStrings("ABCABC", "ABC"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.mergeAlternately("ab", "pqrs").equals("apbqrs"));
-        System.out.println(solution.mergeAlternately("abcd", "pq").equals("apbqcd"));
+        System.out.println(solution.gcdOfStrings("ABABAB", "ABAB"));
+        System.out.println(solution.gcdOfStrings("LEET", "CODE"));
+        System.out.println(
+                solution.gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"));
 
     }
 
