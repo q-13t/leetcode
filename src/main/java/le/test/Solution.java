@@ -2475,7 +2475,21 @@ public class Solution {
             return "";
         }
         return results.pop();
-
     }
 
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int length = candies.length;
+        int maxCandies = 0;
+        List<Boolean> result = new ArrayList<>(length);
+        for (int i = 0; i < length; i++) {
+            maxCandies = maxCandies < candies[i] ? candies[i] : maxCandies;
+        }
+        for (int i = 0; i < length; i++) {
+            if (candies[i] + extraCandies >= maxCandies)
+                result.add(true);
+            else
+                result.add(false);
+        }
+        return result;
+    }
 }
