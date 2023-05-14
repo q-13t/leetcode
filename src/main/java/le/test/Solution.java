@@ -2579,4 +2579,24 @@ public class Solution {
         }
         return compressed.length();
     }
+
+    public void moveZeroes(int[] numbers) {
+        int m = -1;
+        int tmp = 0;
+        int length = numbers.length;
+        for (int i = 0; i < length; i++) {
+            if (numbers[i] == 0) {
+                if (m == -1 || numbers[m] != 0) {
+                    m = i;
+                }
+            } else {
+                if (m != -1) {
+                    tmp = numbers[i];
+                    numbers[i] = numbers[m];
+                    numbers[m++] = tmp;
+                }
+            }
+        }
+        System.gc();
+    }
 }
