@@ -2540,4 +2540,43 @@ public class Solution {
         }
         return result.toString();
     }
+
+    public int compress(char[] chars) {
+        if (chars.length == 1) {
+            return 1;
+        }
+
+        StringBuilder compressed = new StringBuilder();
+        char previous = chars[0];
+        int amount = 1;
+        for (int i = 1; i < chars.length; i++) {
+            if (i == chars.length - 1) {
+                if (chars[i] == previous) {
+                    compressed.append(previous);
+                    if (amount != 1) {
+                        compressed.append(++amount);
+                    }
+                } else {
+                    compressed.append(previous);
+                    if (amount != 1) {
+                        compressed.append(amount);
+                    }
+                    compressed.append(chars[i]);
+                }
+            } else if (chars[i] == previous) {
+                amount++;
+            } else if (chars[i] != previous) {
+                compressed.append(previous);
+                if (amount != 1) {
+                    compressed.append(amount);
+                }
+                previous = chars[i];
+                amount = 1;
+            }
+        }
+        for (int i = 0; i < compressed.length(); i++) {
+            chars[i] = compressed.charAt(i);
+        }
+        return compressed.length();
+    }
 }
