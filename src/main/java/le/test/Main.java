@@ -19,16 +19,10 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-        System.out.println(solution.compress(new char[] { 'a', 'a', 'b', 'b', 'c',
-                'c', 'c' }));
+        solution.moveZeroes(new int[] { 0, 1, 0, 3, 12 });
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.compress(new char[] { 'a', 'b', 'c' }));
-        System.out.println(solution.compress(new char[] { 'a', 'b', 'b', 'b', 'b',
-                'b', 'b', 'b', 'b', 'b', 'b', 'b',
-                'b' }));
-
+        solution.moveZeroes(new int[] { 0 });
     }
 
     private static int convertToIntSum(String string) {
