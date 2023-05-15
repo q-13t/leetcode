@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
-import java.text.DecimalFormat;
 import java.util.AbstractList;
 
 public class Solution {
@@ -2635,5 +2634,33 @@ public class Solution {
             maxAVG = maxAVG < currentValue ? currentValue : maxAVG;
         }
         return (double) maxAVG / k;
+    }
+
+    public int maxVowels(String s, int k) {
+        int currentVowels = 0;
+        int maxVowels = 0;
+        int i = 0;
+        int j = 0;
+        char atJ = '0';
+        char atI = '0';
+        while (j < s.length()) {
+            atJ = s.charAt(j);
+            if (atJ == 'a' || atJ == 'e' || atJ == 'i' || atJ == 'o' || atJ == 'u') {
+                currentVowels++;
+            }
+            if (j - i + 1 < k) {
+                j++;
+            } else if (j - i + 1 == k) {
+                maxVowels = currentVowels > maxVowels ? currentVowels : maxVowels;
+                atI = s.charAt(i);
+                if (atI == 'a' || atI == 'e' || atI == 'i' || atI == 'o' || atI == 'u') {
+                    currentVowels--;
+                }
+                j++;
+                i++;
+            }
+        }
+        System.gc();
+        return maxVowels;
     }
 }
