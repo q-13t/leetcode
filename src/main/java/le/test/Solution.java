@@ -2678,4 +2678,26 @@ public class Solution {
         }
         return maxHeight;
     }
+
+    public int pivotIndex(int[] numbers) {
+        int length = numbers.length;
+        int[] arrLeft = new int[length];
+        int[] arrRight = new int[length];
+        for (int i = 0; i < length; i++) {// copy the arrays
+            arrLeft[i] = numbers[i];
+            arrRight[i] = numbers[i];
+        }
+        for (int i = 1; i < length; i++) {// sum up the left to right array
+            arrLeft[i] += arrLeft[i - 1];
+        }
+        for (int i = length - 2; i >= 0; i--) {// sum up the right to left array
+            arrRight[i] += arrRight[i + 1];
+        }
+        for (int i = 0; i < length; i++) {
+            if (arrLeft[i] == arrRight[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

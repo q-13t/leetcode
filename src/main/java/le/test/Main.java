@@ -22,8 +22,9 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.maxVowels("abciiidef", 3));
+        // System.out.println(solution.pivotIndex(new int[] { 1, 7, 3, 6, 5, 6 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.pivotIndex(new int[] { 2, 1, -1 }));
 
     }
 
