@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.text.DecimalFormat;
 import java.util.AbstractList;
 
 public class Solution {
@@ -2619,5 +2620,22 @@ public class Solution {
         }
         System.gc();
         return amountOfOperations;
+    }
+
+    public double findMaxAverage(int[] numbers, int k) {
+        double currentAVG = 0f;
+        double maxAVG = Integer.MIN_VALUE;
+        int j = 0;
+        int currentValue = 0;
+        for (int i = 0; i < numbers.length - k + 1; i++) {
+            j = i + k - 1;
+            currentValue = 0;
+            while (j >= i) {
+                currentValue += numbers[j--];
+            }
+            currentAVG = Double.valueOf(currentValue) / Double.valueOf(k);
+            maxAVG = maxAVG < currentAVG ? currentAVG : maxAVG;
+        }
+        return maxAVG;
     }
 }
