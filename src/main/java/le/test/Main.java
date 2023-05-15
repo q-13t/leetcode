@@ -20,9 +20,14 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        solution.moveZeroes(new int[] { 0, 1, 0, 3, 12 });
+
+        System.out
+                .println(solution.maxOperations(new int[] { 4, 4, 1, 3, 1, 3, 2, 2, 5, 5, 1,
+                        5, 2, 1, 2, 3, 5, 4 }, 2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        solution.moveZeroes(new int[] { 0 });
+        System.out.println(solution.maxOperations(new int[] { 1, 2, 3, 4 }, 5));
+        System.out.println(solution.maxOperations(new int[] { 3, 1, 3, 4, 3 }, 6));
+
     }
 
     private static int convertToIntSum(String string) {

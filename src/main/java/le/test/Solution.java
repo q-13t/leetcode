@@ -2599,4 +2599,25 @@ public class Solution {
         }
         System.gc();
     }
+
+    public int maxOperations(int[] numbers, int k) {
+        int amountOfOperations = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int number : numbers) {
+            map.put(number, map.getOrDefault(number, 0) + 1);
+        }
+        for (Integer number : map.keySet()) {
+            if (Double.valueOf(number) == Double.valueOf(k) / 2d) {
+                amountOfOperations += Math.floor(map.get(number) / 2);
+                map.put(number, map.get(number) / 2);
+            } else if (map.get(k - number) != null && (map.get(k - number) != 0 || map.get(number) != 0)) {
+                int amount = Math.min(map.get(number), map.get(k - number));
+                amountOfOperations += amount;
+                map.put(number, map.get(number) - amount);
+                map.put(k - number, map.get(k - number) - amount);
+            }
+        }
+        System.gc();
+        return amountOfOperations;
+    }
 }
