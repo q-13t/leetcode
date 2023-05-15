@@ -2623,8 +2623,7 @@ public class Solution {
     }
 
     public double findMaxAverage(int[] numbers, int k) {
-        double currentAVG = 0f;
-        double maxAVG = Integer.MIN_VALUE;
+        int maxAVG = Integer.MIN_VALUE;
         int j = 0;
         int currentValue = 0;
         for (int i = 0; i < numbers.length - k + 1; i++) {
@@ -2633,9 +2632,8 @@ public class Solution {
             while (j >= i) {
                 currentValue += numbers[j--];
             }
-            currentAVG = Double.valueOf(currentValue) / Double.valueOf(k);
-            maxAVG = maxAVG < currentAVG ? currentAVG : maxAVG;
+            maxAVG = maxAVG < currentValue ? currentValue : maxAVG;
         }
-        return maxAVG;
+        return (double) maxAVG / k;
     }
 }
