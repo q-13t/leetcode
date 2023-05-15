@@ -2663,4 +2663,19 @@ public class Solution {
         System.gc();
         return maxVowels;
     }
+
+    public int largestAltitude(int[] gain) {
+        int[] heights = new int[gain.length + 1];
+        for (int i = 0; i < gain.length; i++) {
+            heights[i + 1] = gain[i];
+        }
+        for (int i = 1; i < heights.length; i++) {
+            heights[i] += heights[i - 1];
+        }
+        int maxHeight = Integer.MIN_VALUE;
+        for (int i = 0; i < heights.length; i++) {
+            maxHeight = heights[i] > maxHeight ? heights[i] : maxHeight;
+        }
+        return maxHeight;
+    }
 }
