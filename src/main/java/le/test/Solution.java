@@ -2700,4 +2700,32 @@ public class Solution {
         }
         return -1;
     }
+
+    public List<List<Integer>> findDifference(int[] numbers1, int[] numbers2) {
+        List<List<Integer>> result = new ArrayList<>() {
+            {
+                add(new ArrayList<>());
+                add(new ArrayList<>());
+            }
+        };
+        Set<Integer> first = new HashSet<>();
+        Set<Integer> second = new HashSet<>();
+        for (int i = 0; i < numbers1.length; i++) {
+            first.add(numbers1[i]);
+        }
+        for (int i = 0; i < numbers2.length; i++) {
+            second.add(numbers2[i]);
+        }
+        for (Integer integer : first) {
+            if (!second.contains(integer)) {
+                result.get(0).add(integer);
+            }
+        }
+        for (Integer integer : second) {
+            if (!first.contains(integer)) {
+                result.get(0).add(integer);
+            }
+        }
+        return result;
+    }
 }
