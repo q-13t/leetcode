@@ -2728,4 +2728,18 @@ public class Solution {
         }
         return result;
     }
+
+    public boolean uniqueOccurrences(int[] arr) {
+        HashMap<Integer, Integer> count = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            count.put(arr[i], count.getOrDefault(arr[i], 0) + 1);
+        }
+        Set<Integer> reference = new HashSet<>();
+        for (Integer integer : count.values()) {
+            if (!reference.add(integer)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
