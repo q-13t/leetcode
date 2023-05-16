@@ -22,10 +22,11 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.closeStrings("a", "aa"));
+        System.out.println(
+                solution.equalPairs(new int[][] { { 3, 1, 2, 2 }, { 1, 4, 4, 5 }, { 2, 4, 2,
+                        2 }, { 2, 4, 2, 2 } }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.closeStrings("cabbba", "abbccc"));
 
     }
 

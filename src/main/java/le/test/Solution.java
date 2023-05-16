@@ -6,7 +6,6 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
@@ -2754,7 +2753,6 @@ public class Solution {
             str2[ch - 'a']++;
             if (str1[ch - 'a'] == 0)
                 return false;
-
         }
         Arrays.sort(str1);
         Arrays.sort(str2);
@@ -2763,5 +2761,33 @@ public class Solution {
                 return false;
 
         return true;
+    }
+
+    public int equalPairs(int[][] grid) {
+        int equalPairs = 0;
+        int nXn = grid.length;
+        ArrayList<ArrayList<Integer>> rows = new ArrayList<>(nXn);
+        ArrayList<ArrayList<Integer>> columns = new ArrayList<>(nXn);
+        for (int i = 0; i < nXn; i++) {
+            rows.add(new ArrayList<>(nXn));
+            for (int j = 0; j < nXn; j++) {
+                rows.get(i).add(grid[i][j]);
+            }
+        }
+
+        for (int i = 0; i < nXn; i++) {
+            columns.add(new ArrayList<>());
+            for (int j = 0; j < nXn; j++) {
+                columns.get(i).add(grid[j][i]);
+            }
+        }
+        for (int i = 0; i < nXn; i++) {
+            for (int j = 0; j < nXn; j++) {
+                if (rows.get(i).equals(columns.get(j))) {
+                    equalPairs++;
+                }
+            }
+        }
+        return equalPairs;
     }
 }
