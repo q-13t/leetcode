@@ -2774,9 +2774,8 @@ public class Solution {
                 rows.get(i).add(grid[i][j]);
             }
         }
-
         for (int i = 0; i < nXn; i++) {
-            columns.add(new ArrayList<>());
+            columns.add(new ArrayList<>(nXn));
             for (int j = 0; j < nXn; j++) {
                 columns.get(i).add(grid[j][i]);
             }
@@ -2789,5 +2788,23 @@ public class Solution {
             }
         }
         return equalPairs;
+    }
+
+    public String removeStars(String s) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        char ch = '0';
+        for (int i = 0; i < s.length(); i++) {
+            ch = s.charAt(i);
+            if (ch == '*') {
+                stack.pop();
+            } else {
+                stack.add(ch);
+            }
+        }
+        for (Character character : stack) {
+            result.append(character);
+        }
+        return result.toString();
     }
 }
