@@ -21,11 +21,12 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-
-        System.out.println(solution.removeStars("leet**cod*e"));
-
+        int[] array = new int[] { 1, 7, 6, 4, 9, 1, 6, 9, 2, 3, 5, 4, 6, 5 };
+        Algorithms.QuickSort(array, 0, array.length - 1);
+        for (Integer integer : array) {
+            System.out.println(integer + ", ");
+        }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
     }
 
     private static int convertToIntSum(String string) {

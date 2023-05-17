@@ -162,7 +162,31 @@ public class Algorithms<T> {
         }
         return output;
     }
+
+    public static void QuickSort(int[] array, int start, int end) {
+        if (start >= end || start < 0) {
+            return;
+        }
+        int pivot = partition(array, start, end);
+        QuickSort(array, start, pivot - 1);
+        QuickSort(array, pivot + 1, end);
+    }
+
+    private static int partition(int[] array, int start, int end) {
+        int pivot = array[start];
+        int i = start + 1;
+        for (int j = i; j <= end; j++) {
+            if (array[j] < pivot) {
+                int tmp = array[i];
+                array[i++] = array[j];
+                array[j] = tmp;
+            }
+        }
+        int tmp = array[start];
+        array[start] = array[i - 1];
+        array[i - 1] = tmp;
+        return i - 1;
+    }
 }
 
 // TODO HeapSort
-// TODO QuickSort
