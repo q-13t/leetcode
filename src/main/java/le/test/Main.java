@@ -21,11 +21,21 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        // System.out.println(solution.deleteMiddle(new ListNode(1,
-        // new ListNode(3, new ListNode(4, new ListNode(7, new ListNode(1, new
-        // ListNode(2, new ListNode(6)))))))));
+        // System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new
+        // ListNode(2, new ListNode(1))))));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.deleteMiddle(new ListNode(1)));
+
+    }
+
+    static int bigSum(int[] arr) {
+        System.out.println(arr.length);
+        int maxSum = 0;
+        for (int i = 0, j = arr.length - 1; i < arr.length / 2 && j >= arr.length / 2; i++, j--) {
+            int sum = arr[i] + arr[j];
+            maxSum = maxSum > sum ? maxSum : sum;
+        }
+        return maxSum;
     }
 
     private static int convertToIntSum(String string) {

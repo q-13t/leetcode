@@ -109,7 +109,7 @@ public class Solution {
         return true;
     }
 
-    private static ListNode reverseListNode(ListNode node) {
+    public static ListNode reverseListNode(ListNode node) {
         ListNode current = node;
         ListNode previous = null;
         while (current != null) {
@@ -2851,4 +2851,38 @@ public class Solution {
 
         return head;
     }
+
+    public ListNode oddEvenList(ListNode head) {
+        Stack<ListNode> odd = new Stack<>();
+        Stack<ListNode> even = new Stack<>();
+        int i = 1;
+        ListNode copy = head;
+        while (copy != null) {
+            if (i % 2 == 0) {
+                even.add(new ListNode(copy.val));
+            } else {
+                odd.add(new ListNode(copy.val));
+            }
+            copy = copy.next;
+            i++;
+        }
+        if (even.isEmpty() && odd.isEmpty()) {
+            return head;
+        }
+        Collections.reverse(even);
+        Collections.reverse(odd);
+        ListNode result = odd.pop();
+        copy = result;
+        while (!odd.isEmpty()) {
+            copy.next = odd.pop();
+            copy = copy.next;
+        }
+        while (!even.isEmpty()) {
+            copy.next = even.pop();
+            if (!even.isEmpty())
+                copy = copy.next;
+        }
+        return result;
+    }
+
 }
