@@ -2,6 +2,7 @@ package le.test;
 
 import java.util.Set;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -108,7 +109,7 @@ public class Solution {
         return true;
     }
 
-    private static ListNode reverseListNode(ListNode node) {
+    public static ListNode reverseListNode(ListNode node) {
         ListNode current = node;
         ListNode previous = null;
         while (current != null) {
@@ -2806,5 +2807,102 @@ public class Solution {
             result.append(character);
         }
         return result.toString();
+    }
+
+    public String predictPartyVictory(String senate) {
+        Queue<Integer> radiant = new LinkedList<>();
+        Queue<Integer> dire = new LinkedList<>();
+        int n = senate.length();
+        for (int i = 0; i < n; i++) {
+            if (senate.charAt(i) == 'R') {
+                radiant.offer(i);
+            } else {
+                dire.offer(i);
+            }
+        }
+        while (!radiant.isEmpty() && !dire.isEmpty()) {
+            if (radiant.poll() < dire.poll()) {
+                radiant.offer(n++);
+            } else {
+                dire.offer(n++);
+            }
+        }
+        return radiant.isEmpty() ? "Dire" : "Radiant";
+    }
+
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        fast = fast.next;
+        if (fast == null) {
+            return slow.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            if (fast == null || fast.next == null) {
+                slow.next = slow.next.next;
+                break;
+            }
+            if (fast.next != null) {
+                fast = fast.next;
+            }
+            slow = slow.next;
+        }
+
+        return head;
+    }
+
+    public ListNode oddEvenList(ListNode head) {
+        Stack<ListNode> odd = new Stack<>();
+        Stack<ListNode> even = new Stack<>();
+        int i = 1;
+        ListNode copy = head;
+        while (copy != null) {
+            if (i % 2 == 0) {
+                even.add(new ListNode(copy.val));
+            } else {
+                odd.add(new ListNode(copy.val));
+            }
+            copy = copy.next;
+            i++;
+        }
+        if (even.isEmpty() && odd.isEmpty()) {
+            return head;
+        }
+        Collections.reverse(even);
+        Collections.reverse(odd);
+        ListNode result = odd.pop();
+        copy = result;
+        while (!odd.isEmpty()) {
+            copy.next = odd.pop();
+            copy = copy.next;
+        }
+        while (!even.isEmpty()) {
+            copy.next = even.pop();
+            if (!even.isEmpty())
+                copy = copy.next;
+        }
+        return result;
+    }
+
+    public int pairSum(ListNode head) {
+        int maxSum = 0;
+        ListNode headCopy = head;
+        ListNode copy = new ListNode();
+        ListNode temp = copy;
+        while (headCopy != null) {
+            temp.val = headCopy.val;
+            temp.next = new ListNode();
+            temp = temp.next;
+            headCopy = headCopy.next;
+        }
+        ListNode reversed = reverseListNode(head);
+        while (copy != null && reversed != null) {
+            int sum = copy.val + reversed.val;
+            maxSum = maxSum > sum ? maxSum : sum;
+            copy = copy.next;
+            reversed = reversed.next;
+        }
+        return maxSum;
     }
 }

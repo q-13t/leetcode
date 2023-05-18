@@ -21,12 +21,20 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        int[] array = new int[] { 1, 7, 6, 4, 9, 1, 6, 9, 2, 3, 5, 4, 6, 5 };
-        Algorithms.QuickSort(array, 0, array.length - 1);
-        for (Integer integer : array) {
-            System.out.print(integer + ", ");
-        }
+        System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+
+    }
+
+    static int bigSum(int[] arr) {
+        System.out.println(arr.length);
+        int maxSum = 0;
+        for (int i = 0, j = arr.length - 1; i < arr.length / 2 && j >= arr.length / 2; i++, j--) {
+            int sum = arr[i] + arr[j];
+            maxSum = maxSum > sum ? maxSum : sum;
+        }
+        return maxSum;
     }
 
     private static int convertToIntSum(String string) {
