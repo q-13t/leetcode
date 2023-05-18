@@ -2,6 +2,7 @@ package le.test;
 
 import java.util.Set;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -2806,5 +2807,48 @@ public class Solution {
             result.append(character);
         }
         return result.toString();
+    }
+
+    public String predictPartyVictory(String senate) {
+        Queue<Integer> radiant = new LinkedList<>();
+        Queue<Integer> dire = new LinkedList<>();
+        int n = senate.length();
+        for (int i = 0; i < n; i++) {
+            if (senate.charAt(i) == 'R') {
+                radiant.offer(i);
+            } else {
+                dire.offer(i);
+            }
+        }
+        while (!radiant.isEmpty() && !dire.isEmpty()) {
+            if (radiant.poll() < dire.poll()) {
+                radiant.offer(n++);
+            } else {
+                dire.offer(n++);
+            }
+        }
+        return radiant.isEmpty() ? "Dire" : "Radiant";
+    }
+
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        fast = fast.next;
+        if (fast == null) {
+            return slow.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            if (fast == null || fast.next == null) {
+                slow.next = slow.next.next;
+                break;
+            }
+            if (fast.next != null) {
+                fast = fast.next;
+            }
+            slow = slow.next;
+        }
+
+        return head;
     }
 }

@@ -21,12 +21,11 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        int[] array = new int[] { 1, 7, 6, 4, 9, 1, 6, 9, 2, 3, 5, 4, 6, 5 };
-        Algorithms.QuickSort(array, 0, array.length - 1);
-        for (Integer integer : array) {
-            System.out.print(integer + ", ");
-        }
+        // System.out.println(solution.deleteMiddle(new ListNode(1,
+        // new ListNode(3, new ListNode(4, new ListNode(7, new ListNode(1, new
+        // ListNode(2, new ListNode(6)))))))));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.deleteMiddle(new ListNode(1)));
     }
 
     private static int convertToIntSum(String string) {
