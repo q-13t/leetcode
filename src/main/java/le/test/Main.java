@@ -21,8 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        // System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new
-        // ListNode(2, new ListNode(1))))));
+        System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 

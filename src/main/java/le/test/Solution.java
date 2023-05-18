@@ -2885,4 +2885,24 @@ public class Solution {
         return result;
     }
 
+    public int pairSum(ListNode head) {
+        int maxSum = 0;
+        ListNode headCopy = head;
+        ListNode copy = new ListNode();
+        ListNode temp = copy;
+        while (headCopy != null) {
+            temp.val = headCopy.val;
+            temp.next = new ListNode();
+            temp = temp.next;
+            headCopy = headCopy.next;
+        }
+        ListNode reversed = reverseListNode(head);
+        while (copy != null && reversed != null) {
+            int sum = copy.val + reversed.val;
+            maxSum = maxSum > sum ? maxSum : sum;
+            copy = copy.next;
+            reversed = reversed.next;
+        }
+        return maxSum;
+    }
 }
