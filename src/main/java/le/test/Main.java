@@ -21,10 +21,10 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
-
+        TreeNode first = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 0, 1, 1, 2, 3, 3, 2 });
+        TreeNode second = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 0, 1, 1, 2, 3, 3, 2 });
+        System.out.println(solution.leafSimilar(first, second));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
     }
 
     static int bigSum(int[] arr) {
