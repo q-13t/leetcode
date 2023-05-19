@@ -2927,4 +2927,28 @@ public class Solution {
             getLeafNodes(node.right, stack);
         }
     }
+
+    Stack<Integer> MaxValues = new Stack<>();
+    int goodNodes = 0;
+
+    public int goodNodes(TreeNode root) {
+        if (root == null) {
+            return goodNodes;
+        } else {
+            if (!MaxValues.isEmpty() && MaxValues.peek() <= root.val) {
+                goodNodes++;
+                MaxValues.add(root.val);
+            } else if (MaxValues.isEmpty()) {
+                goodNodes++;
+                MaxValues.add(root.val);
+            }
+            goodNodes(root.left);
+            goodNodes(root.right);
+            if (!MaxValues.isEmpty() && MaxValues.peek() == root.val) {
+                MaxValues.pop();
+            }
+        }
+        return goodNodes;
+    }
+
 }

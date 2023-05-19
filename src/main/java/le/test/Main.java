@@ -20,10 +20,9 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
+        TreeNode first = TreeNode.buildTree(new int[] { 3, 1, 4, 3, 1, 5 });
         long start = System.currentTimeMillis();
-        TreeNode first = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 0, 1, 1, 2, 3, 3, 2 });
-        TreeNode second = TreeNode.buildTree(new int[] { 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 0, 1, 1, 2, 3, 3, 2 });
-        System.out.println(solution.leafSimilar(first, second));
+        System.out.println(solution.goodNodes(first));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
 
