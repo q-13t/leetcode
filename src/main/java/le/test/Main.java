@@ -20,11 +20,10 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
+        TreeNode first = TreeNode.buildTree(new int[] { 3, 1, 4, 3, 1, 5 });
         long start = System.currentTimeMillis();
-        System.out.println(solution.pairSum(new ListNode(5, new ListNode(4, new ListNode(2, new ListNode(1))))));
-
+        System.out.println(solution.goodNodes(first));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
     }
 
     static int bigSum(int[] arr) {
