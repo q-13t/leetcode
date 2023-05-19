@@ -2905,4 +2905,50 @@ public class Solution {
         }
         return maxSum;
     }
+
+    public boolean leafSimilar(TreeNode first, TreeNode second) {
+        Stack<Integer> FirstTree = new Stack<>();
+        getLeafNodes(first, FirstTree);
+
+        Stack<Integer> SecondTree = new Stack<>();
+        getLeafNodes(second, SecondTree);
+
+        return FirstTree.equals(SecondTree);
+    }
+
+    private void getLeafNodes(TreeNode node, Stack<Integer> stack) {
+        if (node == null) {
+            return;
+        }
+        if (node.left == null && node.right == null) {
+            stack.add(node.val);
+        } else {
+            getLeafNodes(node.left, stack);
+            getLeafNodes(node.right, stack);
+        }
+    }
+
+    Stack<Integer> MaxValues = new Stack<>();
+    int goodNodes = 0;
+
+    public int goodNodes(TreeNode root) {
+        if (root == null) {
+            return goodNodes;
+        } else {
+            if (!MaxValues.isEmpty() && MaxValues.peek() <= root.val) {
+                goodNodes++;
+                MaxValues.add(root.val);
+            } else if (MaxValues.isEmpty()) {
+                goodNodes++;
+                MaxValues.add(root.val);
+            }
+            goodNodes(root.left);
+            goodNodes(root.right);
+            if (!MaxValues.isEmpty() && MaxValues.peek() == root.val) {
+                MaxValues.pop();
+            }
+        }
+        return goodNodes;
+    }
+
 }
