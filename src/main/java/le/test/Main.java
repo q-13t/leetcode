@@ -20,9 +20,9 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        TreeNode first = TreeNode.buildTree(new int[] { 3, 1, 4, 3, 1, 5 });
+        TreeNode headNode = TreeNode.buildTree(new int[] { 10, 5, -3, 3, 2, 11, 3, -2, 1 });
         long start = System.currentTimeMillis();
-        System.out.println(solution.goodNodes(first));
+        System.out.println(solution.pathSum(headNode, 8));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
 
