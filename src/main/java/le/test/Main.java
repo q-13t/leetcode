@@ -20,9 +20,10 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        TreeNode headNode = TreeNode.buildTree(new int[] { 10, 5, -3, 3, 2, 11, 3, -2, 1 });
+        TreeNode headNode = TreeNode.buildTree(new int[] { 4, 2, 7, 1, 3 });
         long start = System.currentTimeMillis();
-        System.out.println(solution.pathSum(headNode, 8));
+        TreeNode.printLevelOrder(solution.searchBST(headNode, 2));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
 
