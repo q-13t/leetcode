@@ -2951,4 +2951,28 @@ public class Solution {
         return goodNodes;
     }
 
+    ArrayList<Integer> numbs = new ArrayList<>();
+    int sumAmount = 0;
+
+    public int pathSum(TreeNode root, int targetSum) {
+        if (root == null) {
+            return sumAmount;
+        } else {
+            numbs.add(root.val);
+        }
+        long currentSum = 0;
+        for (int i = numbs.size() - 1; i >= 0; i--) {
+            currentSum += numbs.get(i);
+            if (currentSum == targetSum) {
+                sumAmount++;
+            }
+        }
+
+        pathSum(root.left, targetSum);
+        pathSum(root.right, targetSum);
+        if (!numbs.isEmpty()) {
+            numbs.remove(numbs.size() - 1);
+        }
+        return sumAmount;
+    }
 }
