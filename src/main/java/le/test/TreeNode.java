@@ -55,11 +55,7 @@ public class TreeNode {
 
     public static TreeNode rebalanceBST(TreeNode root) {
         ArrayList<Integer> treeValuesInOrder = getTreeValuesInOrder(root, new ArrayList<Integer>());
-        int[] numbers = new int[treeValuesInOrder.size()];
-        for (int i = 0; i < treeValuesInOrder.size(); i++) {
-            numbers[i] = treeValuesInOrder.get(i);
-        }
-        return buildBalancedBSTFromSortedArray(numbers, 0, numbers.length);
+        return buildBalancedBSTFromSortedArray(treeValuesInOrder, 0, treeValuesInOrder.size() - 1);
     }
 
     private static ArrayList<Integer> getTreeValuesInOrder(TreeNode root, ArrayList<Integer> arrayList) {
@@ -72,12 +68,15 @@ public class TreeNode {
         return arrayList;
     }
 
-    public static TreeNode buildBalancedBSTFromSortedArray(int[] array, int start, int end) {
-        int mid = (end - start) / 2;
-        TreeNode root = new TreeNode(array[mid]);
+    public static TreeNode buildBalancedBSTFromSortedArray(ArrayList<Integer> arrayList, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+        int mid = (end + start) / 2;
+        TreeNode root = new TreeNode(arrayList.get(mid));
 
-        root.left = buildBalancedBSTFromSortedArray(array, start, mid - 1);
-        root.right = buildBalancedBSTFromSortedArray(array, mid + 1, end);
+        root.left = buildBalancedBSTFromSortedArray(arrayList, start, mid - 1);
+        root.right = buildBalancedBSTFromSortedArray(arrayList, mid + 1, end);
 
         return root;
     }
