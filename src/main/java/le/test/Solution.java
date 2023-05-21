@@ -3008,4 +3008,25 @@ public class Solution extends GuessGame {
         }
         return -1;
     }
+
+    public int[] successfulPairs(int[] spells, int[] potions, long success) {
+        int length = spells.length;
+        int[] combinations = new int[length];
+        Arrays.sort(potions);
+        for (int i = 0; i < length; i++) {
+            int start = 0;
+            int end = potions.length - 1;
+            while (start <= end) {
+                int middle = start + (end - start) / 2;
+                long result = (long) potions[middle] * spells[i];
+                if (result >= success) {
+                    end = middle - 1;
+                } else {
+                    start = middle + 1;
+                }
+            }
+            combinations[i] = potions.length - start;
+        }
+        return combinations;
+    }
 }

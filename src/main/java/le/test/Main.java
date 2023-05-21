@@ -22,8 +22,14 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.guessNumber(2126753390));
+        // for (Integer iterable : solution.successfulPairs(new int[] { 5, 1, 3 }, new
+        // int[] { 1, 2, 3, 4, 5 }, 7)) {
+        // System.out.print(iterable + ", ");
+        // }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        for (Integer iterable : solution.successfulPairs(new int[] { 3, 1, 2 }, new int[] { 8, 5, 8 }, 16)) {
+            System.out.print(iterable + ", ");
+        }
     }
 
     static int bigSum(int[] arr) {
