@@ -20,12 +20,15 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        TreeNode headNode = TreeNode.buildBST(new int[] { 5, 3, 6, 2, 4, 7 });
+        TreeNode tree = new TreeNode();
+        tree = new TreeNode(10);
+        tree.left = new TreeNode(8);
+        tree.left.left = new TreeNode(7);
+        tree.left.left.left = new TreeNode(6);
+        tree.left.left.left.left = new TreeNode(5);
         long start = System.currentTimeMillis();
-        TreeNode.printLevelOrder(headNode);
-        System.out.println();
-        TreeNode.deleteFromBST(headNode, 4);
-        TreeNode.printLevelOrder(headNode);
+
+        TreeNode.printLevelOrder(TreeNode.rebalanceBST(tree));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
