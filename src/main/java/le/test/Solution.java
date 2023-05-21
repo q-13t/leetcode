@@ -14,10 +14,6 @@ import java.util.AbstractList;
 
 public class Solution extends GuessGame {
 
-    Solution(int maximum) {
-        super(maximum);
-    }
-
     public int romanToInt(String s) {
         int number = 0;
         char previous = 'a';
@@ -2989,5 +2985,27 @@ public class Solution extends GuessGame {
         }
         System.gc();
         return root.val > val ? searchBST(root.left, val) : searchBST(root.right, val);
+    }
+
+    public int guessNumber(int n) {
+        int boundMax = n;
+        int boundMin = 0;
+        int mid = 0;
+        while (boundMin <= boundMax) {
+            mid = boundMin + (boundMax - boundMin) / 2;
+            switch (guess(mid)) {
+                case 1: {
+                    boundMin = mid + 1;
+                    break;
+                }
+                case -1: {
+                    boundMax = mid - 1;
+                    break;
+                }
+                default:
+                    return mid;
+            }
+        }
+        return -1;
     }
 }
