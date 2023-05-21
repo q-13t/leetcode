@@ -12,7 +12,11 @@ import java.util.LinkedList;
 import java.util.Collections;
 import java.util.AbstractList;
 
-public class Solution {
+public class Solution extends GuessGame {
+
+    Solution(int maximum) {
+        super(maximum);
+    }
 
     public int romanToInt(String s) {
         int number = 0;
