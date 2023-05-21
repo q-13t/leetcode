@@ -47,12 +47,12 @@ public class TreeNode {
     public static TreeNode buildBST(int[] numbers) {
         TreeNode root = new TreeNode(numbers[0]);
         for (int i = 1; i < numbers.length; i++) {
-            root = insertIntoBST(root, numbers[i]);
+            root = root.insertIntoBST(root, numbers[i]);
         }
         return root;
     }
 
-    private static TreeNode insertIntoBST(TreeNode root, int number) {
+    private TreeNode insertIntoBST(TreeNode root, int number) {
         if (root == null) {
             return new TreeNode(number);
         }
@@ -62,6 +62,35 @@ public class TreeNode {
             root.left = insertIntoBST(root.left, number);
         }
         return root;
+    }
+
+    public static TreeNode deleteFromBST(TreeNode root, int number) {
+        if (root == null)
+            return root;
+
+        if (root.val > number)
+            root.left = deleteFromBST(root.left, number);
+        else if (root.val < number)
+            root.right = deleteFromBST(root.right, number);
+        else {
+            if (root.right == null)
+                return root.left;
+            else if (root.left == null)
+                return root.right;
+
+            root.val = minTreeValue(root.right);
+            root.right = deleteFromBST(root.right, root.val);
+        }
+        return root;
+    }
+
+    private static int minTreeValue(TreeNode node) {
+        int minVal = Integer.MIN_VALUE;
+        while (node != null) {
+            minVal = node.val;
+            node = node.left;
+        }
+        return minVal;
     }
 
     public static void printPreOrder(TreeNode node) {

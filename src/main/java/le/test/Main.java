@@ -23,6 +23,9 @@ public class Main {
         TreeNode headNode = TreeNode.buildBST(new int[] { 5, 3, 6, 2, 4, 7 });
         long start = System.currentTimeMillis();
         TreeNode.printLevelOrder(headNode);
+        System.out.println();
+        TreeNode.deleteFromBST(headNode, 4);
+        TreeNode.printLevelOrder(headNode);
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
