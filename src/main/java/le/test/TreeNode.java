@@ -52,6 +52,16 @@ public class TreeNode {
         return root;
     }
 
+    public static TreeNode buildBalancedBSTFromSortedArray(int[] array, int start, int end) {
+        int mid = (end - start) / 2;
+        TreeNode root = new TreeNode(array[mid]);
+
+        root.left = buildBalancedBSTFromSortedArray(array, start, mid - 1);
+        root.right = buildBalancedBSTFromSortedArray(array, mid + 1, end);
+
+        return root;
+    }
+
     private TreeNode insertIntoBST(TreeNode root, int number) {
         if (root == null) {
             return new TreeNode(number);
