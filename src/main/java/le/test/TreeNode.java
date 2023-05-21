@@ -1,5 +1,6 @@
 package le.test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -50,6 +51,25 @@ public class TreeNode {
             root = root.insertIntoBST(root, numbers[i]);
         }
         return root;
+    }
+
+    public static TreeNode rebalanceBST(TreeNode root) {
+        ArrayList<Integer> treeValuesInOrder = getTreeValuesInOrder(root, new ArrayList<Integer>());
+        int[] numbers = new int[treeValuesInOrder.size()];
+        for (int i = 0; i < treeValuesInOrder.size(); i++) {
+            numbers[i] = treeValuesInOrder.get(i);
+        }
+        return buildBalancedBSTFromSortedArray(numbers, 0, numbers.length);
+    }
+
+    private static ArrayList<Integer> getTreeValuesInOrder(TreeNode root, ArrayList<Integer> arrayList) {
+        if (root == null) {
+            return arrayList;
+        }
+        getTreeValuesInOrder(root.left, arrayList);
+        arrayList.add(root.val);
+        getTreeValuesInOrder(root.right, arrayList);
+        return arrayList;
     }
 
     public static TreeNode buildBalancedBSTFromSortedArray(int[] array, int start, int end) {
