@@ -44,6 +44,26 @@ public class TreeNode {
         return root;
     }
 
+    public static TreeNode buildBST(int[] numbers) {
+        TreeNode root = new TreeNode(numbers[0]);
+        for (int i = 1; i < numbers.length; i++) {
+            root = insertIntoBST(root, numbers[i]);
+        }
+        return root;
+    }
+
+    private static TreeNode insertIntoBST(TreeNode root, int number) {
+        if (root == null) {
+            return new TreeNode(number);
+        }
+        if (root.val > number) {
+            root.right = insertIntoBST(root.right, number);
+        } else {
+            root.left = insertIntoBST(root.left, number);
+        }
+        return root;
+    }
+
     public static void printPreOrder(TreeNode node) {
         if (node == null) {
             return;

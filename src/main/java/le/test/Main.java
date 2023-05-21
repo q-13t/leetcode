@@ -20,9 +20,9 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        TreeNode headNode = TreeNode.buildTree(new int[] { 4, 2, 7, 1, 3 });
+        TreeNode headNode = TreeNode.buildBST(new int[] { 5, 3, 6, 2, 4, 7 });
         long start = System.currentTimeMillis();
-        TreeNode.printLevelOrder(solution.searchBST(headNode, 2));
+        TreeNode.printLevelOrder(headNode);
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
