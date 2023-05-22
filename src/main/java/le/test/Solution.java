@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -3066,5 +3067,27 @@ public class Solution extends GuessGame {
             }
         }
         return left;
+    }
+
+    public int[] countBits(int n) {
+        int[] answer = new int[n + 1];
+        for (int i = 0; i < n + 1; i++) {
+            int sum = 0;
+            for (char charArray : convertIntToBinaryString(i).toCharArray()) {
+                if (charArray == '1')
+                    sum++;
+            }
+            answer[i] = sum;
+        }
+        return answer;
+    }
+
+    public static String convertIntToBinaryString(int number) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 31; i >= 0; i--) {
+            int mask = 1 << i;
+            result.append((number & mask) != 0 ? "1" : "0");
+        }
+        return result.toString();
     }
 }
