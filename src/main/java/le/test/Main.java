@@ -22,10 +22,8 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        // System.out.println(solution.findPeakElement(new int[] { 1, 2, 1, 3, 5, 6, 4
-        // }));
-        // System.out.println(solution.findPeakElement(new int[] { 1 }));
-        System.out.println(solution.findPeakElement(new int[] { 1, 2 }));
+        System.out.println(solution.minEatingSpeed(new int[] { 3, 6, 7, 11 }, 8));
+        System.out.println(solution.minEatingSpeed(new int[] { 30, 11, 23, 4, 20 }, 5));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
