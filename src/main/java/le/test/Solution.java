@@ -3029,4 +3029,18 @@ public class Solution extends GuessGame {
         }
         return combinations;
     }
+
+    public int findPeakElement(int[] numbers) {
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (numbers[mid] >= numbers[mid + 1]) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
 }

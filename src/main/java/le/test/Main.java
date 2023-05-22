@@ -22,14 +22,12 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        // for (Integer iterable : solution.successfulPairs(new int[] { 5, 1, 3 }, new
-        // int[] { 1, 2, 3, 4, 5 }, 7)) {
-        // System.out.print(iterable + ", ");
-        // }
+        // System.out.println(solution.findPeakElement(new int[] { 1, 2, 1, 3, 5, 6, 4
+        // }));
+        // System.out.println(solution.findPeakElement(new int[] { 1 }));
+        System.out.println(solution.findPeakElement(new int[] { 1, 2 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        for (Integer iterable : solution.successfulPairs(new int[] { 3, 1, 2 }, new int[] { 8, 5, 8 }, 16)) {
-            System.out.print(iterable + ", ");
-        }
+
     }
 
     static int bigSum(int[] arr) {
