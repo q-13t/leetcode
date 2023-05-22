@@ -3090,4 +3090,30 @@ public class Solution extends GuessGame {
         }
         return result.toString();
     }
+
+    public int tribonacci(int n) {
+        if (n == 0) {
+            return 0;
+        } else if (n == 1 || n == 2) {
+            return 1;
+        } else {
+            Stack<Integer> stack = new Stack<>();
+            stack.add(0);
+            stack.add(1);
+            stack.add(1);
+            for (int i = 3; i <= n; i++) {
+                int third = stack.pop();
+                int second = stack.pop();
+                int first = stack.pop();
+                first = first + second + third;
+                stack.add(second);
+                stack.add(third);
+                stack.add(first);
+            }
+
+            return stack.pop();
+        }
+
+    }
+
 }

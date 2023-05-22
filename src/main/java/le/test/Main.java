@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.countBits(5));
+        System.out.println(solution.tribonacci(25));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
