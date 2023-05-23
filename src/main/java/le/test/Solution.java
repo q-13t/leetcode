@@ -4,9 +4,8 @@ import java.util.Set;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.TreeMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.Arrays;
+import java.util.TreeMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
@@ -3243,5 +3242,62 @@ public class Solution extends GuessGame {
         if (rooms.size() != visited.size())// If some rooms were not visited return false
             return false;
         return true;
+    }
+
+    /**
+     * Given {@code isConnected} as and 2 dimensional array checks how many
+     * {@code Province}s is in there.
+     * </p>
+     * A {@code Province} is a group of directly or indirectly connected cities and
+     * no other
+     * cities outside of the group.
+     * 
+     * </p>
+     * {@code Time O(N^3)}. N as amount of cities.
+     * </p>
+     * {@code Space O(N)}.N as amount of cities.
+     * </p>
+     * 
+     * @param isConnected
+     * @return number of {@code Provinces}
+     */
+    public int findCircleNum(int[][] isConnected) {
+        Set<Integer> visited = new HashSet<>();
+        int cities = isConnected.length;
+        int provinces = 0;
+
+        // perform graph traversal for all cities
+        while (visited.size() != cities) {
+            for (int i = 0; i < cities; i++) {
+                if (!visited.contains(i)) {
+                    provinces++;
+                    traverseProvince(isConnected, visited, i);// call traverseProvince for not visited city
+                }
+            }
+        }
+        System.gc();
+        return provinces;
+    }
+
+    /**
+     * A helper function for traversing {@code Province} starting at {@code city}.
+     * 
+     * @param isConnected
+     * @param visited
+     * @param city
+     */
+    private void traverseProvince(int[][] isConnected, Set<Integer> visited, int city) {
+        Stack<Integer> cityStack = new Stack<>();
+        cityStack.push(city);
+        while (!cityStack.isEmpty()) {
+            int current = cityStack.pop();
+            if (visited.add(current)) {// mark city as visited and if it was not previously get all neighboring with it
+                                       // cities
+                for (int i = 0; i < isConnected.length; i++) {
+                    if (isConnected[current][i] == 1)
+                        cityStack.push(i);
+                }
+            }
+        }
     }
 }
