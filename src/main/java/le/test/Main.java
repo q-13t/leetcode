@@ -22,30 +22,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<List<Integer>> rooms = new ArrayList<>();
-        // rooms.add(new ArrayList<>());
-        // rooms.get(0).add(1);
-        // rooms.get(0).add(3);
-        // rooms.add(new ArrayList<>());
-        // rooms.get(1).add(3);
-        // rooms.get(1).add(0);
-        // rooms.get(1).add(1);
-        // rooms.add(new ArrayList<>());
-        // rooms.get(2).add(2);
-        // rooms.add(new ArrayList<>());
-        // rooms.get(3).add(0);
+        int[][] cities = new int[][] {
+                { 1, 1, 0 },
+                { 1, 1, 0 },
+                { 0, 0, 1 }
+        };
         long start = System.currentTimeMillis();
-        // System.out.println(solution.canVisitAllRooms(rooms));
+        System.out.println(solution.findCircleNum(cities));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        rooms.clear();
-        rooms.add(new ArrayList<>());
-        rooms.add(new ArrayList<>());
-        rooms.add(new ArrayList<>());
-        rooms.add(new ArrayList<>());
-        rooms.get(0).addAll(Arrays.asList(1));
-        rooms.get(1).addAll(Arrays.asList(2));
-        rooms.get(2).addAll(Arrays.asList(3));
-        System.out.println(solution.canVisitAllRooms(rooms));
     }
 
     static int bigSum(int[] arr) {
