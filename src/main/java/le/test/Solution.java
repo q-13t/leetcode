@@ -3116,17 +3116,40 @@ public class Solution extends GuessGame {
 
     }
 
+    /**
+     * Returns values visible from "right" side of {@code root}.
+     * 
+     * </p>
+     * {@code Time O(n)}. As amount of nodes in {@code root}.
+     * </p>
+     * {@code Space O(k)}. As amount of values visible from "right" side of
+     * {@code root}.
+     * </p>
+     * 
+     * @param root
+     * @return List of values
+     */
     public List<Integer> rightSideView(TreeNode root) {
-        return new ArrayList<Integer>(getRightSideView(root, new TreeMap<>(), 0).values());
+        return new ArrayList<Integer>(getRightSideView(root, new TreeMap<>(), 0).values());// call getRightSideView and
+                                                                                           // convert values to
+                                                                                           // ArrayList
     }
 
+    /**
+     * Helper function for {@link #rightSideView(TreeNode)}.
+     * 
+     * @param root
+     * @param map           TreeMap to store <Depth,Value> of nodes
+     * @param current_depth Expected to be 0
+     * @return TreeMap of numbers visible from "right" side of {@code root}
+     */
     private TreeMap<Integer, Integer> getRightSideView(TreeNode root, TreeMap<Integer, Integer> map,
             int current_depth) {
         if (root == null) {
             return map;
         } else {
             current_depth++;
-            map.put(current_depth, root.val);
+            map.put(current_depth, root.val);// put or change value at current depth
             getRightSideView(root.left, map, current_depth);
             getRightSideView(root.right, map, current_depth);
             current_depth--;
