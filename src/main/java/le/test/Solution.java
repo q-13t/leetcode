@@ -3156,4 +3156,59 @@ public class Solution extends GuessGame {
             return map;
         }
     }
+
+    /**
+     * Searches for level in {@code root} with the biggest sum.
+     * *
+     * </p>
+     * {@code Time O(n)}. As amount of nodes in {@code root}.
+     * </p>
+     * {@code Space O(h+n)}. h as height of {@code root}.
+     * </p>
+     * 
+     * @param root
+     * @return
+     */
+    public int maxLevelSum(TreeNode root) {
+        ArrayList<ArrayList<Integer>> levelValues = getLevelValues(root, new ArrayList<ArrayList<Integer>>(), 0);
+        int maxSum = Integer.MIN_VALUE;
+        int level = 1;
+        int resultLevel = 0;
+        for (ArrayList<Integer> list : levelValues) {
+            int sum = 0;
+            for (Integer iterable : list) {
+                sum += iterable;
+            }
+            if (maxSum < sum) {
+                maxSum = sum;
+                resultLevel = level;
+            }
+            level++;
+        }
+        return resultLevel;
+    }
+
+    /**
+     * Helper function for {@link #maxLevelSum(TreeNode)}.
+     * 
+     * @param root
+     * @param list
+     * @param currentDepth expected to be passed 0.
+     * @return ArrayList with ArrayList as each level and values in it.
+     */
+    private ArrayList<ArrayList<Integer>> getLevelValues(TreeNode root, ArrayList<ArrayList<Integer>> list,
+            int currentDepth) {
+        if (root == null) {
+            return list;
+        }
+        currentDepth++;
+        if (list.size() < currentDepth) {// if this depth was not visited add new "level" to the list
+            list.add(new ArrayList<>());
+        }
+        list.get(currentDepth - 1).add(root.val);// add value of root to the list
+        getLevelValues(root.left, list, currentDepth);
+        getLevelValues(root.right, list, currentDepth);
+        currentDepth--;
+        return list;
+    }
 }
