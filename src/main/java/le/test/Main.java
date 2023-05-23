@@ -22,8 +22,8 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.minEatingSpeed(new int[] { 3, 6, 7, 11 }, 8));
-        System.out.println(solution.minEatingSpeed(new int[] { 30, 11, 23, 4, 20 }, 5));
+        System.out.println(solution.maxLevelSum(TreeNode.buildTree(new int[] { 1, 7, 0, 7, -8 })));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }

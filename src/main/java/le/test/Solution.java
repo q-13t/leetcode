@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.TreeMap;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -3066,5 +3067,148 @@ public class Solution extends GuessGame {
             }
         }
         return left;
+    }
+
+    public int[] countBits(int n) {
+        int[] answer = new int[n + 1];
+        for (int i = 0; i < n + 1; i++) {
+            int sum = 0;
+            for (char charArray : convertIntToBinaryString(i).toCharArray()) {
+                if (charArray == '1')
+                    sum++;
+            }
+            answer[i] = sum;
+        }
+        return answer;
+    }
+
+    public static String convertIntToBinaryString(int number) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 31; i >= 0; i--) {
+            int mask = 1 << i;
+            result.append((number & mask) != 0 ? "1" : "0");
+        }
+        return result.toString();
+    }
+
+    public int tribonacci(int n) {
+        if (n == 0) {
+            return 0;
+        } else if (n == 1 || n == 2) {
+            return 1;
+        } else {
+            Stack<Integer> stack = new Stack<>();
+            stack.add(0);
+            stack.add(1);
+            stack.add(1);
+            for (int i = 3; i <= n; i++) {
+                int third = stack.pop();
+                int second = stack.pop();
+                int first = stack.pop();
+                first = first + second + third;
+                stack.add(second);
+                stack.add(third);
+                stack.add(first);
+            }
+
+            return stack.pop();
+        }
+
+    }
+
+    /**
+     * Returns values visible from "right" side of {@code root}.
+     * 
+     * </p>
+     * {@code Time O(n)}. As amount of nodes in {@code root}.
+     * </p>
+     * {@code Space O(k)}. As amount of values visible from "right" side of
+     * {@code root}.
+     * </p>
+     * 
+     * @param root
+     * @return List of values
+     */
+    public List<Integer> rightSideView(TreeNode root) {
+        return new ArrayList<Integer>(getRightSideView(root, new TreeMap<>(), 0).values());// call getRightSideView and
+                                                                                           // convert values to
+                                                                                           // ArrayList
+    }
+
+    /**
+     * Helper function for {@link #rightSideView(TreeNode)}.
+     * 
+     * @param root
+     * @param map           TreeMap to store <Depth,Value> of nodes
+     * @param current_depth Expected to be 0
+     * @return TreeMap of numbers visible from "right" side of {@code root}
+     */
+    private TreeMap<Integer, Integer> getRightSideView(TreeNode root, TreeMap<Integer, Integer> map,
+            int current_depth) {
+        if (root == null) {
+            return map;
+        } else {
+            current_depth++;
+            map.put(current_depth, root.val);// put or change value at current depth
+            getRightSideView(root.left, map, current_depth);
+            getRightSideView(root.right, map, current_depth);
+            current_depth--;
+            return map;
+        }
+    }
+
+    /**
+     * Searches for level in {@code root} with the biggest sum.
+     * *
+     * </p>
+     * {@code Time O(n)}. As amount of nodes in {@code root}.
+     * </p>
+     * {@code Space O(h+n)}. h as height of {@code root}.
+     * </p>
+     * 
+     * @param root
+     * @return
+     */
+    public int maxLevelSum(TreeNode root) {
+        ArrayList<ArrayList<Integer>> levelValues = getLevelValues(root, new ArrayList<ArrayList<Integer>>(), 0);
+        int maxSum = Integer.MIN_VALUE;
+        int level = 1;
+        int resultLevel = 0;
+        for (ArrayList<Integer> list : levelValues) {
+            int sum = 0;
+            for (Integer iterable : list) {
+                sum += iterable;
+            }
+            if (maxSum < sum) {
+                maxSum = sum;
+                resultLevel = level;
+            }
+            level++;
+        }
+        return resultLevel;
+    }
+
+    /**
+     * Helper function for {@link #maxLevelSum(TreeNode)}.
+     * 
+     * @param root
+     * @param list
+     * @param currentDepth expected to be passed 0.
+     * @return ArrayList with ArrayList as each level and values in it.
+     */
+    private ArrayList<ArrayList<Integer>> getLevelValues(TreeNode root, ArrayList<ArrayList<Integer>> list,
+            int currentDepth) {
+        if (root == null) {
+            return list;
+        }
+        currentDepth++;
+        if (list.size() < currentDepth) {// if this depth was not visited add new "level" to the list
+            list.add(new ArrayList<>());
+        }
+        list.get(currentDepth - 1).add(root.val);// add value of root to the list
+        getLevelValues(root.left, list, currentDepth);
+        getLevelValues(root.right, list, currentDepth);
+        currentDepth--;
+        return list;
     }
 }
