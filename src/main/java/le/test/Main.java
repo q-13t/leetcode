@@ -1,15 +1,16 @@
 package le.test;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.Stack;
 import java.util.Queue;
 import java.util.Random;
-import java.util.Stack;
+import java.util.Set;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.PriorityQueue;
+import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
 import javax.xml.crypto.OctetStreamData;
@@ -21,11 +22,30 @@ public class Main {
 
     public static void main(String[] args) {
 
+        List<List<Integer>> rooms = new ArrayList<>();
+        // rooms.add(new ArrayList<>());
+        // rooms.get(0).add(1);
+        // rooms.get(0).add(3);
+        // rooms.add(new ArrayList<>());
+        // rooms.get(1).add(3);
+        // rooms.get(1).add(0);
+        // rooms.get(1).add(1);
+        // rooms.add(new ArrayList<>());
+        // rooms.get(2).add(2);
+        // rooms.add(new ArrayList<>());
+        // rooms.get(3).add(0);
         long start = System.currentTimeMillis();
-        System.out.println(solution.maxLevelSum(TreeNode.buildTree(new int[] { 1, 7, 0, 7, -8 })));
-
+        // System.out.println(solution.canVisitAllRooms(rooms));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
+        rooms.clear();
+        rooms.add(new ArrayList<>());
+        rooms.add(new ArrayList<>());
+        rooms.add(new ArrayList<>());
+        rooms.add(new ArrayList<>());
+        rooms.get(0).addAll(Arrays.asList(1));
+        rooms.get(1).addAll(Arrays.asList(2));
+        rooms.get(2).addAll(Arrays.asList(3));
+        System.out.println(solution.canVisitAllRooms(rooms));
     }
 
     static int bigSum(int[] arr) {

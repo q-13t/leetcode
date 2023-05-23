@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -3210,5 +3211,37 @@ public class Solution extends GuessGame {
         getLevelValues(root.right, list, currentDepth);
         currentDepth--;
         return list;
+    }
+
+    /**
+     * Checks if it is possible to visit all rooms.
+     * </p>
+     * {@code Time O(N+E)}. N as amount of rooms, E as amount of keys to rooms.
+     * </p>
+     * {@code Space O(n+e)}. N as amount of rooms, E as amount of keys to rooms.
+     * </p>
+     * 
+     * @param rooms
+     * @return {@code true} if it is possible to visit all rooms, {@code false}
+     *         otherwise.
+     */
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        // Initialize visited set to keep track of visited rooms
+        Set<Integer> visited = new HashSet<>();
+        // Initialize roomStack to determine next room to visit
+        Stack<Integer> roomStack = new Stack<>();
+        roomStack.push(0);
+        while (!roomStack.isEmpty()) {
+            Integer current = roomStack.pop();
+            if (visited.add(current)) {// if room was not visited
+                // Get all keys and add them to roomStack to visit those rooms
+                List<Integer> keys = rooms.get(current);
+                roomStack.addAll(keys);
+            }
+        }
+        System.gc();// Free up memory
+        if (rooms.size() != visited.size())// If some rooms were not visited return false
+            return false;
+        return true;
     }
 }
