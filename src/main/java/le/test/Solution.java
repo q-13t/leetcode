@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.stream.Stream;
+import java.util.TreeMap;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -3116,4 +3116,21 @@ public class Solution extends GuessGame {
 
     }
 
+    public List<Integer> rightSideView(TreeNode root) {
+        return new ArrayList<Integer>(getRightSideView(root, new TreeMap<>(), 0).values());
+    }
+
+    private TreeMap<Integer, Integer> getRightSideView(TreeNode root, TreeMap<Integer, Integer> map,
+            int current_depth) {
+        if (root == null) {
+            return map;
+        } else {
+            current_depth++;
+            map.put(current_depth, root.val);
+            getRightSideView(root.left, map, current_depth);
+            getRightSideView(root.right, map, current_depth);
+            current_depth--;
+            return map;
+        }
+    }
 }

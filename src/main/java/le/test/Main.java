@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.tribonacci(25));
+        System.out.println(solution.rightSideView(TreeNode.buildBST(new int[] { 1, 2, 3, 5, 4 })));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
