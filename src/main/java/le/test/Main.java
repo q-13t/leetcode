@@ -23,12 +23,14 @@ public class Main {
     public static void main(String[] args) {
 
         int[][] cities = new int[][] {
-                { 1, 1, 0 },
-                { 1, 1, 0 },
-                { 0, 0, 1 }
+                { 0, 1 },
+                { 1, 3 },
+                { 2, 3 },
+                { 4, 0 },
+                { 4, 5 }
         };
         long start = System.currentTimeMillis();
-        System.out.println(solution.findCircleNum(cities));
+        System.out.println(solution.minReorder(6, cities));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
     }
 

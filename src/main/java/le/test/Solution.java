@@ -3300,4 +3300,28 @@ public class Solution extends GuessGame {
             }
         }
     }
+
+    public int minReorder(int n, int[][] connections) {
+        List<List<Integer>> routs = new ArrayList<>();
+        for (int i = 0; i < n; ++i)
+            routs.add(new ArrayList<>());
+
+        for (var iterable : connections) {
+            routs.get(iterable[0]).add(iterable[1]);
+            routs.get(iterable[1]).add(-iterable[0]);
+        }
+        return reorderRouts(routs, new boolean[n], 0);
+    }
+
+    private int reorderRouts(List<List<Integer>> routs, boolean[] visited, int city) {
+        int changed = 0;
+        visited[city] = true;
+        for (var to : routs.get(city)) {
+            if (!visited[Math.abs(to)]) {
+                changed += reorderRouts(routs, visited, Math.abs(to)) + (to > 0 ? 1 : 0);
+            }
+        }
+        return changed;
+    }
+
 }
