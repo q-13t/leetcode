@@ -1,5 +1,7 @@
 package le.test;
 
+//REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
+
 import java.util.List;
 import java.util.Stack;
 import java.util.Queue;
@@ -22,16 +24,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[][] cities = new int[][] {
-                { 0, 1 },
-                { 1, 3 },
-                { 2, 3 },
-                { 4, 0 },
-                { 4, 5 }
-        };
         long start = System.currentTimeMillis();
-        System.out.println(solution.minReorder(6, cities));
+        for (String string : solution.uncommonFromSentences("d b zu d t", "udb zu ap"))
+            System.out.print(string + ", ");
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+
+        for (String string : solution.uncommonFromSentences("apple apple", "banana"))
+            System.out.print(string + ", ");
+        System.out.println();
+        for (String string : solution.uncommonFromSentences("this apple is sweet",
+                "this apple is sour"))
+            System.out.print(string + ", ");
+
     }
 
     static int bigSum(int[] arr) {
