@@ -3324,4 +3324,39 @@ public class Solution extends GuessGame {
         return changed;
     }
 
+    /**
+     * Given 2 String finds {@code Uncommon} words.
+     * </p>
+     * Word is {@code Uncommon} if it appears exactly once in one of the sentences,
+     * and does not appear in the other sentence.
+     * 
+     * @param string1
+     * @param string2
+     * @return array of Uncommon Strings
+     */
+    public String[] uncommonFromSentences(String string1, String string2) {
+        ArrayList<String> first = new ArrayList<>();
+        ArrayList<String> second = new ArrayList<>();
+        for (String iterable : string1.split(" "))
+            first.add(iterable);
+
+        for (String iterable : string2.split(" "))
+            second.add(iterable);
+
+        HashMap<String, Integer> reference = new HashMap<>();
+        for (String string : first)
+            reference.put(string, reference.getOrDefault(string, 0) + 1);
+
+        for (String string : second)
+            reference.put(string, reference.getOrDefault(string, 0) + 1);
+
+        ArrayList<String> result = new ArrayList<>();
+        for (var iterable : reference.entrySet())
+            if (iterable.getValue() == 1)
+                if ((first.contains(iterable.getKey()) && !second.contains(iterable.getKey()))
+                        || (!first.contains(iterable.getKey()) && second.contains(iterable.getKey())))
+                    result.add(iterable.getKey());
+
+        return result.toArray(new String[0]);
+    }
 }
