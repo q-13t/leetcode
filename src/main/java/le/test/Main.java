@@ -25,17 +25,18 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        for (String string : solution.uncommonFromSentences("d b zu d t", "udb zu ap"))
-            System.out.print(string + ", ");
-
+        StockSpanner stockSpanner = new StockSpanner();
+        System.out.println(stockSpanner.next(100));
+        System.out.println(stockSpanner.next(80));
+        System.out.println(stockSpanner.next(60));
+        System.out.println(stockSpanner.next(70));
+        System.out.println(stockSpanner.next(60));
+        System.out.println(stockSpanner.next(75));
+        System.out.println(stockSpanner.next(85));
+        System.out.println(stockSpanner.next(100));
+        System.out.println(stockSpanner.next(20));
+        System.out.println(stockSpanner.next(25));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
-        for (String string : solution.uncommonFromSentences("apple apple", "banana"))
-            System.out.print(string + ", ");
-        System.out.println();
-        for (String string : solution.uncommonFromSentences("this apple is sweet",
-                "this apple is sour"))
-            System.out.print(string + ", ");
 
     }
 
