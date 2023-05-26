@@ -25,18 +25,11 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        StockSpanner stockSpanner = new StockSpanner();
-        System.out.println(stockSpanner.next(100));
-        System.out.println(stockSpanner.next(80));
-        System.out.println(stockSpanner.next(60));
-        System.out.println(stockSpanner.next(70));
-        System.out.println(stockSpanner.next(60));
-        System.out.println(stockSpanner.next(75));
-        System.out.println(stockSpanner.next(85));
-        System.out.println(stockSpanner.next(100));
-        System.out.println(stockSpanner.next(20));
-        System.out.println(stockSpanner.next(25));
+        System.out.println(solution.rob(new int[] { 1, 2, 3, 1 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.rob(new int[] { 2, 7, 9, 3, 1 }));
+        System.out.println(solution.rob(new int[] { 2, 0, 0, 2 }));
+        System.out.println(solution.rob(new int[] { 1, 3, 1, 3, 100 }));
 
     }
 

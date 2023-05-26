@@ -3359,4 +3359,52 @@ public class Solution extends GuessGame {
 
         return result.toArray(new String[0]);
     }
+
+    /**
+     * Returns minimum cost to get to top of the stairs.
+     * 
+     * </p>
+     * It is possible to climb 1 or 2 steps at a time.
+     * </p>
+     * {@code Time O(N)}. N as amount of costs.
+     * </p>
+     * {@code Space O(1)}.Inplace function.
+     * </p>
+     * 
+     * 
+     * @param cost per each stair.
+     * @return minimum cost to get to top of stairs.
+     */
+    public int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        for (int i = 2; i < n; i++)
+            cost[i] += cost[i - 1] < cost[i - 2] ? cost[i - 1] : cost[i - 2];
+
+        return cost[n - 1] < cost[n - 2] ? cost[n - 1] : cost[n - 2];
+    }
+
+    /**
+     * * Returns maximum amount of money that can be stolen from non adjustment
+     * houses.
+     * 
+     * </p>
+     * {@code Time O(N)}. N as amount of houses.
+     * </p>
+     * {@code Space O(1)}.
+     * </p>
+     * 
+     * @param numbers as amount of money in each house.
+     * @return maximum amount of money that can be stolen from non adjustment
+     *         houses.
+     */
+    public int rob(int[] numbers) {
+        int rob1 = 0;
+        int rob2 = 0;
+        for (int i : numbers) {
+            int tmp = Math.max(rob1 + i, rob2);
+            rob1 = rob2;
+            rob2 = tmp;
+        }
+        return rob2;
+    }
 }
