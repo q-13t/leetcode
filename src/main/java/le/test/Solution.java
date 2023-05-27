@@ -3425,4 +3425,29 @@ public class Solution extends GuessGame {
         }
         return dp[n];
     }
+
+    public List<String> letterCombinations(String digits) {
+        List<String> combinations = new ArrayList<>();
+        String[] reference = new String[] { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        if (digits.length() == 0)
+            return combinations;
+        buildLetterCombinations(0, digits, combinations, reference, digits.length(), new StringBuilder());
+        return combinations;
+    }
+
+    private void buildLetterCombinations(int i, String digits, List<String> combinations, String[] reference,
+            int length, StringBuilder stringBuilder) {
+        if (i == length) {
+            combinations.add(stringBuilder.toString());
+            return;
+        }
+        int value = digits.charAt(i) - '0';
+        String ch = reference[value];
+        for (int j = 0; j < ch.length(); j++) {
+            stringBuilder.append(ch.charAt(j));
+            buildLetterCombinations(i + 1, digits, combinations, reference, length, stringBuilder);
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+    }
+
 }

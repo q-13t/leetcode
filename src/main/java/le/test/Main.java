@@ -25,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.numTilings(5));
+        System.out.println(solution.letterCombinations("23"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
