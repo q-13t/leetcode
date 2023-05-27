@@ -25,11 +25,8 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(solution.rob(new int[] { 1, 2, 3, 1 }));
+        System.out.println(solution.numTilings(5));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.rob(new int[] { 2, 7, 9, 3, 1 }));
-        System.out.println(solution.rob(new int[] { 2, 0, 0, 2 }));
-        System.out.println(solution.rob(new int[] { 1, 3, 1, 3, 100 }));
 
     }
 
