@@ -23,9 +23,15 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-        System.out.println(solution.letterCombinations("23"));
+        Trie root = new Trie();
+        Trie trie = new Trie();
+        trie.insert("apple");
+        System.out.println(trie.search("apple")); // return True
+        System.out.println(trie.search("app")); // return False
+        System.out.println(trie.startsWith("app")); // return True
+        trie.insert("app");
+        System.out.println(trie.search("app")); // return True
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
