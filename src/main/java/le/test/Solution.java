@@ -3471,4 +3471,22 @@ public class Solution extends GuessGame {
         }
         return suggestions;
     }
+
+    public int eraseOverlapIntervals(int[][] intervals) {
+        Arrays.sort(intervals, (x, y) -> {
+            return Integer.compare(x[1], y[1]);
+        });
+
+        int deletions = 0;
+        int prev = Integer.MIN_VALUE;
+        for (int[] is : intervals) {
+            if (is[0] < prev) {
+                deletions++;
+            } else {
+                prev = is[1];
+            }
+        }
+        return deletions;
+    }
+
 }
