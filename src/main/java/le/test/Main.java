@@ -23,10 +23,21 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-        System.out.println(solution.numTilings(5));
+
+        System.out.println(solution.eraseOverlapIntervals(new int[][] {
+                { 1, 2 },
+                { 2, 3 },
+                { 3, 4 },
+                { 1, 3 }
+        }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.eraseOverlapIntervals(new int[][] {
+                { 1, 100 },
+                { 11, 22 },
+                { 1, 11 },
+                { 2, 12 }
+        }));
 
     }
 
