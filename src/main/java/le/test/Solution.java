@@ -3450,4 +3450,25 @@ public class Solution extends GuessGame {
         }
     }
 
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        Arrays.sort(products);
+        List<List<String>> suggestions = new ArrayList<List<String>>();
+        String pattern = "";
+        for (char ch : searchWord.toCharArray()) {
+            pattern += ch;
+            List<String> matches = new ArrayList<>();
+            int idx = Arrays.binarySearch(products, pattern);
+            if (idx < 0) {
+                idx = -(idx + 1);
+            }
+            for (int i = idx; i < Math.min(idx + 3, products.length); i++) {
+                if (!products[i].startsWith(pattern)) {
+                    break;
+                }
+                matches.add(products[i]);
+            }
+            suggestions.add(matches);
+        }
+        return suggestions;
+    }
 }

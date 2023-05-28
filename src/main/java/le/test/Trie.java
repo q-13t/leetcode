@@ -18,6 +18,11 @@ public class Trie {
         root = new TrieNode();
     }
 
+    public void addAll(String[] words) {
+        for (String string : words)
+            insert(string);
+    }
+
     public void insert(String word) {
         TrieNode walk = root;
         for (char iterable : word.toCharArray()) {
