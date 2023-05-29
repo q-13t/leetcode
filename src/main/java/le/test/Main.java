@@ -25,18 +25,29 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.eraseOverlapIntervals(new int[][] {
+        System.out.println(solution.findMinArrowShots(new int[][] {
+                { 10, 16 },
+                { 2, 8 },
+                { 1, 6 },
+                { 7, 12 }
+        }));
+        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.findMinArrowShots(new int[][] {
                 { 1, 2 },
                 { 2, 3 },
                 { 3, 4 },
-                { 1, 3 }
+                { 4, 5 }
         }));
-        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.eraseOverlapIntervals(new int[][] {
-                { 1, 100 },
-                { 11, 22 },
-                { 1, 11 },
-                { 2, 12 }
+        System.out.println(solution.findMinArrowShots(new int[][] {
+                { 1, 2 },
+                { 3, 4 },
+                { 5, 6 },
+                { 7, 8 }
+        }));
+        System.out.println(solution.findMinArrowShots(new int[][] {
+                { 1, 2 },
+                { 4, 5 },
+                { 1, 5 },
         }));
 
     }

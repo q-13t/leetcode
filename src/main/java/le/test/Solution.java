@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.AbstractList;
 
 public class Solution extends GuessGame {
@@ -3489,4 +3490,17 @@ public class Solution extends GuessGame {
         return deletions;
     }
 
+    public int findMinArrowShots(int[][] points) {
+        int arrows = 1;
+        Arrays.sort(points, (x, y) -> Integer.compare(x[1], y[1]));
+        int prev = points[0][1];
+
+        for (int i = 0; i < points.length; i++) {
+            if (points[i][0] > prev) {
+                arrows++;
+                prev = points[i][1];
+            }
+        }
+        return arrows;
+    }
 }
