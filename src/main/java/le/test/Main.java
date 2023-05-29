@@ -25,30 +25,11 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.findMinArrowShots(new int[][] {
-                { 10, 16 },
-                { 2, 8 },
-                { 1, 6 },
-                { 7, 12 }
-        }));
+        System.out.println(solution.minFlips(2, 6, 5));
+        System.out.println(solution.minFlips(4, 2, 7));
+        System.out.println(solution.minFlips(1, 2, 3));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.findMinArrowShots(new int[][] {
-                { 1, 2 },
-                { 2, 3 },
-                { 3, 4 },
-                { 4, 5 }
-        }));
-        System.out.println(solution.findMinArrowShots(new int[][] {
-                { 1, 2 },
-                { 3, 4 },
-                { 5, 6 },
-                { 7, 8 }
-        }));
-        System.out.println(solution.findMinArrowShots(new int[][] {
-                { 1, 2 },
-                { 4, 5 },
-                { 1, 5 },
-        }));
 
     }
 
