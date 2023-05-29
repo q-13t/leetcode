@@ -3489,4 +3489,38 @@ public class Solution extends GuessGame {
         return deletions;
     }
 
+    public int findMinArrowShots(int[][] points) {
+        int arrows = 1;
+        Arrays.sort(points, (x, y) -> Integer.compare(x[1], y[1]));
+        int prev = points[0][1];
+
+        for (int i = 0; i < points.length; i++) {
+            if (points[i][0] > prev) {
+                arrows++;
+                prev = points[i][1];
+            }
+        }
+        return arrows;
+    }
+
+    public int minFlips(int a, int b, int c) {
+        int flips = 0;
+        while (a > 0 || b > 0 || c > 0) {
+            int bitA = a & 1;
+            int bitB = b & 1;
+            int bitC = c & 1;
+
+            if ((bitA | bitB) != bitC) {
+                if (bitA == 1 && bitB == 1)
+                    flips += 2;
+                else
+                    flips++;
+            }
+
+            a >>= 1;
+            b >>= 1;
+            c >>= 1;
+        }
+        return flips;
+    }
 }
