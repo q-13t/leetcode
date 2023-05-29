@@ -23,13 +23,13 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
         long start = System.currentTimeMillis();
-        System.out.println(solution.rob(new int[] { 1, 2, 3, 1 }));
+
+        System.out.println(solution.minFlips(2, 6, 5));
+        System.out.println(solution.minFlips(4, 2, 7));
+        System.out.println(solution.minFlips(1, 2, 3));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.rob(new int[] { 2, 7, 9, 3, 1 }));
-        System.out.println(solution.rob(new int[] { 2, 0, 0, 2 }));
-        System.out.println(solution.rob(new int[] { 1, 3, 1, 3, 100 }));
 
     }
 

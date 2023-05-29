@@ -3407,4 +3407,120 @@ public class Solution extends GuessGame {
         }
         return rob2;
     }
+
+    public int numTilings(int n) {
+        if (n == 1)
+            return 1;
+        else if (n == 2)
+            return 2;
+        int mod = 1000000007;
+
+        int[] dp = new int[n + 1];
+
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 5;
+        for (int i = 4; i <= n; i++) {
+            dp[i] = (2 * dp[i - 1] % mod + dp[i - 3] % mod) % mod;
+        }
+        return dp[n];
+    }
+
+    public List<String> letterCombinations(String digits) {
+        List<String> combinations = new ArrayList<>();
+        String[] reference = new String[] { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        if (digits.length() == 0)
+            return combinations;
+        buildLetterCombinations(0, digits, combinations, reference, digits.length(), new StringBuilder());
+        return combinations;
+    }
+
+    private void buildLetterCombinations(int i, String digits, List<String> combinations, String[] reference,
+            int length, StringBuilder stringBuilder) {
+        if (i == length) {
+            combinations.add(stringBuilder.toString());
+            return;
+        }
+        int value = digits.charAt(i) - '0';
+        String ch = reference[value];
+        for (int j = 0; j < ch.length(); j++) {
+            stringBuilder.append(ch.charAt(j));
+            buildLetterCombinations(i + 1, digits, combinations, reference, length, stringBuilder);
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+    }
+
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        Arrays.sort(products);
+        List<List<String>> suggestions = new ArrayList<List<String>>();
+        String pattern = "";
+        for (char ch : searchWord.toCharArray()) {
+            pattern += ch;
+            List<String> matches = new ArrayList<>();
+            int idx = Arrays.binarySearch(products, pattern);
+            if (idx < 0) {
+                idx = -(idx + 1);
+            }
+            for (int i = idx; i < Math.min(idx + 3, products.length); i++) {
+                if (!products[i].startsWith(pattern)) {
+                    break;
+                }
+                matches.add(products[i]);
+            }
+            suggestions.add(matches);
+        }
+        return suggestions;
+    }
+
+    public int eraseOverlapIntervals(int[][] intervals) {
+        Arrays.sort(intervals, (x, y) -> {
+            return Integer.compare(x[1], y[1]);
+        });
+
+        int deletions = 0;
+        int prev = Integer.MIN_VALUE;
+        for (int[] is : intervals) {
+            if (is[0] < prev) {
+                deletions++;
+            } else {
+                prev = is[1];
+            }
+        }
+        return deletions;
+    }
+
+    public int findMinArrowShots(int[][] points) {
+        int arrows = 1;
+        Arrays.sort(points, (x, y) -> Integer.compare(x[1], y[1]));
+        int prev = points[0][1];
+
+        for (int i = 0; i < points.length; i++) {
+            if (points[i][0] > prev) {
+                arrows++;
+                prev = points[i][1];
+            }
+        }
+        return arrows;
+    }
+
+    public int minFlips(int a, int b, int c) {
+        int flips = 0;
+        while (a > 0 || b > 0 || c > 0) {
+            int bitA = a & 1;
+            int bitB = b & 1;
+            int bitC = c & 1;
+
+            if ((bitA | bitB) != bitC) {
+                if (bitA == 1 && bitB == 1)
+                    flips += 2;
+                else
+                    flips++;
+            }
+
+            a >>= 1;
+            b >>= 1;
+            c >>= 1;
+        }
+        return flips;
+    }
 }
