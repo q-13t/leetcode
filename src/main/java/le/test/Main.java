@@ -25,11 +25,25 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.minFlips(2, 6, 5));
-        System.out.println(solution.minFlips(4, 2, 7));
-        System.out.println(solution.minFlips(1, 2, 3));
-
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(1);
+        root.left = new TreeNode(1);
+        root.left.right = new TreeNode(1);
+        root.left.right.right = new TreeNode(1);
+        root.left.right.left = new TreeNode(1);
+        root.left.right.left.right = new TreeNode(1);
+        System.out.println(solution.longestZigZag(root));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        root = new TreeNode(1);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(3);
+        root.right.right = new TreeNode(4);
+        root.right.right.left = new TreeNode(5);
+        root.right.right.right = new TreeNode(6);
+        root.right.right.left.right = new TreeNode(7);
+        root.right.right.left.right.right = new TreeNode(8);
+
+        System.out.println(solution.longestZigZag(root));
 
     }
 
