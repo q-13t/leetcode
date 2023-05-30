@@ -3523,4 +3523,57 @@ public class Solution extends GuessGame {
         }
         return flips;
     }
+
+    int pathLength = 0;
+
+    private void dfs(TreeNode node, boolean goLeft, int steps) {
+        if (node == null) {
+            return;
+        }
+        pathLength = Math.max(pathLength, steps);
+        if (goLeft) {
+            dfs(node.left, false, steps + 1);
+            dfs(node.right, true, 1);
+        } else {
+            dfs(node.left, false, 1);
+            dfs(node.right, true, steps + 1);
+        }
+    }
+
+    public int longestZigZag(TreeNode root) {
+        dfs(root, false, 0);
+        dfs(root, true, 0);
+        return pathLength;
+    }
+
+    public int[] asteroidCollision(int[] asteroids) {
+        Stack<Integer> stack = new Stack<>();
+
+        outerFor: for (int i = 0; i < asteroids.length; i++) {
+            if (!stack.isEmpty() && stack.peek() > 0 && asteroids[i] < 0) {
+                int asteroidABS = Math.abs(asteroids[i]);
+                int lastPop = Integer.MIN_VALUE;
+                while (!stack.isEmpty() && stack.peek() > 0) {
+                    if (asteroidABS == stack.peek()) {
+                        lastPop = stack.pop();
+                        continue outerFor;
+                    } else if (asteroidABS > stack.peek())
+                        lastPop = stack.pop();
+                    else if (stack.peek() > asteroidABS)
+                        continue outerFor;
+                    else
+                        break;
+                }
+                if (lastPop != Integer.MIN_VALUE && lastPop < asteroidABS)
+                    stack.add(asteroids[i]);
+            } else
+                stack.add(asteroids[i]);
+        }
+        Collections.reverse(stack);
+        int[] result = new int[stack.size()];
+        for (int i = 0; i < result.length; i++)
+            result[i] = stack.pop();
+
+        return result;
+    }
 }

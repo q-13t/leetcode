@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.PriorityQueue;
+import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
@@ -25,11 +26,40 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        System.out.println(solution.minFlips(2, 6, 5));
-        System.out.println(solution.minFlips(4, 2, 7));
-        System.out.println(solution.minFlips(1, 2, 3));
-
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -1, 1, 2 })) {
+        // System.out.print(iterable + ", ");
+        // }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        // for (int iterable : solution.asteroidCollision(new int[] { 8, -8 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -2 })) {
+            System.out.print(iterable + ", ");
+        }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { 5, 10, -5 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, 1, 1, -1 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { 1, -2, -2, -2 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
 
     }
 
