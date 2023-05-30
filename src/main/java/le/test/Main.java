@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.PriorityQueue;
+import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
@@ -25,25 +26,40 @@ public class Main {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(1);
-        root.left = new TreeNode(1);
-        root.left.right = new TreeNode(1);
-        root.left.right.right = new TreeNode(1);
-        root.left.right.left = new TreeNode(1);
-        root.left.right.left.right = new TreeNode(1);
-        System.out.println(solution.longestZigZag(root));
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -1, 1, 2 })) {
+        // System.out.print(iterable + ", ");
+        // }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        root = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.left = new TreeNode(3);
-        root.right.right = new TreeNode(4);
-        root.right.right.left = new TreeNode(5);
-        root.right.right.right = new TreeNode(6);
-        root.right.right.left.right = new TreeNode(7);
-        root.right.right.left.right.right = new TreeNode(8);
-
-        System.out.println(solution.longestZigZag(root));
+        // for (int iterable : solution.asteroidCollision(new int[] { 8, -8 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -2 })) {
+            System.out.print(iterable + ", ");
+        }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { 5, 10, -5 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, 1, 1, -1 })) {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { 1, -2, -2, -2 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
+        // System.out.println();
+        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
+        // {
+        // System.out.print(iterable + ", ");
+        // }
 
     }
 
