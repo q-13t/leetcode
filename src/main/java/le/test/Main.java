@@ -25,11 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.increasingTriplet(new int[] { 1, 2, 3, 4, 5 }));
+        System.out.println(solution.decodeString2("3[a]2[bc]"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.increasingTriplet(new int[] { 5, 4, 3, 2, 1 }));
-        System.out.println(solution.increasingTriplet(new int[] { 2, 1, 5, 0, 4, 6 }));
-
+        System.out.println(solution.decodeString2("3[a2[c]]"));
+        System.out.println(solution.decodeString2("2[abc]3[cd]ef"));
     }
 
     static int bigSum(int[] arr) {
