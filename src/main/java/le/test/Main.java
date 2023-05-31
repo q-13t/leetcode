@@ -25,9 +25,18 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.findKthLargest(new int[] { 3, 2, 1, 5, 6, 4 }, 2));
+        SmallestInfiniteSet smallestInfiniteSet = new SmallestInfiniteSet();
+        smallestInfiniteSet.addBack(2);
+        System.out.println(smallestInfiniteSet.popSmallest() == 1);
+        System.out.println(smallestInfiniteSet.popSmallest() == 2);
+        System.out.println(smallestInfiniteSet.popSmallest() == 3);
+        smallestInfiniteSet.addBack(1);
+        System.out.println(smallestInfiniteSet.popSmallest() == 1);
+
+        System.out.println(smallestInfiniteSet.popSmallest() == 4);
+        System.out.println(smallestInfiniteSet.popSmallest() == 5);
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.findKthLargest(new int[] { 3, 2, 3, 1, 2, 4, 5, 5, 6 }, 4));
+
     }
 
     static int bigSum(int[] arr) {
