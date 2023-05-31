@@ -3576,4 +3576,19 @@ public class Solution extends GuessGame {
 
         return result;
     }
+
+    public boolean increasingTriplet(int[] numbers) {
+        if (numbers.length < 3) {
+            return false;
+        } else {
+            for (int left = 0; left < numbers.length; left++)
+                for (int mid = left + 1; mid < numbers.length; mid++)
+                    if (numbers[mid] > numbers[left])
+                        for (int right = numbers.length - 1; right > mid; right--)
+                            if (numbers[right] > numbers[mid])
+                                return true;
+
+            return false;
+        }
+    }
 }

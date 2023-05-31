@@ -25,41 +25,10 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-
-        // for (int iterable : solution.asteroidCollision(new int[] { -2, -1, 1, 2 })) {
-        // System.out.print(iterable + ", ");
-        // }
+        System.out.println(solution.increasingTriplet(new int[] { 1, 2, 3, 4, 5 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        // for (int iterable : solution.asteroidCollision(new int[] { 8, -8 })) {
-        // System.out.print(iterable + ", ");
-        // }
-        // System.out.println();
-        for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -2 })) {
-            System.out.print(iterable + ", ");
-        }
-        // System.out.println();
-        // for (int iterable : solution.asteroidCollision(new int[] { 5, 10, -5 })) {
-        // System.out.print(iterable + ", ");
-        // }
-        // System.out.println();
-        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
-        // {
-        // System.out.print(iterable + ", ");
-        // }
-        // System.out.println();
-        // for (int iterable : solution.asteroidCollision(new int[] { -2, 1, 1, -1 })) {
-        // System.out.print(iterable + ", ");
-        // }
-        // System.out.println();
-        // for (int iterable : solution.asteroidCollision(new int[] { 1, -2, -2, -2 }))
-        // {
-        // System.out.print(iterable + ", ");
-        // }
-        // System.out.println();
-        // for (int iterable : solution.asteroidCollision(new int[] { -2, -2, 1, -1 }))
-        // {
-        // System.out.print(iterable + ", ");
-        // }
+        System.out.println(solution.increasingTriplet(new int[] { 5, 4, 3, 2, 1 }));
+        System.out.println(solution.increasingTriplet(new int[] { 2, 1, 5, 0, 4, 6 }));
 
     }
 
