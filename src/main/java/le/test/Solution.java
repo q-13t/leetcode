@@ -1,13 +1,17 @@
 package le.test;
 
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
@@ -3616,5 +3620,27 @@ public class Solution extends GuessGame {
                 str.append(c);
         }
         return str.toString();
+    }
+
+    public int findKthLargest(int[] n, int k) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i : n) {
+            if (i > max)
+                max = i;
+            if (i < min)
+                min = i;
+        }
+        int[] hash = new int[max - min + 1];
+        for (int i : n) {
+            hash[max - i]++;
+        }
+        for (int i = 0; i < hash.length; i++) {
+            if (hash[i] != 0)
+                k -= hash[i];
+            if (k <= 0)
+                return max - i;
+        }
+        return 0;
     }
 }

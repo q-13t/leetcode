@@ -25,10 +25,9 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.decodeString2("3[a]2[bc]"));
+        System.out.println(solution.findKthLargest(new int[] { 3, 2, 1, 5, 6, 4 }, 2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.decodeString2("3[a2[c]]"));
-        System.out.println(solution.decodeString2("2[abc]3[cd]ef"));
+        System.out.println(solution.findKthLargest(new int[] { 3, 2, 3, 1, 2, 4, 5, 5, 6 }, 4));
     }
 
     static int bigSum(int[] arr) {
