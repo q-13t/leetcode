@@ -1,13 +1,17 @@
 package le.test;
 
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
@@ -3575,5 +3579,68 @@ public class Solution extends GuessGame {
             result[i] = stack.pop();
 
         return result;
+    }
+
+    public boolean increasingTriplet(int[] numbers) {
+        if (numbers.length < 3) {
+            return false;
+        } else {
+            for (int left = 0; left < numbers.length; left++)
+                for (int mid = left + 1; mid < numbers.length; mid++)
+                    if (numbers[mid] > numbers[left])
+                        for (int right = numbers.length - 1; right > mid; right--)
+                            if (numbers[right] > numbers[mid])
+                                return true;
+
+            return false;
+        }
+    }
+
+    public String decodeString2(String s) {
+        Stack<Integer> numStack = new Stack<>();
+        Stack<StringBuilder> strBuild = new Stack<>();
+        StringBuilder str = new StringBuilder();
+        int num = 0;
+        for (char c : s.toCharArray()) {
+            if (c >= '0' && c <= '9')
+                num = num * 10 + c - '0';
+            else if (c == '[') {
+                strBuild.push(str);
+                str = new StringBuilder();
+                numStack.push(num);
+                num = 0;
+            } else if (c == ']') {
+                StringBuilder temp = str;
+                str = strBuild.pop();
+                int count = numStack.pop();
+                while (count-- > 0)
+                    str.append(temp);
+
+            } else
+                str.append(c);
+        }
+        return str.toString();
+    }
+
+    public int findKthLargest(int[] n, int k) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i : n) {
+            if (i > max)
+                max = i;
+            if (i < min)
+                min = i;
+        }
+        int[] hash = new int[max - min + 1];
+        for (int i : n) {
+            hash[max - i]++;
+        }
+        for (int i = 0; i < hash.length; i++) {
+            if (hash[i] != 0)
+                k -= hash[i];
+            if (k <= 0)
+                return max - i;
+        }
+        return 0;
     }
 }
