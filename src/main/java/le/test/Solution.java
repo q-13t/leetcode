@@ -2,15 +2,18 @@ package le.test;
 
 import java.util.Set;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.TreeMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.AbstractList;
 
 public class Solution extends GuessGame {
@@ -3639,4 +3642,28 @@ public class Solution extends GuessGame {
         }
         return 0;
     }
+
+    public long maxScore(int[] numbers1, int[] numbers2, int k) {
+        int n = numbers1.length;
+        int[][] pairs = new int[n][2];
+        for (int i = 0; i < n; i++)
+            pairs[i] = new int[] { numbers1[i], numbers2[i] };
+
+        Arrays.sort(pairs, (a, b) -> b[1] - a[1]);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        long topSum = 0;
+        for (int i = 0; i < k; i++) {
+            pq.add(pairs[i][0]);
+            topSum += pairs[i][0];
+        }
+        long answer = topSum * pairs[k - 1][1];
+        for (int i = k; i < n; i++) {
+            topSum += pairs[i][0] - pq.poll();
+            pq.add(pairs[i][0]);
+            answer = Math.max(answer, topSum * pairs[i][1]);
+        }
+        return answer;
+    }
+
 }
