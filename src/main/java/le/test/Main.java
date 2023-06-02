@@ -2,21 +2,7 @@ package le.test;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
-import java.util.List;
-import java.util.Stack;
-import java.util.Queue;
 import java.util.Random;
-import java.util.Set;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.io.OutputStream;
-import java.text.DecimalFormat;
-import java.util.stream.Stream;
-
-import javax.xml.crypto.OctetStreamData;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -24,7 +10,7 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
+        start = System.currentTimeMillis();
         System.out.println(solution.orangesRotting(new int[][] {
                 { 2, 1, 1 },
                 { 1, 1, 0 },
