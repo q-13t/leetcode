@@ -25,17 +25,20 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println(solution.totalCost(new int[] { 17, 12, 10, 2, 7, 2, 11,
-                20, 8 }, 3, 4));
+        System.out.println(solution.orangesRotting(new int[][] {
+                { 2, 1, 1 },
+                { 1, 1, 0 },
+                { 0, 1, 1 }
+        }));
+        System.out.println(solution.orangesRotting(new int[][] {
+                { 0, 2 }
+        }));
+        System.out.println(solution.orangesRotting(new int[][] {
+                { 2, 1, 1, },
+                { 0, 1, 1, },
+                { 1, 0, 1, },
+        }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.totalCost(new int[] { 50, 80, 34, 9, 86, 20, 67,
-                94, 65, 82, 40, 79, 74, 92, 84, 37,
-                19, 16, 85, 20, 79, 25, 89, 55, 67, 84, 3, 79, 38, 16, 44, 2, 54, 58 }, 7,
-                12));
-        System.out.println(solution.totalCost(new int[] { 57, 33, 26, 76, 14, 67, 24, 90, 72, 37,
-                30 }, 11,
-                2));
-
     }
 
     static int bigSum(int[] arr) {
