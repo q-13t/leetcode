@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
 import java.util.AbstractList;
+import java.util.PriorityQueue;
 
 public class Solution extends GuessGame {
 
@@ -3639,4 +3640,93 @@ public class Solution extends GuessGame {
         }
         return 0;
     }
+
+    public long maxScore(int[] numbers1, int[] numbers2, int k) {
+        int n = numbers1.length;
+        int[][] pairs = new int[n][2];
+        for (int i = 0; i < n; i++)
+            pairs[i] = new int[] { numbers1[i], numbers2[i] };
+
+        Arrays.sort(pairs, (a, b) -> b[1] - a[1]);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        long topSum = 0;
+        for (int i = 0; i < k; i++) {
+            pq.add(pairs[i][0]);
+            topSum += pairs[i][0];
+        }
+        long answer = topSum * pairs[k - 1][1];
+        for (int i = k; i < n; i++) {
+            topSum += pairs[i][0] - pq.poll();
+            pq.add(pairs[i][0]);
+            answer = Math.max(answer, topSum * pairs[i][1]);
+        }
+        return answer;
+    }
+
+    public int nearestExit(char[][] maze, int[] entrance) {
+        Queue<int[]> q = new LinkedList<>();
+
+        int mazeMaxRows = maze.length, mazeMaxColumns = maze[0].length;
+        int[][] dirs = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+        q.offer(new int[] { entrance[0], entrance[1], 0 });
+        maze[entrance[0]][entrance[1]] = '+';
+
+        while (!q.isEmpty()) {// Traversal of every available positions
+            int[] current = q.poll();
+            int row = current[0], column = current[1], distance = current[2];
+
+            for (int[] dir : dirs) {// check for each neighboring position
+                int nextRow = row + dir[0], nextColumn = column + dir[1];
+                if (0 <= nextRow && nextRow < mazeMaxRows && 0 <= nextColumn && nextColumn < mazeMaxColumns
+                        && maze[nextRow][nextColumn] == '.') {// if it's not of limits and isn't border
+                    if (nextRow == 0 || nextRow == mazeMaxRows - 1 || nextColumn == 0
+                            || nextColumn == mazeMaxColumns - 1) { // if it's an exit return distance + 1]
+                        return distance + 1;
+                    }
+                    maze[nextRow][nextColumn] = '+';
+                    q.offer(new int[] { nextRow, nextColumn, distance + 1 });
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int orangesRotting(int[][] grid) {
+        Queue<int[]> q = new LinkedList<>();
+        int gridMaxRows = grid.length, gridMaxColumns = grid[0].length;
+        int[][] directions = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+        int freshCount = 0;
+        for (int i = 0; i < gridMaxRows; i++) {
+            for (int j = 0; j < gridMaxColumns; j++) {
+                if (grid[i][j] == 2) {
+                    q.offer(new int[] { i, j, 0 });
+                }
+                if (grid[i][j] == 1) {
+                    freshCount += 1;
+                }
+            }
+        }
+        int maxTime = 0;
+        while (!q.isEmpty()) {
+            int[] current = q.poll();
+            int row = current[0], column = current[1], time = current[2];
+            maxTime = time;
+            for (int[] dir : directions) {
+                int nextRow = row + dir[0], nextColumn = column + dir[1];
+                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns
+                        && grid[nextRow][nextColumn] == 1) {
+                    freshCount--;
+                    grid[nextRow][nextColumn] = 2;
+                    q.offer(new int[] { nextRow, nextColumn, time + 1 });
+                }
+            }
+        }
+        if (freshCount == 0)
+            return maxTime;
+
+        return -1;
+    }
+
 }
