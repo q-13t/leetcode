@@ -3771,4 +3771,30 @@ public class Solution extends GuessGame {
         }
         return maxOnes;
     }
+
+    public int longestSubarray(int[] numbers) {
+        int maxOnes = 0;
+        int length = numbers.length;
+        int zeros = 0;
+        int left = 0;
+        for (int right = 0; right < numbers.length; right++) {
+            if (numbers[right] == 0) {
+                zeros++;
+            }
+
+            while (zeros > 1) {
+                if (numbers[left] == 0) {
+                    zeros--;
+                }
+                left++;
+            }
+            if (right - left > maxOnes)
+                maxOnes = right - left;
+        }
+
+        if (maxOnes == length)
+            return maxOnes - 1;
+
+        return maxOnes;
+    }
 }
