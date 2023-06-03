@@ -12,23 +12,12 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-        // TreeNode root = new TreeNode(3);
-        // TreeNode q = new TreeNode(5);
-        // TreeNode p = new TreeNode(1);
-        // root.left = q;
-        // root.right = p;
-        // root.right.left = new TreeNode(0);
-        // root.right.right = new TreeNode(8);
-        // root.left.left = new TreeNode(6);
-        // root.left.right = new TreeNode(2);
-        // root.left.left.left = new TreeNode(7);
-        // root.left.left.right = new TreeNode(4);
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-
         start = System.currentTimeMillis();
-        System.out.println(solution.lowestCommonAncestor(root, root, root.left).val);
+        System.out.println(solution.longestSubarray(new int[] { 1, 1, 0, 1 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.longestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 }));
+        System.out.println(solution.longestSubarray(new int[] { 1, 1, 1 }));
+
     }
 
     static int bigSum(int[] arr) {
