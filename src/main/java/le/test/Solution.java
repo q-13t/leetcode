@@ -3797,4 +3797,24 @@ public class Solution extends GuessGame {
 
         return maxOnes;
     }
+
+    public List<List<Integer>> combinationSum3(int amount, int sum) {
+        List<List<Integer>> combinations = new ArrayList<>();
+        buildCombinationSum(1, amount, sum, combinations, new ArrayList<Integer>(), 0);
+        return combinations;
+    }
+
+    private void buildCombinationSum(int j, int amount, int sum, List<List<Integer>> combinations,
+            ArrayList<Integer> currentList, int currentSum) {
+        if (currentList.size() == amount && currentSum == sum) {
+            combinations.add(new ArrayList<>(currentList));
+            return;
+        }
+        for (int i = j; i < 10; i++) {
+            currentList.add(i);
+            buildCombinationSum(i + 1, amount, sum, combinations, currentList, currentSum + i);
+            currentList.remove(currentList.size() - 1);
+        }
+        return;
+    }
 }
