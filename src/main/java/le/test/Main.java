@@ -13,11 +13,10 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.longestSubarray(new int[] { 1, 1, 0, 1 }));
+        System.out.println(solution.combinationSum3(3, 7));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.longestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 }));
-        System.out.println(solution.longestSubarray(new int[] { 1, 1, 1 }));
-
+        System.out.println(solution.combinationSum3(3, 9));
+        System.out.println(solution.combinationSum3(4, 1));
     }
 
     static int bigSum(int[] arr) {
