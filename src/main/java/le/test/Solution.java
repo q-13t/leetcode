@@ -3957,4 +3957,17 @@ public class Solution extends GuessGame {
         return map[n][m];
     }
 
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        int length = arr.length;
+        if (length < 2)
+            return false;
+
+        Arrays.sort(arr);
+        int difference = arr[1] - arr[0];
+        for (int i = 2; i < length; i++) {
+            if (arr[i] - arr[i - 1] != difference)
+                return false;
+        }
+        return true;
+    }
 }
