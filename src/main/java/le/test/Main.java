@@ -15,7 +15,7 @@ public class Main {
         start = System.currentTimeMillis();
         System.out.println(solution.minDistance("horse", "ros"));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.minDistance("intention", "execution"));
+        System.out.println(solution.minDistance("intention", "ros"));
 
     }
 
