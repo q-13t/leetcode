@@ -3891,4 +3891,29 @@ public class Solution extends GuessGame {
 
         return map[m - 1][n - 1];
     }
+
+    public int longestCommonSubsequence(String text1, String text2) {
+        int n = text1.length();
+        int m = text2.length();
+        int[][] map = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    if (i > 0 && j > 0)
+                        map[i][j] = map[i - 1][j - 1] + 1;
+                    else
+                        map[i][j] = 1;
+                } else {
+                    if (i > 0 && j > 0) {
+                        map[i][j] = Math.max(map[i - 1][j], map[i][j - 1]);
+                    } else if (i > 0) {
+                        map[i][j] = map[i - 1][j];
+                    } else if (j > 0) {
+                        map[i][j] = map[i][j - 1];
+                    }
+                }
+            }
+        }
+        return map[n - 1][m - 1];
+    }
 }
