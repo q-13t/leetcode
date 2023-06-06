@@ -13,10 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.longestCommonSubsequence("abcde", "ace"));
+        System.out.println(solution.maxProfit(new int[] { 1, 3, 2, 8, 4, 9 }, 2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.longestCommonSubsequence("abc", "abc"));
-        System.out.println(solution.longestCommonSubsequence("abc", "def"));
 
     }
 

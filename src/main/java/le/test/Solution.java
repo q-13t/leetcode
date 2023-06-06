@@ -3916,4 +3916,17 @@ public class Solution extends GuessGame {
         }
         return map[n - 1][m - 1];
     }
+
+    public int maxProfit(int[] prices, int fee) {
+        int n = prices.length;
+        int free = 0;
+        int hold = -prices[0];
+        for (int i = 1; i < n; i++) {
+            hold = Math.max(hold, free - prices[i]);
+            free = Math.max(free, hold + prices[i] - fee);
+        }
+
+        return free;
+    }
+
 }
