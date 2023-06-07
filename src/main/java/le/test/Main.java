@@ -13,9 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.canMakeArithmeticProgression(new int[] { 3, 5, 1 }));
+        System.out.println(solution.checkStraightLine(new int[][] { { 0, 0 }, { 0, 1 }, { 0, -1 } }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.canMakeArithmeticProgression(new int[] { 1, 2, 4 }));
 
     }
 

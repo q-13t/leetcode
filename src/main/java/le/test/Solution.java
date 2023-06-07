@@ -3970,4 +3970,20 @@ public class Solution extends GuessGame {
         }
         return true;
     }
+
+    public boolean checkStraightLine(int[][] coordinates) {
+        int length = coordinates.length;
+        if (length == 2) {
+            return true;
+        }
+
+        int dX = coordinates[1][0] - coordinates[0][0];
+        int dY = coordinates[1][1] - coordinates[0][1];
+
+        for (int i = 2; i < length; i++) {
+            if ((dY * (coordinates[i][0] - coordinates[0][0])) != (dX * (coordinates[i][1] - coordinates[0][1])))
+                return false;
+        }
+        return true;
+    }
 }
