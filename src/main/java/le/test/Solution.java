@@ -2,6 +2,7 @@ package le.test;
 
 import java.util.Set;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
@@ -3816,5 +3817,184 @@ public class Solution extends GuessGame {
             currentList.remove(currentList.size() - 1);
         }
         return;
+    }
+
+    public void dfs(String node, String dest, HashMap<String, HashMap<String, Double>> gr, HashSet<String> vis,
+            double[] ans, double temp) {
+        if (vis.contains(node))
+            return;
+
+        vis.add(node);
+        if (node.equals(dest)) {
+            ans[0] = temp;
+            return;
+        }
+
+        for (Map.Entry<String, Double> entry : gr.get(node).entrySet()) {
+            String ne = entry.getKey();
+            double val = entry.getValue();
+            dfs(ne, dest, gr, vis, ans, temp * val);
+        }
+    }
+
+    public HashMap<String, HashMap<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
+        HashMap<String, HashMap<String, Double>> gr = new HashMap<>();
+
+        for (int i = 0; i < equations.size(); i++) {
+            String dividend = equations.get(i).get(0);
+            String divisor = equations.get(i).get(1);
+            double value = values[i];
+
+            gr.putIfAbsent(dividend, new HashMap<>());
+            gr.putIfAbsent(divisor, new HashMap<>());
+
+            gr.get(dividend).put(divisor, value);
+            gr.get(divisor).put(dividend, 1.0 / value);
+        }
+
+        return gr;
+    }
+
+    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        HashMap<String, HashMap<String, Double>> gr = buildGraph(equations, values);
+        double[] finalAns = new double[queries.size()];
+
+        for (int i = 0; i < queries.size(); i++) {
+            String dividend = queries.get(i).get(0);
+            String divisor = queries.get(i).get(1);
+
+            if (!gr.containsKey(dividend) || !gr.containsKey(divisor)) {
+                finalAns[i] = -1.0;
+            } else {
+                HashSet<String> vis = new HashSet<>();
+                double[] ans = { -1.0 };
+                double temp = 1.0;
+                dfs(dividend, divisor, gr, vis, ans, temp);
+                finalAns[i] = ans[0];
+            }
+        }
+
+        return finalAns;
+    }
+
+    public int uniquePaths(int m, int n) {
+        int[][] map = new int[m][n];
+        map[0][0] = 1;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (i > 0 && j > 0)
+                    map[i][j] = map[i - 1][j] + map[i][j - 1];
+                else if (i > 0)
+                    map[i][j] = map[i - 1][j];
+                else if (j > 0)
+                    map[i][j] = map[i][j - 1];
+
+        return map[m - 1][n - 1];
+    }
+
+    public int longestCommonSubsequence(String text1, String text2) {
+        int n = text1.length();
+        int m = text2.length();
+        int[][] map = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    if (i > 0 && j > 0)
+                        map[i][j] = map[i - 1][j - 1] + 1;
+                    else
+                        map[i][j] = 1;
+                } else {
+                    if (i > 0 && j > 0) {
+                        map[i][j] = Math.max(map[i - 1][j], map[i][j - 1]);
+                    } else if (i > 0) {
+                        map[i][j] = map[i - 1][j];
+                    } else if (j > 0) {
+                        map[i][j] = map[i][j - 1];
+                    }
+                }
+            }
+        }
+        return map[n - 1][m - 1];
+    }
+
+    public int maxProfit(int[] prices, int fee) {
+        int n = prices.length;
+        int free = 0;
+        int hold = -prices[0];
+        for (int i = 1; i < n; i++) {
+            hold = Math.max(hold, free - prices[i]);
+            free = Math.max(free, hold + prices[i] - fee);
+        }
+
+        return free;
+    }
+
+    public int minDistance(String word1, String word2) {
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0)
+            return m;
+        if (m == 0)
+            return n;
+
+        int[][] map = new int[n + 1][m + 1];
+
+        for (int i = 1; i <= n; i++)
+            map[i][0] = i;
+
+        for (int i = 1; i <= m; i++)
+            map[0][i] = i;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                int dif = 1;
+                if (word1.charAt(i - 1) == word2.charAt(j - 1))
+                    dif = 0;
+                map[i][j] = Math.min(map[i - 1][j] + 1, Math.min(map[i][j - 1] + 1, map[i - 1][j - 1] + dif));
+            }
+        }
+        return map[n][m];
+    }
+
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        int length = arr.length;
+        if (length < 2)
+            return false;
+
+        Arrays.sort(arr);
+        int difference = arr[1] - arr[0];
+        for (int i = 2; i < length; i++) {
+            if (arr[i] - arr[i - 1] != difference)
+                return false;
+        }
+        return true;
+    }
+
+    public boolean checkStraightLine(int[][] coordinates) {
+        int length = coordinates.length;
+        if (length == 2) {
+            return true;
+        }
+
+        int dX = coordinates[1][0] - coordinates[0][0];
+        int dY = coordinates[1][1] - coordinates[0][1];
+
+        for (int i = 2; i < length; i++) {
+            if ((dY * (coordinates[i][0] - coordinates[0][0])) != (dX * (coordinates[i][1] - coordinates[0][1])))
+                return false;
+        }
+        return true;
+    }
+
+    public int countNegatives(int[][] grid) {
+        int negatives = 0;
+        int n = grid.length;
+        int m = grid[0].length;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                if (grid[i][j] < 0)
+                    negatives++;
+        return negatives;
     }
 }
