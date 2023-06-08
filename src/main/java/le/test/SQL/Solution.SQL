@@ -15,3 +15,8 @@ SELECT name,
 FROM World
 WHERE area >= 3000000
     OR population >= 25000000;
+-- 1148. Article Views I
+SELECT DISTINCT author_id as 'id'
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY author_id
