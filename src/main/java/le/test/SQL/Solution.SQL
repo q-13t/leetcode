@@ -7,4 +7,11 @@ WHERE low_fats = 'Y'
 SELECT name
 FROM Customer
 WHERE referee_id NOT IN (2)
-    OR referee_id IS null
+    OR referee_id IS null;
+-- 595. Big Countries
+SELECT name,
+    population,
+    area
+FROM World
+WHERE area >= 3000000
+    OR population >= 25000000;
