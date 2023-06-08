@@ -19,4 +19,8 @@ WHERE area >= 3000000
 SELECT DISTINCT author_id as 'id'
 FROM Views
 WHERE author_id = viewer_id
-ORDER BY author_id
+ORDER BY author_id;
+-- 1683. Invalid Tweets
+SELECT tweet_id
+FROM Tweets
+WHERE LENGTH(content) > 15;
