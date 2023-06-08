@@ -1,4 +1,4 @@
-package le.test;
+package le.test.LeetCode;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 

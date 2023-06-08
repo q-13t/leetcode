@@ -1,4 +1,4 @@
-package le.test;
+package le.test.LeetCode;
 
 public class Trie {
     static final int ALPHABET_SIZE = 26;

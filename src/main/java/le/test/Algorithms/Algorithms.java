@@ -1,4 +1,4 @@
-package le.test;
+package le.test.Algorithms;
 
 import java.util.Arrays;
 

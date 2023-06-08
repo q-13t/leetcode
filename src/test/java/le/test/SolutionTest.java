@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import le.test.LeetCode.ListNode;
+import le.test.LeetCode.Solution;
+
 public class SolutionTest {
     @Test
     public void testLongestCommonPrefix() {
