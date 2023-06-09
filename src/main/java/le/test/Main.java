@@ -1,10 +1,12 @@
-package le.test.LeetCode;
+package le.test;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
 
 import javax.xml.namespace.QName;
+
+import le.test.LeetCode.Solution;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -13,8 +15,10 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.checkStraightLine(new int[][] { { 0, 0 }, { 0, 1 }, { 0, -1 } }));
+        System.out.println(solution.nextGreatestLetter(new char[] { 'c', 'f', 'j' }, 'a'));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.nextGreatestLetter(new char[] { 'c', 'f', 'j' }, 'c'));
+        System.out.println(solution.nextGreatestLetter(new char[] { 'x', 'x', 'y', 'y' }, 'z'));
 
     }
 
