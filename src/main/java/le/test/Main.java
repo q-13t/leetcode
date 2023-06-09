@@ -1,10 +1,12 @@
-package le.test.LeetCode;
+package le.test;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
 
 import javax.xml.namespace.QName;
+
+import le.test.LeetCode.Solution;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
