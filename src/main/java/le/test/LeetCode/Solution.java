@@ -3997,4 +3997,23 @@ public class Solution extends GuessGame {
                     negatives++;
         return negatives;
     }
+
+    public char nextGreatestLetter(char[] letters, char target) {
+        int l = 0;
+        int r = letters.length - 1;
+        int m = 0;
+
+        while (l < r) {
+            m = (l + r) / 2;
+            if (letters[m] <= target)
+                l = m + 1;
+            else
+                r = m;
+        }
+
+        System.gc();
+        if (letters[r] > target)
+            return letters[r];
+        return letters[0];
+    }
 }
