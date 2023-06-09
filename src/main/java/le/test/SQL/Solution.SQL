@@ -47,3 +47,11 @@ SELECT w1.id
 FROM Weather w1
     JOIN Weather w2 ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
 WHERE w1.temperature > w2.temperature;
+--1661. Average Time of Process per Machine
+SELECT a1.machine_id,
+    ROUND(AVG(a2.timestamp - a1.timestamp), 3) 'processing_time'
+FROM Activity a1
+    JOIN Activity a2 ON a1.machine_id = a2.machine_id
+    AND a1.process_id = a2.process_id
+    AND a2.timestamp > a1.timestamp
+GROUP BY a1.machine_id;
