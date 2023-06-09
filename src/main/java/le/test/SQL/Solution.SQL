@@ -34,4 +34,11 @@ SELECT p.product_name,
     s.year,
     s.price
 FROM Sales s
-    INNER JOIN Product p ON p.product_id = s.product_id
+    INNER JOIN Product p ON p.product_id = s.product_id;
+-- 1581. Customer Who Visited but Did Not Make Any Transactions
+SELECT v.customer_id,
+    COUNT(1) 'count_no_trans'
+FROM Visits v
+    LEFT JOIN Transactions t ON t.visit_id = v.visit_id
+WHERE ISNULL(t.visit_id)
+GROUP BY v.customer_id;
