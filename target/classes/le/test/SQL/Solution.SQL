@@ -76,3 +76,12 @@ GROUP BY s.student_id,
     sub.subject_name
 ORDER BY s.student_id,
     sub.subject_name;
+-- 570. Managers with at Least 5 Direct Reports
+SELECT e1.name
+FROM Employee e1
+    JOIN (
+        SELECT e2.managerId
+        FROM Employee e2
+        GROUP BY e2.managerId
+        HAVING count(e2.managerId) >= 5
+    ) s ON s.managerId = e1.id
