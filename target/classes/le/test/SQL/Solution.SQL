@@ -84,4 +84,10 @@ FROM Employee e1
         FROM Employee e2
         GROUP BY e2.managerId
         HAVING count(e2.managerId) >= 5
-    ) s ON s.managerId = e1.id
+    ) s ON s.managerId = e1.id;
+-- 1934. Confirmation Rate
+SELECT s.user_id,
+    round(avg(if(c.action = "confirmed", 1, 0)), 2) confirmation_rate
+FROM Signups s
+    LEFT JOIN Confirmations c ON s.user_id = c.user_id
+GROUP BY user_id;
