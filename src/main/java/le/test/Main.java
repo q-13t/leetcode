@@ -15,10 +15,8 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.nextGreatestLetter(new char[] { 'c', 'f', 'j' }, 'a'));
+        System.out.println(solution.maxValue(6, 1, 10));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.nextGreatestLetter(new char[] { 'c', 'f', 'j' }, 'c'));
-        System.out.println(solution.nextGreatestLetter(new char[] { 'x', 'x', 'y', 'y' }, 'z'));
 
     }
 
