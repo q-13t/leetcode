@@ -91,3 +91,9 @@ SELECT s.user_id,
 FROM Signups s
     LEFT JOIN Confirmations c ON s.user_id = c.user_id
 GROUP BY user_id;
+-- 620. Not Boring Movies
+SELECT *
+FROM Cinema
+WHERE MOD(id, 2) != 0
+    AND description != 'boring'
+ORDER BY rating DESC
