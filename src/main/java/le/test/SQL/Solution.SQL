@@ -72,3 +72,9 @@ FROM (
         HAVING u.purchase_date BETWEEN p.start_date AND p.end_date
     ) as r
 GROUP BY r.id;
+-- 1075. Project Employees I
+SELECT p.project_id,
+    ROUND(AVG(e.experience_years), 2) as average_years
+FROM Project as p
+    INNER JOIN Employee AS e ON e.employee_id = p.employee_id
+GROUP BY p.project_id;
