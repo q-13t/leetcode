@@ -89,3 +89,9 @@ FROM Register
 GROUP BY contest_id
 ORDER BY percentage desc,
     contest_id ASC;
+-- 1211. Queries Quality and Percentage
+SELECT query_name,
+    ROUND(AVG(rating / position), 2) AS quality,
+    ROUND(SUM(rating < 3) / COUNT(query_name) * 100, 2) as poor_query_percentage
+FROM queries
+GROUP BY query_name;
