@@ -55,3 +55,20 @@ FROM Activity a1
     AND a1.process_id = a2.process_id
     AND a2.timestamp > a1.timestamp
 GROUP BY a1.machine_id;
+-- 1251. Average Selling Price
+SELECT r.id as product_id,
+    ROUND(SUM(r.times) / SUM(r.units), 2) as average_price
+FROM (
+        SELECT p.product_id as id,
+            p.price as price,
+            u.units as units,
+            p.price * u.units as times
+        FROM Prices as p
+            INNER JOIN UnitsSold as u ON u.product_id = p.product_id
+        GROUP BY p.product_id,
+            u.purchase_date,
+            p.start_date,
+            p.end_date
+        HAVING u.purchase_date BETWEEN p.start_date AND p.end_date
+    ) as r
+GROUP BY r.id;
