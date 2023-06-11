@@ -95,3 +95,16 @@ SELECT query_name,
     ROUND(SUM(rating < 3) / COUNT(query_name) * 100, 2) as poor_query_percentage
 FROM queries
 GROUP BY query_name;
+-- 1193. Monthly Transactions I
+SELECT DATE_FORMAT(trans_date, '%Y-%m') as month,
+    country,
+    COUNT(state) as trans_count,
+    SUM(IF(state = 'approved', 1, 0)) as approved_count,
+    SUM(amount) as trans_total_amount,
+    SUM(IF(state = 'approved', amount, 0)) as approved_total_amount
+FROM Transactions
+GROUP BY EXTRACT(
+        MONTH
+        FROM trans_date
+    ),
+    country
