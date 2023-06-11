@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.xml.namespace.QName;
 
+import le.test.LeetCode.SnapshotArray;
 import le.test.LeetCode.Solution;
 
 @SuppressWarnings(value = { "unused" })
@@ -15,7 +16,20 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.maxValue(6, 1, 10));
+        SnapshotArray snapshotArr = new SnapshotArray(3);
+        snapshotArr.set(0, 1);
+        snapshotArr.set(2, 17);
+        snapshotArr.set(0, 19);
+        int first = snapshotArr.snap();
+        int second = snapshotArr.snap();
+        System.out.println(snapshotArr.get(0, first));
+        int third = snapshotArr.snap();
+        System.out.println(snapshotArr.get(1, second));
+        System.out.println(snapshotArr.get(0, third));
+        snapshotArr.set(2, 5);
+        int fourth = snapshotArr.snap();
+        System.out.println(snapshotArr.get(2, fourth));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
