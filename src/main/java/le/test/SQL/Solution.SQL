@@ -147,4 +147,16 @@ SELECT activity_date as day,
 FROM Activity
 WHERE activity_date <= '2019-07-27'
     AND ABS(DATEDIFF('2019-07-27', activity_date)) < 30
-GROUP BY activity_date
+GROUP BY activity_date;
+-- 1070.Product Sales Analysis III
+SELECT product_id,
+    year as first_year,
+    quantity,
+    price
+FROM Sales
+WHERE (product_id, year) IN(
+        SELECT product_id,
+            MIN(YEAR)
+        FROM Sales
+        GROUP BY product_id
+    )
