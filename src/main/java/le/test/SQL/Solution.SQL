@@ -107,4 +107,16 @@ GROUP BY EXTRACT(
         MONTH
         FROM trans_date
     ),
-    country
+    country;
+-- 1174. Immediate Food Delivery II
+SELECT ROUND(
+        SUM(IF(order_date = customer_pref_delivery_date, 1, 0)) / COUNT(1) * 100,
+        2
+    ) as immediate_percentage
+FROM Delivery
+WHERE (customer_id, order_date) IN(
+        SELECT customer_id,
+            MIN(order_date) as order_date
+        FROM Delivery
+        GROUP BY customer_id
+    )
