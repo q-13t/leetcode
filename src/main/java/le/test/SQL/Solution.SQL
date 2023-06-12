@@ -110,7 +110,9 @@ GROUP BY EXTRACT(
     country;
 -- 1174. Immediate Food Delivery II
 SELECT ROUND(
-        SUM(IF(order_date = customer_pref_delivery_date, 1, 0)) / COUNT(1) * 100,
+        SUM(
+            IF(order_date = customer_pref_delivery_date, 1, 0)
+        ) / COUNT(1) * 100,
         2
     ) as immediate_percentage
 FROM Delivery
@@ -119,4 +121,18 @@ WHERE (customer_id, order_date) IN(
             MIN(order_date) as order_date
         FROM Delivery
         GROUP BY customer_id
-    )
+    );
+-- 550. Game Play Analysis IV
+SELECT ROUND(j.consecutive / COUNT(DISTINCT a.player_id), 2) as fraction
+FROM Activity a
+    JOIN(
+        SELECT count(a1.player_id) as consecutive
+        FROM (
+                SELECT player_id,
+                    MIN(event_date) as event_date
+                FROM Activity
+                GROUP BY player_id
+            ) as a1
+            JOIN Activity a2 ON a2.event_date = DATE_ADD(a1.event_date, INTERVAL 1 DAY)
+            AND a1.player_id = a2.player_id
+    ) as j;
