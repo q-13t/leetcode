@@ -136,3 +136,8 @@ FROM Activity a
             JOIN Activity a2 ON a2.event_date = DATE_ADD(a1.event_date, INTERVAL 1 DAY)
             AND a1.player_id = a2.player_id
     ) as j;
+-- 2356. Number of Unique Subjects Taught by Each Teacher
+SELECT teacher_id,
+    COUNT(DISTINCT subject_id) as cnt
+FROM Teacher
+GROUP BY teacher_id;
