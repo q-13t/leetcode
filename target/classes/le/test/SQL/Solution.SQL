@@ -55,3 +55,56 @@ FROM Activity a1
     AND a1.process_id = a2.process_id
     AND a2.timestamp > a1.timestamp
 GROUP BY a1.machine_id;
+-- 1251. Average Selling Price
+SELECT r.id as product_id,
+    ROUND(SUM(r.times) / SUM(r.units), 2) as average_price
+FROM (
+        SELECT p.product_id as id,
+            p.price as price,
+            u.units as units,
+            p.price * u.units as times
+        FROM Prices as p
+            INNER JOIN UnitsSold as u ON u.product_id = p.product_id
+        GROUP BY p.product_id,
+            u.purchase_date,
+            p.start_date,
+            p.end_date
+        HAVING u.purchase_date BETWEEN p.start_date AND p.end_date
+    ) as r
+GROUP BY r.id;
+-- 1075. Project Employees I
+SELECT p.project_id,
+    ROUND(AVG(e.experience_years), 2) as average_years
+FROM Project as p
+    INNER JOIN Employee AS e ON e.employee_id = p.employee_id
+GROUP BY p.project_id;
+-- 1633. Percentage of Users Attended a Contest
+SELECT contest_id,
+    ROUND((COUNT(1) / r.users) * 100, 2) as percentage
+FROM Register
+    JOIN(
+        SELECT COUNT(1) as users
+        FROM Users
+    ) as r
+GROUP BY contest_id
+ORDER BY percentage desc,
+    contest_id ASC;
+-- 1211. Queries Quality and Percentage
+SELECT query_name,
+    ROUND(AVG(rating / position), 2) AS quality,
+    ROUND(SUM(rating < 3) / COUNT(query_name) * 100, 2) as poor_query_percentage
+FROM queries
+GROUP BY query_name;
+-- 1193. Monthly Transactions I
+SELECT DATE_FORMAT(trans_date, '%Y-%m') as month,
+    country,
+    COUNT(state) as trans_count,
+    SUM(IF(state = 'approved', 1, 0)) as approved_count,
+    SUM(amount) as trans_total_amount,
+    SUM(IF(state = 'approved', amount, 0)) as approved_total_amount
+FROM Transactions
+GROUP BY EXTRACT(
+        MONTH
+        FROM trans_date
+    ),
+    country
