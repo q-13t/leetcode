@@ -192,3 +192,17 @@ FROM(
         FROM Product
     ) as c
 WHERE b.bought IN (c.product_count);
+-- 1731. The Number of Employees Which Report to Each Employee
+SELECT e.employee_id,
+    e.name,
+    COUNT(r.employee_id) as reports_count,
+    ROUND(AVG(r.age), 0) as average_age
+FROM Employees as e
+    JOIN(
+        SELECT employee_id,
+            reports_to,
+            age
+        FROM Employees
+    ) as r ON e.employee_id = r.reports_to
+GROUP BY e.employee_id
+ORDER BY e.employee_id;
