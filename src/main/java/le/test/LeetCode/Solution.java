@@ -4044,4 +4044,23 @@ public class Solution extends GuessGame {
 
         return count - value;
     }
+
+    public int equalPairs2(int[][] grid) {
+        NumericalTrie trie = new NumericalTrie();
+        int count = 0;
+        int n = grid.length;
+        for (int[] row : grid) {
+            trie.insert(row);
+        }
+
+        for (int colum = 0; colum < n; colum++) {
+            int[] arr = new int[n];
+            for (int row = 0; row < n; row++) {
+                arr[row] = grid[row][colum];
+            }
+            count += trie.search(arr);
+        }
+        System.gc();
+        return count;
+    }
 }
