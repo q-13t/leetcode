@@ -178,4 +178,17 @@ FROM (
         FROM MyNumbers
         GROUP BY num
         HAVING COUNT(1) = 1
-    ) r
+    ) r;
+-- 1045.Customers Who Bought All Products
+SELECT b.customer_id
+FROM(
+        SELECT customer_id,
+            COUNT(DISTINCT product_key) as bought
+        FROM Customer
+        GROUP BY customer_id
+    ) as b
+    JOIN(
+        SELECT COUNT(1) as product_count
+        FROM Product
+    ) as c
+WHERE b.bought IN (c.product_count);
