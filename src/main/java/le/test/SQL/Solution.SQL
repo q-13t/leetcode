@@ -171,3 +171,11 @@ SELECT user_id,
 FROM Followers
 GROUP BY user_id
 ORDER BY user_id ASC;
+-- 619. Biggest Single Number
+SELECT MAX(r.num) as num
+FROM (
+        SELECT num as num
+        FROM MyNumbers
+        GROUP BY num
+        HAVING COUNT(1) = 1
+    ) r
