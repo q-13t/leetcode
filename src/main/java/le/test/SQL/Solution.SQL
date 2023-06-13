@@ -159,4 +159,9 @@ WHERE (product_id, year) IN(
             MIN(YEAR)
         FROM Sales
         GROUP BY product_id
-    )
+    );
+-- 596. Classes More Than 5 Students
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(1) >= 5;
