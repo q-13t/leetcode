@@ -216,3 +216,13 @@ WHERE employee_id NOT IN(
         WHERE primary_flag = 'Y'
     )
     OR primary_flag = 'Y';
+-- 610. Triangle Judgement
+SELECT *,
+    IF(
+        x + y > z
+        AND x + z > y
+        AND z + y > x,
+        'Yes',
+        'No'
+    ) as triangle
+FROM Triangle;
