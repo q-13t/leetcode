@@ -235,3 +235,19 @@ WHERE a.num = b.num
     AND a.num = c.num
     AND a.id = b.id - 1
     AND a.id = c.id - 2;
+-- 1164. Product Price at a Given Date
+SELECT product_id,
+    IFNULL(k.price, 10) as price
+FROM (
+        SELECT DISTINCT product_id
+        FROM Products
+    ) as p
+    LEFT JOIN(
+        SELECT DISTINCT product_id,
+            FIRST_VALUE (new_price) OVER (
+                PARTITION BY product_id
+                ORDER BY change_date DESC
+            ) AS price
+        FROM Products
+        WHERE change_date <= '2019-08-16'
+    ) as k USING (product_id)
