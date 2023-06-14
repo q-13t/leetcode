@@ -206,3 +206,13 @@ FROM Employees as e
     ) as r ON e.employee_id = r.reports_to
 GROUP BY e.employee_id
 ORDER BY e.employee_id;
+-- 1789. Primary Department for Each Employee
+SELECT employee_id,
+    department_id
+FROM Employee
+WHERE employee_id NOT IN(
+        SELECT employee_id
+        FROM Employee
+        WHERE primary_flag = 'Y'
+    )
+    OR primary_flag = 'Y';
