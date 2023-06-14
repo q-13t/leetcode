@@ -226,3 +226,12 @@ SELECT *,
         'No'
     ) as triangle
 FROM Triangle;
+-- 180. Consecutive Numbers
+SELECT DISTINCT a.num as ConsecutiveNums
+FROM Logs as a
+    INNER JOIN Logs as b
+    INNER JOIN Logs as c
+WHERE a.num = b.num
+    AND a.num = c.num
+    AND a.id = b.id - 1
+    AND a.id = c.id - 2;
