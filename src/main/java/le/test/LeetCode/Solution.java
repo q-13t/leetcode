@@ -4063,4 +4063,23 @@ public class Solution extends GuessGame {
         System.gc();
         return count;
     }
+
+    int minDif = Integer.MAX_VALUE;
+    TreeNode prev;
+
+    public int getMinimumDifference(TreeNode root) {
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        }
+
+        getMinimumDifference(root.left);
+        if (prev != null) {
+            minDif = Math.min(minDif, root.val - prev.val);
+        }
+        prev = root;
+
+        getMinimumDifference(root.right);
+        return minDif;
+    }
+
 }

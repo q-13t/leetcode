@@ -107,4 +107,102 @@ GROUP BY EXTRACT(
         MONTH
         FROM trans_date
     ),
-    country
+    country;
+-- 1174. Immediate Food Delivery II
+SELECT ROUND(
+        SUM(
+            IF(order_date = customer_pref_delivery_date, 1, 0)
+        ) / COUNT(1) * 100,
+        2
+    ) as immediate_percentage
+FROM Delivery
+WHERE (customer_id, order_date) IN(
+        SELECT customer_id,
+            MIN(order_date) as order_date
+        FROM Delivery
+        GROUP BY customer_id
+    );
+-- 550. Game Play Analysis IV
+SELECT ROUND(j.consecutive / COUNT(DISTINCT a.player_id), 2) as fraction
+FROM Activity a
+    JOIN(
+        SELECT count(a1.player_id) as consecutive
+        FROM (
+                SELECT player_id,
+                    MIN(event_date) as event_date
+                FROM Activity
+                GROUP BY player_id
+            ) as a1
+            JOIN Activity a2 ON a2.event_date = DATE_ADD(a1.event_date, INTERVAL 1 DAY)
+            AND a1.player_id = a2.player_id
+    ) as j;
+-- 2356. Number of Unique Subjects Taught by Each Teacher
+SELECT teacher_id,
+    COUNT(DISTINCT subject_id) as cnt
+FROM Teacher
+GROUP BY teacher_id;
+-- 1141. User Activity for the Past 30 Days I
+SELECT activity_date as day,
+    COUNT(DISTINCT user_id) as active_users
+FROM Activity
+WHERE activity_date <= '2019-07-27'
+    AND ABS(DATEDIFF('2019-07-27', activity_date)) < 30
+GROUP BY activity_date;
+-- 1070.Product Sales Analysis III
+SELECT product_id,
+    year as first_year,
+    quantity,
+    price
+FROM Sales
+WHERE (product_id, year) IN(
+        SELECT product_id,
+            MIN(YEAR)
+        FROM Sales
+        GROUP BY product_id
+    );
+-- 596. Classes More Than 5 Students
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(1) >= 5;
+-- 1729. Find Followers Count
+SELECT user_id,
+    COUNT(follower_id) as followers_count
+FROM Followers
+GROUP BY user_id
+ORDER BY user_id ASC;
+-- 619. Biggest Single Number
+SELECT MAX(r.num) as num
+FROM (
+        SELECT num as num
+        FROM MyNumbers
+        GROUP BY num
+        HAVING COUNT(1) = 1
+    ) r;
+-- 1045.Customers Who Bought All Products
+SELECT b.customer_id
+FROM(
+        SELECT customer_id,
+            COUNT(DISTINCT product_key) as bought
+        FROM Customer
+        GROUP BY customer_id
+    ) as b
+    JOIN(
+        SELECT COUNT(1) as product_count
+        FROM Product
+    ) as c
+WHERE b.bought IN (c.product_count);
+-- 1731. The Number of Employees Which Report to Each Employee
+SELECT e.employee_id,
+    e.name,
+    COUNT(r.employee_id) as reports_count,
+    ROUND(AVG(r.age), 0) as average_age
+FROM Employees as e
+    JOIN(
+        SELECT employee_id,
+            reports_to,
+            age
+        FROM Employees
+    ) as r ON e.employee_id = r.reports_to
+GROUP BY e.employee_id
+ORDER BY e.employee_id;

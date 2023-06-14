@@ -8,6 +8,7 @@ import javax.xml.namespace.QName;
 
 import le.test.LeetCode.SnapshotArray;
 import le.test.LeetCode.Solution;
+import le.test.LeetCode.TreeNode;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -16,19 +17,19 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        SnapshotArray snapshotArr = new SnapshotArray(3);
-        snapshotArr.set(0, 1);
-        snapshotArr.set(2, 17);
-        snapshotArr.set(0, 19);
-        int first = snapshotArr.snap();
-        int second = snapshotArr.snap();
-        System.out.println(snapshotArr.get(0, first));
-        int third = snapshotArr.snap();
-        System.out.println(snapshotArr.get(1, second));
-        System.out.println(snapshotArr.get(0, third));
-        snapshotArr.set(2, 5);
-        int fourth = snapshotArr.snap();
-        System.out.println(snapshotArr.get(2, fourth));
+
+        // TreeNode root = new TreeNode(4);
+        // root.right = new TreeNode(6);
+        // root.left = new TreeNode(2);
+        // root.left.left = new TreeNode(1);
+        // root.left.right = new TreeNode(3);
+        TreeNode root = new TreeNode(543);
+        root.right = new TreeNode(384);
+        root.left = new TreeNode(652);
+        root.left.right = new TreeNode(445);
+        root.right.right = new TreeNode(699);
+
+        System.out.println(solution.getMinimumDifference(root));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
