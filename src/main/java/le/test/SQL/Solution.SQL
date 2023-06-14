@@ -250,4 +250,16 @@ FROM (
             ) AS price
         FROM Products
         WHERE change_date <= '2019-08-16'
-    ) as k USING (product_id)
+    ) as k USING (product_id);
+-- 1204. Last Person to Fit in the Bus
+select person_name
+from (
+        select *,
+            sum(weight) over (
+                order by Turn
+            ) as total_sum
+        from queue
+    ) t
+where total_sum <= 1000
+order by turn desc
+limit 1;
