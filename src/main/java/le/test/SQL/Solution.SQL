@@ -304,3 +304,27 @@ SELECT id,
         )
     ) as student
 FROM SEAT;
+-- 1341. Movie Rating
+(
+    SELECT u.name as results
+    FROM MovieRating as mr
+        INNER JOIN Users as u ON (mr.user_id = u.user_id)
+    GROUP BY u.name
+    ORDER BY count(1) DESC,
+        u.name
+    LIMIT 1
+)
+UNION ALL
+(
+    SELECT m.title as results
+    FROM MovieRating mr
+        INNER JOIN Movies as m ON(mr.movie_id = m.movie_id)
+    WHERE EXTRACT(
+            YEAR_MONTH
+            FROM created_at
+        ) = '202002'
+    GROUP BY m.title
+    ORDER BY AVG(mr.rating) DESC,
+        m.title
+    LIMIT 1
+)
