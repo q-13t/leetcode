@@ -277,4 +277,13 @@ UNION
 SELECT 'High Salary' as category,
     COUNT(1) as accounts_count
 FROM Accounts
-WHERE income > 50000
+WHERE income > 50000;
+-- 1978. Employees Whose Manager Left the Company
+SELECT employee_id
+FROM Employees
+WHERE salary < 30000
+    AND manager_id NOT IN (
+        SELECT employee_id
+        FROM Employees
+    )
+ORDER BY employee_id;
