@@ -327,4 +327,21 @@ UNION ALL
     ORDER BY AVG(mr.rating) DESC,
         m.title
     LIMIT 1
-)
+);
+-- 1321. Restaurant Growth
+SELECT DISTINCT customer.visited_on,
+    sum(c.amount) amount,
+    round(sum(c.amount) / 7, 2) average_amount
+FROM Customer
+    JOIN Customer c ON c.visited_on BETWEEN DATE_SUB(customer.visited_on, INTERVAL 6 DAY)
+    AND customer.visited_on
+WHERE customer.visited_on >= DATE_ADD(
+        (
+            SELECT MIN(visited_on)
+            FROM Customer
+        ),
+        INTERVAL 6 DAY
+    )
+GROUP BY customer.visited_on,
+    customer.customer_id
+ORDER BY customer.visited_on;
