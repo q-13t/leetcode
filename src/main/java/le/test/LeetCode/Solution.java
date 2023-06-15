@@ -7,11 +7,13 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.security.Key;
 import java.util.AbstractList;
 import java.util.PriorityQueue;
 
@@ -4082,4 +4084,35 @@ public class Solution extends GuessGame {
         return minDif;
     }
 
+    public int maxLevelSum2(TreeNode root) {
+        HashMap<Integer, Integer> levelSum = new HashMap<>();
+        getTreeNodeLevelSum(root, levelSum, 0);
+        int[] pair = new int[2];
+        pair[1] = Integer.MIN_VALUE;
+        for (int key : levelSum.keySet()) {
+            if (pair[1] < levelSum.get(key)) {
+                pair[0] = key;
+                pair[1] = levelSum.get(key);
+            }
+        }
+        System.gc();
+        return pair[0];
+    }
+
+    private void getTreeNodeLevelSum(TreeNode node, HashMap<Integer, Integer> levelSum, int level) {
+        if (node == null) {
+            return;
+        }
+        level++;
+        getTreeNodeLevelSum(node.left, levelSum, level);
+
+        if (!levelSum.containsKey(level)) {
+            levelSum.put(level, node.val);
+        } else {
+            levelSum.replace(level, levelSum.get(level), levelSum.get(level) + node.val);
+        }
+        getTreeNodeLevelSum(node.right, levelSum, level);
+        level--;
+
+    }
 }

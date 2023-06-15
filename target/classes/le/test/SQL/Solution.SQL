@@ -206,3 +206,60 @@ FROM Employees as e
     ) as r ON e.employee_id = r.reports_to
 GROUP BY e.employee_id
 ORDER BY e.employee_id;
+-- 1789. Primary Department for Each Employee
+SELECT employee_id,
+    department_id
+FROM Employee
+WHERE employee_id NOT IN(
+        SELECT employee_id
+        FROM Employee
+        WHERE primary_flag = 'Y'
+    )
+    OR primary_flag = 'Y';
+-- 610. Triangle Judgement
+SELECT *,
+    IF(
+        x + y > z
+        AND x + z > y
+        AND z + y > x,
+        'Yes',
+        'No'
+    ) as triangle
+FROM Triangle;
+-- 180. Consecutive Numbers
+SELECT DISTINCT a.num as ConsecutiveNums
+FROM Logs as a
+    INNER JOIN Logs as b
+    INNER JOIN Logs as c
+WHERE a.num = b.num
+    AND a.num = c.num
+    AND a.id = b.id - 1
+    AND a.id = c.id - 2;
+-- 1164. Product Price at a Given Date
+SELECT product_id,
+    IFNULL(k.price, 10) as price
+FROM (
+        SELECT DISTINCT product_id
+        FROM Products
+    ) as p
+    LEFT JOIN(
+        SELECT DISTINCT product_id,
+            FIRST_VALUE (new_price) OVER (
+                PARTITION BY product_id
+                ORDER BY change_date DESC
+            ) AS price
+        FROM Products
+        WHERE change_date <= '2019-08-16'
+    ) as k USING (product_id);
+-- 1204. Last Person to Fit in the Bus
+select person_name
+from (
+        select *,
+            sum(weight) over (
+                order by Turn
+            ) as total_sum
+        from queue
+    ) t
+where total_sum <= 1000
+order by turn desc
+limit 1;

@@ -18,18 +18,13 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        // TreeNode root = new TreeNode(4);
-        // root.right = new TreeNode(6);
-        // root.left = new TreeNode(2);
-        // root.left.left = new TreeNode(1);
-        // root.left.right = new TreeNode(3);
-        TreeNode root = new TreeNode(543);
-        root.right = new TreeNode(384);
-        root.left = new TreeNode(652);
-        root.left.right = new TreeNode(445);
-        root.right.right = new TreeNode(699);
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(0);
+        root.left = new TreeNode(7);
+        root.left.left = new TreeNode(7);
+        root.left.right = new TreeNode(-8);
 
-        System.out.println(solution.getMinimumDifference(root));
+        System.out.println(solution.maxLevelSum2(root));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
