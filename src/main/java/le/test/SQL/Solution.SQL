@@ -263,3 +263,18 @@ from (
 where total_sum <= 1000
 order by turn desc
 limit 1;
+-- 1907. Count Salary Categories
+SELECT 'Low Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income < 20000
+UNION
+SELECT 'Average Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income BETWEEN 20000 AND 50000
+UNION
+SELECT 'High Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income > 50000
