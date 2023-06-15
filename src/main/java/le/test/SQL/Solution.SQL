@@ -287,3 +287,20 @@ WHERE salary < 30000
         FROM Employees
     )
 ORDER BY employee_id;
+-- 626. Exchange Seats
+SELECT id,
+    IF(
+        SUM(1) OVER(
+            ORDER BY id
+        ) %2 = 0,
+        LAG(student) OVER (
+            ORDER BY id
+        ),
+        IFNULL(
+            LEAD(student) OVER (
+                ORDER BY id
+            ),
+            student
+        )
+    ) as student
+FROM SEAT;
