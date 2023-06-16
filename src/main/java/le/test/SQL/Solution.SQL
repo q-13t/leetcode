@@ -406,4 +406,8 @@ WHERE R.ranking <= 3
 SELECT user_id,
     CONCAT(UCASE(LEFT(name, 1)), LCASE(SUBSTRING(name, 2))) as name
 FROM Users
-ORDER BY user_id
+ORDER BY user_id;
+-- 1527. Patients With a Condition
+SELECT *
+FROM Patients
+WHERE conditions REGEXP '^DIAB1|[ ]+DIAB1';
