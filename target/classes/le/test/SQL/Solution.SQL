@@ -263,3 +263,85 @@ from (
 where total_sum <= 1000
 order by turn desc
 limit 1;
+-- 1907. Count Salary Categories
+SELECT 'Low Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income < 20000
+UNION
+SELECT 'Average Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income BETWEEN 20000 AND 50000
+UNION
+SELECT 'High Salary' as category,
+    COUNT(1) as accounts_count
+FROM Accounts
+WHERE income > 50000;
+-- 1978. Employees Whose Manager Left the Company
+SELECT employee_id
+FROM Employees
+WHERE salary < 30000
+    AND manager_id NOT IN (
+        SELECT employee_id
+        FROM Employees
+    )
+ORDER BY employee_id;
+-- 626. Exchange Seats
+SELECT id,
+    IF(
+        SUM(1) OVER(
+            ORDER BY id
+        ) %2 = 0,
+        LAG(student) OVER (
+            ORDER BY id
+        ),
+        IFNULL(
+            LEAD(student) OVER (
+                ORDER BY id
+            ),
+            student
+        )
+    ) as student
+FROM SEAT;
+-- 1341. Movie Rating
+(
+    SELECT u.name as results
+    FROM MovieRating as mr
+        INNER JOIN Users as u ON (mr.user_id = u.user_id)
+    GROUP BY u.name
+    ORDER BY count(1) DESC,
+        u.name
+    LIMIT 1
+)
+UNION ALL
+(
+    SELECT m.title as results
+    FROM MovieRating mr
+        INNER JOIN Movies as m ON(mr.movie_id = m.movie_id)
+    WHERE EXTRACT(
+            YEAR_MONTH
+            FROM created_at
+        ) = '202002'
+    GROUP BY m.title
+    ORDER BY AVG(mr.rating) DESC,
+        m.title
+    LIMIT 1
+);
+-- 1321. Restaurant Growth
+SELECT DISTINCT customer.visited_on,
+    sum(c.amount) amount,
+    round(sum(c.amount) / 7, 2) average_amount
+FROM Customer
+    JOIN Customer c ON c.visited_on BETWEEN DATE_SUB(customer.visited_on, INTERVAL 6 DAY)
+    AND customer.visited_on
+WHERE customer.visited_on >= DATE_ADD(
+        (
+            SELECT MIN(visited_on)
+            FROM Customer
+        ),
+        INTERVAL 6 DAY
+    )
+GROUP BY customer.visited_on,
+    customer.customer_id
+ORDER BY customer.visited_on;

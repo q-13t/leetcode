@@ -18,13 +18,7 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(0);
-        root.left = new TreeNode(7);
-        root.left.left = new TreeNode(7);
-        root.left.right = new TreeNode(-8);
-
-        System.out.println(solution.maxLevelSum2(root));
+        System.out.println(solution.numOfWays(new int[] { 3, 4, 5, 1, 2 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
