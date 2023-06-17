@@ -411,3 +411,9 @@ ORDER BY user_id;
 SELECT *
 FROM Patients
 WHERE conditions REGEXP '^DIAB1|[ ]+DIAB1';
+-- 196. Delete Duplicate Emails
+DELETE p1
+FROM Person p1,
+    Person p2
+WHERE p1.email = p2.email
+    AND p1.id > p2.id;
