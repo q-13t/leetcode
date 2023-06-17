@@ -417,3 +417,15 @@ FROM Person p1,
     Person p2
 WHERE p1.email = p2.email
     AND p1.id > p2.id;
+-- 176. Second Highest Salary
+(
+    SELECT salary as SecondHighestSalary
+    FROM Employee
+    GROUP BY salary
+)
+UNION
+(
+    SELECT NULL
+)
+ORDER BY SecondHighestSalary DESC
+LIMIT 1 OFFSET 1;
