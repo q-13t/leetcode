@@ -18,10 +18,20 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.numOfWays(new int[] { 3, 4, 5, 1, 2 }));
+        // System.out.println(solution.makeArrayIncreasing(new int[] { 1, 5, 3, 6, 7 },
+        // new int[] { 1, 3, 2, 4 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
+        // System.out.println(solution.makeArrayIncreasing(new int[] { 1, 5, 3, 6, 7 },
+        // new int[] { 4, 3, 1 }));
+        // System.out.println(solution.makeArrayIncreasing(new int[] { 1, 5, 3, 6, 7 },
+        // new int[] { 1, 6, 3, 3 }));
+        // System.out.println(solution.makeArrayIncreasing(new int[] { 0, 11, 6, 1, 4, 3
+        // }, new int[] { 5, 4, 11, 10, 1,
+        // 0 }));
+        System.out.println(solution.makeArrayIncreasing(new int[] { 5, 16, 19, 2, 1, 12, 7, 14, 5,
+                16 }, new int[] { 6, 17, 4, 3, 6, 13, 4, 3, 18, 17, 16, 7, 14, 1, 16 }));
     }
 
     static int bigSum(int[] arr) {

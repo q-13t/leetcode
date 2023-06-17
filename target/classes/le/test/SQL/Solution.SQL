@@ -345,3 +345,69 @@ WHERE customer.visited_on >= DATE_ADD(
 GROUP BY customer.visited_on,
     customer.customer_id
 ORDER BY customer.visited_on;
+-- 602. Friend Requests II: Who Has the Most Friends
+SELECT user_id AS id,
+    COUNT(*) AS num
+FROM (
+        SELECT requester_id AS user_id
+        FROM RequestAccepted
+        UNION ALL
+        SELECT accepter_id AS user_id
+        FROM RequestAccepted
+    ) AS all_users
+GROUP BY user_id
+HAVING num = (
+        SELECT COUNT(*) AS max_friends
+        FROM (
+                SELECT requester_id AS user_id
+                FROM RequestAccepted
+                UNION ALL
+                SELECT accepter_id AS user_id
+                FROM RequestAccepted
+            ) AS all_users
+        GROUP BY user_id
+        ORDER BY max_friends DESC
+        LIMIT 1
+    );
+-- 585. Investments in 2016
+SELECT ROUND(SUM(tiv_2016), 2) as tiv_2016
+FROM Insurance
+WHERE tiv_2015 IN (
+        SELECT tiv_2015
+        FROM Insurance
+        GROUP BY tiv_2015
+        HAVING COUNT(1) > 1
+    )
+    AND (lat, lon) IN (
+        SELECT lat,
+            lon
+        FROM Insurance
+        GROUP BY lat,
+            lon
+        HAVING COUNT(1) = 1
+    );
+-- 185. Department Top Three Salaries
+SELECT D.name AS Department,
+    E.name AS Employee,
+    E.salary AS Salary
+FROM Employee AS E
+    JOIN Department AS D ON E.departmentId = D.id,
+    (
+        SELECT E1.id,
+            DENSE_RANK() OVER(
+                PARTITION BY E1.departmentId
+                ORDER BY E1.salary DESC
+            ) AS ranking
+        FROM Employee AS E1
+    ) AS R
+WHERE R.ranking <= 3
+    AND R.id = E.id;
+-- 1667. Fix Names in a Table
+SELECT user_id,
+    CONCAT(UCASE(LEFT(name, 1)), LCASE(SUBSTRING(name, 2))) as name
+FROM Users
+ORDER BY user_id;
+-- 1527. Patients With a Condition
+SELECT *
+FROM Patients
+WHERE conditions REGEXP '^DIAB1|[ ]+DIAB1';
