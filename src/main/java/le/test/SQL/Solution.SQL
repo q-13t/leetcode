@@ -448,3 +448,8 @@ WHERE YEAR(o.order_date) = 2020
     AND MONTH(o.order_date) = 02
 GROUP BY o.product_id
 HAVING SUM(o.unit) >= 100;
+-- 1517. Find Users With Valid E-Mails
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_\.-]*@leetcode\.com'
+    AND mail NOT LIKE '%?%';
