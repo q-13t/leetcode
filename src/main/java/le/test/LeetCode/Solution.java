@@ -4197,4 +4197,35 @@ public class Solution extends GuessGame {
         }
         return left;
     }
+
+    private static int[][] moves = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+    int uniquePaths = 0;
+
+    public int countPaths(int[][] grid) {
+        int gridMaxRows = grid.length, gridMaxColumns = grid[0].length;
+        for (int j = 0; j < gridMaxRows; j++) {
+            for (int i = 0; i < gridMaxColumns; i++) {
+                uniquePaths++;
+                getAllIncreasingPaths(grid, new int[] { j, i }, gridMaxRows, gridMaxColumns);
+            }
+        }
+        return uniquePaths % 1_000_000_007;
+    }
+
+    private void getAllIncreasingPaths(int[][] grid, int[] start, int gridMaxRows, int gridMaxColumns) {
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(start);
+        while (!q.isEmpty()) {
+            int[] current = q.poll();
+            int val = grid[current[0]][current[1]];
+            for (int[] move : moves) {
+                int nextRow = current[0] + move[0], nextColumn = current[1] + move[1];
+                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns
+                        && grid[nextRow][nextColumn] > val) {
+                    uniquePaths++;
+                    q.offer(new int[] { nextRow, nextColumn });
+                }
+            }
+        }
+    }
 }

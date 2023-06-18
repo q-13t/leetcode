@@ -416,4 +416,40 @@ DELETE p1
 FROM Person p1,
     Person p2
 WHERE p1.email = p2.email
-    AND p1.id > p2.id
+    AND p1.id > p2.id;
+-- 176. Second Highest Salary
+(
+    SELECT salary as SecondHighestSalary
+    FROM Employee
+    GROUP BY salary
+)
+UNION
+(
+    SELECT NULL
+)
+ORDER BY SecondHighestSalary DESC
+LIMIT 1 OFFSET 1;
+-- 1484. Group Sold Products By The Date
+SELECT a.sell_date,
+    COUNT(DISTINCT a.product) as num_sold,
+    GROUP_CONCAT(
+        DISTINCT a.product
+        ORDER BY a.product SEPARATOR ','
+    ) as products
+FROM Activities as a
+GROUP BY sell_date
+ORDER BY sell_date;
+-- 1327. List the Products Ordered in a Period
+SELECT p.product_name,
+    SUM(o.unit) as unit
+FROM Orders as o
+    INNER JOIN Products as p ON(p.product_id = o.product_id)
+WHERE YEAR(o.order_date) = 2020
+    AND MONTH(o.order_date) = 02
+GROUP BY o.product_id
+HAVING SUM(o.unit) >= 100;
+-- 1517. Find Users With Valid E-Mails
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_\.-]*@leetcode\.com'
+    AND mail NOT LIKE '%?%';
