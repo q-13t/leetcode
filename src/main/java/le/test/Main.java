@@ -4,11 +4,9 @@ package le.test;
 
 import java.util.Random;
 
-import javax.xml.namespace.QName;
-
-import le.test.LeetCode.SnapshotArray;
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
+import le.test.LeetCode.SnapshotArray;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -18,11 +16,21 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.countPaths(new int[][] { { 1, 1 }, { 3, 4 } }));
-
-        System.out.println(solution.countPaths(new int[][] { { 1, 2 } }));
+        for (int val : solution.getAverages(new int[] { 7, 4, 3, 9, 1, 8, 5, 2, 6 },
+                3)) {
+            System.out.print(val + ", ");
+        }
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+
+        for (int val : solution.getAverages(new int[] { 100000 }, 0)) {
+            System.out.print(val + ", ");
+        }
+
+        System.out.println();
+        for (int val : solution.getAverages(new int[] { 8 }, 100000)) {
+            System.out.print(val + ", ");
+        }
 
     }
 

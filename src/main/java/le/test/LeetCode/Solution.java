@@ -7,7 +7,6 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.LinkedList;
 import java.util.Collections;
 import java.util.AbstractList;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 public class Solution extends GuessGame {
 
@@ -4227,5 +4227,32 @@ public class Solution extends GuessGame {
                 }
             }
         }
+    }
+
+    public int[] getAverages(int[] numbs, int k) {
+        int n = numbs.length;
+        int[] result = new int[n];
+        Arrays.fill(result, -1);
+        if (k * 2 + 1 > numbs.length) {
+            return result;
+        }
+        long sum = 0;
+        int divider = k + k + 1;
+        int right = 0;
+        int left = 0 - (k + k);
+        for (int i = 0 - k; i < n; i++) {
+            if (right >= n) {
+                continue;
+            }
+            sum += numbs[right++];
+            left++;
+            if (i >= 0) {
+                if (left > 0) {
+                    result[i] = (int) (sum / divider);
+                    sum -= numbs[left - 1];
+                }
+            }
+        }
+        return result;
     }
 }
