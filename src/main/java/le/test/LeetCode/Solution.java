@@ -4233,25 +4233,21 @@ public class Solution extends GuessGame {
         int n = numbs.length;
         int[] result = new int[n];
         Arrays.fill(result, -1);
-        if (k * 2 + 1 > numbs.length) {
+        if (k + k + 1 > numbs.length)
             return result;
-        }
+
         long sum = 0;
+        int right = k + k + 1;
         int divider = k + k + 1;
-        int right = 0;
-        int left = 0 - (k + k);
-        for (int i = 0 - k; i < n; i++) {
-            if (right >= n) {
-                continue;
-            }
-            sum += numbs[right++];
-            left++;
-            if (i >= 0) {
-                if (left > 0) {
-                    result[i] = (int) (sum / divider);
-                    sum -= numbs[left - 1];
-                }
-            }
+
+        for (int i = 0; i < right; i++)
+            sum += numbs[i];
+
+        result[k] = (int) (sum / divider);
+
+        for (int left = 0; right < n; right++, left++) {
+            sum = sum + numbs[right] - numbs[left];
+            result[k + left + 1] = (int) (sum / divider);
         }
         return result;
     }
