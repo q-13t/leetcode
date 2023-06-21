@@ -1,5 +1,7 @@
 package le.test;
 
+import java.util.Arrays;
+
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
@@ -16,21 +18,20 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        for (int val : solution.getAverages(new int[] { 7, 4, 3, 9, 1, 8, 5, 2, 6 },
-                3)) {
-            System.out.print(val + ", ");
-        }
+        // System.out.println(solution.minCost(new int[] { 1, 3, 5, 2 }, new int[] { 2,
+        // 3, 1, 14 }));
+
+        // System.out.println(solution.minCost(new int[] { 2, 2, 2, 2, 2 }, new int[] {
+        // 4, 2, 8, 1, 3 }));
+        System.out.println(solution.minCost(new int[] { 735103, 366367, 132236,
+                133334, 808160, 113001, 49051, 735598,
+                686615, 665317, 999793, 426087, 587000, 649989, 509946, 743518 },
+                new int[] { 724182, 447415, 723725,
+                        902336, 600863, 287644, 13836, 665183, 448859, 917248, 397790, 898215,
+                        790754, 320604, 468575,
+                        825614 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
-        for (int val : solution.getAverages(new int[] { 100000 }, 0)) {
-            System.out.print(val + ", ");
-        }
-
-        System.out.println();
-        for (int val : solution.getAverages(new int[] { 8 }, 100000)) {
-            System.out.print(val + ", ");
-        }
 
     }
 

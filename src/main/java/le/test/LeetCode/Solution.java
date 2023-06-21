@@ -4251,4 +4251,33 @@ public class Solution extends GuessGame {
         }
         return result;
     }
+
+    public long minCost(int[] numbs, int[] cost) {
+        long left = Long.MAX_VALUE;
+        long right = Long.MIN_VALUE;
+        for (int num : numbs) {
+            left = Math.min(left, num);
+            right = Math.max(right, num);
+        }
+        long answer = findCostToTransform(numbs, cost, left);
+        while (left < right) {
+            long middle = (left + right) / 2;
+            long costLeft = findCostToTransform(numbs, cost, middle);
+            long costRight = findCostToTransform(numbs, cost, middle + 1);
+            answer = Math.min(costLeft, costRight);
+            if (costLeft < costRight)
+                right = middle;
+            else
+                left = middle + 1;
+        }
+        return answer;
+    }
+
+    private long findCostToTransform(int[] numbs, int[] cost, long value) {
+        long currentCost = 0;
+        for (int i = 0; i < numbs.length; i++) {
+            currentCost += (long) Math.abs(numbs[i] - value) * cost[i];
+        }
+        return currentCost;
+    }
 }
