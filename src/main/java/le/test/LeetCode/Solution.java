@@ -4280,4 +4280,18 @@ public class Solution extends GuessGame {
         }
         return currentCost;
     }
+
+    public int longestArithSeqLength(int[] numbs) {
+        int maxLength = 0;
+        HashMap<Integer, Integer>[] dp = new HashMap[numbs.length];
+        for (int right = 0; right < numbs.length; ++right) {
+            dp[right] = new HashMap<>();
+            for (int left = 0; left < right; ++left) {
+                int diff = numbs[left] - numbs[right];
+                dp[right].put(diff, dp[left].getOrDefault(diff, 1) + 1);
+                maxLength = Math.max(maxLength, dp[right].get(diff));
+            }
+        }
+        return maxLength;
+    }
 }
