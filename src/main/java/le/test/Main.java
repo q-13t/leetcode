@@ -18,13 +18,12 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.longestArithSeqLength(new int[] { 3, 6, 9, 12 }));
+        System.out.println(solution.tallestBillboard(new int[] { 1, 2, 3, 6 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
-        System.out.println(solution.longestArithSeqLength(new int[] { 9, 4, 7, 2, 10 }));
-        System.out.println(solution.longestArithSeqLength(new int[] { 20, 1, 15, 3, 10, 5, 8 }));
-
+        System.out.println(solution.tallestBillboard(new int[] { 1, 2, 3, 4, 5, 6 }));
+        System.out.println(solution.tallestBillboard(new int[] { 1, 2 }));
     }
 
     static int bigSum(int[] arr) {

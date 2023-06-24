@@ -7,6 +7,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
@@ -4293,5 +4294,28 @@ public class Solution extends GuessGame {
             }
         }
         return maxLength;
+    }
+
+    public int tallestBillboard(int[] rods) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 0);
+
+        for (int i : rods) {
+            HashMap<Integer, Integer> new_map = new HashMap<>(map);
+
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                int diff = entry.getKey();
+                int taller = entry.getValue();
+                int shorter = taller - diff;
+
+                new_map.put(diff + i, Math.max(new_map.getOrDefault(diff + i, 0), taller + i));
+
+                int newDiff = Math.abs(shorter + i - taller);
+                new_map.put(newDiff, Math.max(Math.max(shorter + i, taller), new_map.getOrDefault(newDiff, 0)));
+            }
+            map = new_map;
+        }
+
+        return map.getOrDefault(0, 0);
     }
 }
