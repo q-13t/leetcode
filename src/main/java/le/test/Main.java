@@ -18,12 +18,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.tallestBillboard(new int[] { 1, 2, 3, 6 }));
+        System.out.println(solution.countRoutes(new int[] { 2, 3, 6, 8, 4 }, 1, 3,
+                5));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
-        System.out.println(solution.tallestBillboard(new int[] { 1, 2, 3, 4, 5, 6 }));
-        System.out.println(solution.tallestBillboard(new int[] { 1, 2 }));
+        System.out.println(solution.countRoutes(new int[] { 4, 3, 1 }, 1, 0, 6));
     }
 
     static int bigSum(int[] arr) {

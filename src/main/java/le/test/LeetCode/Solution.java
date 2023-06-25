@@ -7,7 +7,6 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ArrayList;
@@ -4318,4 +4317,23 @@ public class Solution extends GuessGame {
 
         return map.getOrDefault(0, 0);
     }
+
+    public int countRoutes(int[] locations, int start, int finish, int fuel) {
+        int n = locations.length;
+        int[][] dp = new int[n][fuel + 1];
+        Arrays.fill(dp[finish], 1);
+        for (int p = 0; p <= fuel; p++) {
+            for (int s = 0; s < n; s++) {
+                for (int e = 0; e < n; e++) {
+                    int abs = Math.abs(locations[s] - locations[e]);
+                    if (s == e)
+                        continue;
+                    if (abs <= p)
+                        dp[s][p] = (dp[s][p] + dp[e][p - abs]) % 1000000007;
+                }
+            }
+        }
+        return dp[start][fuel];
+    }
+
 }
