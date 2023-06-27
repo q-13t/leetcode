@@ -1,5 +1,6 @@
 package le.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
@@ -18,11 +19,14 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.countRoutes(new int[] { 2, 3, 6, 8, 4 }, 1, 3,
-                5));
+        System.out.println(solution.kSmallestPairs(new int[] { 1, 7, 11 }, new int[] { 2, 4, 6 }, 3));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.countRoutes(new int[] { 4, 3, 1 }, 1, 0, 6));
+        System.out.println(solution.kSmallestPairs(new int[] { 1, 1, 2 }, new int[] { 1, 2, 3 }, 2));
+        System.out.println(solution.kSmallestPairs(new int[] { 1, 2 }, new int[] { 3 }, 3));
+        System.out.println(solution.kSmallestPairs(new int[] { 1 }, new int[] { 3, 5, 6, 7, 8, 100 }, 4));
+        System.out.println(solution.kSmallestPairs(new int[] { 1, 1, 2 }, new int[] { 1, 2, 3 }, 10));
+
     }
 
     static int bigSum(int[] arr) {

@@ -23,52 +23,52 @@ public class Solution extends GuessGame {
         char previous = 'a';
         for (char iterable : s.toCharArray()) {
             switch (iterable) {
-                case 'I': {
-                    number += 1;
-                    break;
+            case 'I': {
+                number += 1;
+                break;
+            }
+            case 'V': {
+                number += 5;
+                if (previous == 'I') {
+                    number -= 2;
                 }
-                case 'V': {
-                    number += 5;
-                    if (previous == 'I') {
-                        number -= 2;
-                    }
-                    break;
+                break;
+            }
+            case 'X': {
+                number += 10;
+                if (previous == 'I') {
+                    number -= 2;
                 }
-                case 'X': {
-                    number += 10;
-                    if (previous == 'I') {
-                        number -= 2;
-                    }
-                    break;
+                break;
+            }
+            case 'L': {
+                number += 50;
+                if (previous == 'X') {
+                    number -= 20;
                 }
-                case 'L': {
-                    number += 50;
-                    if (previous == 'X') {
-                        number -= 20;
-                    }
-                    break;
+                break;
+            }
+            case 'C': {
+                number += 100;
+                if (previous == 'X') {
+                    number -= 20;
                 }
-                case 'C': {
-                    number += 100;
-                    if (previous == 'X') {
-                        number -= 20;
-                    }
-                    break;
+                break;
+            }
+            case 'D': {
+                number += 500;
+                if (previous == 'C') {
+                    number -= 200;
                 }
-                case 'D': {
-                    number += 500;
-                    if (previous == 'C') {
-                        number -= 200;
-                    }
-                    break;
+                break;
+            }
+            case 'M': {
+                number += 1000;
+                if (previous == 'C') {
+                    number -= 200;
                 }
-                case 'M': {
-                    number += 1000;
-                    if (previous == 'C') {
-                        number -= 200;
-                    }
-                    break;
-                }
+                break;
+            }
 
             }
             previous = iterable;
@@ -396,36 +396,36 @@ public class Solution extends GuessGame {
         Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < string.length(); i++) {
             switch (string.charAt(i)) {
-                case '(': {
-                    stack.add('(');
-                    break;
+            case '(': {
+                stack.add('(');
+                break;
+            }
+            case ')': {
+                if (stack.isEmpty() || stack.pop() != '(') {
+                    return false;
                 }
-                case ')': {
-                    if (stack.isEmpty() || stack.pop() != '(') {
-                        return false;
-                    }
-                    break;
+                break;
+            }
+            case '{': {
+                stack.add('{');
+                break;
+            }
+            case '}': {
+                if (stack.isEmpty() || stack.pop() != '{') {
+                    return false;
                 }
-                case '{': {
-                    stack.add('{');
-                    break;
+                break;
+            }
+            case '[': {
+                stack.add('[');
+                break;
+            }
+            case ']': {
+                if (stack.isEmpty() || stack.pop() != '[') {
+                    return false;
                 }
-                case '}': {
-                    if (stack.isEmpty() || stack.pop() != '{') {
-                        return false;
-                    }
-                    break;
-                }
-                case '[': {
-                    stack.add('[');
-                    break;
-                }
-                case ']': {
-                    if (stack.isEmpty() || stack.pop() != '[') {
-                        return false;
-                    }
-                    break;
-                }
+                break;
+            }
             }
         }
         if (!stack.isEmpty()) {
@@ -1792,8 +1792,7 @@ public class Solution extends GuessGame {
                 // different word, return false.
                 return false;
 
-            } else if ((references.containsValue(words[i]) && !references.containsKey(chars[i]))
-                    || (!references.containsValue(words[i]) && references.containsKey(chars[i]))) {
+            } else if ((references.containsValue(words[i]) && !references.containsKey(chars[i])) || (!references.containsValue(words[i]) && references.containsKey(chars[i]))) {
 
                 // If the 'references' hash map already contains the word but with a different
                 // character, or the opposite, return false.
@@ -2234,35 +2233,35 @@ public class Solution extends GuessGame {
         // Iterate over all tokens of RPN
         for (String token : tokens) {
             switch (token) {
-                case "+": {// Perform mathematical calculation
-                    a = stack.pop();
-                    b = stack.pop();
-                    stack.add(b + a);
-                    break;
-                }
-                case "-": {// Perform mathematical calculation
-                    a = stack.pop();
-                    b = stack.pop();
-                    stack.add(b - a);
-                    break;
-                }
-                case "*": {// Perform mathematical calculation
-                    a = stack.pop();
-                    b = stack.pop();
-                    stack.add(b * a);
-                    break;
-                }
-                case "/": {// Perform mathematical calculation
-                    a = stack.pop();
-                    b = stack.pop();
-                    stack.add(b / a);
-                    break;
-                }
+            case "+": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b + a);
+                break;
+            }
+            case "-": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b - a);
+                break;
+            }
+            case "*": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b * a);
+                break;
+            }
+            case "/": {// Perform mathematical calculation
+                a = stack.pop();
+                b = stack.pop();
+                stack.add(b / a);
+                break;
+            }
 
-                default: {// expected to be a number -> add to stack
-                    stack.add(Integer.valueOf(token));
-                    break;
-                }
+            default: {// expected to be a number -> add to stack
+                stack.add(Integer.valueOf(token));
+                break;
+            }
             }
         }
         // Free up memory and return last value from stack -> arithmetic result
@@ -2469,9 +2468,7 @@ public class Solution extends GuessGame {
         for (int i = 0; i < str2.length(); i++) {
             if (str1.charAt(i) == str2.charAt(i)) {
                 gcd.append(str2.charAt(i));
-                if (str1.replaceAll(gcd.toString(), "").length() == 0 &&
-                        str2.replaceAll(gcd.toString(), "")
-                                .length() == 0) {
+                if (str1.replaceAll(gcd.toString(), "").length() == 0 && str2.replaceAll(gcd.toString(), "").length() == 0) {
                     results.add(gcd.toString());
                 }
             }
@@ -2529,15 +2526,13 @@ public class Solution extends GuessGame {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < string.length(); i++) {
             char ch = string.charAt(i);
-            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
-                    || ch == 'O' || ch == 'U') {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
                 stack.add(ch);
             }
         }
         for (int i = 0; i < string.length(); i++) {
             char ch = string.charAt(i);
-            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
-                    || ch == 'O' || ch == 'U') {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
                 result.append(stack.pop());
             } else {
                 result.append(ch);
@@ -2998,16 +2993,16 @@ public class Solution extends GuessGame {
         while (boundMin <= boundMax) {
             mid = boundMin + (boundMax - boundMin) / 2;
             switch (guess(mid)) {
-                case 1: {
-                    boundMin = mid + 1;
-                    break;
-                }
-                case -1: {
-                    boundMax = mid - 1;
-                    break;
-                }
-                default:
-                    return mid;
+            case 1: {
+                boundMin = mid + 1;
+                break;
+            }
+            case -1: {
+                boundMax = mid - 1;
+                break;
+            }
+            default:
+                return mid;
             }
         }
         return -1;
@@ -3146,8 +3141,7 @@ public class Solution extends GuessGame {
      * @param current_depth Expected to be 0
      * @return TreeMap of numbers visible from "right" side of {@code root}
      */
-    private TreeMap<Integer, Integer> getRightSideView(TreeNode root, TreeMap<Integer, Integer> map,
-            int current_depth) {
+    private TreeMap<Integer, Integer> getRightSideView(TreeNode root, TreeMap<Integer, Integer> map, int current_depth) {
         if (root == null) {
             return map;
         } else {
@@ -3161,8 +3155,7 @@ public class Solution extends GuessGame {
     }
 
     /**
-     * Searches for level in {@code root} with the biggest sum.
-     * *
+     * Searches for level in {@code root} with the biggest sum. *
      * </p>
      * {@code Time O(n)}. As amount of nodes in {@code root}.
      * </p>
@@ -3199,8 +3192,7 @@ public class Solution extends GuessGame {
      * @param currentDepth expected to be passed 0.
      * @return ArrayList with ArrayList as each level and values in it.
      */
-    private ArrayList<ArrayList<Integer>> getLevelValues(TreeNode root, ArrayList<ArrayList<Integer>> list,
-            int currentDepth) {
+    private ArrayList<ArrayList<Integer>> getLevelValues(TreeNode root, ArrayList<ArrayList<Integer>> list, int currentDepth) {
         if (root == null) {
             return list;
         }
@@ -3252,8 +3244,7 @@ public class Solution extends GuessGame {
      * {@code Province}s is in there.
      * </p>
      * A {@code Province} is a group of directly or indirectly connected cities and
-     * no other
-     * cities outside of the group.
+     * no other cities outside of the group.
      * 
      * </p>
      * {@code Time O(N^3)}. N as amount of cities.
@@ -3356,8 +3347,7 @@ public class Solution extends GuessGame {
         ArrayList<String> result = new ArrayList<>();
         for (var iterable : reference.entrySet())
             if (iterable.getValue() == 1)
-                if ((first.contains(iterable.getKey()) && !second.contains(iterable.getKey()))
-                        || (!first.contains(iterable.getKey()) && second.contains(iterable.getKey())))
+                if ((first.contains(iterable.getKey()) && !second.contains(iterable.getKey())) || (!first.contains(iterable.getKey()) && second.contains(iterable.getKey())))
                     result.add(iterable.getKey());
 
         return result.toArray(new String[0]);
@@ -3438,8 +3428,7 @@ public class Solution extends GuessGame {
         return combinations;
     }
 
-    private void buildLetterCombinations(int i, String digits, List<String> combinations, String[] reference,
-            int length, StringBuilder stringBuilder) {
+    private void buildLetterCombinations(int i, String digits, List<String> combinations, String[] reference, int length, StringBuilder stringBuilder) {
         if (i == length) {
             combinations.add(stringBuilder.toString());
             return;
@@ -3681,10 +3670,8 @@ public class Solution extends GuessGame {
 
             for (int[] dir : dirs) {// check for each neighboring position
                 int nextRow = row + dir[0], nextColumn = column + dir[1];
-                if (0 <= nextRow && nextRow < mazeMaxRows && 0 <= nextColumn && nextColumn < mazeMaxColumns
-                        && maze[nextRow][nextColumn] == '.') {// if it's not of limits and isn't border
-                    if (nextRow == 0 || nextRow == mazeMaxRows - 1 || nextColumn == 0
-                            || nextColumn == mazeMaxColumns - 1) { // if it's an exit return distance + 1]
+                if (0 <= nextRow && nextRow < mazeMaxRows && 0 <= nextColumn && nextColumn < mazeMaxColumns && maze[nextRow][nextColumn] == '.') {// if it's not of limits and isn't border
+                    if (nextRow == 0 || nextRow == mazeMaxRows - 1 || nextColumn == 0 || nextColumn == mazeMaxColumns - 1) { // if it's an exit return distance + 1]
                         return distance + 1;
                     }
                     maze[nextRow][nextColumn] = '+';
@@ -3717,8 +3704,7 @@ public class Solution extends GuessGame {
             maxTime = time;
             for (int[] dir : directions) {
                 int nextRow = row + dir[0], nextColumn = column + dir[1];
-                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns
-                        && grid[nextRow][nextColumn] == 1) {
+                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns && grid[nextRow][nextColumn] == 1) {
                     freshCount--;
                     grid[nextRow][nextColumn] = 2;
                     q.offer(new int[] { nextRow, nextColumn, time + 1 });
@@ -3806,8 +3792,7 @@ public class Solution extends GuessGame {
         return combinations;
     }
 
-    private void buildCombinationSum(int j, int amount, int sum, List<List<Integer>> combinations,
-            ArrayList<Integer> currentList, int currentSum) {
+    private void buildCombinationSum(int j, int amount, int sum, List<List<Integer>> combinations, ArrayList<Integer> currentList, int currentSum) {
         if (currentList.size() == amount && currentSum == sum) {
             combinations.add(new ArrayList<>(currentList));
             return;
@@ -3820,8 +3805,7 @@ public class Solution extends GuessGame {
         return;
     }
 
-    public void dfs(String node, String dest, HashMap<String, HashMap<String, Double>> gr, HashSet<String> vis,
-            double[] ans, double temp) {
+    public void dfs(String node, String dest, HashMap<String, HashMap<String, Double>> gr, HashSet<String> vis, double[] ans, double temp) {
         if (vis.contains(node))
             return;
 
@@ -4170,8 +4154,7 @@ public class Solution extends GuessGame {
                 }
                 int idx = bisectRight(arr2, prev);
                 if (idx < n) {
-                    newDp.put(arr2[idx],
-                            Math.min(newDp.getOrDefault(arr2[idx], Integer.MAX_VALUE), 1 + dp.get(prev)));
+                    newDp.put(arr2[idx], Math.min(newDp.getOrDefault(arr2[idx], Integer.MAX_VALUE), 1 + dp.get(prev)));
                 }
             }
             dp = newDp;
@@ -4220,8 +4203,7 @@ public class Solution extends GuessGame {
             int val = grid[current[0]][current[1]];
             for (int[] move : moves) {
                 int nextRow = current[0] + move[0], nextColumn = current[1] + move[1];
-                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns
-                        && grid[nextRow][nextColumn] > val) {
+                if (0 <= nextRow && nextRow < gridMaxRows && 0 <= nextColumn && nextColumn < gridMaxColumns && grid[nextRow][nextColumn] > val) {
                     uniquePaths++;
                     q.offer(new int[] { nextRow, nextColumn });
                 }
@@ -4336,4 +4318,19 @@ public class Solution extends GuessGame {
         return dp[start][fuel];
     }
 
+    public List<List<Integer>> kSmallestPairs(int[] numbs1, int[] numbs2, int k) {
+        List<List<Integer>> result = new ArrayList<>();
+        PriorityQueue<int[]> sums = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        for (int integer : numbs1)
+            sums.offer(new int[] { integer + numbs2[0], 0 });
+
+        while (k-- > 0 && !sums.isEmpty()) {
+            int[] current = sums.poll();
+            result.add(List.of(current[0] - numbs2[current[1]], numbs2[current[1]]));
+            if (current[1] + 1 < numbs2.length) {
+                sums.offer(new int[] { current[0] - numbs2[current[1]] + numbs2[current[1] + 1], current[1] + 1 });
+            }
+        }
+        return result;
+    }
 }
