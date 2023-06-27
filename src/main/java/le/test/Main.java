@@ -19,15 +19,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        for (int integer : solution.decompressRLElist(new int[] { 1, 2, 3, 4 })) {
-            System.out.print(integer + ", ");
-        }
+        System.out.println(solution.xorOperation(5, 0));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
-        for (int integer : solution.decompressRLElist(new int[] { 1, 1, 2, 3 })) {
-            System.out.print(integer + ", ");
-        }
+        System.out.println(solution.xorOperation(4, 3));
 
     }
 
