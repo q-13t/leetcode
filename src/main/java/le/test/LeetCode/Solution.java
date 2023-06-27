@@ -4357,4 +4357,30 @@ public class Solution extends GuessGame {
 
         return xor;
     }
+
+    public String interpret(String command) {
+        // StringBuilder result = new StringBuilder();
+        // StringBuilder current = new StringBuilder();
+        // for (String ch : command.split("")) {
+        // if (ch.equals("G")) {
+        // result.append("G");
+        // } else if (ch.equals("(")) {
+        // continue;
+        // } else if (ch.equals(")")) {
+        // if (!current.isEmpty()) {
+        // result.append(current.toString());
+        // current = new StringBuilder();
+        // } else {
+        // result.append("o");
+        // }
+        // } else {
+        // current.append(ch);
+        // }
+        // }
+        // return result.toString();
+
+        // command = command.replaceAll("[(]al[)]", "al");
+        // command = command.replaceAll("[(][)]", "o");
+        return command.replaceAll("[(][)]", "o").replaceAll("[(]al[)]", "al");
+    }
 }

@@ -19,11 +19,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.xorOperation(5, 0));
+        System.out.println(solution.interpret("G()(al)"));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
-        System.out.println(solution.xorOperation(4, 3));
+        System.out.println(solution.interpret("G()()()()(al)"));
+        System.out.println(solution.interpret("(al)G(al)()()G"));
 
     }
 
