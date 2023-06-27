@@ -4333,4 +4333,20 @@ public class Solution extends GuessGame {
         }
         return result;
     }
+
+    public int[] decompressRLElist(int[] numbs) {
+        int totalSize = 0;
+        for (int i = 0; i < numbs.length; i += 2)
+            totalSize += numbs[i];
+        int[] result = new int[totalSize];
+        int pointer = 0;
+        for (int i = 0; i < numbs.length; i += 2) {
+            int times = numbs[i];
+            int value = numbs[i + 1];
+            for (int j = 0; j < times; j++) {
+                result[pointer++] = value;
+            }
+        }
+        return result;
+    }
 }

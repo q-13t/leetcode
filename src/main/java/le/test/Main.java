@@ -19,13 +19,15 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.kSmallestPairs(new int[] { 1, 7, 11 }, new int[] { 2, 4, 6 }, 3));
+        for (int integer : solution.decompressRLElist(new int[] { 1, 2, 3, 4 })) {
+            System.out.print(integer + ", ");
+        }
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.kSmallestPairs(new int[] { 1, 1, 2 }, new int[] { 1, 2, 3 }, 2));
-        System.out.println(solution.kSmallestPairs(new int[] { 1, 2 }, new int[] { 3 }, 3));
-        System.out.println(solution.kSmallestPairs(new int[] { 1 }, new int[] { 3, 5, 6, 7, 8, 100 }, 4));
-        System.out.println(solution.kSmallestPairs(new int[] { 1, 1, 2 }, new int[] { 1, 2, 3 }, 10));
+
+        for (int integer : solution.decompressRLElist(new int[] { 1, 1, 2, 3 })) {
+            System.out.print(integer + ", ");
+        }
 
     }
 
