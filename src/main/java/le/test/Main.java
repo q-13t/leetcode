@@ -2,13 +2,17 @@ package le.test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
+import java.util.Set;
 
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
+import le.test.LeetCode.Pair;
 import le.test.LeetCode.SnapshotArray;
 
 @SuppressWarnings(value = { "unused" })
@@ -19,11 +23,10 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.interpret("G()(al)"));
-
+        System.out.println(solution.shortestPathAllKeys(new String[] { "@.a..", "###.#", "b.A.B" }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.interpret("G()()()()(al)"));
-        System.out.println(solution.interpret("(al)G(al)()()G"));
+        System.out.println(solution.shortestPathAllKeys(new String[] { "@..aA", "..B#.", "....b" }));
+        System.out.println(solution.shortestPathAllKeys(new String[] { "@Aa" }));
 
     }
 
