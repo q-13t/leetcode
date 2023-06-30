@@ -4465,4 +4465,47 @@ public class Solution extends GuessGame {
         return -1;
     }
 
+    public int latestDayToCross(int row, int col, int[][] cells) {
+        int left = 0, right = cells.length;
+        while (left < right) {
+            boolean[][] grid = new boolean[row][col];
+            int mid = right - (right - left) / 2;
+            for (int i = 0; i < mid; i++) {
+                grid[cells[i][0] - 1][cells[i][1] - 1] = true;
+            }
+            if (canReachBottom(grid))
+                left = mid;
+            else
+                right = mid - 1;
+        }
+        return left;
+    }
+
+    private boolean canReachBottom(boolean[][] grid) {
+        Queue<Pair<Integer, Integer>> q = new LinkedList<>();
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+
+        for (int i = 0; i < grid[0].length; i++) {
+            if (grid[0][i] == false)
+                q.offer(new Pair<Integer, Integer>(0, i));
+        }
+
+        while (!q.isEmpty()) {
+            Pair<Integer, Integer> current = q.poll();
+
+            if (!visited[current.getKey()][current.getValue()]) {
+                visited[current.getKey()][current.getValue()] = true;
+
+                if (current.getKey() == grid.length - 1)
+                    return true;
+
+                for (int[] move : moves) {
+                    int nextRow = current.getKey() + move[0], nextColumn = current.getValue() + move[1];
+                    if (0 <= nextRow && nextRow < grid.length && nextColumn >= 0 && nextColumn < grid[0].length && grid[nextRow][nextColumn] != true)
+                        q.offer(new Pair<Integer, Integer>(nextRow, nextColumn));
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -22,11 +22,13 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-
-        System.out.println(solution.shortestPathAllKeys(new String[] { "@.a..", "###.#", "b.A.B" }));
+        // ArrayList<Pair<Integer, Integer>> visited = new ArrayList<>();
+        // visited.add(new Pair<>(1, 1));
+        // System.out.println(visited);
+        // System.out.println(visited.contains(new Pair<>(1, 1)));
+        System.out.println(solution.latestDayToCross(2, 2, new int[][] { { 1, 1 }, { 2, 1 }, { 1, 2 }, { 2, 2 } }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.shortestPathAllKeys(new String[] { "@..aA", "..B#.", "....b" }));
-        System.out.println(solution.shortestPathAllKeys(new String[] { "@Aa" }));
+        System.out.println(solution.latestDayToCross(3, 3, new int[][] { { 1, 2 }, { 2, 1 }, { 3, 3 }, { 2, 2 }, { 1, 1 }, { 1, 3 }, { 2, 3 }, { 3, 2 }, { 3, 1 } }));
 
     }
 
