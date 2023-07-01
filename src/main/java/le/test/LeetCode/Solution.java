@@ -16,6 +16,8 @@ import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+import javax.swing.text.AsyncBoxView;
+
 public class Solution extends GuessGame {
 
     private static int[][] moves = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
@@ -4508,4 +4510,40 @@ public class Solution extends GuessGame {
         }
         return false;
     }
+
+    public int distributeCookies(int[] cookies, int k) {
+        int[] possessions = new int[k];
+        return distributeCookies(0, possessions, cookies, k, k);
+    }
+
+    private int distributeCookies(int i, int[] possessions, int[] cookies, int k, int zeros) {
+        if (cookies.length - i < zeros)
+            return Integer.MAX_VALUE;
+        else if (i == cookies.length) {
+            int unfairness = Integer.MIN_VALUE;
+
+            for (int value : possessions)
+                unfairness = Math.max(unfairness, value);
+
+            return unfairness;
+        } else {
+            int answer = Integer.MAX_VALUE;
+
+            for (int j = 0; j < possessions.length; j++) {
+                if (possessions[j] == 0)
+                    zeros--;
+
+                possessions[j] += cookies[i];
+
+                answer = Math.min(answer, distributeCookies(i + 1, possessions, cookies, k, zeros));
+
+                possessions[j] -= cookies[i];
+
+                if (possessions[j] == 0)
+                    zeros++;
+            }
+            return answer;
+        }
+    }
+
 }
