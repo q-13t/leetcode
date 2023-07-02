@@ -4546,4 +4546,32 @@ public class Solution extends GuessGame {
         }
     }
 
+    public int maximumRequests(int n, int[][] requests) {
+        int possibleTransfers = 0;
+        for (int i = 0; i < (1 << requests.length); i++) {
+            int[] degree = new int[n];
+            int bitCount = Integer.bitCount(i);
+            int pos = requests.length - 1;
+            if (bitCount <= possibleTransfers)
+                continue;
+
+            for (int j = i; j > 0; j >>= 1, pos--) {
+                if ((j & 1) == 1) {
+                    degree[requests[pos][0]]--;
+                    degree[requests[pos][1]]++;
+                }
+            }
+            boolean valid = true;
+            for (int j = 0; j < n; j++) {
+                if (degree[j] != 0) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) {
+                possibleTransfers = bitCount;
+            }
+        }
+        return possibleTransfers;
+    }
 }

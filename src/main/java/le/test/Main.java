@@ -22,9 +22,12 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.distributeCookies(new int[] { 8, 15, 10, 20, 8 }, 2));
+        System.out.println(solution.maximumRequests(5, new int[][] { { 0, 1 }, { 1, 0 }, { 0, 1 }, { 1, 2 }, { 2, 0 }, { 3, 4 } }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.distributeCookies(new int[] { 6, 1, 3, 2, 2, 4, 1, 2 }, 3));
+        System.out.println(solution.maximumRequests(3, new int[][] { { 0, 0 }, { 1, 2 }, { 2, 1 }, }));
+        System.out.println(solution.maximumRequests(4, new int[][] { { 0, 3 }, { 3, 1 }, { 1, 2 }, { 2, 0 } }));
+        System.out.println(solution.maximumRequests(3, new int[][] { { 0, 0 }, { 1, 1 }, { 0, 0 }, { 2, 0 }, { 2, 2 }, { 1, 1 }, { 2, 1 }, { 0, 1 }, { 0, 1 } }));
+        System.out.println(solution.maximumRequests(3, new int[][] { { 1, 2 }, { 1, 2 }, { 2, 2 }, { 0, 2 }, { 2, 1 }, { 1, 1 }, { 1, 2 } }));
 
     }
 
