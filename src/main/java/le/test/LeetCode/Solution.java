@@ -4264,6 +4264,7 @@ public class Solution extends GuessGame {
         return currentCost;
     }
 
+    @SuppressWarnings("unchecked")
     public int longestArithSeqLength(int[] numbs) {
         int maxLength = 0;
         HashMap<Integer, Integer>[] dp = new HashMap[numbs.length];
