@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.swing.text.AsyncBoxView;
 
@@ -4573,5 +4574,42 @@ public class Solution extends GuessGame {
             }
         }
         return possibleTransfers;
+    }
+
+    public boolean buddyStrings(String s, String goal) {
+        if (s.length() != goal.length())
+            return false;
+        if (s.equals(goal)) {
+            HashMap<Character, Integer> count = new HashMap<>();
+
+            for (int i = 0; i < s.length(); i++)
+                count.put(s.charAt(i), count.getOrDefault(s.charAt(i), 0) + 1);
+            for (int integer : count.values()) {
+                if (integer > 1)
+                    return true;
+            }
+            return false;
+        } else {
+            int left = -1;
+            char[] first = s.toCharArray();
+            char[] second = goal.toCharArray();
+            int n = first.length;
+            for (int i = 0; i < n; i++) {
+                if (first[i] != second[i])
+                    if (left == -1) {
+                        left = i;
+                    } else {
+                        char tmp = first[left];
+                        first[left] = first[i];
+                        first[i] = tmp;
+                        break;
+                    }
+            }
+            for (int i = 0; i < n; i++) {
+                if (first[i] != second[i])
+                    return false;
+            }
+        }
+        return true;
     }
 }
