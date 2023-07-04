@@ -15,9 +15,6 @@ import java.util.Collections;
 import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import javax.swing.text.AsyncBoxView;
 
 public class Solution extends GuessGame {
 
@@ -4612,5 +4609,17 @@ public class Solution extends GuessGame {
             }
         }
         return true;
+    }
+
+    public int singleNumberII(int[] numbs) {
+        HashMap<Integer, Integer> map = new HashMap<>(numbs.length);
+        for (int i = 0; i < numbs.length; i++)
+            map.put(numbs[i], map.getOrDefault(numbs[i], 0) + 1);
+
+        for (int i : map.keySet())
+            if (map.get(i) < 3)
+                return i;
+
+        return -1;
     }
 }

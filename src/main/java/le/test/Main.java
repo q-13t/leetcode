@@ -22,10 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.buddyStrings("ab", "ba"));
+        System.out.println(solution.singleNumberII(new int[] { 2, 2, 3, 2 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.buddyStrings("ab", "ab"));
-        System.out.println(solution.buddyStrings("aa", "aa"));
+        System.out.println(solution.singleNumberII(new int[] { 0, 1, 0, 1, 0, 1, 99 }));
 
     }
 
