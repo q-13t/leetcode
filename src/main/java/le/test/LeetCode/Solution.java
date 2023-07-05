@@ -3761,32 +3761,6 @@ public class Solution extends GuessGame {
         return maxOnes;
     }
 
-    public int longestSubarray(int[] numbers) {
-        int maxOnes = 0;
-        int length = numbers.length;
-        int zeros = 0;
-        int left = 0;
-        for (int right = 0; right < numbers.length; right++) {
-            if (numbers[right] == 0) {
-                zeros++;
-            }
-
-            while (zeros > 1) {
-                if (numbers[left] == 0) {
-                    zeros--;
-                }
-                left++;
-            }
-            if (right - left > maxOnes)
-                maxOnes = right - left;
-        }
-
-        if (maxOnes == length)
-            return maxOnes - 1;
-
-        return maxOnes;
-    }
-
     public List<List<Integer>> combinationSum3(int amount, int sum) {
         List<List<Integer>> combinations = new ArrayList<>();
         buildCombinationSum(1, amount, sum, combinations, new ArrayList<Integer>(), 0);
@@ -4621,5 +4595,22 @@ public class Solution extends GuessGame {
                 return i;
 
         return -1;
+    }
+
+    public int longestSubarray(int[] numbers) {
+        int zeros = 0;
+        int left = 0;
+        int maxLength = 0;
+        for (int right = 0; right < numbers.length; right++) {
+            if (numbers[right] == 0)
+                zeros++;
+            while (left < right && zeros > 1) {
+                if (numbers[left] == 0)
+                    zeros--;
+                left++;
+            }
+            maxLength = Math.max(maxLength, right - left);
+        }
+        return maxLength;
     }
 }
