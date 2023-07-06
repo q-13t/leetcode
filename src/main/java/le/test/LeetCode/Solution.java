@@ -1681,21 +1681,16 @@ public class Solution extends GuessGame {
     }
 
     public int minSubArrayLen(int target, int[] numbers) {
-        int i = 0;
-        int j = 0;
-        int min = Integer.MAX_VALUE;
-        int sum = 0;
-        while (i < numbers.length) {
-            sum += numbers[i];
+        int sum = 0, right = -1, left = 0, length = Integer.MAX_VALUE, n = numbers.length;
+        while (++right < n) {
+            sum += numbers[right];
             if (sum >= target)
                 while (sum >= target) {
-                    min = min > i - j + 1 ? i - j + 1 : min;
-                    sum -= numbers[j];
-                    j++;
+                    length = length < right - left + 1 ? length : right - left + 1;
+                    sum -= numbers[left++];
                 }
-            i++;
         }
-        return min == Integer.MAX_VALUE ? 0 : min;
+        return length == Integer.MAX_VALUE ? 0 : length;
     }
 
     /**
