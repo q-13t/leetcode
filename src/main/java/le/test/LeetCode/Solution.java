@@ -4608,4 +4608,26 @@ public class Solution extends GuessGame {
         }
         return maxLength;
     }
+
+    public int maxConsecutiveAnswers(String answerKey, int k) {
+        int res = 0, l = 0, n = answerKey.length(), Ts = 0, Fs = 0;
+        for (int r = 0; r < n; r++) {
+            if (answerKey.charAt(r) == 'F')
+                Fs++;
+            else
+                Ts++;
+
+            while (l < n && (Ts > k && Fs > k)) {
+                if (answerKey.charAt(l) == 'F')
+                    Fs--;
+                else
+                    Ts--;
+                l++;
+            }
+            if (res < r - l + 1)
+                res = r - l + 1;
+        }
+
+        return res;
+    }
 }
