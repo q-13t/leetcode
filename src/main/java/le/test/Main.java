@@ -23,12 +23,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.maxConsecutiveAnswers("TTFF", 2));
+        System.out.println(solution.putMarbles(new int[] { 1, 3, 5, 1 }, 2));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
-        System.out.println(solution.maxConsecutiveAnswers("TFFT", 1));
-        System.out.println(solution.maxConsecutiveAnswers("TTFTTFTT", 1));
+        System.out.println(solution.putMarbles(new int[] { 1, 3 }, 2));
     }
 
     static int bigSum(int[] arr) {
