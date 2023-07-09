@@ -23,11 +23,15 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.putMarbles(new int[] { 1, 3, 5, 1 }, 2));
+        System.out.println(solution.largestVariance("aababbb"));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.largestVariance("abcde"));
+        System.out.println(solution.largestVariance("babbbaaaaabbbb"));
+        System.out.println(solution.largestVariance("abbb"));
+        System.out.println(solution.largestVariance("abbabaaba"));
+        System.out.println(solution.largestVariance("icexiahccknibwuwgi"));
 
-        System.out.println(solution.putMarbles(new int[] { 1, 3 }, 2));
     }
 
     static int bigSum(int[] arr) {

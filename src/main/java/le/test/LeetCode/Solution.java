@@ -4645,4 +4645,44 @@ public class Solution extends GuessGame {
 
         return res;
     }
+
+    public int largestVariance(String s) {
+        char[] inp = s.toCharArray();
+        int[] map = new int[26];
+        for (int i = 0; i < inp.length; i++)
+            map[inp[i] - 'a']++;
+        int res = 0;
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < 26; j++) {
+                if (i == j || map[i] == 0 || map[j] == 0) {
+                    continue;
+                }
+                res = Math.max(res, countVariance(inp, (char) (i + 'a'), (char) (j + 'a'), map[j]));
+            }
+        }
+        return res;
+    }
+
+    private int countVariance(char[] inp, char major, char minor, int restMinor) {
+        int minorC = 0;
+        int majorC = 0;
+        int res = 0;
+        for (char k : inp) {
+            if (k == major) {
+                majorC++;
+            }
+            if (k == minor) {
+                restMinor--;
+                minorC++;
+            }
+            if (minorC > 0) {
+                res = Math.max(res, majorC - minorC);
+            }
+            if (majorC < minorC && restMinor > 0) {
+                majorC = 0;
+                minorC = 0;
+            }
+        }
+        return res;
+    }
 }
