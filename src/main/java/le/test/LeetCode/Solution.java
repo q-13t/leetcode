@@ -943,20 +943,25 @@ public class Solution extends GuessGame {
     }
 
     public int minDepth(TreeNode node) {
-
-        if (node == null) {
+        if (node == null)
             return 0;
-        } else if (node.left == null && node.right == null) {
-            if (min_depth > current_depth + 1)
-                min_depth = current_depth + 1;
-            return min_depth;
-        } else {
-            current_depth++;
-            minDepth(node.left);
-            minDepth(node.right);
-            current_depth--;
-            return min_depth;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(node);
+        int d = 1;
+        while (!q.isEmpty()) {
+            int level = q.size();
+            for (int i = 0; i < level; i++) {
+                TreeNode c = q.poll();
+                if (c.left == null && c.right == null)
+                    return d;
+                if (c.left != null)
+                    q.offer(c.left);
+                if (c.right != null)
+                    q.offer(c.right);
+            }
+            d++;
         }
+        return d;
     }
 
     public boolean hasPathSum(TreeNode root, int targetSum) {

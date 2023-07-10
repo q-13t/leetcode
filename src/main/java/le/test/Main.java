@@ -1,19 +1,11 @@
 package le.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
-import java.util.Set;
 
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
-import le.test.LeetCode.Pair;
-import le.test.LeetCode.SnapshotArray;
 
 @SuppressWarnings(value = { "unused" })
 public class Main {
@@ -22,16 +14,21 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-
-        System.out.println(solution.largestVariance("aababbb"));
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        System.out.println(solution.minDepth(root));
+        root = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.right = new TreeNode(4);
+        root.right.right.right = new TreeNode(5);
+        root.right.right.right.right = new TreeNode(6);
+        System.out.println(solution.minDepth(root));
+        System.out.println(solution.minDepth(null));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.largestVariance("abcde"));
-        System.out.println(solution.largestVariance("babbbaaaaabbbb"));
-        System.out.println(solution.largestVariance("abbb"));
-        System.out.println(solution.largestVariance("abbabaaba"));
-        System.out.println(solution.largestVariance("icexiahccknibwuwgi"));
-
     }
 
     static int bigSum(int[] arr) {
