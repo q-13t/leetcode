@@ -16,6 +16,8 @@ import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+import javax.swing.GrayFilter;
+
 public class Solution extends GuessGame {
 
     private static int[][] moves = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
@@ -4689,5 +4691,45 @@ public class Solution extends GuessGame {
             }
         }
         return res;
+    }
+
+    public List<Integer> distanceK(TreeNode root, TreeNode t, int k) {
+        HashMap<Integer, ArrayList<Integer>> g = new HashMap<>();
+        ArrayList<Integer> r = new ArrayList<>();
+        Set<Integer> v = new HashSet<>();
+        Queue<int[]> q = new LinkedList<>();
+
+        q.offer(new int[] { t.val, 0 });
+        v.add(t.val);
+        buildGraph(root, null, g);
+        while (!q.isEmpty()) {
+            int[] c = q.poll();
+            int n = c[0], d = c[1];
+            if (d == k) {
+                r.add(n);
+                continue;
+            }
+            for (int neighboring : g.getOrDefault(n, new ArrayList<>())) {
+                if (!v.contains(neighboring)) {
+                    v.add(neighboring);
+                    q.offer(new int[] { neighboring, d + 1 });
+                }
+            }
+        }
+        return r;
+    }
+
+    private void buildGraph(TreeNode current, TreeNode parent, HashMap<Integer, ArrayList<Integer>> graph) {
+        if (current != null && parent != null) {
+            int cVal = current.val, pVal = parent.val;
+            graph.putIfAbsent(cVal, new ArrayList<>());
+            graph.putIfAbsent(pVal, new ArrayList<>());
+            graph.get(cVal).add(pVal);
+            graph.get(pVal).add(cVal);
+        }
+        if (current != null && current.left != null)
+            buildGraph(current.left, current, graph);
+        if (current != null && current.right != null)
+            buildGraph(current.right, current, graph);
     }
 }

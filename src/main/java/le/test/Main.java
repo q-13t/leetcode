@@ -14,21 +14,30 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
-        System.out.println(solution.minDepth(root));
-        root = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.right.right = new TreeNode(4);
-        root.right.right.right = new TreeNode(5);
-        root.right.right.right.right = new TreeNode(6);
-        System.out.println(solution.minDepth(root));
-        System.out.println(solution.minDepth(null));
-
+        TreeNode root1 = new TreeNode(3);
+        root1.right = new TreeNode(1);
+        root1.right.left = new TreeNode(0);
+        root1.right.right = new TreeNode(8);
+        root1.left = new TreeNode(5);
+        root1.left.left = new TreeNode(6);
+        root1.left.right = new TreeNode(2);
+        root1.left.right.left = new TreeNode(7);
+        root1.left.right.right = new TreeNode(4);
+        System.out.println(solution.distanceK(root1, new TreeNode(5), 2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+
+        System.out.println(solution.distanceK(new TreeNode(1), new TreeNode(1), 3));
+        TreeNode root2 = new TreeNode(0);
+        root2.left = new TreeNode(1);
+        root2.left.left = new TreeNode(3);
+        root2.left.right = new TreeNode(2);
+        System.out.println(solution.distanceK(root2, new TreeNode(2), 1));
+        TreeNode root3 = new TreeNode(0);
+        root3.left = new TreeNode(2);
+        root3.right = new TreeNode(1);
+        root3.right.left = new TreeNode(3);
+
+        System.out.println(solution.distanceK(root3, new TreeNode(3), 3));
     }
 
     static int bigSum(int[] arr) {
