@@ -4732,4 +4732,42 @@ public class Solution extends GuessGame {
         if (current != null && current.right != null)
             buildGraph(current.right, current, graph);
     }
+
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+        int n = graph.length;
+        int[] in = new int[n];
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
+        boolean[] safe = new boolean[n];
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < n; i++)
+            adj.add(new ArrayList<>());
+
+        for (int i = 0; i < n; i++) {
+            for (int node : graph[i]) {
+                adj.get(node).add(i);
+                in[i]++;
+            }
+        }
+
+        for (int i = 0; i < n; i++)
+            if (in[i] == 0)
+                q.add(i);
+
+        while (!q.isEmpty()) {
+            int no = q.poll();
+            safe[no] = true;
+            for (int neighboring : adj.get(no)) {
+                in[neighboring]--;
+                if (in[neighboring] == 0)
+                    q.offer(neighboring);
+            }
+        }
+        for (int i = 0; i < n; i++)
+            if (safe[i])
+                res.add(i);
+
+        return res;
+    }
 }
