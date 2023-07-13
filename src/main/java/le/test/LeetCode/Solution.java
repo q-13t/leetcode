@@ -4770,4 +4770,36 @@ public class Solution extends GuessGame {
 
         return res;
     }
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        if (prerequisites.length == 0)
+            return true;
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>(numCourses);
+        int[] in = new int[numCourses];
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < numCourses; i++)
+            adj.add(new ArrayList<>());
+
+        for (int[] pre : prerequisites) {
+            adj.get(pre[1]).add(pre[0]);
+            in[pre[0]]++;
+        }
+        for (int i = 0; i < numCourses; i++)
+            if (in[i] == 0)
+                q.offer(i);
+
+        int visited = 0;
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            visited++;
+            for (int integer : adj.get(node)) {
+                in[integer]--;
+                if (in[integer] == 0)
+                    q.offer(integer);
+            }
+        }
+        return visited == numCourses;
+    }
+
 }

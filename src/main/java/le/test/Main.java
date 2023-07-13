@@ -14,30 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        TreeNode root1 = new TreeNode(3);
-        root1.right = new TreeNode(1);
-        root1.right.left = new TreeNode(0);
-        root1.right.right = new TreeNode(8);
-        root1.left = new TreeNode(5);
-        root1.left.left = new TreeNode(6);
-        root1.left.right = new TreeNode(2);
-        root1.left.right.left = new TreeNode(7);
-        root1.left.right.right = new TreeNode(4);
-        System.out.println(solution.distanceK(root1, new TreeNode(5), 2));
+        System.out.println(solution.canFinish(2, new int[][] { { 1, 0 } }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
+        System.out.println(solution.canFinish(2, new int[][] { { 1, 0 }, { 0, 1 } }));
 
-        System.out.println(solution.distanceK(new TreeNode(1), new TreeNode(1), 3));
-        TreeNode root2 = new TreeNode(0);
-        root2.left = new TreeNode(1);
-        root2.left.left = new TreeNode(3);
-        root2.left.right = new TreeNode(2);
-        System.out.println(solution.distanceK(root2, new TreeNode(2), 1));
-        TreeNode root3 = new TreeNode(0);
-        root3.left = new TreeNode(2);
-        root3.right = new TreeNode(1);
-        root3.right.left = new TreeNode(3);
-
-        System.out.println(solution.distanceK(root3, new TreeNode(3), 3));
     }
 
     static int bigSum(int[] arr) {
