@@ -4802,4 +4802,39 @@ public class Solution extends GuessGame {
         return visited == numCourses;
     }
 
+    public int longestSubsequence(int[] arr, int difference) {
+        int n = arr.length;
+        HashMap<Integer, Integer> dp = new HashMap<>(n);
+        int answer = 1;
+        for (int i = 0; i < n; i++) {
+            dp.put(arr[i], dp.getOrDefault(arr[i] - difference, 0) + 1);
+            answer = Math.max(answer, dp.get(arr[i]));
+        }
+        return answer;
+    }
+
+    public int maxValue(int[][] events, int k) {
+        int n = events.length;
+        Arrays.sort(events, (a, b) -> a[0] - b[0]);
+        int[][] dp = new int[k + 1][n + 1];
+        for (int i = n - 1; i >= 0; --i) {
+            for (int c = 1; c <= k; c++) {
+                dp[c][i] = Math.max(dp[c][i + 1], events[i][2] + dp[c - 1][binSearchRight(events, events[i][1])]);
+            }
+        }
+        return dp[k][0];
+    }
+
+    private int binSearchRight(int[][] events, int i) {
+        int l = 0, r = events.length;
+        while (l < r) {
+            int m = (l + r) / 2;
+            if (events[m][0] <= i) {
+                l = m + 1;
+            } else {
+                r = m;
+            }
+        }
+        return l;
+    }
 }

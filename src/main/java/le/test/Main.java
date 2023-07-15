@@ -14,9 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.canFinish(2, new int[][] { { 1, 0 } }));
+        System.out.println(solution.maxValue(new int[][] { { 1, 2, 4 }, { 3, 4, 3 }, { 2, 3, 1 } }, 2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.canFinish(2, new int[][] { { 1, 0 }, { 0, 1 } }));
+        System.out.println(solution.maxValue(new int[][] { { 1, 2, 4 }, { 3, 4, 3 }, { 2, 3, 10 } }, 2));
+        System.out.println(solution.maxValue(new int[][] { { 1, 1, 1 }, { 2, 2, 2 }, { 3, 3, 3 }, { 4, 4, 4 } }, 3));
 
     }
 
