@@ -1,5 +1,8 @@
 package le.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
 
 import java.util.Random;
@@ -14,10 +17,48 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.maxValue(new int[][] { { 1, 2, 4 }, { 3, 4, 3 }, { 2, 3, 1 } }, 2));
+        List<List<String>> people = new ArrayList<>();
+        people.add(new ArrayList<>() {
+            {
+                add("algorithms");
+                add("math");
+                add("java");
+            }
+        });
+        people.add(new ArrayList<>() {
+            {
+                add("algorithms");
+                add("math");
+                add("reactjs");
+            }
+        });
+        people.add(new ArrayList<>() {
+            {
+                add("java");
+                add("csharp");
+                add("aws");
+            }
+        });
+        people.add(new ArrayList<>() {
+            {
+                add("reactjs");
+                add("csharp");
+            }
+        });
+        people.add(new ArrayList<>() {
+            {
+                add("csharp");
+                add("math");
+            }
+        });
+        people.add(new ArrayList<>() {
+            {
+                add("aws");
+                add("java");
+            }
+        });
+        System.out.println(solution.smallestSufficientTeam(new String[] { "algorithms", "math", "java", "reactjs", "csharp", "aws" }, people));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.maxValue(new int[][] { { 1, 2, 4 }, { 3, 4, 3 }, { 2, 3, 10 } }, 2));
-        System.out.println(solution.maxValue(new int[][] { { 1, 1, 1 }, { 2, 2, 2 }, { 3, 3, 3 }, { 4, 4, 4 } }, 3));
 
     }
 

@@ -4837,4 +4837,41 @@ public class Solution extends GuessGame {
         }
         return l;
     }
+
+    public int[] smallestSufficientTeam(String[] req_skills, List<List<String>> people) {
+        int n = people.size(), m = req_skills.length;
+        HashMap<String, Integer> skillId = new HashMap<>();
+        long[] dp = new long[(int) Math.pow(2, m)];
+        int skillMaskOfPerson[] = new int[n];
+
+        for (int i = 0; i < m; i++)
+            skillId.put(req_skills[i], i);
+
+        for (int i = 0; i < n; i++)
+            for (String skill : people.get(i))
+                skillMaskOfPerson[i] |= 1 << skillId.get(skill);
+
+        Arrays.fill(dp, (1L << n) - 1);
+        dp[0] = 0;
+
+        for (int mask = 1; mask < (1 << m); mask++) {
+            for (int i = 0; i < n; i++) {
+                int smaller = mask & ~skillMaskOfPerson[i];
+                if (smaller != mask) {
+                    long personMask = dp[smaller] | (1L << i);
+                    if (Long.bitCount(personMask) < Long.bitCount(dp[mask]))
+                        dp[mask] = personMask;
+                }
+
+            }
+        }
+        long ans = dp[(1 << m) - 1];
+        int[] result = new int[Long.bitCount(ans)];
+        int pointer = 0;
+        for (int i = 0; i < n; i++)
+            if (((ans >> i) & 1) == 1)
+                result[pointer++] = i;
+
+        return result;
+    }
 }
