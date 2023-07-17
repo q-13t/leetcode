@@ -16,7 +16,7 @@ import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
-import javax.swing.GrayFilter;
+import javax.swing.event.ListDataEvent;
 
 public class Solution extends GuessGame {
 
@@ -4873,5 +4873,64 @@ public class Solution extends GuessGame {
                 result[pointer++] = i;
 
         return result;
+    }
+
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ArrayList<Integer> a1 = new ArrayList<>();
+        ArrayList<Integer> a2 = new ArrayList<>();
+        while (l1 != null) {
+            a1.add(l1.val);
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            a2.add(l2.val);
+            l2 = l2.next;
+        }
+        int maxLength = Math.max(a1.size(), a2.size());
+        ArrayList<Integer> summed = new ArrayList<>(maxLength);
+        int i = 0;
+        if (a1.size() > a2.size()) {
+            for (i = 0; i < a1.size(); i++)
+                summed.add(a1.get(i));
+            for (int j = a2.size() - 1; j >= 0; j--) {
+                int sum = summed.get(--i) + a2.get(j);
+                summed.set(i, sum);
+            }
+
+        } else {
+            for (i = 0; i < a2.size(); i++)
+                summed.add(a2.get(i));
+            for (int j = a1.size() - 1; j >= 0; j--) {
+                int sum = summed.get(--i) + a1.get(j);
+                summed.set(i, sum);
+            }
+        }
+        int lead = 0;
+
+        for (int j = summed.size() - 1; j >= 0; j--) {
+            int val = summed.get(j) + lead;
+            if (val >= 10) {
+                lead = 0;
+                do
+                    lead++;
+                while ((val = val - 10) >= 10);
+            } else if (lead > 0)
+                lead--;
+
+            summed.set(j, val);
+        }
+        if (lead != 0)
+            summed.add(0, lead);
+
+        ListNode current = new ListNode();
+        ListNode track = current;
+        for (int j = 0; j < summed.size(); j++) {
+            track.val = summed.get(j);
+            if (j + 1 < summed.size()) {
+                track.next = new ListNode();
+                track = track.next;
+            }
+        }
+        return current;
     }
 }

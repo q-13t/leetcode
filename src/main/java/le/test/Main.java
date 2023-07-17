@@ -7,6 +7,7 @@ import java.util.List;
 
 import java.util.Random;
 
+import le.test.LeetCode.ListNode;
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
 
@@ -17,47 +18,14 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        List<List<String>> people = new ArrayList<>();
-        people.add(new ArrayList<>() {
-            {
-                add("algorithms");
-                add("math");
-                add("java");
-            }
-        });
-        people.add(new ArrayList<>() {
-            {
-                add("algorithms");
-                add("math");
-                add("reactjs");
-            }
-        });
-        people.add(new ArrayList<>() {
-            {
-                add("java");
-                add("csharp");
-                add("aws");
-            }
-        });
-        people.add(new ArrayList<>() {
-            {
-                add("reactjs");
-                add("csharp");
-            }
-        });
-        people.add(new ArrayList<>() {
-            {
-                add("csharp");
-                add("math");
-            }
-        });
-        people.add(new ArrayList<>() {
-            {
-                add("aws");
-                add("java");
-            }
-        });
-        System.out.println(solution.smallestSufficientTeam(new String[] { "algorithms", "math", "java", "reactjs", "csharp", "aws" }, people));
+        // ListNode ln1 = new ListNode(7, new ListNode(2, new ListNode(4, new
+        // ListNode(3))));
+        // ListNode ln2 = new ListNode(5, new ListNode(6, new ListNode(4)));
+
+        ListNode ln1 = new ListNode(1);
+        ListNode ln2 = new ListNode(9, new ListNode(9));
+
+        solution.addTwoNumbers2(ln1, ln2).print();
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
