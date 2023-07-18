@@ -7,6 +7,9 @@ import java.util.List;
 
 import java.util.Random;
 
+import org.w3c.dom.ls.LSException;
+
+import le.test.LeetCode.LRUCache;
 import le.test.LeetCode.ListNode;
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
@@ -18,14 +21,14 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        // ListNode ln1 = new ListNode(7, new ListNode(2, new ListNode(4, new
-        // ListNode(3))));
-        // ListNode ln2 = new ListNode(5, new ListNode(6, new ListNode(4)));
-
-        ListNode ln1 = new ListNode(1);
-        ListNode ln2 = new ListNode(9, new ListNode(9));
-
-        solution.addTwoNumbers2(ln1, ln2).print();
+        LRUCache lruCache = new LRUCache(2);
+        System.out.println(lruCache.get(2));
+        lruCache.put(2, 6);
+        System.out.println(lruCache.get(1));
+        lruCache.put(1, 5);
+        lruCache.put(1, 2);
+        System.out.println(lruCache.get(1));
+        System.out.println(lruCache.get(2));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
     }
