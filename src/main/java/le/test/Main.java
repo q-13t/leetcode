@@ -1,6 +1,7 @@
 package le.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
@@ -21,16 +22,11 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        LRUCache lruCache = new LRUCache(2);
-        System.out.println(lruCache.get(2));
-        lruCache.put(2, 6);
-        System.out.println(lruCache.get(1));
-        lruCache.put(1, 5);
-        lruCache.put(1, 2);
-        System.out.println(lruCache.get(1));
-        System.out.println(lruCache.get(2));
+        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 1, 3 } }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
+        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 1, 2 }, { 1, 2 } }));
+        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 2, 3 }, }));
+        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 100 }, { 11, 22 }, { 1, 11 }, { 2, 12 } }));
     }
 
     static int bigSum(int[] arr) {

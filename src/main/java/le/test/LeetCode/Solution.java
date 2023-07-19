@@ -3468,20 +3468,14 @@ public class Solution extends GuessGame {
     }
 
     public int eraseOverlapIntervals(int[][] intervals) {
-        Arrays.sort(intervals, (x, y) -> {
-            return Integer.compare(x[1], y[1]);
-        });
-
-        int deletions = 0;
-        int prev = Integer.MIN_VALUE;
-        for (int[] is : intervals) {
-            if (is[0] < prev) {
-                deletions++;
-            } else {
-                prev = is[1];
-            }
-        }
-        return deletions;
+       int deletes = 0, size = intervals.length, prev = Integer.MIN_VALUE;
+        Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
+        for (int i = 0; i < size; i++)
+            if (intervals[i][0] < prev)
+                deletes++;
+            else
+                prev = intervals[i][1];
+        return deletes;
     }
 
     public int findMinArrowShots(int[][] points) {
