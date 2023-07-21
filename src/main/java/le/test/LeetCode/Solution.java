@@ -3468,7 +3468,7 @@ public class Solution extends GuessGame {
     }
 
     public int eraseOverlapIntervals(int[][] intervals) {
-       int deletes = 0, size = intervals.length, prev = Integer.MIN_VALUE;
+        int deletes = 0, size = intervals.length, prev = Integer.MIN_VALUE;
         Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
         for (int i = 0; i < size; i++)
             if (intervals[i][0] < prev)
@@ -4926,5 +4926,39 @@ public class Solution extends GuessGame {
             }
         }
         return current;
+    }
+
+    public int findNumberOfLIS(int[] numbs) {
+        int n = numbs.length;
+        int[] dp = new int[n];
+        int[] ways = new int[n];
+        int maxSofar = 0, result = 0;
+        for (int i = 0; i < n; i++) {
+            calculateDP(i, numbs, dp, ways);
+            maxSofar = maxSofar > dp[i] ? maxSofar : dp[i];
+        }
+        for (int i = 0; i < n; i++)
+            if (dp[i] == maxSofar)
+                result += ways[i];
+        return result;
+    }
+
+    private void calculateDP(int i, int[] numbs, int[] dp, int[] ways) {
+        if (dp[i] != 0)
+            return;
+        dp[i] = 1;
+        ways[i] = 1;
+        for (int j = 0; j < i; j++) {
+            if (numbs[j] < numbs[i]) {
+                calculateDP(j, numbs, dp, ways);
+                if (dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    ways[i] = 0;
+                }
+                if (dp[j] + 1 == dp[i]) {
+                    ways[i] += ways[j];
+                }
+            }
+        }
     }
 }
