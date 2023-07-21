@@ -22,11 +22,11 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 2, 3 }, { 3, 4 }, { 1, 3 } }));
+
+        System.out.println(solution.findNumberOfLIS(new int[] { 2, 2, 2, 2, 2 }));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 1, 2 }, { 1, 2 } }));
-        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 2 }, { 2, 3 }, }));
-        System.out.println(solution.eraseOverlapIntervals(new int[][] { { 1, 100 }, { 11, 22 }, { 1, 11 }, { 2, 12 } }));
+
+        System.out.println(solution.findNumberOfLIS(new int[] { 1, 3, 5, 4, 7 }));
     }
 
     static int bigSum(int[] arr) {
