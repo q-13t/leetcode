@@ -23,10 +23,10 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.findNumberOfLIS(new int[] { 2, 2, 2, 2, 2 }));
+        solution.allPossibleFBT(7).forEach(x -> TreeNode.printLevelOrder(x));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
-        System.out.println(solution.findNumberOfLIS(new int[] { 1, 3, 5, 4, 7 }));
     }
 
     static int bigSum(int[] arr) {

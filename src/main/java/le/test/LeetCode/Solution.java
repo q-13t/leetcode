@@ -4961,4 +4961,25 @@ public class Solution extends GuessGame {
             }
         }
     }
+
+    HashMap<Integer, List<TreeNode>> allPossibleFBTdp = new HashMap<>();
+
+    public List<TreeNode> allPossibleFBT(int n) {
+        if (n % 2 == 0)
+            return new ArrayList<TreeNode>();
+        if (n == 1)
+            return Arrays.asList(new TreeNode());
+        if (allPossibleFBTdp.containsKey(n))
+            return allPossibleFBTdp.get(n);
+        List<TreeNode> list = new ArrayList<>();
+        for (int i = 1; i < n - 1; i += 2) {
+            List<TreeNode> left = allPossibleFBT(i);
+            List<TreeNode> right = allPossibleFBT(n - i - 1);
+            for (TreeNode l : left)
+                for (TreeNode r : right)
+                    list.add(new TreeNode(0, l, r));
+        }
+        allPossibleFBTdp.put(n, list);
+        return list;
+    }
 }
