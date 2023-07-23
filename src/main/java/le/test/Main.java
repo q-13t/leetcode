@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        solution.allPossibleFBT(7).forEach(x -> TreeNode.printLevelOrder(x));
+        System.out.println(solution.knightProbability(3, 2, 0, 0));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 

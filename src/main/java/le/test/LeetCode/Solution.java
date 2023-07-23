@@ -4982,4 +4982,35 @@ public class Solution extends GuessGame {
         allPossibleFBTdp.put(n, list);
         return list;
     }
+
+    public double knightProbability(int n, int k, int row, int column) {
+        double probability = 0;
+        int[][] knightMoves = new int[][] { { -2, -1 }, { -1, -2 }, { 1, -2 }, { 2, -1 }, { -2, 1 }, { -1, 2 }, { 1, 2 }, { 2, 1 } };
+        double[][] prev = new double[n][n];
+        double[][] curr = new double[n][n];
+
+        prev[row][column] = 1;
+
+        while (k-- > 0) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    curr[i][j] = 0;
+                    for (int[] move : knightMoves) {
+                        int newRow = i - move[0], newColumn = j - move[1];
+                        if (newRow < n && newColumn < n && newRow >= 0 && newColumn >= 0) {
+                            curr[i][j] += prev[newRow][newColumn] / 8;
+                        }
+                    }
+                }
+            }
+            double[][] tmp = prev;
+            prev = curr;
+            curr = tmp;
+        }
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                probability += prev[i][j];
+
+        return probability;
+    }
 }
