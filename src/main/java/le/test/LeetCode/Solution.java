@@ -5013,4 +5013,20 @@ public class Solution extends GuessGame {
 
         return probability;
     }
+
+    public double myPow(double x, int n) {
+        double res = 1D;
+        long abs = Math.abs((long) n);
+        while (abs > 0) {
+            long bit = abs & 1;
+            if (bit == 1)
+                if (n > 0)
+                    res *= x;
+                else
+                    res /= x;
+            x *= x;
+            abs >>= 1;
+        }
+        return res;
+    }
 }
