@@ -16,8 +16,6 @@ import java.util.AbstractList;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
-import javax.swing.event.ListDataEvent;
-
 public class Solution extends GuessGame {
 
     private static int[][] moves = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
@@ -5012,5 +5010,20 @@ public class Solution extends GuessGame {
                 probability += prev[i][j];
 
         return probability;
+    }
+
+    public double myPow(double x, int n) {
+        double res = 1D;
+        long abs = Math.abs((long) n);
+        while (abs > 0) {
+            if ((abs & 1) == 1)
+                if (n > 0)
+                    res *= x;
+                else
+                    res /= x;
+            x *= x;
+            abs >>= 1;
+        }
+        return res;
     }
 }

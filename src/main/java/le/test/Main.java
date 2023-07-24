@@ -23,7 +23,10 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.knightProbability(3, 2, 0, 0));
+        System.out.println(solution.myPow(2d, 10));
+        System.out.println(solution.myPow(2.1d, 3));
+        System.out.println(solution.myPow(2d, -2));
+        System.out.println(solution.myPow(2d, -2147483648));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
