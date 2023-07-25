@@ -11,10 +11,6 @@ public class Pair<T, E> {
         this.value = value;
     }
 
-    public T getKey() {
-        return key;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -27,8 +23,20 @@ public class Pair<T, E> {
         return Objects.equals(key, pair.key) && Objects.equals(value, pair.value);
     }
 
+    public T getKey() {
+        return key;
+    }
+
+    public void setValue(E value) {
+        this.value = value;
+    }
+
     public E getValue() {
         return value;
+    }
+
+    public void setKey(T key) {
+        this.key = key;
     }
 
 }

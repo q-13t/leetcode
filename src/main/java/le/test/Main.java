@@ -23,10 +23,9 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.myPow(2d, 10));
-        System.out.println(solution.myPow(2.1d, 3));
-        System.out.println(solution.myPow(2d, -2));
-        System.out.println(solution.myPow(2d, -2147483648));
+        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 1, 0 }));
+        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 2, 1, 0 }));
+        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 10, 5, 2 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
