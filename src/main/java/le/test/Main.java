@@ -23,9 +23,9 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 1, 0 }));
-        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 2, 1, 0 }));
-        System.out.println(solution.peakIndexInMountainArray(new int[] { 0, 10, 5, 2 }));
+        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 6));
+        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 2.7));
+        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 1.9));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 

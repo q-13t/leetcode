@@ -5038,4 +5038,24 @@ public class Solution extends GuessGame {
         }
         return l;
     }
+
+    public int minSpeedOnTime(int[] dist, double hour) {
+        int l = 1, r = 10000000, minSpeed = -1, m = 0, n = dist.length;
+        double v, t;
+        while (l <= r) {
+            m = (r + l) / 2;
+            t = 0.0;
+            for (int i = 0; i < n; i++) {
+                v = (double) dist[i] / (double) m;
+                t += (i == n - 1 ? v : Math.ceil(v));
+            }
+            if (t <= hour) {
+                minSpeed = m;
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+        return minSpeed;
+    }
 }
