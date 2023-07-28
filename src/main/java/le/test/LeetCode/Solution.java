@@ -5073,4 +5073,26 @@ public class Solution extends GuessGame {
         }
         return dp[0] >= 0;
     }
+
+    public long maxRunTime(int n, int[] batteries) {
+        long l = 1, r = 0, k = batteries.length;
+
+        for (int i = 0; i < k; i++)
+            r += batteries[i];
+        r /= n;
+
+        while (l < r) {
+            long t = r - (r - l) / 2;
+            long e = 0;
+            for (int i = 0; i < k; i++) {
+                e += Math.min(batteries[i], t);
+            }
+            if (e >= (long) n * t) {
+                l = t;
+            } else {
+                r = t - 1;
+            }
+        }
+        return l;
+    }
 }
