@@ -23,9 +23,8 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 6));
-        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 2.7));
-        System.out.println(solution.minSpeedOnTime(new int[] { 1, 3, 2 }, 1.9));
+        System.out.println(solution.PredictTheWinner(new int[] { 1, 5, 2 }));
+        System.out.println(solution.PredictTheWinner(new int[] { 1, 5, 233, 7 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
