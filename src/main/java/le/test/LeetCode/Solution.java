@@ -5095,4 +5095,32 @@ public class Solution extends GuessGame {
         }
         return l;
     }
+
+    int[][] dp;
+
+    public int strangePrinter(String s) {
+        int n = s.length();
+        dp = new int[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                dp[i][j] = -1;
+
+        return solveStrangePrinter(s, n, 0, n - 1) + 1;
+    }
+
+    private int solveStrangePrinter(String s, int n, int l, int r) {
+        if (dp[l][r] != -1)
+            return dp[l][r];
+        dp[l][r] = n;
+        int j = -1;
+        for (int i = l; i < r; i++) {
+            if (s.charAt(i) != s.charAt(r) && j == -1)
+                j = i;
+            if (j != -1)
+                dp[l][r] = Math.min(dp[l][r], 1 + solveStrangePrinter(s, n, j, i) + solveStrangePrinter(s, n, i + 1, r));
+        }
+        if (j == -1)
+            dp[l][r] = 0;
+        return dp[l][r];
+    }
 }

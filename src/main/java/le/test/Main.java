@@ -23,9 +23,9 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.maxRunTime(2, new int[] { 3, 3, 3 }));
-        System.out.println(solution.maxRunTime(2, new int[] { 1, 1, 1, 1 }));
-        System.out.println(solution.maxRunTime(3, new int[] { 10, 10, 3, 5 }));
+        System.out.println(solution.strangePrinter("aaabbb"));
+        System.out.println(solution.strangePrinter("aba"));
+        System.out.println(solution.strangePrinter("abc"));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
 
