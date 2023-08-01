@@ -5123,4 +5123,25 @@ public class Solution extends GuessGame {
             dp[l][r] = 0;
         return dp[l][r];
     }
+
+    private List<List<Integer>> combinations = new ArrayList<>();
+
+    public List<List<Integer>> combine(int n, int k) {
+        buildCombinations(new ArrayList<Integer>(), n, k, 1);
+        return combinations;
+    }
+
+    public void buildCombinations(List<Integer> current, int n, int k, int start) {
+        if (current.size() == k && !combinations.contains(current)) {
+            combinations.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i = start; i <= n; i++) {
+            if (current.contains(i) || (!current.isEmpty() && current.get(current.size() - 1) > i))
+                continue;
+            current.add(i);
+            buildCombinations(current, n, k, start + 1);
+            current.remove(current.size() - 1);
+        }
+    }
 }

@@ -23,12 +23,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.strangePrinter("aaabbb"));
-        System.out.println(solution.strangePrinter("aba"));
-        System.out.println(solution.strangePrinter("abc"));
+        System.out.println(solution.combine(20, 20));
 
-        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start));
-
+        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
+        System.out.println(solution.combine(4, 2));
+        System.out.println(solution.combine(1, 1));
     }
 
     static int bigSum(int[] arr) {
