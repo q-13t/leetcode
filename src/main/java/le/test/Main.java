@@ -23,11 +23,11 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.combine(20, 20));
+        System.out.println(solution.permute(new int[] { 1, 2, 3 }));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
-        System.out.println(solution.combine(4, 2));
-        System.out.println(solution.combine(1, 1));
+        System.out.println(solution.permute(new int[] { 1, 2 }));
+        System.out.println(solution.permute(new int[] { 1 }));
     }
 
     static int bigSum(int[] arr) {

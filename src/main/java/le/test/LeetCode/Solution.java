@@ -5145,4 +5145,27 @@ public class Solution extends GuessGame {
             current.remove(current.size() - 1);
         }
     }
+
+    List<List<Integer>> collection = new ArrayList<>();
+
+    public List<List<Integer>> permute(int[] numbs) {
+        collection.clear();
+        combine(new ArrayList<Integer>(), numbs);
+        return collection;
+    }
+
+    public void combine(ArrayList<Integer> current, int[] numbs) {
+        if (current.size() == numbs.length) {
+            collection.add(new ArrayList<>(current));
+            return;
+        }
+        for (int i : numbs) {
+            if (current.contains(i))
+                continue;
+            current.add(i);
+            combine(current, numbs);
+            current.remove(current.size() - 1);
+        }
+        return;
+    }
 }
