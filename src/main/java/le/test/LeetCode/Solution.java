@@ -3420,27 +3420,44 @@ public class Solution extends GuessGame {
         return dp[n];
     }
 
+    List<String> letterCombinations = new ArrayList<>();
+    HashMap<Character, char[]> phoneNumberMappings = new HashMap<>() {
+        {
+            put('2', new char[] { 'a', 'b', 'c' });
+            put('3', new char[] { 'd', 'e', 'f' });
+            put('4', new char[] { 'g', 'h', 'i' });
+            put('5', new char[] { 'j', 'k', 'l' });
+            put('6', new char[] { 'm', 'n', 'o' });
+            put('7', new char[] { 'p', 'q', 'r', 's' });
+            put('8', new char[] { 't', 'u', 'v' });
+            put('9', new char[] { 'w', 'x', 'y', 'z' });
+        }
+    };
+
     public List<String> letterCombinations(String digits) {
-        List<String> combinations = new ArrayList<>();
-        String[] reference = new String[] { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-        if (digits.length() == 0)
-            return combinations;
-        buildLetterCombinations(0, digits, combinations, reference, digits.length(), new StringBuilder());
-        return combinations;
+        letterCombinations.clear();
+        if (!digits.isEmpty()) {
+            StringBuilder current = new StringBuilder();
+            for (char ch : phoneNumberMappings.get(digits.charAt(0))) {
+                current.append(ch);
+                buildLetterCombinations(current, digits, digits.length() - 1, 1);
+                current.deleteCharAt(current.length() - 1);
+            }
+        }
+        return letterCombinations;
     }
 
-    private void buildLetterCombinations(int i, String digits, List<String> combinations, String[] reference, int length, StringBuilder stringBuilder) {
-        if (i == length) {
-            combinations.add(stringBuilder.toString());
+    private void buildLetterCombinations(StringBuilder current, String digit, int n, int k) {
+        if (n == 0) {
+            letterCombinations.add(new String(current));
             return;
         }
-        int value = digits.charAt(i) - '0';
-        String ch = reference[value];
-        for (int j = 0; j < ch.length(); j++) {
-            stringBuilder.append(ch.charAt(j));
-            buildLetterCombinations(i + 1, digits, combinations, reference, length, stringBuilder);
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        for (char ch : phoneNumberMappings.get(digit.charAt(k))) {
+            current.append(ch);
+            buildLetterCombinations(current, digit, n - 1, k + 1);
+            current.deleteCharAt(current.length() - 1);
         }
+
     }
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
