@@ -23,13 +23,13 @@ public class Main {
     public static void main(String[] args) {
         start = System.currentTimeMillis();
 
-        System.out.println(solution.letterCombinations("23"));
+        System.out.println(solution.wordBreak("leetcode", Arrays.asList("leet", "code")));
 
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
-        System.out.println(solution.letterCombinations(""));
-        System.out.println(solution.letterCombinations("2"));
-        System.out.println(solution.letterCombinations("22"));
-        System.out.println(solution.letterCombinations("234"));
+
+        System.out.println(solution.wordBreak("applepenapple", Arrays.asList("apple", "pen")));
+        System.out.println(solution.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat")));
+        System.out.println(solution.wordBreak("bb", Arrays.asList("a", "b", "bbb", "bbbb")));
     }
 
     static int bigSum(int[] arr) {

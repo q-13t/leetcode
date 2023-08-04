@@ -5185,4 +5185,24 @@ public class Solution extends GuessGame {
         }
         return;
     }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int n = s.length();
+        boolean dp[] = new boolean[n + 1];
+        dp[0] = true;
+        OuterLoop: for (int i = 0; i <= n; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (dp[j] == true) {
+                    String substring = s.substring(j, i);
+                    for (String string : wordDict) {
+                        if (substring.equals(string)) {
+                            dp[i] = true;
+                            continue OuterLoop;
+                        }
+                    }
+                }
+            }
+        }
+        return dp[n];
+    }
 }
