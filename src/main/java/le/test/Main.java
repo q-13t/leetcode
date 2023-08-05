@@ -2,6 +2,7 @@ package le.test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 //REMEMBER: When passing a zero-length array, Java will create a new array with the exact size of the list. .toArray(new String[0])
@@ -12,6 +13,7 @@ import org.w3c.dom.ls.LSException;
 
 import le.test.LeetCode.LRUCache;
 import le.test.LeetCode.ListNode;
+import le.test.LeetCode.Pair;
 import le.test.LeetCode.Solution;
 import le.test.LeetCode.TreeNode;
 
@@ -22,14 +24,11 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-
-        System.out.println(solution.wordBreak("leetcode", Arrays.asList("leet", "code")));
-
+        for (TreeNode node : solution.generateTrees(3)) {
+            TreeNode.printInOrder(node);
+        }
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
 
-        System.out.println(solution.wordBreak("applepenapple", Arrays.asList("apple", "pen")));
-        System.out.println(solution.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat")));
-        System.out.println(solution.wordBreak("bb", Arrays.asList("a", "b", "bbb", "bbbb")));
     }
 
     static int bigSum(int[] arr) {
