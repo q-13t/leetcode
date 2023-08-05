@@ -5205,4 +5205,34 @@ public class Solution extends GuessGame {
         }
         return dp[n];
     }
+
+    HashMap<Pair<Integer, Integer>, ArrayList<TreeNode>> memo = new HashMap<>();
+
+    public List<TreeNode> generateTrees(int n) {
+        allPossibleBST(1, n);
+        return memo.get(new Pair<Integer, Integer>(1, n));
+    }
+
+    private ArrayList<TreeNode> allPossibleBST(int start, int end) {
+        ArrayList<TreeNode> res = new ArrayList<>();
+        if (start > end) {
+            res.add(null);
+            return res;
+        }
+        if (memo.containsKey(new Pair<>(start, end))) {
+            return memo.get(new Pair<>(start, end));
+        }
+
+        for (int i = start; i <= end; ++i) {
+            ArrayList<TreeNode> leftNodes = allPossibleBST(start, i - 1);
+            ArrayList<TreeNode> rightNodes = allPossibleBST(i + 1, end);
+            for (TreeNode left : leftNodes) {
+                for (TreeNode right : rightNodes) {
+                    res.add(new TreeNode(i, left, right));
+                }
+            }
+        }
+        memo.put(new Pair<Integer, Integer>(start, end), res);
+        return res;
+    }
 }
