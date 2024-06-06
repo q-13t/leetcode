@@ -5235,4 +5235,86 @@ public class Solution extends GuessGame {
         memo.put(new Pair<Integer, Integer>(start, end), res);
         return res;
     }
+
+    public int numMusicPlaylists(int n, int goal, int k) {
+        int[][] dp = new int[goal + 1][n + 1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= goal; i++) {
+            for (int j = 1; j <= Math.min(i, n); j++) {
+                dp[i][j] = (int) ((dp[i - 1][j - 1] * (n - j + 1)) % mod);
+                if (j > k) {
+                    dp[i][j] = (int) ((dp[i][j] + dp[i - 1][j] * (j - k)) % mod);
+                }
+            }
+        }
+        return dp[goal][n];
+    }
+
+    public List<String> commonChars(String[] words) {
+        ArrayList<HashMap<Character, Integer>> hashes = new ArrayList<>();
+
+        for (int i = 0; i < words.length; i++) {
+            hashes.add(new HashMap<Character, Integer>());
+            for (Character ch : words[i].toCharArray())
+                hashes.get(i).put(ch, hashes.get(i).getOrDefault(ch, 0) + 1);
+
+        }
+
+        List<String> answ = new ArrayList<>();
+
+        OuterLoop: for (int i = 97; i <= 122; i++) {
+            int min = Integer.MAX_VALUE;
+            for (HashMap<Character, Integer> hash : hashes) {
+                min = Math.min(hash.getOrDefault((char) i, 0), min);
+                if (min == 0)
+                    continue OuterLoop;
+            }
+            if (min > 0)
+                for (int j = 0; j < min; j++)
+                    answ.add(String.valueOf((char) i));
+        }
+
+        return answ;
+    }
+
+    private boolean do_back_track(ArrayList<Integer> arr, ArrayList<Integer> current, ArrayList<ArrayList<Integer>> lists, int gs) {
+        if (current.size() == gs) {
+            lists.add(current);
+            return do_back_track(arr, new ArrayList<>(), lists, gs);
+        }
+
+        int lenght = arr.size();
+        for (int i = 0; i < lenght; i++) {
+            int integer = arr.get(i);
+            if (current.size() < gs && current.size() >= 1) {
+                if (integer == current.get(current.size() - 1) + 1) {
+                    current.add(integer);
+                    arr.remove(i);
+                    lenght = arr.size();
+                    return do_back_track(arr, current, lists, gs);
+                } else {
+                    continue;
+                }
+            } else {
+                current = new ArrayList<>();
+                current.add(integer);
+                arr.remove(i);
+                lenght = arr.size();
+                return do_back_track(arr, current, lists, gs);
+            }
+        }
+        if (!lists.isEmpty() && current.isEmpty())
+            return true;
+
+        return false;
+    }
+
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        if (hand.length / groupSize >= 1) {// Do backtrack
+            ArrayList<Integer> list = (ArrayList<Integer>) Arrays.stream(hand).sorted().boxed().collect(Collectors.toList());
+            return do_back_track(list, new ArrayList<Integer>(), new ArrayList<>(), groupSize);
+        } else {
+            return false;
+        }
+    }
 }

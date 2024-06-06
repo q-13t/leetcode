@@ -24,9 +24,10 @@ public class Main {
 
     public static void main(String[] args) {
         start = System.currentTimeMillis();
-        for (TreeNode node : solution.generateTrees(3)) {
-            TreeNode.printInOrder(node);
-        }
+        System.out.println(solution.isNStraightHand(new int[] { 1, 2, 3, 6, 2, 3, 4, 7, 8 }, 3));
+        System.out.println(solution.isNStraightHand(new int[] { 1, 2, 3, 4, 5 }, 4));
+        System.out.println(solution.isNStraightHand(new int[] { 2, 1 }, 2));
+
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
 
     }
