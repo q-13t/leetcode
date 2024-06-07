@@ -1,14 +1,17 @@
 package le.test.LeetCode;
 
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Collections;
@@ -5317,4 +5320,31 @@ public class Solution extends GuessGame {
             return false;
         }
     }
+
+    public String replaceWords(List<String> dictionary, String sentence) {
+        String[] sentence_split = sentence.split(" ");
+
+        int length = sentence_split.length;
+        for (int i = 0; i < length; i++) {
+            TreeSet<String> candidates = new TreeSet<>();
+            for (String word : dictionary) {
+                if (sentence_split[i].length() < word.length())
+                    continue;
+                String split = sentence_split[i].substring(0, word.length());
+                if (split.equals(word))
+                    candidates.add(word);
+            }
+            if (!candidates.isEmpty())
+                sentence_split[i] = candidates.first();
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sentence_split.length; i++) {
+            sb.append(sentence_split[i]);
+            if (i != sentence_split.length - 1)
+                sb.append(" ");
+        }
+
+        return sb.toString();
+    }
+
 }
