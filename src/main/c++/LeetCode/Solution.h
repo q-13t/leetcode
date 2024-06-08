@@ -1,5 +1,9 @@
+#include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <limits>
+#include <map>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -22,7 +26,7 @@ class Solution {
 
         double probability = 0.0;
 
-        for (auto &p : serves) {
+        for (auto& p : serves) {
             double A_serve = p.first;
             double B_serve = p.second;
 
@@ -39,5 +43,38 @@ class Solution {
 
         t.resize(n + 1, vector<double>(n + 1, -1.0));
         return solve(n, n);
+    }
+
+    template <typename A, typename B>
+    std::pair<B, A> flip_pair(const std::pair<A, B>& p) {
+        return std::pair<B, A>(p.second, p.first);
+    }
+
+    int longestPalindrome(string s) {
+        int max = 0, single = 0;
+        map<char, int> occurrences;
+        for (size_t i = 0; i < s.size(); i++) occurrences[s.at(i)] = occurrences[s.at(i)] + 1;
+
+        if (occurrences.size() == 1) return occurrences.begin()->second;
+
+        std::vector<int> sorted;
+        for (auto&& v : occurrences) sorted.push_back(v.second);
+        std::sort(sorted.begin(), sorted.end(), std::greater<>());
+
+        for (auto&& value : sorted) {
+            if (value >= 2) {
+                if (value % 2 != 0) {
+                    single = 1;
+                    value = value - 1;
+                }
+                max += value;
+            } else if (single != 1) {
+                single = 1;
+            } else {
+                break;
+            }
+        }
+
+        return max + single;
     }
 };
