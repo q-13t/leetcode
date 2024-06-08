@@ -23,10 +23,18 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
+
         start = System.currentTimeMillis();
-        System.out.println(solution.replaceWords(Arrays.asList(new String[] { "cat", "bat", "rat" }), "the cattle was rattled by the battery"));
+        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 4, 6, 7 }, 6));// true
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
-        System.out.println(solution.replaceWords(Arrays.asList(new String[] { "a", "b", "c" }), "aadsfasf absbs bbab cadsfafs"));
+
+        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 6, 4, 7 }, 6));// true
+        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 6, 4, 7 }, 13));// false
+        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 4, 6, 6 }, 7));// true
+        System.out.println(solution.checkSubarraySum(new int[] { 0 }, 1));// false
+        System.out.println(solution.checkSubarraySum(new int[] { 1, 1 }, 1));// false
+        System.out.println(solution.checkSubarraySum(new int[] { 0, 1, 0, 3, 0, 4, 0, 4, 0 }, 5));// false
+
     }
 
     static int bigSum(int[] arr) {

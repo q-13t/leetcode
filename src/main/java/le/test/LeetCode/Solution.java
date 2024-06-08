@@ -5347,4 +5347,21 @@ public class Solution extends GuessGame {
         return sb.toString();
     }
 
+    public boolean checkSubarraySum(int[] nums, int k) {
+        // Remainder, Index
+        HashMap<Integer, Integer> rems = new HashMap<>();
+        rems.put(0, -1);// for test case ....
+        int sum = 0, rem = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            rem = sum % k;
+            if (rems.containsKey(rem)) {
+                if (i - rems.get(rem) >= 2)
+                    return true;
+            } else {
+                rems.put(rem, i);
+            }
+        }
+        return false;
+    }
 }
