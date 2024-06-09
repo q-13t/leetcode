@@ -2,5 +2,6 @@
 **/.vscode
 
 # target
-**/target/
+**/target
 
+**.exe
