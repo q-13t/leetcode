@@ -104,4 +104,26 @@ class Solution {
         }
         return (right_count == left_count);
     }
+#pragma GCC optimize("O3", "unroll-loops")
+    vector<int> findErrorNums(vector<int>& nums) {
+        std::unordered_map<int, int> map;
+        std::vector<int> res(2);
+        for (int i = 0; i < nums.size(); i++)
+            map[nums[i]]++;
+
+        for (pair<int, int> val : map)
+            if (val.second == 2) {
+                res[0] = val.first;
+                break;
+            }
+
+        for (int i = 1; i <= nums.size() + 1; i++) {
+            if (map[i] == 0) {
+                res[1] = i;
+                break;
+            }
+        }
+
+        return res;
+    }
 };
