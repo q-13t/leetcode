@@ -77,4 +77,18 @@ class Solution {
 
         return max + single;
     }
+    int subarraysDivByK(vector<int>& nums, int k) {
+        int arrays = 0, rem = 0, sum = 0, def = 0, length = nums.size();
+        // Reminder, Count
+        std::unordered_map<int, int> map;
+        map[0] = 1;
+        for (size_t i = 0; i < length; i++) {
+            sum += nums[i];
+            rem = (sum % k < 0) ? (sum % k) + k : sum % k;
+            if (map.find(rem) != map.end())
+                arrays += map[rem];
+            map[rem]++;
+        }
+        return arrays;
+    }
 };

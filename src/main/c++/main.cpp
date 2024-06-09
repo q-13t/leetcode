@@ -7,10 +7,14 @@
 Solution solution;
 
 int main(int argc, char const* argv[]) {
-    std::cout << (solution.longestPalindrome("abccccdd") == 7) << std::endl;
-    std::cout << (solution.longestPalindrome("a") == 1) << std::endl;
-    std::cout << (solution.longestPalindrome("ccc") == 3) << std::endl;
-    std::cout << (solution.longestPalindrome("bananas") == 5) << std::endl;
-
+    std::vector<int> v = {4, 5, 0, -2, -3, 1};
+    // std::cout << solution.subarraysDivByK(v, 5);
+    std::printf("%d \n", solution.subarraysDivByK(v, 5));
+    v = {5};
+    std::printf("%d \n", solution.subarraysDivByK(v, 9));
+    v = {-5};
+    std::printf("%d \n", solution.subarraysDivByK(v, 5));
+    v = {-1, 2, 9};
+    std::printf("%d \n", solution.subarraysDivByK(v, 2));
     return 0;
 }

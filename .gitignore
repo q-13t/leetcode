@@ -1,5 +1,6 @@
-/.vscode
+# vscode
+**/.vscode
 
-target
-target/.
-target/classes/.
+# target
+**/target/
+

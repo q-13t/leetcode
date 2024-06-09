@@ -5364,4 +5364,22 @@ public class Solution extends GuessGame {
         }
         return false;
     }
+
+    public int subarraysDivByK(int[] nums, int k) {
+        // Reminder, count
+        HashMap<Integer, Integer> occurrences = new HashMap<>();
+        int length = nums.length, arrays = 0, rem = 0, getOrDef = 0;
+        occurrences.put(0, 1);
+        for (int i = 0; i < length; i++) {
+            if (i >= 1)
+                nums[i] += nums[i - 1];
+            rem = nums[i] % k < 0 ? (nums[i] % k) + k : nums[i] % k;
+            getOrDef = occurrences.getOrDefault(rem, 0);
+            if (occurrences.containsKey(rem))
+                arrays += getOrDef;
+            occurrences.put(rem, getOrDef + 1);
+        }
+        return arrays;
+    }
+
 }

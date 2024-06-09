@@ -25,15 +25,11 @@ public class Main {
     public static void main(String[] args) {
 
         start = System.currentTimeMillis();
-        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 4, 6, 7 }, 6));// true
+        System.out.println(solution.subarraysDivByK(new int[] { 4, 5, 0, -2, -3, 1 }, 5));
         System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
-
-        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 6, 4, 7 }, 6));// true
-        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 6, 4, 7 }, 13));// false
-        System.out.println(solution.checkSubarraySum(new int[] { 23, 2, 4, 6, 6 }, 7));// true
-        System.out.println(solution.checkSubarraySum(new int[] { 0 }, 1));// false
-        System.out.println(solution.checkSubarraySum(new int[] { 1, 1 }, 1));// false
-        System.out.println(solution.checkSubarraySum(new int[] { 0, 1, 0, 3, 0, 4, 0, 4, 0 }, 5));// false
+        System.out.println(solution.subarraysDivByK(new int[] { 5 }, 9));
+        System.out.println(solution.subarraysDivByK(new int[] { -5 }, 5));
+        System.out.println(solution.subarraysDivByK(new int[] { -1, 2, 9 }, 2));
 
     }
 
