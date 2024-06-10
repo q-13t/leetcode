@@ -17,21 +17,13 @@ int main(int argc, char const* argv[]) {
     // std::printf("%d \n", solution.halvesAreAlike("book"));
     // std::printf("%d \n", solution.halvesAreAlike("textbook"));
 
-    std::vector<int> v = {1, 2, 2, 4};
-    std::vector<int> res = solution.findErrorNums(v);
-    print_vec(res);
+    std::vector<int> v = {1, 1, 4, 2, 1, 3};
+    std::cout << solution.heightChecker(v) << std::endl;
 
-    v = {1, 1};
-    res = solution.findErrorNums(v);
-    print_vec(res);
-
-    v = {2, 2};
-    res = solution.findErrorNums(v);
-    print_vec(res);
-
-    v = {2, 3, 2};
-    res = solution.findErrorNums(v);
-    print_vec(res);
+    v = {5, 1, 2, 3, 4};
+    std::cout << solution.heightChecker(v) << std::endl;
+    v = {1, 2, 3, 4, 5};
+    std::cout << solution.heightChecker(v) << std::endl;
 
     return 0;
 }
