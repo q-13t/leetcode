@@ -1,3 +1,6 @@
+#ifndef SOLUTION
+#define SOLUTION
+
 #include <algorithm>
 #include <cmath>
 #include <iostream>
@@ -138,4 +141,39 @@ class Solution {
         }
         return miss;
     }
+
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        // number, occurrences
+        unordered_map<int, int> included;
+        map<int, int> missing;
+        for (auto&& number : arr1) {
+            if (std::find(arr2.begin(), arr2.end(), number) != arr2.end()) {
+                // If arr2 contains the number
+                included[number]++;
+            } else {
+                // If arr2 DOES NOT contains the number
+                missing[number]++;
+            }
+        }
+        vector<int> result;
+        // Add numbers that are in arr2
+        for (auto&& number : arr2) {
+            auto iterator = included.find(number);
+            while (iterator->second != 0) {  // Keep adding number enough times
+                result.push_back(number);
+                iterator->second--;
+            }
+        }
+        // Add numbers that are NOT in arr2
+        for (auto iterator = missing.begin(); iterator != missing.end(); iterator++) {
+            while (iterator->second != 0) {  // Keep adding number enough times
+                result.push_back(iterator->first);
+                iterator->second--;
+            }
+        }
+
+        return result;
+    }
 };
+
+#endif
