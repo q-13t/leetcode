@@ -2,6 +2,7 @@
 #define SOLUTION
 
 #include <algorithm>
+#include <bitset>
 #include <cmath>
 #include <iostream>
 #include <limits>
@@ -249,6 +250,25 @@ class Solution {
             }
         }
         return {no_loss, one_loss};
+    }
+
+    int minBitFlips(int start, int goal) {
+        int bin1[32] = {};
+        int bin2[32] = {};
+        int i = 0, flips = 0, revs = 0;
+        while (start != 0) {
+            bin1[i++] = start % 2;
+            start /= 2;
+        }
+        i = 0;
+        while (goal != 0) {
+            bin2[i++] = goal % 2;
+            goal /= 2;
+        }
+        for (i = size(bin1) - 1; i >= 0; i--) {
+            flips += bin1[i] ^ bin2[i];
+        }
+        return flips;
     }
 };
 

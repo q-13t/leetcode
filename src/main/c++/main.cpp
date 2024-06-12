@@ -15,11 +15,8 @@ vector<int> arr1;
 vector<int> arr2;
 
 int main(int argc, char const* argv[]) {
-    arr1 = {2, 0, 2, 1, 1, 0};
-    solution.sortColors(arr1);
-    // Utils::print_vec();
-
-    arr1 = {2, 0, 1};
-    solution.sortColors(arr1);
-    // Utils::print_vec();
+    printf("%d \n", solution.minBitFlips(10, 7));
+    printf("%d \n", solution.minBitFlips(3, 4));
+    printf("%d \n", solution.minBitFlips(243, 640));
+    printf("%d \n", solution.minBitFlips(243, 1000000000));
 }
