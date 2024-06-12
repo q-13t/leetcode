@@ -7,6 +7,7 @@
 #include <limits>
 #include <map>
 #include <regex>
+#include <set>
 #include <unordered_map>
 #include <vector>
 using namespace std;
@@ -221,6 +222,33 @@ class Solution {
             iter++;
             twos--;
         }
+    }
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        // Player, loss count
+        map<int, int> losers;
+        map<int, int> winners;
+
+        // Count how many time a player has lost
+        for (int i = 0; i < matches.size(); i++) {
+            losers[matches[i][1]]++;
+            winners[matches[i][0]]++;
+        }
+
+        vector<int> no_loss;
+        vector<int> one_loss;
+
+        for (auto iter : losers) {
+            if (iter.second == 1) {  // Player lost one match
+                one_loss.push_back(iter.first);
+            }
+        }
+
+        for (auto iter : winners) {
+            if (losers.find(iter.first) == losers.end()) {  // Player has not lost
+                no_loss.push_back(iter.first);
+            }
+        }
+        return {no_loss, one_loss};
     }
 };
 
