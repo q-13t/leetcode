@@ -174,6 +174,54 @@ class Solution {
 
         return result;
     }
+    void sortColors(vector<int>& nums) {
+        // // color, count
+        // map<int, int> colors;
+        // for (int i = 0; i < nums.size(); i++) {
+        //     colors[nums[i]]++;
+        // }
+        // int i = 0;
+        // for (auto iterator = colors.begin(); iterator != colors.end(); iterator++) {
+        //     while (iterator->second != 0) {  // Keep adding number enough times
+        //         nums.at(i) = iterator->first;
+        //         iterator->second--;
+        //         i++;
+        //     }
+        // }
+        int zeros = 0, ones = 0, twos = 0, iter = 0, size = nums.size();
+        for (int i = 0; i < size; i++) {
+            switch (nums[i]) {
+                case 0: {
+                    zeros++;
+                    break;
+                }
+                case 1: {
+                    ones++;
+                    break;
+                }
+                case 2: {
+                    twos++;
+                    break;
+                }
+            }
+        }
+
+        while (zeros != 0) {
+            nums[iter] = 0;
+            iter++;
+            zeros--;
+        }
+        while (ones != 0) {
+            nums[iter] = 1;
+            iter++;
+            ones--;
+        }
+        while (twos != 0) {
+            nums[iter] = 2;
+            iter++;
+            twos--;
+        }
+    }
 };
 
 #endif
