@@ -15,13 +15,9 @@ vector<int> arr1;
 vector<int> arr2;
 
 int main(int argc, char const* argv[]) {
-    arr1 = {3, 1, 5};
-    arr2 = {2, 7, 4};
-    printf("%d \n", solution.minMovesToSeat(arr1, arr2));
-    arr1 = {4, 1, 5, 9};
-    arr2 = {1, 3, 2, 6};
-    printf("%d \n", solution.minMovesToSeat(arr1, arr2));
-    arr1 = {2, 2, 6, 6};
-    arr2 = {1, 3, 2, 6};
-    printf("%d \n", solution.minMovesToSeat(arr1, arr2));
+    arr1 = {1, 2, 2};
+    printf("%d \n", solution.minIncrementForUnique(arr1));
+
+    arr1 = {3, 2, 1, 2, 1, 7};
+    printf("%d \n", solution.minIncrementForUnique(arr1));
 }
