@@ -7,6 +7,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <queue>
 #include <regex>
 #include <set>
 #include <unordered_map>
@@ -290,6 +291,33 @@ class Solution {
         }
 
         return changes;
+    }
+
+    int findMaximizedCapital(int projects, int capital_total, vector<int>&& profits, vector<int>&& capital) {
+        vector<pair<int, int>> pairs;
+        priority_queue<int> que;
+        int iter = 0, size = profits.size();
+        for (int i = 0; i < size; i++) {
+            pairs.push_back(make_pair(capital[i], profits[i]));
+        }
+
+        sort(pairs.begin(), pairs.end());
+        while (projects > 0) {  // Create projects
+
+            while (iter < size && pairs[iter].first <= capital_total) {
+                que.push(pairs[iter].second);
+                iter++;
+            }
+
+            if (que.empty()) {
+                break;
+            } else {
+                capital_total += que.top();
+                que.pop();
+            }
+            projects--;
+        }
+        return capital_total;
     }
 };
 
