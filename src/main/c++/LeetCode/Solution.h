@@ -358,6 +358,20 @@ class Solution {
         sort(nums.begin(), nums.end());  // sort the data
         return findFairPair(upper, nums) - findFairPair(lower - 1, nums);
     }
+    string defangIPaddr(string address) {
+        FIO;
+        string newstr;
+
+        for (char ch : address) {
+            if (ch == '.') {
+                newstr += "[.]";
+            } else {
+                newstr += ch;
+            }
+        }
+
+        return newstr;
+    }
 };
 
 #endif

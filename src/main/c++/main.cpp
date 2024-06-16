@@ -23,7 +23,8 @@ vector<int> arr2;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    printf("%d \n", solution.countFairPairs({0, 1, 7, 4, 4, 5}, 3, 6));
-    printf("%d \n", solution.countFairPairs({1, 7, 9, 2, 5}, 11, 11));
-    printf("%d \n", solution.countFairPairs({0, 0, 0, 0, 0, 0}, 0, 0));
+
+    cout << solution.defangIPaddr("255.100.50.0") << endl;
+
+    cout << solution.defangIPaddr("1.1.1.1") << endl;
 }
