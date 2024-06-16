@@ -15,8 +15,7 @@ vector<int> arr1;
 vector<int> arr2;
 
 int main(int argc, char const* argv[]) {
-    printf("%d \n", solution.findMaximizedCapital(2, 0, {1, 2, 3}, {0, 1, 1}));
-
-    printf("%d \n", solution.findMaximizedCapital(3, 0, {1, 2, 3}, {0, 1, 2}));
-    printf("%d \n", solution.findMaximizedCapital(1, 0, {1, 2, 3}, {1, 1, 2}));
+    printf("%d \n", solution.minPatches({1, 3}, 6));
+    printf("%d \n", solution.minPatches({1, 5, 10}, 20));
+    printf("%d \n", solution.minPatches({1, 2, 2}, 5));
 }

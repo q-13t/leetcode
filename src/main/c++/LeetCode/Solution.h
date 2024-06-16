@@ -319,6 +319,18 @@ class Solution {
         }
         return capital_total;
     }
+    int minPatches(vector<int>&& nums, int n) {
+        long long miss = 1, added = 0, idx = 0;
+        while (miss <= n) {
+            if (idx < nums.size() && nums[idx] <= miss) {
+                miss += nums[idx++];
+            } else {
+                miss += miss;
+                added++;
+            }
+        }
+        return added;
+    }
 };
 
 #endif
