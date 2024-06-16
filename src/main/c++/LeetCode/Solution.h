@@ -331,6 +331,33 @@ class Solution {
         }
         return added;
     }
+
+#define FIO                       \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+
+   private:
+    long long findFairPair(int max, vector<int>& nums) {
+        int l = 0, size = nums.size(), r = size - 1;
+        long long res = 0;
+        while (l < r) {
+            while (r > l && nums[l] + nums[r] > max) {
+                r--;
+            }
+
+            res += r - l++;
+        }
+        return res;
+    }
+
+   public:
+    long long
+    countFairPairs(vector<int>&& nums, int lower, int upper) {
+        FIO;
+        sort(nums.begin(), nums.end());  // sort the data
+        return findFairPair(upper, nums) - findFairPair(lower - 1, nums);
+    }
 };
 
 #endif
