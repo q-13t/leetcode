@@ -24,10 +24,9 @@ vector<int> arr2;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    vector<vector<int>> rectangle = {{1, 2, 1}, {4, 3, 4}, {3, 2, 1}, {1, 1, 1}};
-
-    SubrectangleQueries* obj = new SubrectangleQueries(rectangle);
-
-    obj->updateSubrectangle(0, 0, 3, 2, 5);
-    cout << obj->getValue(0, 2) << endl;
+    cout << solution.judgeSquareSum(5) << endl;
+    cout << solution.judgeSquareSum(3) << endl;
+    cout << solution.judgeSquareSum(4) << endl;
+    cout << solution.judgeSquareSum(2) << endl;
+    cout << solution.judgeSquareSum(2147482647) << endl;
 }
