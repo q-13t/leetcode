@@ -395,6 +395,36 @@ class Solution {
 
         return false;
     }
+    int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
+        int size = difficulty.size(), gain = 0;
+        // Profit | difficulty
+        map<int, int> pairs;
+        for (int i = 0; i < size; i++) {
+            pairs[profit[i]] = 2147483647;
+        }
+        for (int i = 0; i < size; i++) {
+            pairs[profit[i]] = (pairs[profit[i]] < difficulty[i]) ? pairs[profit[i]] : difficulty[i];
+        }
+        sort(worker.begin(), worker.end(), [&](int a, int b) {
+            return a > b;
+        });
+        auto J = pairs.rbegin();
+        priority_queue<int> pq;
+        auto W = worker.begin();
+
+        while (J != pairs.rend()) {
+            while (W != worker.end() && *W >= J->second) {
+                gain += J->first;
+                W++;
+            }
+            if (W == worker.end()) {
+                break;
+            }
+            J++;
+        }
+
+        return gain;
+    }
 };
 
 #endif
