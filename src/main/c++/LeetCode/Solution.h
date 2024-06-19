@@ -485,6 +485,39 @@ class Solution {
 
         return -1;
     }
+
+    bool searchMatrix(vector<vector<int>>&& matrix, int target) {
+        int r = matrix[0].size() - 1, l = 0;
+        auto iter = matrix.begin();
+        for (int i = 0, j = matrix.size() - 1; i <= j; i++, j--) {
+            if (matrix[i][r] >= target && matrix[i][0] <= target) {
+                while (l <= r) {
+                    int m = l + (r - l) / 2;
+                    if (matrix[i][m] == target) {
+                        return true;
+                    }
+                    if (matrix[i][m] >= target) {
+                        r = m - 1;
+                    } else {
+                        l = m + 1;
+                    }
+                }
+            }
+            if (matrix[j][r] >= target && matrix[j][0] <= target) {
+                while (l <= r) {
+                    int m = l + (r - l) / 2;
+                    if (matrix[j][m] == target) {
+                        return true;
+                    }
+                    if (matrix[j][m] >= target) {
+                        r = m - 1;
+                    } else {
+                        l = m + 1;
+                    }
+                }
+            }
+        }
+    }
 };
 
 #endif
