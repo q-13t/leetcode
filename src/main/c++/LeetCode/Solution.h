@@ -425,6 +425,36 @@ class Solution {
 
         return gain;
     }
+
+    int minDays(vector<int>&& bloomDay, int bouquets, int flowers) {
+        FIO;
+        long long left = 0, right = *max_element(bloomDay.begin(), bloomDay.end());
+        int answer = -1;
+        while (left <= right) {
+            long long mid = left + (right - left) / 2;
+            int bc = 0;
+            int count = 0;
+
+            for (int i = 0; i < bloomDay.size(); i++) {
+                if (bloomDay[i] <= mid) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                if (count >= flowers) {
+                    bc++;
+                    count = 0;
+                }
+            }
+            if (bc >= bouquets) {
+                answer = mid;
+                right = mid - 1;
+            } else if (bc < bouquets) {
+                left = mid + 1;
+            }
+        }
+        return answer;
+    }
 };
 
 #endif
