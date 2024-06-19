@@ -24,8 +24,10 @@ vector<int> arr2;
 vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
-    FIO;
-    printf("%d \n", solution.minDays({7, 7, 7, 7, 12, 7, 7}, 2, 3));
-    printf("%d \n", solution.minDays({1, 10, 3, 10, 2}, 3, 1));
-    printf("%d \n", solution.minDays({1, 10, 3, 10, 2}, 3, 2));
+    // FIO;
+    printf("%d 4\n", solution.search({4, 5, 6, 7, 0, 1, 2}, 0));
+    printf("%d -1\n", solution.search({4, 5, 6, 7, 0, 1, 2}, 3));
+    printf("%d -1\n", solution.search({1}, 0));
+    printf("%d 0\n", solution.search({1}, 1));
+    printf("%d 1\n", solution.search({3, 1}, 1));
 }

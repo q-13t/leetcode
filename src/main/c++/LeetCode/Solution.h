@@ -455,6 +455,36 @@ class Solution {
         }
         return answer;
     }
+    int search(vector<int>&& nums, int target) {
+        if (nums[0] == target) {
+            return 0;
+        }
+        int div = 0, start = 0, end = nums.size() - 1;
+
+        while (div < nums.size() - 1 && nums[div + 1] > nums[div]) {
+            div++;
+        }
+
+        if (target >= nums[0] && target <= nums[div]) {
+            end = div;
+        } else {
+            start = div + 1;
+        }
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[mid] >= target) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        return -1;
+    }
 };
 
 #endif
