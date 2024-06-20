@@ -26,7 +26,6 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    printf("%d \n", solution.searchMatrix({{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 3));
-    printf("%d \n", solution.searchMatrix({{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 13));
-    printf("%d \n", solution.searchMatrix({{1}, {3}}, 3));
+    printf("%d \n", solution.maxDistance({1, 2, 3, 4, 7}, 3));
+    printf("%d \n", solution.maxDistance({5, 4, 3, 2, 1, 1000000000}, 2));
 }

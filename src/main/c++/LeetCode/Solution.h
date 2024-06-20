@@ -518,6 +518,51 @@ class Solution {
             }
         }
     }
+    /**
+     * @brief Angry cow problem type:
+     *
+     * You are given an array consisting of n integers which denote the position of a stall.
+     * You are also given an integer k which denotes the number of aggressive cows.
+     * You are given the task of assigning stalls to k cows
+     * such that the minimum distance between any two of them is the maximum possible.
+     *
+     *Iterate thru the numbers beetween 1 and mid OF RANGE and check if all cows can be placed.
+     if so answer is valid and can be a candidate thus increase the left range,
+     if not decrease the right range.
+     *
+     * @param distance of stalls
+     * @param m cows
+     * @return int min max distance
+     */
+    int maxDistance(vector<int>&& distance, int m) {
+        sort(distance.begin(), distance.end());
+        int left = 1, right = (distance.back() - distance[0]) / (m - 1);
+        int answ = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            //  Check if all balls can be placed if 'distance' is 'mid'
+            // In t
+            int last_pos = distance[0], placed = 1;
+            for (int i = 1; i < distance.size(); i++) {
+                if (distance[i] - last_pos >= mid) {
+                    last_pos = distance[i];
+                    placed++;
+                }
+                if (placed >= m) {
+                    break;
+                }
+            }
+
+            if (placed >= m) {
+                answ = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return answ;
+    }
 };
 
 #endif
