@@ -583,6 +583,28 @@ class Solution {
 
         return answ;
     }
+
+    int smallestDivisor(vector<int>&& nums, int threshold) {
+        long left = 1, right = *max_element(nums.begin(), nums.end()), answ = 0, mid = 0, sum = 0;
+
+        while (left <= right) {
+            mid = left + (right - left) / 2;
+            sum = 0;
+
+            for (int i = 0; i < nums.size(); i++) {
+                sum += ceil((double)nums[i] / mid);
+            }
+
+            if (sum <= threshold) {
+                answ = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return answ;
+    }
 };
 
 #endif
