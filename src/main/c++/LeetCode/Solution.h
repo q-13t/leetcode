@@ -563,6 +563,26 @@ class Solution {
         }
         return answ;
     }
+    int minEatingSpeed(vector<int>&& piles, int h) {
+        sort(piles.begin(), piles.end());
+        int left = 1, right = piles.back(), answ = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            long needed = 0;
+            for (int i = 0; i < piles.size(); i++) {
+                needed += ceil((double)piles[i] / mid);
+            }
+            if (needed <= h) {
+                answ = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return answ;
+    }
 };
 
 #endif
