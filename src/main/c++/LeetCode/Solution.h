@@ -605,6 +605,34 @@ class Solution {
 
         return answ;
     }
+    int maxSatisfied(vector<int>&& customers, vector<int>&& grumpy, int minutes) {
+        int current = 0, max = 0, remain = minutes;
+
+        // Find the maximum customers that may be satisfied within minutes window
+        for (int i = 0, j = 0; i < customers.size(); i++) {
+            if (grumpy[i] == 1) {
+                current += customers[i];
+                remain--;
+            }
+            while (remain < 0 || i + 1 - j > minutes) {
+                if (grumpy[j] == 1) {
+                    remain++;
+                    current -= customers[j];
+                }
+                j++;
+            };
+
+            max = max < current ? current : max;
+        }
+        // Add the rest of satisfied customers
+        for (int i = 0; i < customers.size(); i++) {
+            if (grumpy[i] == 0) {
+                max += customers[i];
+            }
+        }
+
+        return max;
+    }
 };
 
 #endif
