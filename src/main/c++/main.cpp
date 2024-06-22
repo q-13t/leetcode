@@ -26,8 +26,7 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 3, 1}, 3, 0));
-    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 5, 9, 1, 5, 9}, 2, 3));
-    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 2, 3, 4, 5}, 3, 0));
-    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 1, 1}, 1, 0));
+    printf("%d \n", solution.numberOfSubarrays({1, 1, 2, 1, 1}, 3));
+    printf("%d \n", solution.numberOfSubarrays({2, 4, 6}, 1));
+    printf("%d \n", solution.numberOfSubarrays({2, 2, 2, 1, 2, 2, 1, 2, 2, 2}, 2));
 }

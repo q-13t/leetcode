@@ -650,6 +650,19 @@ class Solution {
 
         return false;
     }
+    int numberOfSubarrays(vector<int>&& nums, int k) {
+        vector<int> count(nums.size() + 1, 0);
+        count[0] = 1;
+        int answer = 0, total = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            total += nums[i] % 2;
+            if (total - k >= 0) {
+                answer += count[total - k];
+            }
+            count[total]++;
+        }
+        return answer;
+    }
 };
 
 #endif
