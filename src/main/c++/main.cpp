@@ -26,17 +26,8 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    printf("%d \n", solution.maxSatisfied(
-                        {1, 0, 1, 2, 1, 1, 7, 5},  // customers
-                        {0, 1, 0, 1, 0, 1, 0, 1},  // grumpy
-                        3));
-    printf("%d \n", solution.maxSatisfied({1}, {0}, 1));
-    printf("%d \n", solution.maxSatisfied({5, 8}, {0, 1}, 1));
-    printf("%d \n", solution.maxSatisfied({10, 1, 7}, {0, 0, 0}, 2));
-    printf("%d \n", solution.maxSatisfied({1, 2, 3, 4, 5}, {1, 1, 1, 1, 1}, 1));
-    printf("%d \n", solution.maxSatisfied({10, 1, 10, 1, 10, 1, 10}, {1, 1, 1, 1, 1, 1, 1}, 1));
-    printf("%d \n", solution.maxSatisfied({0}, {0}, 1));
-    printf("%d \n", solution.maxSatisfied({2, 2, 6, 9}, {0, 0, 1, 1}, 1));
-    printf("%d \n", solution.maxSatisfied({5, 10, 2, 2, 3, 8}, {1, 1, 1, 1, 0, 1}, 2));
-    printf("%d \n", solution.maxSatisfied({2, 4, 1, 4, 1}, {1, 0, 1, 0, 1}, 2));
+    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 3, 1}, 3, 0));
+    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 5, 9, 1, 5, 9}, 2, 3));
+    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 2, 3, 4, 5}, 3, 0));
+    printf("%d \n", solution.containsNearbyAlmostDuplicate({1, 2, 1, 1}, 1, 0));
 }

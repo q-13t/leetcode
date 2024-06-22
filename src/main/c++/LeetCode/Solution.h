@@ -633,6 +633,23 @@ class Solution {
 
         return max;
     }
+
+    bool containsNearbyAlmostDuplicate(vector<int>&& nums, int indexDiff, int valueDiff) {
+        set<int> set;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (i > indexDiff) {
+                set.erase(nums[i - indexDiff - 1]);
+            }
+            auto iterator = set.lower_bound(nums[i] - valueDiff);
+            if (iterator != set.end() && *iterator <= nums[i] + valueDiff) {
+                return true;
+            }
+            set.insert(nums[i]);
+        }
+
+        return false;
+    }
 };
 
 #endif
