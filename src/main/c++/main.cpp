@@ -26,6 +26,8 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    printf("%d \n", solution.numSubarraysWithSum({1, 0, 1, 0, 1}, 2));
-    printf("%d \n", solution.numSubarraysWithSum({0, 0, 0, 0, 0}, 0));
+    printf("%d \n", solution.longestSubarray({8, 2, 4, 7}, 4));
+    printf("%d \n", solution.longestSubarray({10, 1, 2, 4, 7, 2}, 5));
+    printf("%d \n", solution.longestSubarray({4, 2, 2, 2, 4, 4, 2, 2}, 0));
+    printf("%d \n", solution.longestSubarray({2, 2, 2, 4, 4, 2, 5, 5, 5, 5, 5, 2}, 2));
 }

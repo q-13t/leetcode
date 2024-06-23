@@ -678,6 +678,23 @@ class Solution {
         }
         return total_count;
     }
+
+    int longestSubarray(vector<int>&& nums, int limit) {
+        FIO;
+        int longest = 0;
+        multiset<int> set;
+        for (int right = 0, left = 0; right < nums.size(); right++) {
+            set.insert(nums[right]);
+
+            while (!set.empty() && *set.rbegin() - *set.begin() > limit) {
+                set.erase(set.find(nums[left++]));
+            }
+
+            longest = max(longest, (int)set.size());
+        }
+
+        return longest;
+    }
 };
 
 #endif
