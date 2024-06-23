@@ -663,6 +663,21 @@ class Solution {
         }
         return answer;
     }
+    int numSubarraysWithSum(vector<int>&& nums, int goal) {
+        int total_count = 0, current_sum = 0;
+        map<int, int> count;
+        for (int i = 0; i < nums.size(); i++) {
+            current_sum += nums[i];
+            if (current_sum == goal) {
+                total_count++;
+            }
+            if (count.find(current_sum - goal) != count.end()) {
+                total_count += count[current_sum - goal];
+            }
+            count[current_sum]++;
+        }
+        return total_count;
+    }
 };
 
 #endif
