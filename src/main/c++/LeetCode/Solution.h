@@ -695,6 +695,29 @@ class Solution {
 
         return longest;
     }
+
+    int minKBitFlips(vector<int>&& nums, int k) {
+        FIO;
+        int flips = 0, n = nums.size(), flipped = 0;
+        deque<int> dq;
+        for (int i = 0; i < n; ++i) {
+            if (i >= k) {
+                flipped ^= dq.front();
+                dq.pop_front();
+            }
+            if (flipped == nums[i]) {
+                if (i + k > n) {
+                    return -1;
+                }
+                dq.push_back(1);
+                flipped ^= 1;
+                flips++;
+            } else {
+                dq.push_back(0);
+            }
+        }
+        return flips;
+    }
 };
 
 #endif
