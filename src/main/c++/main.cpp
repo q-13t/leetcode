@@ -8,16 +8,12 @@
 #include "LeetCode/Foo.h"
 #include "LeetCode/Solution.h"
 #include "LeetCode/SubrectangleQueries.h"
+#include "LeetCode/TreeNode.h"
 #include "Utils.h"
-
-// `Flush Input Output`
-// Unties `cin` and `cout` from each other in order to speed up the IO operations. This makes buffers not be automatically flushed.
-#define FIO                       \
-    ios_base::sync_with_stdio(0); \
-    cin.tie(0);                   \
-    cout.tie(0);
-
+#include "bits/stdc++.h"
 using namespace std;
+using namespace Utils;
+
 Solution solution;
 vector<int> arr1;
 vector<int> arr2;
@@ -25,8 +21,9 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-
-    printf("%d \n", solution.minKBitFlips({0, 1, 0}, 1));
-    printf("%d \n", solution.minKBitFlips({1, 1, 0}, 2));
-    printf("%d \n", solution.minKBitFlips({0, 0, 0, 1, 0, 1, 1, 0}, 3));
+    TreeNode* root = new TreeNode{4, new TreeNode{1, new TreeNode{0}, new TreeNode{2, nullptr, new TreeNode{3}}}, new TreeNode{6, new TreeNode{5}, new TreeNode{7, nullptr, new TreeNode{8}}}};
+    PrintBinaryTree(solution.bstToGst(root));
+    root = new TreeNode{4, new TreeNode{1, new TreeNode{0}, new TreeNode{2, nullptr, new TreeNode{3}}}, new TreeNode{6, new TreeNode{5}, new TreeNode{7, nullptr, new TreeNode{9}}}};
+    PrintBinaryTree(solution.bstToGst(root));
+    delete root;
 }

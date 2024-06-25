@@ -12,6 +12,8 @@
 #include <set>
 #include <unordered_map>
 #include <vector>
+
+#include "TreeNode.h"
 using namespace std;
 
 class Solution {
@@ -717,6 +719,22 @@ class Solution {
             }
         }
         return flips;
+    }
+
+    int val = 0;
+    TreeNode* rebuildTree(TreeNode* root) {
+        if (root == nullptr) {
+            return root;
+        }
+        rebuildTree(root->right);
+        val += root->val;
+        root->val = val;
+        rebuildTree(root->left);
+        return root;
+    }
+
+    TreeNode* bstToGst(TreeNode* root) {
+        return rebuildTree(root);
     }
 };
 
