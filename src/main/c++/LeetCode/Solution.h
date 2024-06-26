@@ -736,6 +736,33 @@ class Solution {
     TreeNode* bstToGst(TreeNode* root) {
         return rebuildTree(root);
     }
+
+    vector<TreeNode*> inOrderBST;
+    void TraverseInOrder(TreeNode* root) {
+        if (root == nullptr) {
+            return;
+        }
+        TraverseInOrder(root->left);
+        inOrderBST.push_back(root);
+        TraverseInOrder(root->right);
+    }
+
+    TreeNode* buildBalancedBST(int start, int end) {
+        if (start > end) {
+            return NULL;
+        }
+        int mid = (start + end) / 2;
+        TreeNode* root = inOrderBST[mid];
+
+        root->left = buildBalancedBST(start, mid - 1);
+        root->right = buildBalancedBST(mid + 1, end);
+        return root;
+    }
+
+    TreeNode* balanceBST(TreeNode* root) {
+        TraverseInOrder(root);
+        return buildBalancedBST(0, (int)inOrderBST.size() - 1);
+    }
 };
 
 #endif

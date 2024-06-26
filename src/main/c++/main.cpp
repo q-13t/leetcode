@@ -21,9 +21,14 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    TreeNode* root = new TreeNode{4, new TreeNode{1, new TreeNode{0}, new TreeNode{2, nullptr, new TreeNode{3}}}, new TreeNode{6, new TreeNode{5}, new TreeNode{7, nullptr, new TreeNode{8}}}};
-    PrintBinaryTree(solution.bstToGst(root));
-    root = new TreeNode{4, new TreeNode{1, new TreeNode{0}, new TreeNode{2, nullptr, new TreeNode{3}}}, new TreeNode{6, new TreeNode{5}, new TreeNode{7, nullptr, new TreeNode{9}}}};
-    PrintBinaryTree(solution.bstToGst(root));
+    TreeNode* root = new TreeNode{1};
+    root->right = new TreeNode{2};
+    root->right->right = new TreeNode{3};
+    root->right->right->right = new TreeNode{4};
+    cout << "Boferoe: " << endl;
+    PrintBinaryTree(root);
+    cout << "After: " << endl;
+    PrintBinaryTree(solution.balanceBST(root));
+
     delete root;
 }
