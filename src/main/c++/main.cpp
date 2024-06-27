@@ -21,14 +21,8 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    TreeNode* root = new TreeNode{1};
-    root->right = new TreeNode{2};
-    root->right->right = new TreeNode{3};
-    root->right->right->right = new TreeNode{4};
-    cout << "Boferoe: " << endl;
-    PrintBinaryTree(root);
-    cout << "After: " << endl;
-    PrintBinaryTree(solution.balanceBST(root));
-
-    delete root;
+    vector<vector<int>> graph = {{1, 2}, {2, 3}, {4, 2}};
+    cout << solution.findCenter(graph) << endl;
+    graph = {{1, 2}, {5, 1}, {1, 3}, {1, 4}};
+    cout << solution.findCenter(graph) << endl;
 }
