@@ -21,9 +21,10 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    vector<vector<int>> graph = {{0, 1}, {1, 2}, {2, 3}, {0, 2}, {1, 3}, {2, 4}};
-    cout << solution.maximumImportance(5, graph) << endl;
-    graph = {{0, 3}, {2, 4}, {1, 3}};
-    cout << solution.maximumImportance(5, graph) << endl;
+
+    solution.divideArray({1, 3, 4, 8, 7, 9, 3, 5, 1}, 2);
+    solution.divideArray({2, 4, 2, 2, 5, 2}, 2);
+    solution.divideArray({4, 2, 9, 8, 2, 12, 7, 12, 10, 5, 8, 5, 5, 7, 9, 2, 5, 11}, 14);
+
     return 0;
 }

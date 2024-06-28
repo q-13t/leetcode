@@ -13,6 +13,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "../Utils.h"
 #include "TreeNode.h"
 using namespace std;
 
@@ -782,6 +783,17 @@ class Solution {
         }
 
         return importance;
+    }
+    vector<vector<int>> divideArray(vector<int>&& nums, int k) {
+        sort(whole(nums));
+        vector<vector<int>> res;
+        for (int i = 2; i < nums.size(); i += 3) {
+            if (nums[i] - nums[i - 2] > k) {
+                return {};
+            }
+            res.push_back({nums[i - 2], nums[i - 1], nums[i]});
+        }
+        return res;
     }
 };
 
