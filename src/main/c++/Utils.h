@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+#include "LeetCode/TreeNode.h"
+
 #define whole(x) x.begin(), x.end()
 #define rwhole(x) x.rbegin(), x.rend()
 
@@ -12,6 +14,18 @@
  *
  */
 namespace Utils {
+
+TreeNode* buildBalancedBST(int start, int end, vector<int>* vec) {
+    if (start > end) {
+        return NULL;
+    }
+    int mid = (start + end) / 2;
+    TreeNode* root = new TreeNode(vec->at(mid));
+
+    root->left = buildBalancedBST(start, mid - 1, vec);
+    root->right = buildBalancedBST(mid + 1, end, vec);
+    return root;
+}
 
 /**
  * @brief Prints an std::vector in format [e_1, e_2, e_3, ... e_n]

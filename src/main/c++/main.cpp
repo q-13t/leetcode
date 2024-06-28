@@ -21,8 +21,9 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    vector<vector<int>> graph = {{1, 2}, {2, 3}, {4, 2}};
-    cout << solution.findCenter(graph) << endl;
-    graph = {{1, 2}, {5, 1}, {1, 3}, {1, 4}};
-    cout << solution.findCenter(graph) << endl;
+    vector<vector<int>> graph = {{0, 1}, {1, 2}, {2, 3}, {0, 2}, {1, 3}, {2, 4}};
+    cout << solution.maximumImportance(5, graph) << endl;
+    graph = {{0, 3}, {2, 4}, {1, 3}};
+    cout << solution.maximumImportance(5, graph) << endl;
+    return 0;
 }

@@ -766,6 +766,23 @@ class Solution {
     int findCenter(vector<vector<int>>& edges) {
         return (edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) ? edges[0][0] : edges[0][1];
     }
+
+    long long maximumImportance(int n, vector<vector<int>>& roads) {
+        // city occurrence
+        FIO;
+        vector<long long> priorities(n, 0);
+        for (vector<int> vec : roads) {
+            priorities[vec[0]]++;
+            priorities[vec[1]]++;
+        }
+        sort(priorities.begin(), priorities.end());
+        long long importance = 0;
+        for (long long i = 0; i < n; i++) {
+            importance += ((i + 1) * priorities[i]);
+        }
+
+        return importance;
+    }
 };
 
 #endif
