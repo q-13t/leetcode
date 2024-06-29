@@ -22,9 +22,8 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    solution.divideArray({1, 3, 4, 8, 7, 9, 3, 5, 1}, 2);
-    solution.divideArray({2, 4, 2, 2, 5, 2}, 2);
-    solution.divideArray({4, 2, 9, 8, 2, 12, 7, 12, 10, 5, 8, 5, 5, 7, 9, 2, 5, 11}, 14);
+    solution.getAncestors(8, {{0, 3}, {0, 4}, {1, 3}, {2, 4}, {2, 7}, {3, 5}, {3, 6}, {3, 7}, {4, 6}});
+    solution.getAncestors(5, {{0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}});
 
     return 0;
 }

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <bitset>
 #include <cmath>
+#include <cstring>
 #include <iostream>
 #include <limits>
 #include <map>
@@ -794,6 +795,32 @@ class Solution {
             res.push_back({nums[i - 2], nums[i - 1], nums[i]});
         }
         return res;
+    }
+
+    void findAncestors(int ancestor, vector<vector<int>>& adjacent, int current, vector<vector<int>>& ancestors) {
+        for (int ch : adjacent[current]) {
+            if (ancestors[ch].empty() || ancestors[ch].back() != ancestor) {
+                ancestors[ch].push_back(ancestor);
+                findAncestors(ancestor, adjacent, ch, ancestors);
+            }
+        }
+    }
+
+    vector<vector<int>> getAncestors(int n, vector<vector<int>>&& edges) {
+        // to , from
+
+        vector<vector<int>> ancestor(n);
+        vector<vector<int>> adjacent(n);
+
+        for (vector<int> vec : edges) {
+            adjacent[vec[0]].push_back(vec[1]);
+        }
+
+        for (int i = 0; i < n; i++) {
+            findAncestors(i, adjacent, i, ancestor);
+        }
+
+        return ancestor;
     }
 };
 
