@@ -22,8 +22,26 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    solution.getAncestors(8, {{0, 3}, {0, 4}, {1, 3}, {2, 4}, {2, 7}, {3, 5}, {3, 6}, {3, 7}, {4, 6}});
-    solution.getAncestors(5, {{0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}});
+    cout << solution.maxNumEdgesToRemove(4, {{3, 1, 2},
+                                             {3, 2, 3},
+                                             {1, 1, 3},
+                                             {1, 2, 4},
+                                             {1, 1, 2},
+                                             {2, 3, 4}})
+         << endl;
+    cout << solution.maxNumEdgesToRemove(4, {{3, 1, 2},
+                                             {3, 2, 3},
+                                             {1, 1, 4},
+                                             {2, 1, 4}})
+         << endl;
+    cout << solution.maxNumEdgesToRemove(4, {{3, 2, 3},
+                                             {1, 1, 2},
+                                             {2, 3, 4}})
+         << endl;
+    cout << solution.maxNumEdgesToRemove(2, {{1, 1, 2},
+                                             {2, 1, 2},
+                                             {3, 1, 2}})
+         << endl;
 
     return 0;
 }

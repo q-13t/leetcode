@@ -822,6 +822,63 @@ class Solution {
 
         return ancestor;
     }
+
+    class UnionFind {
+       private:
+        vector<int> data;
+        int distinct;
+
+       public:
+        UnionFind(int n) {
+            distinct = n;
+            for (int i = 0; i <= n; i++) {
+                data.push_back(i);
+            }
+        }
+
+        bool unite(int a, int b) {
+            if (findData(a) == findData(b)) {
+                return false;
+            }
+            data[findData(a)] = b;
+            distinct--;
+            return true;
+        }
+
+        int findData(int d) {
+            if (data[d] != d) {
+                data[d] = findData(data[d]);
+            }
+            return data[d];
+        }
+
+        int united() {
+            return distinct == 1;
+        }
+    };
+
+    int maxNumEdgesToRemove(int n, vector<vector<int>>&& edges) {
+        UnionFind Alice(n), Bob(n);
+        sort(whole(edges), [](vector<int> a, vector<int> b) { return a[0] > b[0]; });
+        int required = 0;
+        for (vector<int> edge : edges) {
+            switch (edge[0]) {
+                case 3: {
+                    required += (Alice.unite(edge[1], edge[2]) | Bob.unite(edge[1], edge[2]));
+                    break;
+                }
+                case 2: {
+                    required += Bob.unite(edge[1], edge[2]);
+                    break;
+                }
+                case 1: {
+                    required += Alice.unite(edge[1], edge[2]);
+                    break;
+                }
+            }
+        }
+        return (Alice.united() && Bob.united()) ? (edges.size() - required) : -1;
+    }
 };
 
 #endif
