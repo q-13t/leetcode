@@ -895,6 +895,32 @@ class Solution {
         }
         return false;
     }
+    vector<int> intersect(vector<int>&& nums1, vector<int>&& nums2) {
+        map<int, int> occurrences1;
+        map<int, int> occurrences2;
+        vector<int> result;
+        for (int num : nums1) {
+            occurrences1[num]++;
+        }
+        for (int num : nums2) {
+            occurrences2[num]++;
+        }
+        for (auto i = occurrences1.begin(), j = occurrences2.begin(); i != occurrences1.end() && j != occurrences2.end();) {
+            if (i->first == j->first && i->second != 0 && j->second != 0) {
+                result.push_back(i->first);
+                i->second--;
+                j->second--;
+            }
+            if (i->second == 0 || i->first < j->first) {
+                i++;
+            }
+            if (j->second == 0 || j->first < i->first) {
+                j++;
+            }
+        }
+
+        return result;
+    }
 };
 
 #endif
