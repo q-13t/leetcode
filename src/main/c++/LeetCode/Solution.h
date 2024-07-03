@@ -921,6 +921,20 @@ class Solution {
 
         return result;
     }
+
+    int minDifference(vector<int>&& nums) {
+        if (nums.size() <= 4) {
+            return 0;
+        }
+        sort(whole(nums));
+
+        long min = LONG_MAX, n = nums.size();
+        min = nums[n - 4] - nums[0] < min ? nums[n - 4] - nums[0] : min;
+        min = nums[n - 3] - nums[1] < min ? nums[n - 3] - nums[1] : min;
+        min = nums[n - 2] - nums[2] < min ? nums[n - 2] - nums[2] : min;
+        min = nums[n - 1] - nums[3] < min ? nums[n - 1] - nums[3] : min;
+        return min;
+    }
 };
 
 #endif
