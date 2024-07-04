@@ -935,6 +935,26 @@ class Solution {
         min = nums[n - 1] - nums[3] < min ? nums[n - 1] - nums[3] : min;
         return min;
     }
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode* tmp = new ListNode();
+        ListNode* root = tmp;
+        int sum = 0;
+        while (head != nullptr) {
+            if (head->val == 0 && sum != 0) {
+                tmp->val = sum;
+                sum = 0;
+            }
+            if (head->val != 0) {
+                if (tmp->val != 0) {
+                    tmp->next = new ListNode();
+                    tmp = tmp->next;
+                }
+                sum += head->val;
+            }
+            head = head->next;
+        }
+        return root;
+    }
 };
 
 #endif
