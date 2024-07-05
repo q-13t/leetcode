@@ -336,11 +336,6 @@ class Solution {
         return added;
     }
 
-#define FIO                       \
-    ios_base::sync_with_stdio(0); \
-    cin.tie(0);                   \
-    cout.tie(0);
-
    private:
     long long findFairPair(int max, vector<int>& nums) {
         int l = 0, size = nums.size(), r = size - 1;
@@ -954,6 +949,32 @@ class Solution {
             head = head->next;
         }
         return root;
+    }
+    vector<int> nodesBetweenCriticalPoints(ListNode* head) {
+        FIO;
+        vector<int> points;
+        vector<int> critical_points;
+        while (head != nullptr) {
+            points.push_back(head->val);
+            head = head->next;
+        }
+        if (points.size() <= 2) {
+            return {-1, -1};
+        }
+        for (int i = 1; i < points.size() - 1; i++) {
+            if ((points[i] > points[i + 1] && points[i] > points[i - 1]) || (points[i] < points[i + 1] && points[i] < points[i - 1])) {
+                critical_points.push_back(i + 1);
+            }
+        }
+        if (critical_points.size() <= 1) {
+            return {-1, -1};
+        }
+
+        int min = INT32_MAX;
+        for (int i = 1; i < critical_points.size(); i++) {
+            min = std::min(min, critical_points[i] - critical_points[i - 1]);
+        }
+        return {min, (critical_points[critical_points.size() - 1] - critical_points[0])};
     }
 };
 

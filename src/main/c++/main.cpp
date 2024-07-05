@@ -22,13 +22,19 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    ListNode* head = ListNode::createFromVector({0, 3, 1, 0, 4, 5, 2, 0});
-    ListNode::printList(head);
-    ListNode::printList(solution.mergeNodes(head));
+    ListNode* head = ListNode::createFromVector({3, 1});
+    cout << solution.nodesBetweenCriticalPoints(head);
 
-    head = ListNode::createFromVector({0, 1, 0, 3, 0, 2, 2, 0});
-    ListNode::printList(head);
-    ListNode::printList(solution.mergeNodes(head));
+    head = ListNode::createFromVector({5, 3, 1, 2, 5, 1, 2});
+    cout << solution.nodesBetweenCriticalPoints(head);
 
+    head = ListNode::createFromVector({1, 3, 2, 2, 3, 2, 2, 2, 7});
+    cout << solution.nodesBetweenCriticalPoints(head);
+
+    head = ListNode::createFromVector({2, 3, 3, 2});
+    cout << solution.nodesBetweenCriticalPoints(head);
+
+    head = ListNode::createFromVector({2, 2, 1, 3});
+    cout << solution.nodesBetweenCriticalPoints(head);
     return 0;
 }
