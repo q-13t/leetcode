@@ -976,6 +976,10 @@ class Solution {
         }
         return {min, (critical_points[critical_points.size() - 1] - critical_points[0])};
     }
+    int passThePillow(int n, int time) {
+        time = time % (2 * (n - 1));
+        return (time < n) ? time + 1 : n - (time - (n - 1));
+    }
 };
 
 #endif
