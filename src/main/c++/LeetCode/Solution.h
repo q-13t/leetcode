@@ -980,6 +980,23 @@ class Solution {
         time = time % (2 * (n - 1));
         return (time < n) ? time + 1 : n - (time - (n - 1));
     }
+    int numWaterBottles(int numBottles, int numExchange) {
+        int drank = 0, empty = 0, full = numBottles;
+        do {
+            if (full > 0) {
+                drank += full;
+                empty += full;
+                full = 0;
+            }
+            if (empty >= numExchange) {
+                full = empty / numExchange;
+                empty -= full * numExchange;
+            }
+
+        } while (empty + full >= numExchange);
+        if (full > 0) drank += full;
+        return drank;
+    }
 };
 
 #endif

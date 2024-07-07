@@ -22,8 +22,8 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    cout << solution.passThePillow(4, 5) << endl;
-    cout << solution.passThePillow(3, 2) << endl;
+    cout << solution.numWaterBottles(9, 3) << endl;
+    cout << solution.numWaterBottles(15, 4) << endl;
 
     return 0;
 }
