@@ -997,6 +997,15 @@ class Solution {
         if (full > 0) drank += full;
         return drank;
     }
+
+    int findTheWinner(int n, int k) {
+        int i = 1, res = 0;
+        while (i <= n) {
+            res = (res + k) % i;
+            i++;
+        }
+        return res + 1;
+    }
 };
 
 #endif

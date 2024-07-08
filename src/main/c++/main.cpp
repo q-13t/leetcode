@@ -22,8 +22,9 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    cout << solution.numWaterBottles(9, 3) << endl;
-    cout << solution.numWaterBottles(15, 4) << endl;
+    cout << solution.findTheWinner(5, 2) << endl;
+    cout << solution.findTheWinner(6, 5) << endl;
+    cout << solution.findTheWinner(5, 3) << endl;
 
     return 0;
 }
