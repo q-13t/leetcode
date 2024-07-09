@@ -22,9 +22,9 @@ vector<int> arr3;
 
 int main(int argc, char const* argv[]) {
     FIO;
-    cout << solution.findTheWinner(5, 2) << endl;
-    cout << solution.findTheWinner(6, 5) << endl;
-    cout << solution.findTheWinner(5, 3) << endl;
+    cout << solution.averageWaitingTime({{1, 2}, {2, 5}, {4, 3}}) << endl;
+    cout << solution.averageWaitingTime({{5, 2}, {5, 4}, {10, 3}, {20, 1}}) << endl;
+    cout << solution.averageWaitingTime({{4, 9}, {5, 8}, {6, 4}, {8, 4}, {10, 5}, {13, 4}, {13, 5}, {14, 2}, {14, 5}, {18, 6}}) << endl;
 
     return 0;
 }

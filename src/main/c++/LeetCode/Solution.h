@@ -1006,6 +1006,17 @@ class Solution {
         }
         return res + 1;
     }
+
+    double averageWaitingTime(vector<vector<int>>&& customers) {
+        FIO;
+        double waiting = 0;
+        long await = 0;
+        for (int i = 0; i < customers.size(); i++) {
+            await = await > customers[i][0] ? await + customers[i][1] : customers[i][0] + customers[i][1];
+            waiting += await - customers[i][0];
+        }
+        return waiting / customers.size();
+    }
 };
 
 #endif
