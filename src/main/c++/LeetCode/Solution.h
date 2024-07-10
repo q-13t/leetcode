@@ -1017,6 +1017,20 @@ class Solution {
         }
         return waiting / customers.size();
     }
+
+    int minOperations(vector<string>&& logs) {
+        int depth = 0;
+        for (string str : logs) {
+            if (str == "../") {
+                depth = depth - 1 > 0 ? depth - 1 : 0;
+            } else if (str == "./") {
+                continue;
+            } else {
+                depth++;
+            }
+        }
+        return depth;
+    }
 };
 
 #endif
