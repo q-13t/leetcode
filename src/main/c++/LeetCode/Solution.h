@@ -1031,6 +1031,23 @@ class Solution {
         }
         return depth;
     }
+    string reverseParentheses(string s) {
+        auto en = s.begin();
+        while (en != s.end()) {
+            if (*en == ')') {
+                auto beg = en;
+                while (beg != s.begin() && *beg != '(') {
+                    beg--;
+                }
+                *beg = ' ';
+                *en = ' ';
+                reverse(beg, en);
+            }
+            en++;
+        }
+        s.erase(remove(s.begin(), s.end(), ' '), s.end());
+        return s;
+    }
 };
 
 #endif

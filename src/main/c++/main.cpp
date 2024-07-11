@@ -23,10 +23,12 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.minOperations({"d1/", "d2/", "../", "d21/", "./"}) << endl;
-    cout << solution.minOperations({"d1/", "d2/", "./", "d3/", "../", "d31/"}) << endl;
-    cout << solution.minOperations({"d1/", "../", "../", "../"}) << endl;
-    cout << solution.minOperations({"./", "wz4/", "../", "mj2/", "../", "../", "ik0/", "il7/"}) << endl;
+    cout << solution.reverseParentheses("(abcd)") << endl;
+    cout << solution.reverseParentheses("(u(love)i)") << endl;
+    cout << solution.reverseParentheses("(ed(et(oc))el)") << endl;
+    cout << solution.reverseParentheses("ab(bcdefghijkl(mno)p)qz") << endl;
+    cout << solution.reverseParentheses("yfgnxf") << endl;
+    cout << solution.reverseParentheses("ta()usw((((a))))") << endl;
 
     return 0;
 }
