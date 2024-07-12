@@ -23,12 +23,7 @@ vector<int> arr3;
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.reverseParentheses("(abcd)") << endl;
-    cout << solution.reverseParentheses("(u(love)i)") << endl;
-    cout << solution.reverseParentheses("(ed(et(oc))el)") << endl;
-    cout << solution.reverseParentheses("ab(bcdefghijkl(mno)p)qz") << endl;
-    cout << solution.reverseParentheses("yfgnxf") << endl;
-    cout << solution.reverseParentheses("ta()usw((((a))))") << endl;
-
+    cout << solution.maximumGain("cdbcbbaaabab", 4, 5) << endl;
+    cout << solution.maximumGain("aabbaaxybbaabb", 5, 4) << endl;
     return 0;
 }

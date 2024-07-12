@@ -1048,6 +1048,48 @@ class Solution {
         s.erase(remove(s.begin(), s.end(), ' '), s.end());
         return s;
     }
+
+    int maximumGain(string s, int x, int y) {
+        FIO;
+        string hi, lo;
+        int hi_p, lo_p;
+        if (y > x) {
+            hi = "ba";
+            hi_p = y;
+            lo = "ab";
+            lo_p = x;
+        } else {
+            hi = "ab";
+            hi_p = x;
+            lo = "ba";
+            lo_p = y;
+        }
+
+        FIO;
+        vector<char> sta1;
+        vector<char> sta2;
+        int score = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            if (!sta1.empty() && sta1.back() == hi[0] && s[i] == hi[1]) {
+                sta1.pop_back();
+                score += hi_p;
+            } else {
+                sta1.push_back(s[i]);
+            }
+        }
+
+        for (char ch : sta1) {
+            if (!sta2.empty() && sta2.back() == lo[0] && ch == lo[1]) {
+                sta2.pop_back();
+                score += lo_p;
+            } else {
+                sta2.push_back(ch);
+            }
+        }
+
+        return score;
+    }
 };
 
 #endif
