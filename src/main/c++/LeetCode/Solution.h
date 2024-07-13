@@ -1090,6 +1090,78 @@ class Solution {
 
         return score;
     }
+
+   private:
+    struct Robot {
+        int position;
+        int health;
+        char direction;
+        int idx;
+        Robot(int p, int h, char d, int i) : position(p), health(h), direction(d), idx(i) {};
+    };
+
+   public:
+    vector<int>
+    survivedRobotsHealths(vector<int>&& positions, vector<int>&& healths, string directions) {
+        FIO;
+        vector<Robot> robots;
+
+        vector<int> result;
+        bool contains_diff = false;
+        char last_ch = directions[0];
+        for (int i = 0; i < positions.size(); i++) {
+            if (last_ch != directions[i]) {
+                contains_diff = true;
+            }
+            Robot robot(positions[i], healths[i], directions[i], i);
+            robots.push_back(robot);
+        }
+
+        if (!contains_diff) {
+            return healths;
+        }
+
+        sort(whole(robots), [](Robot a, Robot b) { return a.position < b.position; });
+        vector<Robot> sta;
+
+        for (int i = 0; i < robots.size(); i++) {
+            if (sta.empty()) {
+                sta.push_back(robots[i]);
+            } else if (sta.back().direction == 'R' && robots[i].direction == 'L') {
+                if (sta.back().health > robots[i].health) {
+                    sta.back().health--;
+                } else if (sta.back().health < robots[i].health) {
+                    while (!sta.empty() && sta.back().direction == 'R' && sta.back().health < robots[i].health) {
+                        sta.pop_back();
+                        robots[i].health--;
+                    }
+                    if (!sta.empty() && sta.back().direction == 'R') {
+                        if (sta.back().health > robots[i].health) {
+                            sta.back().health--;
+                        } else if (sta.back().health == robots[i].health) {
+                            sta.pop_back();
+                        } else {
+                            sta.push_back(robots[i]);
+                        }
+                    } else {
+                        sta.push_back(robots[i]);
+                    }
+                } else {
+                    sta.pop_back();
+                }
+            } else {
+                sta.push_back(robots[i]);
+            }
+        }
+
+        sort(whole(sta), [](Robot a, Robot b) { return a.idx < b.idx; });
+
+        for (int i = 0; i < sta.size(); i++) {
+            result.push_back(sta[i].health);
+        }
+
+        return result;
+    }
 };
 
 #endif
