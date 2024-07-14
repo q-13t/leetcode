@@ -1162,6 +1162,57 @@ class Solution {
 
         return result;
     }
+
+    string countOfAtoms(string formula) {
+        FIO;
+        vector<map<string, int>> count;
+        count.push_back({});
+
+                for (int i = 0; i < formula.size();) {
+            if (formula[i] == '(') {  // 2. if '(' create new map
+                count.push_back({});
+                i++;
+            } else if (formula[i] == ')') {  // 4. if ')' multiply all from top map and add new map to lower map
+                string mult;
+                //
+                while (i + 1 < formula.size() && isdigit(formula[i + 1])) {
+                    mult += formula[++i];
+                }
+                int times = stoi(mult = mult == "" ? "1" : mult);
+                map<string, int> temp = count.back();
+                count.pop_back();
+                for (auto data : temp) {
+                    data.second = data.second * times;
+                    count.back()[data.first] += data.second;
+                }
+                i++;
+            } else {  // 1. add all until '('
+                string name;
+                string amount;
+                if (isupper(formula[i])) {
+                    name += formula[i++];
+                    if (i < formula.size() && islower(formula[i])) {
+                        name += formula[i++];
+                    }
+                }
+                while (i < formula.size() && isdigit(formula[i])) {
+                    amount += formula[i++];
+                }
+                if (name != "") {
+                    count.back()[name] += stoi(amount = amount == "" ? "1" : amount);  // 3. add all to new map
+                }
+            }
+        }
+        string result;
+        for (auto data : count.back()) {
+            result += data.first;
+            if (data.second > 1) {
+                result += to_string(data.second);
+            }
+        }
+
+        return result;
+    }
 };
 
 #endif
