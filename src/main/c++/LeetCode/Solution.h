@@ -1168,7 +1168,7 @@ class Solution {
         vector<map<string, int>> count;
         count.push_back({});
 
-                for (int i = 0; i < formula.size();) {
+        for (int i = 0; i < formula.size();) {
             if (formula[i] == '(') {  // 2. if '(' create new map
                 count.push_back({});
                 i++;
@@ -1182,8 +1182,7 @@ class Solution {
                 map<string, int> temp = count.back();
                 count.pop_back();
                 for (auto data : temp) {
-                    data.second = data.second * times;
-                    count.back()[data.first] += data.second;
+                    count.back()[data.first] += data.second * times;
                 }
                 i++;
             } else {  // 1. add all until '('
@@ -1212,6 +1211,60 @@ class Solution {
         }
 
         return result;
+    }
+    // descriptions : parent | value | isLeft
+    TreeNode* createBinaryTree(vector<vector<int>>&& descriptions) {
+        FIO;
+        map<int, pair<int, int>> nodes;
+        map<int, int> parents;
+
+        for (int i = 0; i < descriptions.size(); i++) {
+            parents[descriptions[i][1]]++;
+
+            if (descriptions[i][2] == 1) {  // if it is left
+                nodes[descriptions[i][0]].first = descriptions[i][1];
+            } else {
+                nodes[descriptions[i][0]].second = descriptions[i][1];
+            }
+        }
+        int root;
+        for (int i = 0; i < descriptions.size(); i++) {
+            if (parents[descriptions[i][0]] == 0) {
+                root = descriptions[i][0];
+                break;
+            }
+        }
+
+        vector<int> traverse;
+        traverse.push_back(root);
+
+        TreeNode* root_node = new TreeNode(root);
+        vector<TreeNode*> builder;
+        builder.push_back(root_node);
+
+        while (!traverse.empty()) {
+            int val = traverse.front();
+            TreeNode* tmp = builder.front();
+
+            builder.erase(builder.begin());
+            traverse.erase(traverse.begin());
+            if (nodes[val].first != 0) {
+                tmp->left = new TreeNode(nodes[val].first);
+                traverse.push_back(nodes[val].first);
+                builder.push_back(tmp->left);
+            } else {
+                tmp->left = nullptr;
+            }
+            if (nodes[val].second != 0) {
+                tmp->right = new TreeNode(nodes[val].second);
+                traverse.push_back(nodes[val].second);
+                builder.push_back(tmp->right);
+            } else {
+                tmp->right = nullptr;
+            }
+        }
+
+        return root_node;
     }
 };
 
