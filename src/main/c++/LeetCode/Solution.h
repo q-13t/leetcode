@@ -1273,6 +1273,31 @@ class Solution {
         }
         return score;
     }
+    bool findNode(TreeNode* root, int value, string& path) {
+        if (root->val == value) {
+            return true;
+        }
+
+        if (root->left && findNode(root->left, value, path)) {
+            path.push_back('L');
+        } else if (root->right && findNode(root->right, value, path)) {
+            path.push_back('R');
+        }
+        return !path.empty();
+    }
+
+    string getDirections(TreeNode* root, int startValue, int destValue) {
+        string begin, end;
+        findNode(root, startValue, begin);
+        findNode(root, destValue, end);
+
+        while (!begin.empty() && !end.empty() && begin.back() == end.back()) {
+            begin.pop_back();
+            end.pop_back();
+        }
+
+        return string(begin.size(), 'U') + string(rwhole(end));
+    }
 };
 
 #endif
