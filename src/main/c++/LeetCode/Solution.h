@@ -1298,6 +1298,40 @@ class Solution {
 
         return string(begin.size(), 'U') + string(rwhole(end));
     }
+
+    TreeNode* deleteNodes(TreeNode* root, unordered_map<int, bool>& to_delete, vector<TreeNode*>& remainder) {
+        if (root == nullptr) {
+            return root;
+        }
+
+        if (!deleteNodes(root->left, to_delete, remainder)) {
+            root->left = nullptr;
+        }
+        if (!deleteNodes(root->right, to_delete, remainder)) {
+            root->right = nullptr;
+        }
+
+        if (to_delete[root->val]) {
+            if (root->left) remainder.push_back(root->left);
+            if (root->right) remainder.push_back(root->right);
+            root = nullptr;
+        }
+        return root;
+    }
+
+    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+        vector<TreeNode*> remaining;
+        unordered_map<int, bool> values;
+        for (int val : to_delete) {
+            values[val] = true;
+        }
+
+        TreeNode* res = deleteNodes(root, values, remaining);
+        if (res) {
+            remaining.push_back(res);
+        }
+        return remaining;
+    }
 };
 
 #endif

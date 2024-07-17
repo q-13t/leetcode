@@ -28,21 +28,19 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    TreeNode* root = new TreeNode(5);
-    root->left = new TreeNode(1);
-    root->left->left = new TreeNode(3);
-    root->left->right = new TreeNode(7);
-    root->right = new TreeNode(2);
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
     root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(4);
+    root->right->right = new TreeNode(7);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
 
-    // cout << solution.getDirections(root, 3, 4) << endl;
-    // cout << solution.getDirections(root, 4,3) << endl;
-    // cout << solution.getDirections(root, 7,6) << endl;
-    // cout << solution.getDirections(root, 1,2) << endl;
-    // cout << solution.getDirections(root, 3, 7) << endl;
-    // cout << solution.getDirections(root, 3,6) << endl;
-    cout << solution.getDirections(root, 6,2) << endl;
+    arr1 = {3, 5};
+
+    for (TreeNode* node : solution.delNodes(root, arr1)) {
+        PrintBinaryTree(node);
+    }
 
     delete root;
     return 0;
