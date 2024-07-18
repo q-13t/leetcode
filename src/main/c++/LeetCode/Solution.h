@@ -1332,6 +1332,47 @@ class Solution {
         }
         return remaining;
     }
+
+    int no_pairs = 0;
+
+    vector<int> doFindPairs(TreeNode* root, int distance) {
+        if (!root) {
+            return {0};
+        }
+        if (!root->left && !root->right) {
+            return {1};
+        }
+
+        vector<int> left = doFindPairs(root->left, distance);
+        vector<int> right = doFindPairs(root->right, distance);
+
+        for (int L : left) {
+            for (int R : right) {
+                if (L + R <= distance && L > 0 && R > 0) {
+                    no_pairs++;
+                }
+            }
+        }
+
+        vector<int> res;
+        for (int L : left) {
+            if (L > 0 && L < distance) {
+                res.push_back(L + 1);
+            }
+        }
+        for (int L : right) {
+            if (L > 0 && L < distance) {
+                res.push_back(L + 1);
+            }
+        }
+
+        return res;
+    }
+
+    int countPairs(TreeNode* root, int distance) {
+        doFindPairs(root, distance);
+        return no_pairs;
+    }
 };
 
 #endif
