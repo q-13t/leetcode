@@ -1373,6 +1373,23 @@ class Solution {
         doFindPairs(root, distance);
         return no_pairs;
     }
+
+    vector<vector<int>> merge(vector<vector<int>>&& intervals) {
+        sort(intervals.begin(), intervals.end(), [&](vector<int>& a, vector<int>& b) { return a[0] < b[0]; });
+        vector<vector<int>> res;
+        int start = intervals[0][0], new_end = intervals[0][1];
+        for (int i = 1; i < intervals.size(); i++) {
+            if (intervals[i][0] > new_end) {  // we move end -> merge
+                res.push_back({start, new_end});
+                start = intervals[i][0];
+            }
+            if (new_end < intervals[i][1]) {
+                new_end = intervals[i][1];
+            }
+        }
+        res.push_back({start, new_end});
+        return res;
+    }
 };
 
 #endif

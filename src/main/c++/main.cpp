@@ -28,21 +28,14 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    TreeNode* root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->right = new TreeNode(3);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
 
-    cout << solution.countPairs(root, 3) << endl;
-    root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->right = new TreeNode(4);
-    cout << solution.countPairs(root, 3) << endl;
+    for (vector<int> vec : solution.merge({{1, 4}, {4, 5}})) {
+        cout << vec << endl;
+    }
 
-    delete root;
+    for (vector<int> vec : solution.merge({{1, 3}, {2, 6}, {8, 10}, {15, 18}})) {
+        cout << vec << endl;
+    }
+
     return 0;
 }
