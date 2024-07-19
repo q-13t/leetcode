@@ -1390,6 +1390,39 @@ class Solution {
         res.push_back({start, new_end});
         return res;
     }
+
+    vector<int> luckyNumbers(vector<vector<int>>& matrix) {
+        int rows = matrix.size();
+        int col = matrix[0].size();
+
+        vector<int> mins(rows);
+        vector<int> maxs(col);
+        vector<int> res;
+
+        for (unsigned i = 0; i < rows; i++) {
+            mins[i] = INT_MAX;
+            for (unsigned j = 0; j < col; j++) {
+                mins[i] = min(mins[i], matrix[i][j]);
+            }
+        }
+
+        for (unsigned i = 0; i < col; i++) {
+            maxs[i] = 0;
+            for (unsigned j = 0; j < rows; j++) {
+                maxs[i] = max(maxs[i], matrix[j][i]);
+            }
+        }
+
+        for (unsigned i = 0; i < col; i++) {
+            for (unsigned j = 0; j < rows; j++) {
+                if (maxs[i] == mins[j]) {
+                    res.push_back(maxs[i]);
+                }
+            }
+        }
+
+        return res;
+    }
 };
 
 #endif

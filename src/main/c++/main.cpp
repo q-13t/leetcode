@@ -22,20 +22,19 @@ vector<int> arr3;
 
 auto _ = []() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL), cout.tie(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
     return 0;
 }();
 
 int main(int argc, char const* argv[]) {
     FIO;
-
-    for (vector<int> vec : solution.merge({{1, 4}, {4, 5}})) {
-        cout << vec << endl;
-    }
-
-    for (vector<int> vec : solution.merge({{1, 3}, {2, 6}, {8, 10}, {15, 18}})) {
-        cout << vec << endl;
-    }
+    vector<vector<int>> arr = {{3, 7, 8}, {9, 11, 13}, {15, 16, 17}};
+    // cout << solution.luckyNumbers(arr) << endl;
+    arr = {{1, 10, 4, 2},
+           {9, 3, 8, 7},
+           {15, 16, 17, 12}};
+    cout << solution.luckyNumbers(arr) << endl;
 
     return 0;
 }
