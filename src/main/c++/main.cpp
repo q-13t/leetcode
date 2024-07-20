@@ -29,12 +29,13 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    vector<vector<int>> arr = {{3, 7, 8}, {9, 11, 13}, {15, 16, 17}};
-    // cout << solution.luckyNumbers(arr) << endl;
-    arr = {{1, 10, 4, 2},
-           {9, 3, 8, 7},
-           {15, 16, 17, 12}};
-    cout << solution.luckyNumbers(arr) << endl;
+
+    for (vector<int> data : solution.restoreMatrix({3, 8}, {4, 7})) {
+        cout << data << endl;
+    }
+    for (vector<int> data : solution.restoreMatrix({5, 7, 10}, {8, 6, 8})) {
+        cout << data << endl;
+    }
 
     return 0;
 }

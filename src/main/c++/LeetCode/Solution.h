@@ -1423,6 +1423,65 @@ class Solution {
 
         return res;
     }
+
+    struct MatrixPoint {
+        int value;
+        int sum;
+        int row;
+        int column;
+
+        void clean() {
+            value = INT_MAX;
+            sum = INT_MAX;
+            row = 0;
+            column = 0;
+        }
+    };
+
+    vector<vector<int>> restoreMatrix(vector<int>&& rowSum, vector<int>&& colSum) {
+        unsigned int rows = rowSum.size();
+        unsigned int cols = colSum.size();
+        vector<vector<int>> res(rows);
+        for (unsigned int i = 0; i < rows; i++) {
+            vector<int> tmp(cols);
+            res[i] = tmp;
+        }
+        MatrixPoint mp;
+        do {
+            mp.clean();
+            for (unsigned int row = 0; row < rows; row++) {
+                if (rowSum[row] == 0) {
+                    continue;
+                }
+                for (unsigned int col = 0; col < cols; col++) {
+                    if (colSum[col] == 0) {
+                        continue;
+                    }
+                    int sum = colSum[col] + rowSum[row];
+                    if (mp.sum > sum) {
+                        mp.sum = sum;
+                        mp.row = row;
+                        mp.column = col;
+
+                        if (colSum[col] != 0 && rowSum[row] != 0) {
+                            mp.value = colSum[col] < rowSum[row] ? colSum[col] : rowSum[row];
+                        } else if (colSum[col] != 0) {
+                            mp.value = colSum[col];
+                        } else if (rowSum[row] != 0) {
+                            mp.value = rowSum[row];
+                        }
+                    }
+                }
+            }
+            if (mp.value != INT_MAX) {
+                res[mp.row][mp.column] = mp.value;
+                rowSum[mp.row] -= mp.value;
+                colSum[mp.column] -= mp.value;
+            }
+        } while (mp.value != INT_MAX);
+
+        return res;
+    }
 };
 
 #endif
