@@ -12,6 +12,7 @@
 #include <regex>
 #include <set>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "../Utils.h"
@@ -1552,6 +1553,68 @@ class Solution {
             res[row][column] = value;
         }
         return res;
+    }
+
+    int myAtoi(string s) {
+        bool isNegative = false;
+        bool seenSighn = false;
+        string sanitized = "";
+
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == ' ') {
+                if (!sanitized.empty() || seenSighn) {
+                    break;
+                }
+                continue;
+            } else if (s[i] == '+') {
+                if (!sanitized.empty() || seenSighn) {
+                    break;
+                }
+                seenSighn = true;
+            } else if (s[i] == '-' && isNegative) {
+                if (seenSighn) {
+                    break;
+                }
+                seenSighn = true;
+                break;
+            } else if (s[i] == '-' && !isNegative && sanitized.empty()) {
+                if (seenSighn) {
+                    break;
+                }
+                seenSighn = true;
+                isNegative = true;
+            } else if (isdigit(s[i])) {
+                sanitized += s[i];
+            } else {
+                break;
+            }
+        }
+
+        int point = 0;
+        while (point < sanitized.size() && sanitized[point] == '0') {
+            point++;
+        }
+        if (point != 0) sanitized.erase(sanitized.begin(), sanitized.begin() + point);
+
+        long long int result = 0;
+        for (int i = sanitized.size() - 1, j = 0; i >= 0; i--, j++) {
+            if (i == sanitized.size() - 1) {
+                result += (int)(sanitized[i] - '0');
+            } else {
+                auto val = (int)(sanitized[i] - '0') * pow(10, j);
+                if (val + result > INT_MAX) {
+                    if (isNegative) {
+                        result = INT32_MAX;
+                        result++;
+                    } else {
+                        result = INT32_MAX;
+                    }
+                    break;
+                }
+                result += val;
+            }
+        }
+        return isNegative ? (int)(0 - result) : (int)result;
     }
 };
 

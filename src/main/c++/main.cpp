@@ -30,12 +30,14 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    for (vector<int> data : solution.restoreMatrix({3, 8}, {4, 7})) {
-        cout << data << endl;
-    }
-    for (vector<int> data : solution.restoreMatrix({5, 7, 10}, {8, 6, 8})) {
-        cout << data << endl;
-    }
+    // cout << solution.myAtoi("42") << endl;
+    // cout << solution.myAtoi(" -042") << endl;
+    // cout << solution.myAtoi("1337c0d3") << endl;
+    // cout << solution.myAtoi("0-1") << endl;
+    // cout << solution.myAtoi("words and 987") << endl;
+    // cout << solution.myAtoi("+-12") << endl;
+    // cout << solution.myAtoi("20000000000000000000") << endl;
+    cout << solution.myAtoi("+1") << endl;
 
     return 0;
 }
