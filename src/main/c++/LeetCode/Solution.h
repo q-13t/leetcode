@@ -1482,6 +1482,77 @@ class Solution {
 
         return res;
     }
+
+    bool dfs(int src, unordered_map<int, vector<int>>& graph, unordered_set<int>& visited, unordered_set<int>& current_path, vector<int>& res) {
+        if (current_path.count(src)) {
+            return false;
+        }
+        if (visited.count(src)) {
+            return true;
+        }
+
+        visited.insert(src);
+        current_path.insert(src);
+
+        for (int neighbour : graph[src]) {
+            if (!dfs(neighbour, graph, visited, current_path, res)) {
+                return false;
+            }
+        }
+        current_path.erase(src);
+        res.push_back(src);
+        return true;
+    }
+
+    vector<int> topologicalSort(unordered_map<int, vector<int>>& graph, int k) {
+        unordered_set<int> visited;
+        unordered_set<int> current_path;
+        vector<int> res;
+        for (int src = 1; src <= k; ++src) {
+            if (!dfs(src, graph, visited, current_path, res)) {
+                return {};
+            }
+        }
+        reverse(res.begin(), res.end());
+
+        return res;
+    }
+
+    vector<vector<int>> buildMatrix(int k, vector<vector<int>>& rowConditions, vector<vector<int>>& colConditions) {
+        unordered_map<int, vector<int>> graph;
+
+        for (const auto& edge : rowConditions) {
+            graph[edge[0]].push_back(edge[1]);
+        }
+
+        vector<int> row_sort = topologicalSort(graph, k);
+
+        graph.clear();
+        for (const auto& edge : colConditions) {
+            graph[edge[0]].push_back(edge[1]);
+        }
+        vector<int> col_sort = topologicalSort(graph, k);
+
+        if (row_sort.empty() || col_sort.empty()) {
+            return {};
+        }
+
+        unordered_map<int, pair<int, int>> value_positions;
+
+        for (int i = 0; i < k; i++) {
+            value_positions[row_sort[i]].first = i;
+            value_positions[col_sort[i]].second = i;
+        }
+
+        vector<vector<int>> res(k, vector<int>(k, 0));
+
+        for (int value = 1; value <= k; ++value) {
+            int row = value_positions[value].first;
+            int column = value_positions[value].second;
+            res[row][column] = value;
+        }
+        return res;
+    }
 };
 
 #endif
