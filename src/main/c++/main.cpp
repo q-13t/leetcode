@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.commonFactors(12, 6) << endl;
-    cout << solution.commonFactors(25, 30) << endl;
+    cout << solution.sumCounts({1, 2, 1}) << endl;
+    cout << solution.sumCounts({1, 1}) << endl;
 
     return 0;
 }

@@ -1665,6 +1665,18 @@ class Solution {
         }
         return common_factors;
     }
+    int sumCounts(vector<int>&& nums) {
+        int sum = 0;
+        unordered_set<int> arr;
+        for (unsigned int i = 0; i < nums.size(); i++) {
+            arr.clear();
+            for (unsigned int j = i; j < nums.size(); j++) {
+                arr.insert(nums[j]);
+                sum += pow(arr.size(), 2);
+            }
+        }
+        return sum;
+    }
 };
 
 #endif
