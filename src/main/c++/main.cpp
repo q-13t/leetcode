@@ -30,8 +30,10 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.sumCounts({1, 2, 1}) << endl;
-    cout << solution.sumCounts({1, 1}) << endl;
+    TreeNode* root = new TreeNode(5);
+    root->left = new TreeNode(1);
+    root->right = new TreeNode(7);
 
+    PrintTreePreorder(solution.increasingBST(root));
     return 0;
 }

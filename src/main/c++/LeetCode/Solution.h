@@ -1677,6 +1677,28 @@ class Solution {
         }
         return sum;
     }
+
+    vector<int> treeToArrange;
+    void getTreeNodes(TreeNode* root) {
+        if (root->left) {
+            getTreeNodes(root->left);
+        }
+        treeToArrange.push_back(root->val);
+        if (root->right) {
+            getTreeNodes(root->right);
+        }
+    }
+
+    TreeNode* increasingBST(TreeNode* root) {
+        getTreeNodes(root);
+        TreeNode* tree = new TreeNode(treeToArrange[0]);
+        TreeNode* tmp = tree;
+        for (unsigned int i = 1; i < treeToArrange.size(); i++) {
+            tmp->right = new TreeNode(treeToArrange[i]);
+            tmp = tmp->right;
+        }
+        return tree;
+    }
 };
 
 #endif
