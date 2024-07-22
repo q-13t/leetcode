@@ -1655,6 +1655,16 @@ class Solution {
         sortNames(names, heights, 0, names.size() - 1);
         return names;
     }
+
+    int commonFactors(int a, int b) {
+        short common_factors = 0;
+        for (unsigned int i = 1; i <= min(a, b); i++) {
+            if (a % i == 0 && b % i == 0) {
+                common_factors++;
+            }
+        }
+        return common_factors;
+    }
 };
 
 #endif

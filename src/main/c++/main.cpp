@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.sortPeople({"Mary", "John", "Emma"}, {180, 165, 170}) << endl;
-    cout << solution.sortPeople({"Alice", "Bob", "Bob"}, {155, 185, 150}) << endl;
+    cout << solution.commonFactors(12, 6) << endl;
+    cout << solution.commonFactors(25, 30) << endl;
 
     return 0;
 }
