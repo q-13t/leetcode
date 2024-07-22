@@ -30,14 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    // cout << solution.myAtoi("42") << endl;
-    // cout << solution.myAtoi(" -042") << endl;
-    // cout << solution.myAtoi("1337c0d3") << endl;
-    // cout << solution.myAtoi("0-1") << endl;
-    // cout << solution.myAtoi("words and 987") << endl;
-    // cout << solution.myAtoi("+-12") << endl;
-    // cout << solution.myAtoi("20000000000000000000") << endl;
-    cout << solution.myAtoi("+1") << endl;
+    cout << solution.sortPeople({"Mary", "John", "Emma"}, {180, 165, 170}) << endl;
+    cout << solution.sortPeople({"Alice", "Bob", "Bob"}, {155, 185, 150}) << endl;
 
     return 0;
 }

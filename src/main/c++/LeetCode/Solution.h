@@ -1616,6 +1616,45 @@ class Solution {
         }
         return isNegative ? (int)(0 - result) : (int)result;
     }
+
+    void swapNames(vector<string>& names, vector<int>& heights, int Left, int Right) {
+        string name = names[Right];
+        int height = heights[Right];
+        names[Right] = names[Left];
+        heights[Right] = heights[Left];
+        names[Left] = name;
+        heights[Left] = height;
+    }
+
+    int partitionNames(vector<string>& names, vector<int>& heights, int start, int end) {
+        int mid = heights[start], s = start, e = end;
+        while (s < e) {
+            while (heights[s] >= mid && s <= end - 1) {
+                s++;
+            }
+            while (heights[e] < mid && e >= start + 1) {
+                e--;
+            }
+            if (s < e) {
+                swapNames(names, heights, s, e);
+            }
+        }
+        swapNames(names, heights, start, e);
+        return e;
+    }
+
+    void sortNames(vector<string>& names, vector<int>& heights, int start, int end) {
+        if (start < end) {
+            int partition = partitionNames(names, heights, start, end);
+            sortNames(names, heights, start, partition - 1);
+            sortNames(names, heights, partition + 1, end);
+        }
+    }
+
+    vector<string> sortPeople(vector<string>&& names, vector<int>&& heights) {
+        sortNames(names, heights, 0, names.size() - 1);
+        return names;
+    }
 };
 
 #endif
