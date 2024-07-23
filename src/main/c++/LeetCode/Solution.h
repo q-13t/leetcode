@@ -1699,6 +1699,32 @@ class Solution {
         }
         return tree;
     }
+    vector<int> frequencySort(vector<int>&& nums) {
+        map<int, int> count;
+        for (int val : nums) {
+            count[val]++;
+        }
+
+        vector<pair<int, int>> ordered(count.begin(), count.end());
+
+        sort(ordered.begin(), ordered.end(), [&](pair<int, int>& a, pair<int, int>& b) {
+            if (a.second == b.second) {
+                return a.first > b.first;
+            } else {
+                return a.second < b.second;
+            }
+        });
+
+        auto iter = ordered.begin();
+        for (unsigned int i = 0; i < nums.size(); i++) {
+            if (iter->second == 0) {
+                iter++;
+            }
+            nums[i] = iter->first;
+            iter->second--;
+        }
+        return nums;
+    }
 };
 
 #endif

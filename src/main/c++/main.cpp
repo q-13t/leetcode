@@ -30,10 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    TreeNode* root = new TreeNode(5);
-    root->left = new TreeNode(1);
-    root->right = new TreeNode(7);
+    cout << solution.frequencySort({1, 1, 2, 2, 2, 3}) << endl;
+    cout << solution.frequencySort({2, 3, 1, 3, 2}) << endl;
+    cout << solution.frequencySort({-1, 1, -6, 4, 5, -6, 1, 4, 1}) << endl;
 
-    PrintTreePreorder(solution.increasingBST(root));
     return 0;
 }
