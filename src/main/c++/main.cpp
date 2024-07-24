@@ -30,9 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.frequencySort({1, 1, 2, 2, 2, 3}) << endl;
-    cout << solution.frequencySort({2, 3, 1, 3, 2}) << endl;
-    cout << solution.frequencySort({-1, 1, -6, 4, 5, -6, 1, 4, 1}) << endl;
+    cout << solution.sortJumbled({8, 9, 4, 0, 2, 1, 3, 5, 7, 6}, {991, 338, 38}) << endl;
+    cout << solution.sortJumbled({0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {789, 456, 123}) << endl;
 
     return 0;
 }

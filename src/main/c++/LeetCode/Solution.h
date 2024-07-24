@@ -1725,6 +1725,27 @@ class Solution {
         }
         return nums;
     }
+
+    vector<int> sortJumbled(vector<int>&& mapping, vector<int>&& nums) {
+        vector<pair<int, int>> order;
+        for (unsigned int i = 0; i < nums.size(); i++) {
+            int num = 0;
+            string data = to_string(nums[i]);
+            for (int j = data.size() - 1, f = 0; j >= 0; j--, f++) {
+                num += mapping[data[j] - '0'] * pow(10, f);
+            }
+            order.push_back(make_pair(num, nums[i]));
+        }
+
+        sort(order.begin(), order.end(), [&](pair<int, int>& a, pair<int, int> b) {
+            return a.first < b.first;
+        });
+
+        for (unsigned int i = 0; i < order.size(); i++) {
+            nums[i] = order[i].second;
+        }
+        return nums;
+    }
 };
 
 #endif
