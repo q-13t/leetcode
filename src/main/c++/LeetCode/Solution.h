@@ -1746,6 +1746,23 @@ class Solution {
         }
         return nums;
     }
+    bool canBeEqual(vector<int>& target, vector<int>& arr) {
+        map<int, int> count;
+        for (int val : target) {
+            count[val]++;
+        }
+        for (int val : arr) {
+            count[val]--;
+        }
+
+        for (pair<int, int> c : count) {
+            if (c.second > 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 };
 
 #endif
