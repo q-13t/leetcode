@@ -1763,6 +1763,27 @@ class Solution {
 
         return true;
     }
+
+    int rangeSum(vector<int>&& nums, int n, int left, int right) {
+        vector<long> subArr;
+        long sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            sum = 0;
+            for (int j = i; j < n; j++) {
+                sum += nums[j];
+                subArr.push_back(sum);
+            }
+        }
+        sum = 0;
+
+        sort(whole(subArr));
+
+        for (int i = left - 1; i < right; i++) {
+            sum += subArr[i];
+        }
+        return sum % 1000000007;
+    }
 };
 
 #endif
