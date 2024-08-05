@@ -1784,6 +1784,22 @@ class Solution {
         }
         return sum % 1000000007;
     }
+
+    string kthDistinct(vector<string>&& arr, int k) {
+        unordered_map<string, int> data;
+        for (string str : arr) {
+            data[str]++;
+        }
+        k--;
+        for (string str : arr) {
+            if (k == 0 && data[str] == 1) {
+                return str;
+            } else if (k != 0 && data[str] == 1) {
+                k--;
+            }
+        }
+        return "";
+    }
 };
 
 #endif

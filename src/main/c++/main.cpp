@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.rangeSum({1, 2, 3, 4}, 4, 1, 5) << endl;
-    cout << solution.rangeSum({1, 2, 3, 4}, 4, 3, 4) << endl;
-    cout << solution.rangeSum({1, 2, 3, 4}, 4, 1, 10) << endl;
+    cout << solution.kthDistinct({"d", "b", "c", "b", "c", "a"}, 2) << endl;
+    cout << solution.kthDistinct({"aaa", "aa", "a"}, 1) << endl;
+    cout << solution.kthDistinct({"a", "b", "a"}, 3) << endl;
 
     return 0;
 }
