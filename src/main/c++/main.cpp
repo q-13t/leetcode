@@ -30,9 +30,10 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.kthDistinct({"d", "b", "c", "b", "c", "a"}, 2) << endl;
-    cout << solution.kthDistinct({"aaa", "aa", "a"}, 1) << endl;
-    cout << solution.kthDistinct({"a", "b", "a"}, 3) << endl;
+    cout << solution.minimumPushes("abcde") << endl;
+    cout << solution.minimumPushes("xyzxyzxyzxyz") << endl;
+    cout << solution.minimumPushes("aabbccddeeffgghhiiiiii") << endl;
+    cout << solution.minimumPushes("cwokgnhaet") << endl;
 
     return 0;
 }

@@ -1800,6 +1800,26 @@ class Solution {
         }
         return "";
     }
+
+    int minimumPushes(string word) {
+        unordered_map<char, int> count;
+        for (char ch : word) {
+            count[ch]++;
+        }
+        vector<pair<char, int>> ordered(whole(count));
+        sort(whole(ordered), [](pair<char, int> a, pair<char, int> b) {
+            return a.second > b.second;
+        });
+        int keys_used = 0, mult = 1, clicks = 0;
+        for (pair<char, int> data : ordered) {
+            clicks += data.second * mult;
+            if (++keys_used % 8 == 0) {
+                keys_used = 0;
+                mult++;
+            }
+        }
+        return clicks;
+    }
 };
 
 #endif
