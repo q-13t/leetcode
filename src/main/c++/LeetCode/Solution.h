@@ -1820,6 +1820,103 @@ class Solution {
         }
         return clicks;
     }
+
+    map<int, string> mapping = {
+        make_pair<int, string>(0, "Zero"),
+        make_pair<int, string>(1, "One"),
+        make_pair<int, string>(2, "Two"),
+        make_pair<int, string>(3, "Three"),
+        make_pair<int, string>(4, "Four"),
+        make_pair<int, string>(5, "Five"),
+        make_pair<int, string>(6, "Six"),
+        make_pair<int, string>(7, "Seven"),
+        make_pair<int, string>(8, "Eight"),
+        make_pair<int, string>(9, "Nine"),
+        make_pair<int, string>(10, "Ten"),
+        make_pair<int, string>(11, "Eleven"),
+        make_pair<int, string>(12, "Twelve"),
+        make_pair<int, string>(13, "Thirteen"),
+        make_pair<int, string>(14, "Fourteen"),
+        make_pair<int, string>(15, "Fifteen"),
+        make_pair<int, string>(16, "Sixteen"),
+        make_pair<int, string>(17, "Seventeen"),
+        make_pair<int, string>(18, "Eighteen"),
+        make_pair<int, string>(19, "Nineteen"),
+        make_pair<int, string>(20, "Twenty"),
+        make_pair<int, string>(30, "Thirty"),
+        make_pair<int, string>(40, "Forty"),
+        make_pair<int, string>(50, "Fifty"),
+        make_pair<int, string>(60, "Sixty"),
+        make_pair<int, string>(70, "Seventy"),
+        make_pair<int, string>(80, "Eighty"),
+        make_pair<int, string>(90, "Ninety"),
+        make_pair<int, string>(100, "Hundred"),
+        make_pair<int, string>(1000, "Thousand"),
+        make_pair<int, string>(1000000, "Million"),
+        make_pair<int, string>(1000000000, "Billion")};
+
+    string* getPairOfThree(vector<int>& a, string* res) {
+        if (a.size() == 3) {
+            if (a[0] > 0 && a.size() == 3) {
+                *res += mapping[a[0]];
+                *res += "Hundred";
+            }
+            if (a[1] > 0 && a[1] < 2) {
+                *res += mapping[a[1] * 10 + a[2]];
+            } else if (a[1] > 0 && a[1] >= 2) {
+                *res += mapping[a[1] * 10];
+                if (a[2] > 0) {
+                    *res += mapping[a[2]];
+                }
+            } else if (a[1] == 0 && a[2] != 0) {
+                *res += mapping[a[2]];
+            }
+        } else if (a.size() == 2) {
+            if (a[0] > 0 && a[0] < 2) {
+                *res += mapping[a[0] * 10 + a[1]];
+            } else if (a[0] > 0 && a[0] >= 2) {
+                *res += mapping[a[0] * 10];
+                if (a[1] > 0) {
+                    *res += mapping[a[1]];
+                }
+            }
+        } else {
+            *res += mapping[a[0]];
+        }
+        return res;
+    }
+
+    string numberToWords(int num) {
+        // 1. Split num into pairs of three or les numbers
+        // 2. helper function that will transform combination of three digits to words
+        // 3. append quantity multiplier after transformation
+        vector<vector<int>> chunks;
+        string data = to_string(num);
+        for (int i = data.size() - 1, j = 0; i >= 0; i--, j++) {
+            if (j % 3 == 0) {
+                chunks.insert(chunks.begin(), vector<int>());
+            }
+            chunks.front().emplace(chunks.front().begin(), (int)data[i] - '0');
+        }
+        string res = "";
+        for (int i = 0, j = chunks.size(); i < chunks.size(); i++, j--) {
+            getPairOfThree(chunks[i], &res);
+            if (j == 4) {
+                res += "Billion";
+            } else if (j == 3 && res.substr(res.size() - 3) != "ion") {
+                res += "Million";
+            } else if (j == 2 && res.substr(res.size() - 3) != "ion") {
+                res += "Thousand";
+            }
+        }
+        for (int i = 1; i < res.size(); i++) {
+            if (res[i] >= 'A' && res[i] <= 'Z') {
+                res.insert(res.begin() + i, ' ');
+                i += 2;
+            }
+        }
+        return res;
+    }
 };
 
 #endif

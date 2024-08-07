@@ -30,10 +30,23 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.minimumPushes("abcde") << endl;
-    cout << solution.minimumPushes("xyzxyzxyzxyz") << endl;
-    cout << solution.minimumPushes("aabbccddeeffgghhiiiiii") << endl;
-    cout << solution.minimumPushes("cwokgnhaet") << endl;
+    // cout << solution.numberToWords(123) << endl;
+    // cout << solution.numberToWords(12345) << endl;
+    // cout << solution.numberToWords(1234567) << endl;
+    cout << solution.numberToWords(101) << endl;
+    // cout << solution.numberToWords(INT_MAX) << endl;
+    // arr1 = {5, 1, 2};
+    // string res = "";
+    // cout << *solution.getPairOfThree(arr1, &res) << endl;
+    // arr1 = {2};
+    // res = "";
+    // cout << *solution.getPairOfThree(arr1, &res) << endl;
+    // arr1 = {1, 6};
+    // res = "";
+    // cout << *solution.getPairOfThree(arr1, &res) << endl;
+    // arr1 = {2, 6};
+    // res = "";
+    // cout << *solution.getPairOfThree(arr1, &res) << endl;
 
     return 0;
 }
