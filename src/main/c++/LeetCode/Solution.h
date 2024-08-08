@@ -1917,6 +1917,74 @@ class Solution {
         }
         return res;
     }
+    vector<vector<int>> spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+        vector<vector<int>> result;
+        pair<int, int> q = make_pair(rStart, cStart), position;
+        int moves = 1, _moves = moves, iterations = 1, direction = 0, amount = rows * cols;
+        while (result.size() != amount) {
+            position = q;
+            switch (direction) {
+                case 0: {
+                    while (_moves != 0) {
+                        if (position.first >= 0 && position.second >= 0 && position.first < rows && position.second < cols) {
+                            result.push_back({position.first, position.second});
+                        }
+                        position.second += 1;
+                        _moves--;
+                    }
+                    _moves = 0;
+                    q = position;
+                    break;
+                }  // -> right
+                case 1: {
+                    while (_moves != 0) {
+                        if (position.first >= 0 && position.second >= 0 && position.first < rows && position.second < cols) {
+                            result.push_back({position.first, position.second});
+                        }
+                        position.first += 1;
+                        _moves--;
+                    }
+                    _moves = 0;
+                    q = position;
+                    break;
+                }  // -> down
+                case 2: {
+                    while (_moves != 0) {
+                        if (position.first >= 0 && position.second >= 0 && position.first < rows && position.second < cols) {
+                            result.push_back({position.first, position.second});
+                        }
+                        position.second -= 1;
+                        _moves--;
+                    }
+                    _moves = 0;
+                    q = position;
+                    break;
+                }  // -> left
+                case 3: {
+                    while (_moves != 0) {
+                        if (position.first >= 0 && position.second >= 0 && position.first < rows && position.second < cols) {
+                            result.push_back({position.first, position.second});
+                        }
+                        position.first -= 1;
+                        _moves--;
+                    }
+                    _moves = 0;
+                    q = position;
+                    break;
+                }  // -> up
+            }
+            if (_moves == 0 && iterations != 0) {
+                iterations--;
+                _moves = moves;
+            } else if (_moves == 0 && iterations == 0) {
+                iterations = 1;
+                moves++;
+                _moves = moves;
+            }
+            direction = direction == 3 ? 0 : direction + 1;
+        }
+        return result;
+    }
 };
 
 #endif

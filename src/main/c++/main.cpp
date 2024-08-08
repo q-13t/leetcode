@@ -29,24 +29,14 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-
-    // cout << solution.numberToWords(123) << endl;
-    // cout << solution.numberToWords(12345) << endl;
-    // cout << solution.numberToWords(1234567) << endl;
-    cout << solution.numberToWords(101) << endl;
-    // cout << solution.numberToWords(INT_MAX) << endl;
-    // arr1 = {5, 1, 2};
-    // string res = "";
-    // cout << *solution.getPairOfThree(arr1, &res) << endl;
-    // arr1 = {2};
-    // res = "";
-    // cout << *solution.getPairOfThree(arr1, &res) << endl;
-    // arr1 = {1, 6};
-    // res = "";
-    // cout << *solution.getPairOfThree(arr1, &res) << endl;
-    // arr1 = {2, 6};
-    // res = "";
-    // cout << *solution.getPairOfThree(arr1, &res) << endl;
-
+    for (vector<int> vec : solution.spiralMatrixIII(3, 3, 1, 2)) {
+        cout << vec << endl;
+    }
+    for (vector<int> vec : solution.spiralMatrixIII(1, 4, 0, 0)) {
+        cout << vec << endl;
+    }
+    for (vector<int> vec : solution.spiralMatrixIII(5, 6, 1, 4)) {
+        cout << vec << endl;
+    }
     return 0;
 }
