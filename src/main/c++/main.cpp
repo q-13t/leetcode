@@ -29,14 +29,9 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    for (vector<int> vec : solution.spiralMatrixIII(3, 3, 1, 2)) {
-        cout << vec << endl;
-    }
-    for (vector<int> vec : solution.spiralMatrixIII(1, 4, 0, 0)) {
-        cout << vec << endl;
-    }
-    for (vector<int> vec : solution.spiralMatrixIII(5, 6, 1, 4)) {
-        cout << vec << endl;
-    }
+    cout << solution.numMagicSquaresInside({{4, 3, 8, 4}, {9, 5, 1, 9}, {2, 7, 6, 2}}) << endl;
+    cout << solution.numMagicSquaresInside({{8}}) << endl;
+    cout << solution.numMagicSquaresInside({{7, 0, 5}, {2, 4, 6}, {3, 8, 1}}) << endl;
+
     return 0;
 }

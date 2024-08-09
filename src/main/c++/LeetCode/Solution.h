@@ -1985,6 +1985,56 @@ class Solution {
         }
         return result;
     }
+
+    bool isGridMagical(vector<vector<int>>& grid, int R, int C) {
+        // 1 -> check for unique
+        int first = 0;
+        int second = 0;
+        int third = 0;
+
+        // 2 -> check rows
+        first = grid[R][C] + grid[R][C + 1] + grid[R][C + 2];
+        second = grid[R + 1][C] + grid[R + 1][C + 1] + grid[R + 1][C + 2];
+        third = grid[R + 2][C] + grid[R + 2][C + 1] + grid[R + 2][C + 2];
+        if (first != second || second != third || first != third) {
+            return false;
+        }
+        // 3 -> check columns
+        first = grid[R][C] + grid[R + 1][C] + grid[R + 2][C];
+        second = grid[R][C + 1] + grid[R + 1][C + 1] + grid[R + 2][C + 1];
+        third = grid[R][C + 2] + grid[R + 1][C + 2] + grid[R + 2][C + 2];
+        if (first != second || second != third || first != third) {
+            return false;
+        }
+        // 4 -> check diagonals
+        first = grid[R][C] + grid[R + 1][C + 1] + grid[R + 2][C + 2];
+        second = grid[R + 2][C] + grid[R + 1][C + 1] + grid[R][C + 2];
+        if (first != second) {
+            return false;
+        }
+        set<int> s{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        for (int i = R; i < R + 3; i++) {
+            for (int j = C; j < C + 3; j++) {
+                s.erase(grid[i][j]);
+            }
+        }
+        return s.empty();
+    }
+
+    int numMagicSquaresInside(vector<vector<int>>&& grid) {
+        if (grid.size() < 3 && grid[0].size() > 3) {
+            return 0;
+        }
+        int valid = 0, rows = grid.size() - 3, cols = grid[0].size() - 3;
+        for (int i = 0; i <= rows; i++) {
+            for (int j = 0; j <= cols; j++) {
+                if (isGridMagical(grid, i, j)) {
+                    valid++;
+                }
+            }
+        }
+        return valid;
+    }
 };
 
 #endif
