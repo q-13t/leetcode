@@ -29,9 +29,17 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    cout << solution.numMagicSquaresInside({{4, 3, 8, 4}, {9, 5, 1, 9}, {2, 7, 6, 2}}) << endl;
-    cout << solution.numMagicSquaresInside({{8}}) << endl;
-    cout << solution.numMagicSquaresInside({{7, 0, 5}, {2, 4, 6}, {3, 8, 1}}) << endl;
+
+    for (vector<int> arr : solution.combinationSum2({10, 1, 2, 7, 6, 1, 5}, 8)) {
+        cout << arr << endl;
+    }
+
+    for (vector<int> arr : solution.combinationSum2({2, 5, 2, 1, 2}, 5)) {
+        cout << arr << endl;
+    }
+    for (vector<int> arr : solution.combinationSum2({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 27)) {
+        cout << arr << endl;
+    }
 
     return 0;
 }

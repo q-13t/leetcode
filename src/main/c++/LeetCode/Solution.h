@@ -2035,6 +2035,34 @@ class Solution {
         }
         return valid;
     }
+
+    vector<vector<int>> result;
+    vector<int> candidate;
+    void do_backtrack_of_CombinationsSum(vector<int>& candidates, int target, int start_idx) {
+        if (target == 0) {
+            result.push_back(candidate);
+            return;
+        }
+        for (int i = start_idx; i < candidates.size(); i++) {
+            if (i > start_idx && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
+
+            if (candidates[i] > target) {
+                break;
+            }
+
+            candidate.push_back(candidates[i]);
+            do_backtrack_of_CombinationsSum(candidates, target - candidates[i], i+1);
+            candidate.pop_back();
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>&& candidates, int target) {
+        sort(whole(candidates));
+        do_backtrack_of_CombinationsSum(candidates, target, 0);
+
+        return result;
+    }
 };
 
 #endif
