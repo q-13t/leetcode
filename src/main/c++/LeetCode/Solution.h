@@ -2053,7 +2053,7 @@ class Solution {
             }
 
             candidate.push_back(candidates[i]);
-            do_backtrack_of_CombinationsSum(candidates, target - candidates[i], i+1);
+            do_backtrack_of_CombinationsSum(candidates, target - candidates[i], i + 1);
             candidate.pop_back();
         }
     }
@@ -2062,6 +2062,33 @@ class Solution {
         do_backtrack_of_CombinationsSum(candidates, target, 0);
 
         return result;
+    }
+
+    int smallestDistancePair(vector<int>&& nums, int k) {
+        sort(whole(nums));
+        int l = 0, r = nums[nums.size() - 1] - nums[0], mid = 0, count, i = 0, j = 0;
+
+        while (l <= r) {
+            mid = l + (r - l) / 2;
+            count = 0;
+
+            for (i = 0; i < nums.size(); i++) {
+                for (j = i + 1; j < nums.size(); j++) {
+                    if (nums[j] - nums[i] <= mid) {
+                        count++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            if (count < k) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+
+        return l;
     }
 };
 

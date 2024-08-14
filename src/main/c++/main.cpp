@@ -30,16 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    for (vector<int> arr : solution.combinationSum2({10, 1, 2, 7, 6, 1, 5}, 8)) {
-        cout << arr << endl;
-    }
-
-    for (vector<int> arr : solution.combinationSum2({2, 5, 2, 1, 2}, 5)) {
-        cout << arr << endl;
-    }
-    for (vector<int> arr : solution.combinationSum2({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 27)) {
-        cout << arr << endl;
-    }
+    cout << solution.smallestDistancePair({1, 3, 1}, 1) << endl;
+    cout << solution.smallestDistancePair({1, 1, 1}, 2) << endl;
+    cout << solution.smallestDistancePair({1, 6, 1}, 3) << endl;
 
     return 0;
 }
