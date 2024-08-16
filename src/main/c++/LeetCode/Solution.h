@@ -2090,6 +2090,19 @@ class Solution {
 
         return l;
     }
+
+    int maxDistance(vector<vector<int>>&& arrays) {
+        int distance = 0, min = arrays[0][0], max = arrays[0].back();
+
+        for (int i = 1; i < arrays.size(); i++) {
+            distance = std::max(distance, abs(max - arrays[i][0]));
+            distance = std::max(distance, abs(arrays[i].back() - min));
+            min = min > arrays[i][0] ? arrays[i][0] : min;
+            max = max < arrays[i].back() ? arrays[i].back() : max;
+        }
+
+        return distance;
+    }
 };
 
 #endif
