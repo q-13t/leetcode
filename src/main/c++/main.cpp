@@ -30,9 +30,11 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.maxDistance({{1, 2, 3}, {4, 5}, {1, 2, 3}}) << endl;
-    cout << solution.maxDistance({{1, 4}, {0, 5}}) << endl;
-    cout << solution.maxDistance({{1}, {1}}) << endl;
+    cout << solution.maxPoints({{1, 2, 3},
+                                {1, 5, 1},
+                                {3, 1, 1}})
+         << endl;
+    cout << solution.maxPoints({{1, 5}, {2, 3}, {4, 2}}) << endl;
 
     return 0;
 }
