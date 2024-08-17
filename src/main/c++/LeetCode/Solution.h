@@ -2137,6 +2137,16 @@ class Solution {
 
         return maxPoints;
     }
+
+    int maxScoreSightseeingPair(vector<int>&& values) {
+        int score = -1, n = values.size(), dp = values[0];
+        for (int i = 1; i < n; i++) {
+            score = max(score, dp + values[i] - i);  // values[i] + values[j] + (i - j)
+            dp = max(dp, values[i] + i);
+        }
+
+        return score;
+    }
 };
 
 #endif
