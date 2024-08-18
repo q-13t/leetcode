@@ -2147,6 +2147,30 @@ class Solution {
 
         return score;
     }
+    int nthUglyNumber(int n) {
+        vector<int> ugly(n);
+        ugly[0] = 1;
+        int N2 = 2, N3 = 3, N5 = 5;
+        int I2 = 0, I3 = 0, I5 = 0;
+        for (int i = 1; i < n; i++) {
+            int next = min(N2, min(N3, N5));
+            ugly[i] = next;
+            if (next == N2) {
+                I2++;
+                N2 = ugly[I2] * 2;
+            }
+            if (next == N3) {
+                I3++;
+                N3 = ugly[I3] * 3;
+            }
+            if (next == N5) {
+                I5++;
+                N5 = ugly[I5] * 5;
+            }
+        }
+
+        return ugly[n - 1];
+    }
 };
 
 #endif

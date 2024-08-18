@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.maxScoreSightseeingPair({8, 1, 5, 2, 6}) << endl;
-    cout << solution.maxScoreSightseeingPair({1, 2}) << endl;
+    cout << solution.nthUglyNumber(10) << endl;
+    cout << solution.nthUglyNumber(1) << endl;
 
     return 0;
 }
