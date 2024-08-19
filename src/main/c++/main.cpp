@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.nthUglyNumber(10) << endl;
-    cout << solution.nthUglyNumber(1) << endl;
+    cout << solution.minSteps(10) << endl;
+    cout << solution.minSteps(1)<< endl;
 
     return 0;
 }
