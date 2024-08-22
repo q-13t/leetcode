@@ -29,9 +29,6 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-
-    cout << solution.minSteps(10) << endl;
-    cout << solution.minSteps(1)<< endl;
-
+    cout << solution.findComplement(5) << endl;
     return 0;
 }

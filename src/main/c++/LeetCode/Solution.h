@@ -2186,6 +2186,20 @@ class Solution {
 
         return dp[n];
     }
+    int findComplement(int num) {
+        int ans = 0, i = 0;
+
+        while (num) {
+            int tmp = num % 2;
+            if (!tmp) {
+                ans += pow(2, i);
+            }
+            i++;
+            num >>= 1;
+        }
+
+        return ans;
+    }
 };
 
 #endif
