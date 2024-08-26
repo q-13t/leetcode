@@ -16,6 +16,7 @@
 #include <vector>
 
 #include "../Utils.h"
+#include "Node.h"
 #include "TreeNode.h"
 using namespace std;
 
@@ -2199,6 +2200,24 @@ class Solution {
         }
 
         return ans;
+    }
+
+    vector<int> order;
+
+    void do_post_order(Node* node) {
+        if (node == nullptr) {
+            return;
+        }
+        for (int i = 0; i < node->children.size(); i++) {
+            do_post_order(node->children[i]);
+        }
+        order.push_back(node->val);
+        return;
+    }
+
+    vector<int> postorder(Node* root) {
+        do_post_order(root);
+        return order;
     }
 };
 
