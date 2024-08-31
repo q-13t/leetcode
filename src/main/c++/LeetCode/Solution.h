@@ -2219,6 +2219,27 @@ class Solution {
         do_post_order(root);
         return order;
     }
-};
 
+    double maxProbability(int n, vector<vector<int>>&& edges, vector<double>&& succProb, int start_node, int end_node) {
+        vector<double> prob(n, 0);
+        prob[start_node] = 1.0;
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < edges.size(); j++) {
+                int first = edges[j][0];
+                int second = edges[j][1];
+                double chance = succProb[j];
+
+                if (prob[first] * chance > prob[second]) {
+                    prob[second] = prob[first] * chance;
+                }
+                if (prob[second] * chance > prob[first]) {
+                    prob[first] = prob[second] * chance;
+                }
+            }
+        }
+
+        return prob[end_node];
+    }
+};
 #endif
