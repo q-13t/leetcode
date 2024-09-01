@@ -2241,5 +2241,18 @@ class Solution {
 
         return prob[end_node];
     }
+
+    vector<vector<int>> construct2DArray(vector<int>&& original, int rows, int columns) {
+        vector<vector<int>> res;
+        if (original.size() != rows * columns) {
+            return res;
+        }
+        int order = 0;
+        for (int i = 0; i < rows; i++) {
+            res.push_back(vector<int>(original.begin() + order, original.begin() + order + columns));
+            order += columns;
+        }
+        return res;
+    }
 };
 #endif
