@@ -29,15 +29,8 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    for (vector<int> vec : solution.construct2DArray({1, 2, 3, 4}, 2, 2)) {
-        cout << vec << endl;
-    }
-    for (vector<int> vec : solution.construct2DArray({1, 2, 3}, 1, 3)) {
-        cout << vec << endl;
-    }
-    for (vector<int> vec : solution.construct2DArray({1, 2}, 1, 1)) {
-        cout << vec << endl;
-    }
+    cout << solution.chalkReplacer({5, 1, 5}, 22) << endl;
+    cout << solution.chalkReplacer({3, 4, 1, 2}, 25) << endl;
 
     return 0;
 }

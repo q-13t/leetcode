@@ -2254,5 +2254,29 @@ class Solution {
         }
         return res;
     }
+
+    int chalkReplacer(vector<int>&& chalk, int k) {
+        long long sum = 0;
+        int i = 0, c_size = chalk.size();
+        // Sum up all the chalk used
+        for (; i < c_size; i++) {
+            sum += chalk[i];
+        }
+        // If there is more chalk given than students need to use -> skip all the circling.
+        if (k > sum) {
+            k = k % sum;
+        }
+        i = 0;
+        for (; i < c_size; i++) {
+            if (k < chalk[i]) {
+                return i;
+            }
+            k -= chalk[i];
+            if (i + 1 >= c_size) {
+                i = -1;
+            }
+        }
+        return 0;
+    }
 };
 #endif
