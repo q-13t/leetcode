@@ -2278,5 +2278,25 @@ class Solution {
         }
         return 0;
     }
+
+    int findTheLongestSubstring(string s) {
+        int prefixXOR = 0, max = 0;
+        int charmap[26] = {0};
+        charmap['a' - 'a'] = 1;
+        charmap['e' - 'a'] = 2;
+        charmap['u' - 'a'] = 4;
+        charmap['i' - 'a'] = 8;
+        charmap['o' - 'a'] = 16;
+        vector<int> map(32, -1);
+        for (int i = 0; i < s.length(); i++) {
+            prefixXOR ^= charmap[s[i] - 'a'];
+            if (map[prefixXOR] == -1 && prefixXOR != 0) {
+                map[prefixXOR] = i;
+            }
+            max = max > i - map[prefixXOR] ? max : i - map[prefixXOR];
+        }
+
+        return max;
+    }
 };
 #endif

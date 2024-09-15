@@ -29,8 +29,9 @@ auto _ = []() {
 
 int main(int argc, char const* argv[]) {
     FIO;
-    cout << solution.chalkReplacer({5, 1, 5}, 22) << endl;
-    cout << solution.chalkReplacer({3, 4, 1, 2}, 25) << endl;
 
+    cout << solution.findTheLongestSubstring("eleetminicoworoep") << endl;
+    cout << solution.findTheLongestSubstring("leetcodeisgreat") << endl;
+    cout << solution.findTheLongestSubstring("bcbcbc") << endl;
     return 0;
 }
