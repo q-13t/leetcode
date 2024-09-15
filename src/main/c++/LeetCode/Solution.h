@@ -1822,7 +1822,7 @@ class Solution {
         return clicks;
     }
 
-    map<int, string> mapping = {
+    map<int, string> Number_To_Word_Map = {
         make_pair<int, string>(0, "Zero"),
         make_pair<int, string>(1, "One"),
         make_pair<int, string>(2, "Two"),
@@ -1859,30 +1859,30 @@ class Solution {
     string* getPairOfThree(vector<int>& a, string* res) {
         if (a.size() == 3) {
             if (a[0] > 0 && a.size() == 3) {
-                *res += mapping[a[0]];
+                *res += Number_To_Word_Map[a[0]];
                 *res += "Hundred";
             }
             if (a[1] > 0 && a[1] < 2) {
-                *res += mapping[a[1] * 10 + a[2]];
+                *res += Number_To_Word_Map[a[1] * 10 + a[2]];
             } else if (a[1] > 0 && a[1] >= 2) {
-                *res += mapping[a[1] * 10];
+                *res += Number_To_Word_Map[a[1] * 10];
                 if (a[2] > 0) {
-                    *res += mapping[a[2]];
+                    *res += Number_To_Word_Map[a[2]];
                 }
             } else if (a[1] == 0 && a[2] != 0) {
-                *res += mapping[a[2]];
+                *res += Number_To_Word_Map[a[2]];
             }
         } else if (a.size() == 2) {
             if (a[0] > 0 && a[0] < 2) {
-                *res += mapping[a[0] * 10 + a[1]];
+                *res += Number_To_Word_Map[a[0] * 10 + a[1]];
             } else if (a[0] > 0 && a[0] >= 2) {
-                *res += mapping[a[0] * 10];
+                *res += Number_To_Word_Map[a[0] * 10];
                 if (a[1] > 0) {
-                    *res += mapping[a[1]];
+                    *res += Number_To_Word_Map[a[1]];
                 }
             }
         } else {
-            *res += mapping[a[0]];
+            *res += Number_To_Word_Map[a[0]];
         }
         return res;
     }
