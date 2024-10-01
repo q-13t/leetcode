@@ -30,8 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.findTheLongestSubstring("eleetminicoworoep") << endl;
-    cout << solution.findTheLongestSubstring("leetcodeisgreat") << endl;
-    cout << solution.findTheLongestSubstring("bcbcbc") << endl;
+    cout << (solution.canArrange({1, 2, 3, 4, 5, 10, 6, 7, 8, 9}, 5) ? "True" : "False") << endl;
+    cout << (solution.canArrange({1, 2, 3, 4, 5, 6}, 7) ? "True" : "False") << endl;
+    cout << (solution.canArrange({1, 2, 3, 4, 5, 6}, 10) ? "True" : "False") << endl;
+
     return 0;
 }

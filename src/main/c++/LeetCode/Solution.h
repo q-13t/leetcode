@@ -2298,5 +2298,23 @@ class Solution {
 
         return max;
     }
+
+    bool canArrange(vector<int>&& arr, int k) {
+        unordered_map<int, int> freq(arr.size());
+        for (int i = 0; i < arr.size(); i++) {
+            freq[((arr[i] % k) + k) % k]++;
+        }
+        for (int i = 0; i < arr.size(); i++) {
+            int rem = ((arr[i] % k) + k) % k;
+            if (rem == 0) {
+                if (freq[rem] % 2 != 0) {
+                    return false;
+                }
+            } else if (freq[rem] != freq[k - rem]) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 #endif
