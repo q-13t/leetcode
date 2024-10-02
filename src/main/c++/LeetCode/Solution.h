@@ -2316,5 +2316,25 @@ class Solution {
         }
         return true;
     }
+
+    vector<int> arrayRankTransform(vector<int>&& arr) {
+        vector<int> rank, tmp = arr;
+        sort(whole(tmp));
+        unordered_map<int, int> placed;
+        int idx = 1;
+        for (int val : tmp) {
+            int pl = placed[val];
+            if (pl == 0) {
+                placed[val] = idx++;
+            } else {
+                placed[val] = min(idx, pl);
+            }
+        }
+
+        for (int i = 0; i < arr.size(); i++) {
+            rank.push_back(placed[arr[i]]);
+        }
+        return rank;
+    }
 };
 #endif

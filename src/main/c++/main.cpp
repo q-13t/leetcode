@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << (solution.canArrange({1, 2, 3, 4, 5, 10, 6, 7, 8, 9}, 5) ? "True" : "False") << endl;
-    cout << (solution.canArrange({1, 2, 3, 4, 5, 6}, 7) ? "True" : "False") << endl;
-    cout << (solution.canArrange({1, 2, 3, 4, 5, 6}, 10) ? "True" : "False") << endl;
+    cout << solution.arrayRankTransform({40, 10, 20, 30}) << endl;
+    cout << solution.arrayRankTransform({100, 100, 100}) << endl;
+    cout << solution.arrayRankTransform({37, 12, 28, 9, 100, 56, 80, 5, 12}) << endl;
 
     return 0;
 }
