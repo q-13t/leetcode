@@ -2336,5 +2336,37 @@ class Solution {
         }
         return rank;
     }
+    long long dividePlayers(vector<int>&& skill) {
+        // sort players
+        sort(whole(skill));
+        int avg_skill = 0, n_teams = skill.size() / 2;
+        // find avg skill
+        for (int i = 0; i < skill.size(); i++) {
+            avg_skill += skill[i];
+        }
+        avg_skill = avg_skill / n_teams;
+        // make a vector of skills in teams of two
+        long long chemistry = 0;
+        while (skill.size() >= 2) {
+            int l = 1, r = skill.size(), f_skill = skill[0], mid = 0;
+            while (l < r) {
+                mid = l + (r - l) / 2;
+                if (f_skill + skill[mid] == avg_skill) {
+                    break;
+                } else if (f_skill + skill[mid] > avg_skill) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            if (f_skill + skill[mid] != avg_skill) {
+                return -1;
+            }
+            chemistry += f_skill * skill[mid];
+            skill.erase(skill.begin());
+            skill.erase(skill.begin() + mid - 1);
+        }
+        return chemistry;
+    }
 };
 #endif
