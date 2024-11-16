@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.dividePlayers({3, 2, 5, 1, 3, 4}) << endl;
-    cout << solution.dividePlayers({3, 4}) << endl;
-    cout << solution.dividePlayers({1, 1, 2, 3}) << endl;
+    cout << solution.resultsArray({1, 2, 3, 4, 3, 2, 5}, 3) << endl;
+    cout << solution.resultsArray({2, 2, 2, 2, 2}, 4) << endl;
+    cout << solution.resultsArray({3, 2, 3, 2, 3, 2}, 2) << endl;
 
     return 0;
 }

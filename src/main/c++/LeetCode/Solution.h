@@ -2368,5 +2368,35 @@ class Solution {
         }
         return chemistry;
     }
+
+    vector<int> resultsArray(vector<int>&& nums, int k) {
+        int n = nums.size(), res_size = n - k + 1, c = 0;
+        vector<vector<int>> sub_ars(res_size);
+        for (int i = 0; i <= n; i++) {
+            for (int j = i; j < k + i && j <= n && c < res_size; j++) {
+                sub_ars[c].push_back(nums[j]);
+            }
+            c++;
+        }
+        vector<int> res;
+        int data = -1;
+        for (vector<int> arr : sub_ars) {
+            int max = -1;
+            for (int i = 1; i < arr.size(); i++) {
+                if (arr[i] != arr[i - 1] + 1) {
+                    max = -1;
+                    break;
+                } else {
+                    max = max > arr[i] ? max : arr[i];
+                }
+            }
+            if (arr.size() == 1) {
+                res.push_back(arr[0]);
+                continue;
+            }
+            res.push_back(max);
+        }
+        return res;
+    }
 };
 #endif
