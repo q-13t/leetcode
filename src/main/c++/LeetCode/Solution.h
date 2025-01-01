@@ -2398,5 +2398,28 @@ class Solution {
         }
         return res;
     }
+    int maxScore(string s) {
+        int max = 0, n = s.size();
+        std::vector<int> right(n + 1, 0), left(n + 1, 0);
+        for (int i = 0, j = n - 1; i < n; i++, j--) {
+            left[j] = left[j + 1];
+            if (s[i] == '0') {
+                left[j]++;
+            }
+        }
+        for (int i = n - 1, j = 1; i >= 0; i--, j++) {
+            right[j] = right[j - 1];
+            if (s[i] == '1') {
+                right[j]++;
+            }
+        }
+        for (int i = 1; i < n; i++) {
+            if (max < right[i] + left[i]) {
+                max = right[i] + left[i];
+            }
+        }
+
+        return max;
+    }
 };
 #endif

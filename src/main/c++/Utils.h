@@ -35,7 +35,7 @@ TreeNode* buildBalancedBST(int start, int end, vector<int>* vec) {
  */
 template <typename T>
 ostream& operator<<(ostream& cout, vector<T> const& v) {
-    cout << "[";
+    cout << "Size: " << v.size() << "; Type: " << typeid(T).name() << " - [";
     for (int i = 0; i < v.size(); i++) {
         if (i) cout << ", ";
         cout << v[i];

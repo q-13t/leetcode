@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.resultsArray({1, 2, 3, 4, 3, 2, 5}, 3) << endl;
-    cout << solution.resultsArray({2, 2, 2, 2, 2}, 4) << endl;
-    cout << solution.resultsArray({3, 2, 3, 2, 3, 2}, 2) << endl;
+    std::cout << solution.maxScore("011101") << std::endl;
+    std::cout << solution.maxScore("00111") << std::endl;
+    std::cout << solution.maxScore("1111") << std::endl;
 
     return 0;
 }
