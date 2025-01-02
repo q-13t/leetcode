@@ -30,9 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.maxScore("011101") << std::endl;
-    std::cout << solution.maxScore("00111") << std::endl;
-    std::cout << solution.maxScore("1111") << std::endl;
+    std::cout << solution.vowelStrings({"aba", "bcb", "ece", "aa", "e"}, {{0, 2}, {1, 4}, {1, 1}}) << std::endl;
+    std::cout << solution.vowelStrings({"a", "e", "i"}, {{0, 2}, {0, 1}, {2, 2}}) << std::endl;
 
     return 0;
 }

@@ -2421,5 +2421,27 @@ class Solution {
 
         return max;
     }
+    vector<int> vowelStrings(vector<string>&& words, vector<vector<int>>&& queries) {
+        vector<int> ans(queries.size(), 0);
+        vector<int> prefix(words.size(), 0);
+        vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
+
+        for (int i = 0; i < words.size(); i++) {
+            if (i > 0) {
+                prefix[i] = prefix[i - 1];
+            }
+            if (std::find(whole(vowels), words[i][0]) != vowels.end() && std::find(whole(vowels), words[i][words[i].size() - 1]) != vowels.end()) {
+                prefix[i]++;
+            }
+        }
+        for (int i = 0; i < queries.size(); i++) {
+            ans[i] = prefix[queries[i][1]];
+            if (queries[i][0] > 0) {
+                ans[i] -= prefix[queries[i][0] - 1];
+            }
+        }
+
+        return ans;
+    }
 };
 #endif
