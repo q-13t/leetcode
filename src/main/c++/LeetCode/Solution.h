@@ -2443,5 +2443,21 @@ class Solution {
 
         return ans;
     }
+    int waysToSplitArray(vector<int>&& nums) {
+        long ways = 0, n = nums.size(), right = 0;
+        vector<long> left(n + 1, 0);
+        left[1] = nums[0];
+        for (int i = 1; i < n; i++) {
+            left[i + 1] = left[i] + nums[i];
+        }
+        for (int i = n - 1; i >= 1; i--) {
+            right += nums[i];
+            if (left[i] >= right) {
+                ways++;
+            }
+        }
+
+        return ways;
+    }
 };
 #endif

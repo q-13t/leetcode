@@ -30,8 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.vowelStrings({"aba", "bcb", "ece", "aa", "e"}, {{0, 2}, {1, 4}, {1, 1}}) << std::endl;
-    std::cout << solution.vowelStrings({"a", "e", "i"}, {{0, 2}, {0, 1}, {2, 2}}) << std::endl;
+    std::cout << solution.waysToSplitArray({10, 4, -8, 7}) << std::endl;
+    std::cout << solution.waysToSplitArray({2, 3, 1, 0}) << std::endl;
+    std::cout << solution.waysToSplitArray({-100000, 100000}) << std::endl;
 
     return 0;
 }
