@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.waysToSplitArray({10, 4, -8, 7}) << std::endl;
-    std::cout << solution.waysToSplitArray({2, 3, 1, 0}) << std::endl;
-    std::cout << solution.waysToSplitArray({-100000, 100000}) << std::endl;
+    std::cout << solution.countPalindromicSubsequence("aabca") << std::endl;
+    std::cout << solution.countPalindromicSubsequence("adc") << std::endl;
+    std::cout << solution.countPalindromicSubsequence("bbcbaba") << std::endl;
 
     return 0;
 }

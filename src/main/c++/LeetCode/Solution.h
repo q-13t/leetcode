@@ -2459,5 +2459,33 @@ class Solution {
 
         return ways;
     }
+    int countPalindromicSubsequence(string s) {
+        int res = 0, n = s.size();
+        vector<int> seen(26, 0);
+        map<int, pair<int, int>> positions;
+
+        for (int i = 0; i < 26; i++) {
+            positions.insert(make_pair(i, std::pair(INT_MAX, -1)));
+        }
+        for (int i = 0; i < n; i++) {
+            positions[s[i] - 97].first = min(i, positions[s[i] - 97].first);
+            positions[s[i] - 97].second = max(i, positions[s[i] - 97].second);
+        }
+
+        for (int i = 0; i < positions.size(); i++) {
+            int left = positions[i].first, right = positions[i].second;
+            if (left != right && left != INT_MAX && right != -1) {
+                seen = vector(26, 0);
+                for (int j = left + 1; j < right; j++) {
+                    if (seen[s[j] - 97] == 0) {
+                        seen[s[j] - 97] = 1;
+                        res++;
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
 };
 #endif
