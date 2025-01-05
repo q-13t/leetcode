@@ -30,9 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.countPalindromicSubsequence("aabca") << std::endl;
-    std::cout << solution.countPalindromicSubsequence("adc") << std::endl;
-    std::cout << solution.countPalindromicSubsequence("bbcbaba") << std::endl;
+    std::cout << solution.shiftingLetters("abc", {{0, 1, 0}, {1, 2, 1}, {0, 2, 1}}) << std::endl;
+    std::cout << solution.shiftingLetters("dztz", {{0, 0, 0}, {1, 1, 1}}) << std::endl;
+    std::cout << solution.shiftingLetters("a", {{0, 0, 0}}) << std::endl;
 
     return 0;
 }

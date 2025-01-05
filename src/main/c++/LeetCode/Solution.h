@@ -2487,5 +2487,33 @@ class Solution {
 
         return res;
     }
+    string shiftingLetters(string s, vector<vector<int>>&& shifts) {
+        vector<int> change(s.length(), 0);
+        for (vector<int> shift : shifts) {
+            if (shift[2] == 1) {
+                change[shift[0]]++;
+                if (shift[1] + 1 < s.size()) {  // ?????
+                    change[shift[1] + 1]--;     //???????
+                }
+            } else {
+                change[shift[0]]--;
+                if (shift[1] + 1 < s.size()) {  // ?????
+                    change[shift[1] + 1]++;     //???????
+                }
+            }
+        }
+        int changeCount = 0;
+        string res(s.size(), ' ');
+        for (int i = 0; i < s.size(); i++) {
+            changeCount = (changeCount + change[i]) % 26;
+
+            if (changeCount < 0) {
+                changeCount += 26;
+            }
+            res[i] = 'a' + (s[i] - 'a' + changeCount) % 26;
+        }
+
+        return res;
+    }
 };
 #endif
