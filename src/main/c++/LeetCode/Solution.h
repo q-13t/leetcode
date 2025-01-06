@@ -2515,5 +2515,33 @@ class Solution {
 
         return res;
     }
+    vector<int> minOperations(string boxes) {
+        int n = boxes.size(), count = 0, tmp = 0;
+        if (n == 1) {
+            return {0};
+        }
+        vector<int> prefix(n, 0), suffix(n, 0), result(n, 0);
+
+        for (int i = n - 1; i >= 0; i--) {
+            tmp += count;
+            suffix[i] = tmp;
+            if (boxes[i] == '1') {
+                count++;
+            }
+        }
+        tmp = 0, count = 0;
+        for (int i = 0; i < n; i++) {
+            tmp += count;
+            prefix[i] = tmp;
+            if (boxes[i] == '1') {
+                count++;
+            }
+        }
+        result[0] = suffix[0], result[n - 1] = prefix[n - 1];
+        for (int i = 1; i < n - 1; i++) {
+            result[i] = prefix[i] + suffix[i];
+        }
+        return result;
+    }
 };
 #endif
