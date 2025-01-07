@@ -30,8 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.minOperations("110") << std::endl;
-    std::cout << solution.minOperations("001011") << std::endl;
+    std::cout << solution.stringMatching({"mass", "as", "hero", "superhero"}) << std::endl;
+    std::cout << solution.stringMatching({"leetcode", "et", "code"}) << std::endl;
+    std::cout << solution.stringMatching({"blue", "green", "bu"}) << std::endl;
 
     return 0;
 }

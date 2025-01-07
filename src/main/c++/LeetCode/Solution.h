@@ -2543,5 +2543,20 @@ class Solution {
         }
         return result;
     }
+
+    vector<string> stringMatching(vector<string>&& words) {
+        set<string> res;
+        int n = words.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i != j && words[j].find(words[i]) != std::string::npos) {
+                    res.emplace(words[i]);
+                    break;
+                }
+            }
+        }
+
+        return vector(whole(res));
+    }
 };
 #endif
