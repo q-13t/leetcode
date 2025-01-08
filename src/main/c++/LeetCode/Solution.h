@@ -2558,5 +2558,29 @@ class Solution {
 
         return vector(whole(res));
     }
+
+    bool isPrefixSuffix(string* smaller, string* bigger) {
+        if (bigger->size() <= smaller->size()) {
+            return false;
+        }
+        for (int bigger_size = bigger->size(), smaller_size = smaller->size(), bigger_left = 0, smaller_left = 0, smaller_right = smaller_size - 1, bigger_right = bigger_size - 1; bigger_left < bigger_size && smaller_left < smaller_size && smaller_right >= 0 && bigger_right >= 0; bigger_right--, smaller_right--, smaller_left++, bigger_left++) {
+            if (bigger->at(bigger_right) != smaller->at(smaller_right) || bigger->at(bigger_left) != smaller->at(smaller_left)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    int countPrefixSuffixPairs(vector<string>&& words) {
+        int res = 0, n = words.size(), s = n - 1, i = 0, j = 0;
+        for (i = 0; i < s; i++) {
+            for (j = i + 1; j < n; j++) {
+                if (isPrefixSuffix(&words[i], &words[j])) {
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
 };
 #endif

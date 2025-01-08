@@ -30,9 +30,11 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.stringMatching({"mass", "as", "hero", "superhero"}) << std::endl;
-    std::cout << solution.stringMatching({"leetcode", "et", "code"}) << std::endl;
-    std::cout << solution.stringMatching({"blue", "green", "bu"}) << std::endl;
+    std::cout << solution.countPrefixSuffixPairs({"a", "aba", "ababa", "aa"}) << std::endl;
+    std::cout << solution.countPrefixSuffixPairs({"pa", "papa", "ma", "mama"}) << std::endl;
+    std::cout << solution.countPrefixSuffixPairs({"abab", "ab"}) << std::endl;
+    std::cout << solution.countPrefixSuffixPairs({"a", "abb"}) << std::endl;
+    std::cout << solution.countPrefixSuffixPairs({"bb", "bb"}) << std::endl;
 
     return 0;
 }
