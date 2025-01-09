@@ -30,11 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.countPrefixSuffixPairs({"a", "aba", "ababa", "aa"}) << std::endl;
-    std::cout << solution.countPrefixSuffixPairs({"pa", "papa", "ma", "mama"}) << std::endl;
-    std::cout << solution.countPrefixSuffixPairs({"abab", "ab"}) << std::endl;
-    std::cout << solution.countPrefixSuffixPairs({"a", "abb"}) << std::endl;
-    std::cout << solution.countPrefixSuffixPairs({"bb", "bb"}) << std::endl;
+    std::cout << solution.prefixCount({"pay", "attention", "practice", "attend"}, "at") << std::endl;
+    std::cout << solution.prefixCount({"leetcode", "win", "loops", "success"}, "code") << std::endl;
 
     return 0;
 }

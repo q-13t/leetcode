@@ -2582,5 +2582,23 @@ class Solution {
         }
         return res;
     }
+    int prefixCount(vector<string>&& words, string pref) {
+        int res = 0, n = words.size(), p = pref.size();
+        bool valid = true;
+        for (int i = 0; i < n; i++) {
+            valid = true;
+            for (int j = 0; j < p; j++) {
+                if (words[i][j] != pref[j]) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) {
+                res++;
+            }
+        }
+
+        return res;
+    }
 };
 #endif
