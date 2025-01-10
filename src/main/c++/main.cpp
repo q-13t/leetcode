@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.prefixCount({"pay", "attention", "practice", "attend"}, "at") << std::endl;
-    std::cout << solution.prefixCount({"leetcode", "win", "loops", "success"}, "code") << std::endl;
+    std::cout << solution.wordSubsets({"amazon", "apple", "facebook", "google", "leetcode"}, {"e", "o"}) << std::endl;
+    std::cout << solution.wordSubsets({"amazon", "apple", "facebook", "google", "leetcode"}, {"l", "e"}) << std::endl;
 
     return 0;
 }

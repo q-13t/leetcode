@@ -2600,5 +2600,43 @@ class Solution {
 
         return res;
     }
+
+    void getCharCount(array<int, 26>* arr, string* str) {
+        array<int, 26> count{};
+        for (char ch : *str) {
+            count[ch - 'a']++;
+        }
+        *arr = count;
+    }
+
+    vector<string> wordSubsets(vector<string>&& words1, vector<string>&& words2) {
+        int n1 = words1.size(), n2 = words2.size();
+        vector<string> res;
+        res.reserve(n1);
+        array<int, 26> maxCount{}, temp{};
+
+        for (string str : words2) {
+            getCharCount(&temp, &str);
+            for (int i = 0; i < 26; i++) {
+                maxCount[i] = max(maxCount[i], temp[i]);
+            }
+        }
+
+        for (string str : words1) {
+            bool valid = true;
+            getCharCount(&temp, &str);
+            for (int j = 0; j < 26; j++) {
+                if (temp[j] < maxCount[j]) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) {
+                res.push_back(std::move(str));
+            }
+        }
+
+        return res;
+    }
 };
 #endif
