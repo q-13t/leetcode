@@ -30,8 +30,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    std::cout << solution.wordSubsets({"amazon", "apple", "facebook", "google", "leetcode"}, {"e", "o"}) << std::endl;
-    std::cout << solution.wordSubsets({"amazon", "apple", "facebook", "google", "leetcode"}, {"l", "e"}) << std::endl;
+    Utils::operator<<(cout, solution.canConstruct("annabelle", 2));
+    Utils::operator<<(cout, solution.canConstruct("leetcode", 3));
+    Utils::operator<<(cout, solution.canConstruct("true", 4));
 
     return 0;
 }

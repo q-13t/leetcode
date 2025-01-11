@@ -2638,5 +2638,24 @@ class Solution {
 
         return res;
     }
+
+    bool canConstruct(string s, int k) {
+        int n = s.size(), oddCount = 0;
+        if (n == k) {
+            return true;
+        } else if (n < k) {
+            return false;
+        }
+        array<int, 26> charCount;
+        for (char ch : s) {
+            charCount[ch - 'a']++;
+        }
+        for (int count : charCount) {
+            if (count % 2 != 0) {
+                oddCount++;
+            }
+        }
+        return oddCount > k ? false : true;
+    }
 };
 #endif

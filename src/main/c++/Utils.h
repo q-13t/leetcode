@@ -57,7 +57,7 @@ ostream& operator<<(ostream& cout, vector<T> const& v) {
  * @return ostream&
  */
 ostream& operator<<(ostream& cout, bool const& b) {
-    return cout << (b ? "true" : "false");
+    return cout << (b ? "true" : "false") << endl;
 }
 
 /**
