@@ -101,5 +101,20 @@ void PrintBinaryTree(TreeNode* root) {
     cout << endl;
     PrintTreePreorder(root);
 }
+/**
+ * @brief Get the Char Count object
+ *
+ * @param arr  pointer to array of size 26 with ints array<int,26>
+ * @param str pointer to the string
+ * @return void
+ */
+void getCharCount(array<int, 26>* arr, string* str) {
+    array<int, 26> count{};
+    for (char ch : *str) {
+        count[ch - 'a']++;
+    }
+    *arr = count;
+}
+
 };  // namespace Utils
 #endif

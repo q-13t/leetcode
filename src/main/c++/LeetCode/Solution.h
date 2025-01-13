@@ -2657,5 +2657,27 @@ class Solution {
         }
         return oddCount > k ? false : true;
     }
+    int minimumLength(string s) {
+        array<int, 26> charCount;
+        Utils::getCharCount(&charCount, &s);
+        int res = 0;
+        for (int i = 0; i < 26; i++) {
+            if (charCount[i] == 0) {
+                continue;
+            }
+            int times = 1;
+            if (charCount[i] > 2 && charCount[i] % 2 == 0) {
+                times = (charCount[i] / 2) - 1;
+            } else {
+                times = floor(charCount[i] / 2);
+            }
+
+            while (charCount[i] > 2) {
+                charCount[i] -= 2 * times;
+            }
+            res += charCount[i];
+        }
+        return res;
+    }
 };
 #endif

@@ -30,9 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    Utils::operator<<(cout, solution.canConstruct("annabelle", 2));
-    Utils::operator<<(cout, solution.canConstruct("leetcode", 3));
-    Utils::operator<<(cout, solution.canConstruct("true", 4));
+    cout << solution.minimumLength("abaacbcbb") << endl;
+    cout << solution.minimumLength("aa") << endl;
 
     return 0;
 }
