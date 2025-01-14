@@ -30,8 +30,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.minimumLength("abaacbcbb") << endl;
-    cout << solution.minimumLength("aa") << endl;
+    cout << solution.findThePrefixCommonArray({1, 3, 2, 4}, {3, 1, 2, 4}) << endl;
+    cout << solution.findThePrefixCommonArray({2, 3, 1}, {3, 1, 2}) << endl;
 
     return 0;
 }

@@ -2679,5 +2679,21 @@ class Solution {
         }
         return res;
     }
+    vector<int> findThePrefixCommonArray(vector<int>&& A, vector<int>&& B) {
+        int n = A.size(), c_count = 0;
+        vector<int> common(n + 1, 0), count(n, 0);
+        for (int i = 0; i < n; i++) {
+            common[A[i]]++;
+            if (common[A[i]] == 2) {
+                c_count++;
+            }
+            common[B[i]]++;
+            if (common[B[i]] == 2) {
+                c_count++;
+            }
+            count[i] = c_count;
+        }
+        return count;
+    }
 };
 #endif
