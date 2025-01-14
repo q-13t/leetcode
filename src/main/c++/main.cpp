@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "LeetCode/Foo.h"
+#include "LeetCode/KthLargest.h"
 #include "LeetCode/ListNode.h"
 #include "LeetCode/Solution.h"
 #include "LeetCode/SubrectangleQueries.h"
@@ -30,8 +31,13 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.findThePrefixCommonArray({1, 3, 2, 4}, {3, 1, 2, 4}) << endl;
-    cout << solution.findThePrefixCommonArray({2, 3, 1}, {3, 1, 2}) << endl;
+    KthLargest* obj = new KthLargest(1, {-2});
+
+    cout << obj->add(-3) << endl;  // -2
+    cout << obj->add(0) << endl;   // 0
+    cout << obj->add(2) << endl;   // 2
+    cout << obj->add(-1) << endl;  // 2
+    cout << obj->add(4) << endl;   // 4
 
     return 0;
 }
