@@ -2695,5 +2695,53 @@ class Solution {
         }
         return count;
     }
+
+    pair<vector<short>, int> getBytes(int x, int size) {
+        vector<short> res(size, 0);
+        long tmp = x, num = 0, ones = 0;
+        for (int i = 0, j = size - 1; i < size; i++, j--) {
+            num = pow(2, j);
+            if (num <= tmp) {
+                res[i] = 1;
+                ones++;
+                tmp -= num;
+            }
+        }
+        return make_pair(res, ones);
+    }
+
+    int minimizeXor(int num1, int num2) {
+        int max = 0, f = 0;
+        do {
+            max = pow(2, f++);
+        } while (pow(2, max) < num1 || pow(2, max) < num2);
+
+        pair<vector<short>, int> bytes1 = getBytes(num1, max), bytes2 = getBytes(num2, max);
+        int res = 0, diff = 0;
+
+        if (bytes1.second == bytes2.second) {
+            return num1;
+        } else if (bytes1.second <= bytes2.second) {
+            diff = bytes2.second - bytes1.second;
+            for (int i = max - 1, j = 0; i >= 0; i--, j++) {
+                if (diff > 0 && bytes1.first[i] == 0) {
+                    bytes1.first[i] = 1;
+                    diff--;
+                }
+                if (bytes1.first[i] == 1) {
+                    res += pow(2, j);
+                }
+            }
+        } else {
+            diff = bytes2.second;
+            for (int i = 0, j = max - 1; diff > 0; i++, j--) {
+                if (bytes1.first[i] == 1) {
+                    diff--;
+                    res += pow(2, j);
+                }
+            }
+        }
+        return res;
+    }
 };
 #endif

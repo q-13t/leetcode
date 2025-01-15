@@ -31,13 +31,11 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    KthLargest* obj = new KthLargest(1, {-2});
-
-    cout << obj->add(-3) << endl;  // -2
-    cout << obj->add(0) << endl;   // 0
-    cout << obj->add(2) << endl;   // 2
-    cout << obj->add(-1) << endl;  // 2
-    cout << obj->add(4) << endl;   // 4
+    cout << solution.minimizeXor(3, 5) << endl;
+    cout << solution.minimizeXor(1, 12) << endl;
+    cout << solution.minimizeXor(25, 72) << endl;
+    cout << solution.minimizeXor(65, 84) << endl;
+    cout << solution.minimizeXor(12, 1) << endl;
 
     return 0;
 }
