@@ -2743,5 +2743,22 @@ class Solution {
         }
         return res;
     }
+
+    int xorAllNums(vector<int>&& nums1, vector<int>&& nums2) {
+        int xor_1 = 0, xor_2 = 0;
+
+        if (nums2.size() % 2 != 0) {
+            for (int i : nums1) {
+                xor_1 ^= i;
+            }
+        }
+        if (nums1.size() % 2 != 0) {
+            for (int i : nums2) {
+                xor_2 ^= i;
+            }
+        }
+
+        return xor_1 ^ xor_2;
+    }
 };
 #endif
