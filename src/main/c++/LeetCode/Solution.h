@@ -8,6 +8,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <numeric>
 #include <queue>
 #include <regex>
 #include <set>
@@ -2759,6 +2760,25 @@ class Solution {
         }
 
         return xor_1 ^ xor_2;
+    }
+
+    bool doesValidArrayExist(vector<int>&& derived) {
+        int n = derived.size();
+        vector<short> original(n + 1, 0);
+        bool zero = false, one = false;
+
+        for (int i = 0; i < n; i++) {
+            original[i + 1] = derived[i] ^ original[i];
+        }
+        zero = (original[0] == original[n]);
+        original.clear();
+        original[0] = 1;
+        for (int i = 0; i < n; i++) {
+            original[i + 1] = derived[i] ^ original[i];
+        }
+        one = (original[0] == original[n]);
+
+        return zero | one;
     }
 };
 #endif
