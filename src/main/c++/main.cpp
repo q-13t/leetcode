@@ -31,9 +31,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    Utils::operator<<(cout, solution.doesValidArrayExist({1, 1, 0}));
-    Utils::operator<<(cout, solution.doesValidArrayExist({1, 1}));
-    Utils::operator<<(cout, solution.doesValidArrayExist({1, 0}));
+    cout << solution.firstCompleteIndex({1, 3, 4, 2}, {{1, 4}, {2, 3}}) << endl;
+    cout << solution.firstCompleteIndex({2, 8, 7, 4, 1, 3, 5, 6, 9}, {{3, 2, 5}, {1, 4, 6}, {8, 7, 9}}) << endl;
+    cout << solution.firstCompleteIndex({1, 4, 5, 2, 6, 3}, {{4, 3, 5}, {1, 2, 6}}) << endl;
 
     return 0;
 }

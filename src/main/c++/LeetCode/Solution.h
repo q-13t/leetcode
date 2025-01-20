@@ -2780,5 +2780,27 @@ class Solution {
 
         return zero | one;
     }
+
+    int firstCompleteIndex(vector<int>&& arr, vector<vector<int>>&& mat) {
+        int n_row = mat.size(), n_col = mat[0].size(), f = arr.size();
+        vector<pair<int, int>> positions(n_col * n_row, pair(0, 0));
+        vector<int> rows(n_row, 0), columns(n_col, 0);
+
+        for (int j = 0; j < n_row; j++) {
+            for (int k = 0; k < n_col; k++) {
+                positions[mat[j][k] - 1] = make_pair(j, k);
+            }
+        }
+
+        for (int i = 0; i < f; i++) {
+            pair<int, int> pos = positions[arr[i] - 1];
+            rows[pos.first]++;
+            columns[pos.second]++;
+            if (rows[pos.first] == n_col || columns[pos.second] == n_row) {
+                return i;
+            }
+        }
+        return 0;
+    }
 };
 #endif
