@@ -2802,5 +2802,26 @@ class Solution {
         }
         return 0;
     }
+
+    bool areAlmostEqual(string s1, string s2) {
+        int miss = 0;
+        array<int, 26> first, second;
+        for (int i = 0; i < s1.size(); i++) {
+            first[s1[i] - 'a']++;
+            second[s2[i] - 'a']++;
+            if (s1[i] != s2[i]) {
+                miss++;
+            }
+            if (miss > 2) {
+                break;
+            }
+        }
+        for (int i = 0; i < 26; i++) {
+            if (first[i] != second[i]) {
+                return false;
+            }
+        }
+        return miss <= 2;
+    }
 };
 #endif
