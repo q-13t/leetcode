@@ -8,6 +8,7 @@
 #include "LeetCode/Foo.h"
 #include "LeetCode/KthLargest.h"
 #include "LeetCode/ListNode.h"
+#include "LeetCode/NumberContainers.h"
 #include "LeetCode/Solution.h"
 #include "LeetCode/SubrectangleQueries.h"
 #include "LeetCode/TreeNode.h"
@@ -31,9 +32,23 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.firstCompleteIndex({1, 3, 4, 2}, {{1, 4}, {2, 3}}) << endl;
-    cout << solution.firstCompleteIndex({2, 8, 7, 4, 1, 3, 5, 6, 9}, {{3, 2, 5}, {1, 4, 6}, {8, 7, 9}}) << endl;
-    cout << solution.firstCompleteIndex({1, 4, 5, 2, 6, 3}, {{4, 3, 5}, {1, 2, 6}}) << endl;
+    NumberContainers* nc = new NumberContainers();
+    cout << nc->find(10) << endl;
+    nc->change(2, 10);
+    nc->change(1, 10);
+    nc->change(3, 10);
+    nc->change(5, 10);
+    cout << nc->find(10) << endl;
+    nc->change(1, 20);
+    cout << nc->find(10) << endl;
+
+    nc = new NumberContainers();
+    nc->change(1, 10);
+    cout << nc->find(10) << endl;
+    nc->change(1, 20);
+    cout << nc->find(10) << endl;
+    cout << nc->find(20) << endl;
+    cout << nc->find(30) << endl;
 
     return 0;
 }
