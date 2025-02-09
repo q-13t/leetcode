@@ -32,23 +32,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    NumberContainers* nc = new NumberContainers();
-    cout << nc->find(10) << endl;
-    nc->change(2, 10);
-    nc->change(1, 10);
-    nc->change(3, 10);
-    nc->change(5, 10);
-    cout << nc->find(10) << endl;
-    nc->change(1, 20);
-    cout << nc->find(10) << endl;
-
-    nc = new NumberContainers();
-    nc->change(1, 10);
-    cout << nc->find(10) << endl;
-    nc->change(1, 20);
-    cout << nc->find(10) << endl;
-    cout << nc->find(20) << endl;
-    cout << nc->find(30) << endl;
+    cout << solution.countBadPairs({4, 1, 3, 3}) << endl;
+    cout << solution.countBadPairs({1, 2, 3, 4, 5}) << endl;
 
     return 0;
 }

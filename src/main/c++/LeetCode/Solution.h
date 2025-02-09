@@ -2823,5 +2823,17 @@ class Solution {
         }
         return miss <= 2;
     }
+
+    long long countBadPairs(vector<int>&& nums) {
+        long long count = 0;
+        int dif = 0, good = 0;
+        unordered_map<int, int> counts;
+        for (int i = 0; i < nums.size(); i++) {
+            dif = i - nums[i], good = counts[dif];
+            count += i - good;
+            counts[dif] = good + 1;
+        }
+        return count;
+    }
 };
 #endif
