@@ -32,8 +32,10 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.countBadPairs({4, 1, 3, 3}) << endl;
-    cout << solution.countBadPairs({1, 2, 3, 4, 5}) << endl;
+    cout << solution.clearDigits("abc") << endl;
+    cout << solution.clearDigits("cb34") << endl;
+    cout << solution.clearDigits("c3d4") << endl;
+    cout << solution.clearDigits("444") << endl;
 
     return 0;
 }

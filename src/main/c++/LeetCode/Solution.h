@@ -2835,5 +2835,25 @@ class Solution {
         }
         return count;
     }
+
+    string clearDigits(string s) {
+        int lastChar = -1, i = 0;
+        for (; i < s.size(); i++) {
+            if (s[i] - 'a' >= 0) {
+                lastChar = i;
+                continue;
+            } else {
+                s.erase(i, 1);
+                if (lastChar != -1) {
+                    s.erase(lastChar, 1);
+                    lastChar = -1;
+                    i = (i - 3 < 0) ? -1 : (i - 3);
+                    continue;
+                }
+                i = (i - 2 < 0) ? -1 : (i - 2);
+            }
+        }
+        return s;
+    }
 };
 #endif
