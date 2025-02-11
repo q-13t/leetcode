@@ -2855,5 +2855,29 @@ class Solution {
         }
         return s;
     }
+    string removeOccurrences(string s, string part) {
+        int n = part.size(), deleted = 0, flag = 1, done = 0;
+        while (done != 1) {
+            deleted = 0;
+            for (int i = 0; i < s.size(); i++) {
+                flag = 1;
+                for (int j = 0; j < part.size(); j++) {
+                    if (s[i + j] != part[j]) {
+                        flag = 0;
+                        break;
+                    }
+                }
+                if (flag != 0) {
+                    s.erase(i, n);
+                    deleted = 1;
+                    break;
+                }
+            }
+            if (deleted != 1) {
+                done = 1;
+            }
+        }
+        return s;
+    }
 };
 #endif

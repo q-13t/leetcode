@@ -32,10 +32,9 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.clearDigits("abc") << endl;
-    cout << solution.clearDigits("cb34") << endl;
-    cout << solution.clearDigits("c3d4") << endl;
-    cout << solution.clearDigits("444") << endl;
+    cout << solution.removeOccurrences("daabcbaabcbc", "abc") << endl;
+    cout << solution.removeOccurrences("axxxxyyyyb", "xy") << endl;
+    cout << solution.removeOccurrences("xyxyxy", "xy") << endl;
 
     return 0;
 }
