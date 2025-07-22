@@ -5382,4 +5382,19 @@ public class Solution extends GuessGame {
         return arrays;
     }
 
+    public String makeFancyString(String s) {
+        if (s.length() < 3) {
+            return s;
+        }
+        StringBuilder SB = new StringBuilder();
+        SB.append(s.charAt(0));
+        SB.append(s.charAt(1));
+
+        for (int i = 2; i < s.length(); i++) {
+            if (s.charAt(i) != s.charAt(i - 1) || s.charAt(i) != s.charAt(i - 2) || s.charAt(i - 1) != s.charAt(i - 2)) {
+                SB.append(s.charAt(i));
+            }
+        }
+        return SB.toString();
+    }
 }

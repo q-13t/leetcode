@@ -24,13 +24,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        start = System.currentTimeMillis();
-        System.out.println(solution.subarraysDivByK(new int[] { 4, 5, 0, -2, -3, 1 }, 5));
-        System.out.println("\nRuntime: " + (System.currentTimeMillis() - start) + "ms");
-        System.out.println(solution.subarraysDivByK(new int[] { 5 }, 9));
-        System.out.println(solution.subarraysDivByK(new int[] { -5 }, 5));
-        System.out.println(solution.subarraysDivByK(new int[] { -1, 2, 9 }, 2));
-
+        System.out.println(solution.makeFancyString("leeetcode"));
+        System.out.println(solution.makeFancyString("aaabaaaa"));
+        System.out.println(solution.makeFancyString("aab"));
     }
 
     static int bigSum(int[] arr) {
