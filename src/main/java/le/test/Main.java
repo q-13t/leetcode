@@ -23,10 +23,9 @@ public class Main {
     private static long start;
 
     public static void main(String[] args) {
-
-        System.out.println(solution.makeFancyString("leeetcode"));
-        System.out.println(solution.makeFancyString("aaabaaaa"));
-        System.out.println(solution.makeFancyString("aab"));
+        System.out.println(solution.maximumUniqueSubarray(new int[] { 10000, 1, 10000, 1, 1, 1, 1, 1, 1 }));
+        System.out.println(solution.maximumUniqueSubarray(new int[] { 4, 2, 4, 5, 6 }));
+        System.out.println(solution.maximumUniqueSubarray(new int[] { 5, 2, 1, 2, 5, 2, 1, 2, 5 }));
     }
 
     static int bigSum(int[] arr) {

@@ -5397,4 +5397,22 @@ public class Solution extends GuessGame {
         }
         return SB.toString();
     }
+
+    public int maximumUniqueSubarray(int[] nums) {
+        int sum = 0, max = -1;
+        Set<Integer> seen = new HashSet<>();
+        for (int l = 0, r = 0; l < nums.length;) {
+            while (seen.contains(nums[r])) {
+                sum -= nums[l];
+                seen.remove(nums[l++]);
+            }
+            sum += nums[r];
+            seen.add(nums[r]);
+            max = max > sum ? max : sum;
+            if (++r == nums.length) {
+                break;
+            }
+        }
+        return max;
+    }
 }
