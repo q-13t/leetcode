@@ -375,28 +375,29 @@ class Solution {
         return newstr;
     }
 
-    bool judgeSquareSum(int c) {
-        vector<long> squares;
-        for (long i = 0; pow(i, 2) <= c; i++) {
-            squares.push_back(pow(i, 2));
-        }
-        auto left = squares.begin();
-        auto right = squares.end();
-        right--;
-        while (left <= right) {
-            long long sum = *left + *right;
-            if (sum == c) {
-                return true;
-            }
-            if (sum > c) {
-                right--;
-            } else {
-                left++;
-            }
-        }
+    // bool judgeSquareSum(int c) {
+    //     vector<long> squares;
+    //     for (long i = 0; pow(i, 2) <= c; i++) {
+    //         squares.push_back(pow(i, 2));
+    //     }
+    //     auto left = squares.begin();
+    //     auto right = squares.end();
+    //     right--;
+    //     while (left <= right) {
+    //         long long sum = *left + *right;
+    //         if (sum == c) {
+    //             return true;
+    //         }
+    //         if (sum > c) {
+    //             right--;
+    //         } else {
+    //             left++;
+    //         }
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
+
     int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
         int size = difficulty.size(), gain = 0;
         // Profit | difficulty
