@@ -32,9 +32,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    cout << solution.removeOccurrences("daabcbaabcbc", "abc") << endl;
-    cout << solution.removeOccurrences("axxxxyyyyb", "xy") << endl;
-    cout << solution.removeOccurrences("xyxyxy", "xy") << endl;
+    cout << solution.sumAndMultiply(10203004) << endl;
+    cout << solution.sumAndMultiply(1000) << endl;
 
     return 0;
 }

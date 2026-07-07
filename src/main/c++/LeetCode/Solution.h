@@ -2880,5 +2880,23 @@ class Solution {
         }
         return s;
     }
+
+    long long sumAndMultiply(int n) {
+        int sum = 0, non_zero = 0, s = -1;
+        string chars = std::to_string(n);
+        for (int i = 0; i < chars.size(); i++) {
+            if (chars[i] != '0') {
+                s++;
+            }
+        }
+        for (int i = 0; i < chars.size(); i++) {
+            if (chars[i] == '0') {
+                continue;
+            }
+            sum += chars[i] - '0';
+            non_zero += (chars[i] - '0') * pow(10, s--);
+        }
+        return (long long)sum * non_zero;
+    }
 };
 #endif
