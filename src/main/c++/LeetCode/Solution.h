@@ -25,6 +25,7 @@ class Solution {
    public:
     vector<pair<int, int>> serves{{100, 0}, {75, 25}, {50, 50}, {25, 75}};
     vector<vector<double>> t;
+    int mod = 1e9 + 7;
 
     double solve(double A, double B) {
         if (A <= 0 && B <= 0)
@@ -2897,6 +2898,52 @@ class Solution {
             non_zero += (chars[i] - '0') * pow(10, s--);
         }
         return (long long)sum * non_zero;
+    }
+
+    int gcd(int a, int b) {
+        if (a == 0 || b == 0) {
+            return 0;
+        }
+        while (b != 0) {
+            int tmp = b;
+            b = a % b;
+            a = tmp;
+        }
+        return a;
+    }
+
+    int subsequencePairCount(vector<int>& nums) {
+        vector<vector<int>> current(201, vector<int>(201, 0));
+        vector<vector<int>> next(201, vector<int>(201, 0));
+        current[0][0] = 1;
+        for (int x : nums) {
+            for (int i = 0; i <= 200; i++) {
+                fill(next[i].begin(), next[i].end(), 0);
+            }
+            for (int g1 = 0; g1 <= 200; g1++) {
+                for (int g2 = 0; g2 <= 200; g2++) {
+                    if (current[g1][g2] == 0) {
+                        continue;
+                    }
+                    long long ways = current[g1][g2];
+                    next[g1][g2] = (next[g1][g2] + ways) % mod;
+
+                    int ng1 = (g1 == 0 ? x : gcd(g1, x));
+                    next[ng1][g2] = (next[ng1][g2] + ways) % mod;
+
+                    int ng2 = (g2 == 0 ? x : gcd(g2, x));
+                    next[g1][ng2] = (next[g1][ng2] + ways) % mod;
+                }
+            }
+            swap(current, next);
+        }
+
+        long long ans = 0;
+        for (int i = 1; i <= 200; i++) {
+            ans = (ans + current[i][i]) % mod;
+        }
+
+        return ans;
     }
 };
 #endif
