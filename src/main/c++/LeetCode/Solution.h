@@ -2945,5 +2945,9 @@ class Solution {
 
         return ans;
     }
+
+    int gcdOfOddEvenSums(int n) {
+        return n;
+    }
 };
 #endif

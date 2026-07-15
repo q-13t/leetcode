@@ -32,12 +32,8 @@ auto _ = []() {
 int main(int argc, char const* argv[]) {
     FIO;
 
-    arr1 = {{1, 2, 3, 4}};
-    arr2 = {{10, 20, 30}};
-    arr3 = {{1, 1, 1, 1}};
-    cout << solution.subsequencePairCount(arr1) << endl;
-    cout << solution.subsequencePairCount(arr2) << endl;
-    cout << solution.subsequencePairCount(arr3) << endl;
+    cout << solution.gcdOfOddEvenSums(4) << endl;
+    cout << solution.gcdOfOddEvenSums(5) << endl;
 
     return 0;
 }
